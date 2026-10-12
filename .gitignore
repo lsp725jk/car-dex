@@ -61,3 +61,5 @@ venv/
 Thumbs.db
 desktop.ini
 torchinductor_*/
+# 本机环境备份（pip freeze / 回滚说明），与项目无关
+outputs/env_backup/
