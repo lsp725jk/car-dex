@@ -1,0 +1,16 @@
+{
+  "npz_is_log_softmax": false,
+  "threshold_rule_best": {
+    "threshold": 0.9800000000000006,
+    "projected_macro_f1": 0.5441293929712461
+  },
+  "margin_rule_best": {
+    "theta_test": -5.5200000000000085,
+    "projected_macro_f1": 0.7218332476875642,
+    "unknown_recall": 0.9824,
+    "known_accuracy": 0.7192000000000001,
+    "claimed": 992.7040000000001
+  },
+  "target": 0.85,
+  "gap": 0.1281667523124358
+}

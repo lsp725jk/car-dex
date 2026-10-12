@@ -1,0 +1,1272 @@
+{
+  "schema": 1,
+  "note": "车型档次（配置版本）知识库，由联网抓取沉淀而来，每条都带来源与抓取时间。",
+  "updated_at": "2026-10-10 00:35:43",
+  "cars": {
+    "0975": {
+      "car_id": "0975",
+      "car_name": "日产_轩逸",
+      "brand": "日产",
+      "body_group": "轿车",
+      "trims": [
+        {
+          "trim_id": "t-77946ec890",
+          "name": "2024款 经典 1.6 XE 舒适版 CVT",
+          "year": "2024",
+          "guide_price_wan": 7.99,
+          "dealer_price_wan": null,
+          "price_text": "7.99万",
+          "specs": {
+            "发动机": "1.6L 自然吸气",
+            "变速箱": "无级变速(CVT)",
+            "驱动方式": "前置前驱"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://product.auto.163.com/series/17960.html",
+            "site": "网易汽车",
+            "fetched_at": "2026-09-21 21:55:17",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-d8ade96b09",
+          "name": "2026款 经典 1.6L CVT安心版",
+          "year": "2026",
+          "guide_price_wan": 7.99,
+          "dealer_price_wan": 6.39,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 122马力 L4",
+            "最大功率": "90kW",
+            "最大扭矩": "155N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "无",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [
+            "车系入门档次"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-b1dfe8de46",
+          "name": "轩逸·经典 1.6L CVT 安心版",
+          "year": "",
+          "guide_price_wan": 7.99,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "发动机": "1.6L",
+            "变速箱": "XTRONIC CVT无级变速",
+            "轴距": "2700mm",
+            "综合工况油耗": "5.99L/100km (WLTC)"
+          },
+          "highlights": [
+            "V-Motion前脸",
+            "Multi-Layer人体工学座椅"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy-classic",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-0ba4aa1f2d",
+          "name": "2026款 经典 1.6L CVT舒畅版",
+          "year": "2026",
+          "guide_price_wan": 8.09,
+          "dealer_price_wan": 7.09,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2025-12",
+            "中控屏": "无",
+            "变速箱": "CVT无级变速",
+            "最大功率": "90kW",
+            "最大扭矩": "155N·m",
+            "能源类型": "汽油",
+            "辅助驾驶": "无"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-2049ba67eb",
+          "name": "轩逸·经典 1.6L CVT 舒畅版",
+          "year": "",
+          "guide_price_wan": 8.09,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "发动机": "1.6L",
+            "变速箱": "XTRONIC CVT无级变速",
+            "天窗": "一触式电动天窗"
+          },
+          "highlights": [
+            "一触式电动天窗"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy-classic",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-d1cab3c516",
+          "name": "2026款 1.6L CVT舒适版",
+          "year": "2026",
+          "guide_price_wan": 8.49,
+          "dealer_price_wan": 7.49,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "无",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-fbd4aa14dc",
+          "name": "2026款 1.6L CVT舒享版",
+          "year": "2026",
+          "guide_price_wan": 9.49,
+          "dealer_price_wan": 8.39,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "8英寸触控液晶屏",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [
+            "8英寸中控触控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-a331269bfc",
+          "name": "2026款 1.6L CVT科技版",
+          "year": "2026",
+          "guide_price_wan": 10.49,
+          "dealer_price_wan": 9.49,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "12.3英寸触控液晶屏",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [
+            "12.3英寸中控触控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-fa25bd4ad0",
+          "name": "2026款 1.6L CVT舒享科技版",
+          "year": "2026",
+          "guide_price_wan": 10.99,
+          "dealer_price_wan": 9.99,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "12.3英寸触控液晶屏",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-b0bb19f80f",
+          "name": "2024款 经典 1.6L XE+大屏版 CVT",
+          "year": "2024",
+          "guide_price_wan": 11.11,
+          "dealer_price_wan": null,
+          "price_text": "11.11万",
+          "specs": {
+            "发动机": "1.6L 自然吸气 122马力",
+            "变速箱": "无级变速(CVT)",
+            "驱动方式": "前置前驱"
+          },
+          "highlights": [
+            "大屏"
+          ],
+          "source": {
+            "url": "https://product.auto.163.com/series/17960.html",
+            "site": "网易汽车",
+            "fetched_at": "2026-09-21 21:55:17",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-9fd6adcb91",
+          "name": "2026款 1.6L CVT豪华科技版",
+          "year": "2026",
+          "guide_price_wan": 11.49,
+          "dealer_price_wan": 10.49,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "12.3英寸触控液晶屏",
+            "辅助驾驶": "无",
+            "上市时间": "2026-02"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-bbff85dc4b",
+          "name": "2024款 经典 1.6 XL 豪华版 CVT",
+          "year": "2024",
+          "guide_price_wan": 11.86,
+          "dealer_price_wan": null,
+          "price_text": "11.86万",
+          "specs": {
+            "发动机": "1.6L 自然吸气",
+            "变速箱": "无级变速(CVT)",
+            "驱动方式": "前置前驱"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://product.auto.163.com/series/17960.html",
+            "site": "网易汽车",
+            "fetched_at": "2026-09-21 21:55:17",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-8c3e41964b",
+          "name": "2026款 经典 1.6L CVT XE 舒心天窗版",
+          "year": "2026",
+          "guide_price_wan": 11.86,
+          "dealer_price_wan": 10.86,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2025-12",
+            "中控屏": "无",
+            "变速箱": "CVT无级变速",
+            "最大功率": "90kW",
+            "最大扭矩": "155N·m",
+            "能源类型": "汽油",
+            "辅助驾驶": "无"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-b37d2072f7",
+          "name": "轩逸·经典 1.6L CVT XE 舒心天窗版",
+          "year": "",
+          "guide_price_wan": 11.86,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "发动机": "1.6L",
+            "变速箱": "XTRONIC CVT无级变速",
+            "天窗": "一触式电动天窗"
+          },
+          "highlights": [
+            "一触式电动天窗"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy-classic",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-b7c2eb61ae",
+          "name": "2026款 1.6L CVT旗舰版",
+          "year": "2026",
+          "guide_price_wan": 11.99,
+          "dealer_price_wan": 10.99,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "1.6L 135马力 L4",
+            "最大功率": "99kW",
+            "最大扭矩": "159N·m",
+            "变速箱": "CVT无级变速",
+            "中控屏": "12.3英寸触控液晶屏",
+            "辅助驾驶": "ProPILOT（L2级）",
+            "上市时间": "2026-02"
+          },
+          "highlights": [
+            "ProPILOT L2级辅助驾驶",
+            "12.3英寸中控触控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:00",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-7caed56dc1",
+          "name": "2024款 经典 1.6XV 尊享版 CVT",
+          "year": "2024",
+          "guide_price_wan": 12.26,
+          "dealer_price_wan": null,
+          "price_text": "12.26万",
+          "specs": {
+            "发动机": "1.6L 自然吸气",
+            "变速箱": "无级变速(CVT)",
+            "驱动方式": "前置前驱"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://product.auto.163.com/series/17960.html",
+            "site": "网易汽车",
+            "fetched_at": "2026-09-21 21:55:17",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-814b8e79b9",
+          "name": "2023款 超混电驱 全电驱Pro",
+          "year": "2023",
+          "guide_price_wan": 13.89,
+          "dealer_price_wan": 10.59,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2023-03",
+            "中控屏": "无",
+            "变速箱": "电动车单速变速箱",
+            "最大功率": "100kW",
+            "最大扭矩": "300N·m",
+            "能源类型": "汽油电驱(e-POWER)",
+            "辅助驾驶": "无"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-1f9a99df91",
+          "name": "超混电驱 轩逸 全电驱Pro",
+          "year": "",
+          "guide_price_wan": 13.89,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "动力": "e-POWER超混电驱",
+            "轴距": "2712mm",
+            "换挡": "滑鼠式电子换挡器"
+          },
+          "highlights": [
+            "e-POWER全电驱动力系统"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-bb66bc23ff",
+          "name": "2023款 超混电驱 全电驱大屏版",
+          "year": "2023",
+          "guide_price_wan": 14.29,
+          "dealer_price_wan": 10.99,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2023-03",
+            "中控屏": "12.3英寸触控液晶屏",
+            "变速箱": "电动车单速变速箱",
+            "最大功率": "100kW",
+            "最大扭矩": "300N·m",
+            "能源类型": "汽油电驱(e-POWER)",
+            "辅助驾驶": "无"
+          },
+          "highlights": [
+            "12.3英寸中控触控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-ab7491af1c",
+          "name": "超混电驱 轩逸 全电驱 大屏版",
+          "year": "",
+          "guide_price_wan": 14.29,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "动力": "e-POWER超混电驱",
+            "中控屏": "12.3英寸高清电容触控屏",
+            "车机": "Nissan Connect超智联2.0"
+          },
+          "highlights": [
+            "12.3英寸高清电容触控屏",
+            "Nissan Connect超智联2.0"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-f17a845905",
+          "name": "2023款 超混电驱 超智联Plus",
+          "year": "2023",
+          "guide_price_wan": 14.99,
+          "dealer_price_wan": 11.69,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2023-03",
+            "中控屏": "12.3英寸触控液晶屏",
+            "变速箱": "电动车单速变速箱",
+            "最大功率": "100kW",
+            "最大扭矩": "300N·m",
+            "能源类型": "汽油电驱(e-POWER)",
+            "辅助驾驶": "无"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-c6bb095de7",
+          "name": "超混电驱 轩逸 超智联Plus",
+          "year": "",
+          "guide_price_wan": 14.99,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "动力": "e-POWER超混电驱",
+            "中控屏": "12.3英寸高清电容触控屏",
+            "车机": "Nissan Connect超智联2.0",
+            "外观": "全新V-Motion设计语言"
+          },
+          "highlights": [
+            "超智联2.0",
+            "12.3英寸高清电容触控屏"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-00a81c392a",
+          "name": "2023款 超混电驱 超智驾Max",
+          "year": "2023",
+          "guide_price_wan": 15.59,
+          "dealer_price_wan": 12.29,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2023-03",
+            "中控屏": "12.3英寸触控液晶屏",
+            "变速箱": "电动车单速变速箱",
+            "最大功率": "100kW",
+            "最大扭矩": "300N·m",
+            "能源类型": "汽油电驱(e-POWER)",
+            "辅助驾驶": "ProPILOT（L2级）"
+          },
+          "highlights": [
+            "ProPILOT L2级辅助驾驶"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-d68d14c307",
+          "name": "超混电驱 轩逸 超智驾Max",
+          "year": "",
+          "guide_price_wan": 15.59,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "动力": "e-POWER超混电驱",
+            "辅助驾驶": "增强版ProPILOT超智驾(L2)",
+            "无线充电": "支持"
+          },
+          "highlights": [
+            "增强版ProPILOT超智驾（L2级智能驾驶辅助）",
+            "手机无线充电"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-6e4ec458f7",
+          "name": "2023款 超混电驱 超豪华Ultra",
+          "year": "2023",
+          "guide_price_wan": 17.49,
+          "dealer_price_wan": 14.19,
+          "price_text": "",
+          "specs": {
+            "上市时间": "2023-03",
+            "中控屏": "12.3英寸触控液晶屏",
+            "变速箱": "电动车单速变速箱",
+            "最大功率": "100kW",
+            "最大扭矩": "300N·m",
+            "能源类型": "汽油电驱(e-POWER)",
+            "辅助驾驶": "ProPILOT（L2级）"
+          },
+          "highlights": [
+            "ProPILOT L2级辅助驾驶",
+            "12.3英寸中控触控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/448.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-21 21:57:06",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-27fa62ab6a",
+          "name": "超混电驱 轩逸 超豪华Ultra",
+          "year": "",
+          "guide_price_wan": 17.49,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "动力": "e-POWER超混电驱",
+            "主动安全": "NISSAN i-SAFETY智能主动安全系统",
+            "音响": "8扬声器高保真BOSE音响",
+            "座椅": "Multi-Layer人体工学真皮座椅"
+          },
+          "highlights": [
+            "NISSAN i-SAFETY智能主动安全系统",
+            "8扬声器BOSE音响",
+            "真皮人体工学座椅"
+          ],
+          "source": {
+            "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+            "site": "东风日产官网",
+            "fetched_at": "2026-09-16 00:11:36",
+            "verified": true
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://car.autohome.com.cn/config/series/448.html",
+          "site": "汽车之家",
+          "fetched_at": "2026-09-21 21:57:06",
+          "verified": true
+        },
+        {
+          "url": "https://www.autohome.com.cn/config/series/448.html?from=m&platform-key=pc&pvareaid=3290231",
+          "site": "汽车之家",
+          "fetched_at": "2026-09-16 00:13:31",
+          "verified": true
+        },
+        {
+          "url": "https://www.dongfeng-nissan.com.cn/car/sylphy-classic",
+          "site": "东风日产官网",
+          "fetched_at": "2026-09-16 00:11:36",
+          "verified": true
+        },
+        {
+          "url": "https://www.dongfeng-nissan.com.cn/car/sylphy_e-power",
+          "site": "东风日产官网",
+          "fetched_at": "2026-09-16 00:11:36",
+          "verified": true
+        },
+        {
+          "url": "https://product.auto.163.com/series/17960.html",
+          "site": "网易汽车",
+          "fetched_at": "2026-09-21 21:55:17",
+          "verified": true
+        },
+        {
+          "url": "https://www.autohome.com.cn/448/22786/price.html",
+          "site": "汽车之家",
+          "fetched_at": "2026-09-21 21:55:51",
+          "verified": true
+        }
+      ],
+      "notes": [
+        {
+          "text": "数据取自汽车之家轩逸参数配置页（2026-09 读取）。经销商报价为「X万起」的全国参考起步价，实际随城市/库存浮动。天窗、座椅材质、气囊数等区块当次未成功渲染，未收录。",
+          "at": "2026-09-21 21:57:00",
+          "url": "https://car.autohome.com.cn/config/series/448.html"
+        },
+        {
+          "text": "同批数据，来源同为汽车之家轩逸参数配置页。超混电驱为 e-POWER 汽油电驱版本（2023款，指导价明显高于燃油版，但终端优惠也更大）。",
+          "at": "2026-09-21 21:57:06",
+          "url": "https://car.autohome.com.cn/config/series/448.html"
+        }
+      ],
+      "updated_at": "2026-09-21 21:57:06"
+    },
+    "0003": {
+      "car_id": "0003",
+      "car_name": "宇通客车_宇通T7",
+      "brand": "宇通客车",
+      "body_group": "轻客",
+      "trims": [
+        {
+          "trim_id": "t-adb4ed63bb",
+          "name": "2025款 3.0T 柴油手动标准版 19座",
+          "year": "2025",
+          "guide_price_wan": 38.98,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "柴油",
+            "发动机": "3.0T 163马力 L4（ZD30D16-6D）",
+            "变速箱": "6挡手动",
+            "最大功率": "120kW",
+            "最大扭矩": "450N·m",
+            "座位数": "19座",
+            "车身尺寸": "7148×2075×2770mm",
+            "天窗类型": "电动天窗",
+            "座椅材质": "仿皮",
+            "侧窗遮阳帘": "手动",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "柴油版，全系起步价",
+            "电动天窗"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-5e226a06d8",
+          "name": "2025款 3.5T 汽油自动团体版 19座",
+          "year": "2025",
+          "guide_price_wan": 45.98,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "座位数": "19座",
+            "车身尺寸": "7148×2075×2710mm",
+            "天窗类型": "电动天窗",
+            "座椅材质": "仿皮",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "3.5T V6 汽油 + 10AT"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-dee2301b05",
+          "name": "2025款 3.5T 汽油自动商务版 19座",
+          "year": "2025",
+          "guide_price_wan": 48.98,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "座位数": "19座",
+            "车身尺寸": "7148×2075×2770mm",
+            "天窗类型": "电动天窗",
+            "座椅材质": "仿皮",
+            "侧窗遮阳帘": "手动",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-857abca620",
+          "name": "2025款 3.5T 汽油自动公务版 17座",
+          "year": "2025",
+          "guide_price_wan": 60.58,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "座位数": "17座",
+            "车身尺寸": "7148×2075×2770mm",
+            "天窗类型": "电动天窗",
+            "座椅材质": "仿皮",
+            "侧窗遮阳帘": "手动",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "座位数减为17座，2025款里最贵"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-45dbf01ffb",
+          "name": "2024款 3.5T 汽油定制星宇版",
+          "year": "2024",
+          "guide_price_wan": 76.8,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "车身尺寸": "7148×2075×2770mm",
+            "座椅材质": "仿皮",
+            "侧窗遮阳帘": "手动",
+            "胎压监测": "胎压显示",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "定制版，指导价 76.80万"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-3c94e77fef",
+          "name": "2024款 3.5T 汽油定制星河版",
+          "year": "2024",
+          "guide_price_wan": 110.0,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "车身尺寸": "7148×2075×2710mm",
+            "第二排座椅": "靠背/腰部/腿托调节",
+            "第二排座椅功能": "通风、按摩",
+            "侧窗遮阳帘": "手动",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "第二排座椅带腰部/腿托调节",
+            "第二排座椅通风+按摩"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-1614473cdc",
+          "name": "2024款 3.5T 汽油定制星辰版",
+          "year": "2024",
+          "guide_price_wan": 128.8,
+          "dealer_price_wan": null,
+          "price_text": "",
+          "specs": {
+            "能源类型": "汽油",
+            "发动机": "3.5T 320马力 V6",
+            "变速箱": "10挡自动",
+            "最大功率": "235kW",
+            "最大扭矩": "650N·m",
+            "车身尺寸": "7148×2075×2770mm",
+            "第二排座椅": "靠背/腰部(2向)/腿托调节",
+            "第二排座椅功能": "通风",
+            "侧窗遮阳帘": "手动",
+            "胎压监测": "胎压报警",
+            "驱动方式": "前置后驱"
+          },
+          "highlights": [
+            "全系最高指导价 128.80万",
+            "第二排座椅带腰部/腿托调节与通风"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/4484.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-09-29 09:45:13",
+            "verified": true
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://car.autohome.com.cn/config/series/4484.html",
+          "site": "汽车之家",
+          "fetched_at": "2026-09-29 09:45:13",
+          "verified": true
+        }
+      ],
+      "notes": [
+        {
+          "text": "汽车之家宇通T7配置页（2026-09-29读取）：厂商指导价区间 38.98-128.80万，经销商参考价全部显示\"暂无报价\"。2025款4款（38.98-60.58万）与2024款3款定制版（76.80-128.80万）。全系车身结构为客车，车长7148mm、宽2075mm；柴油版车高2770mm、汽油团体/星河版2710mm。团体版/商务版/公务版之间的内饰装备差异（如航空座椅、小桌板、电视等）在配置表中未以可读行列出，故未记录。",
+          "at": "2026-09-29 09:45:13",
+          "url": "https://car.autohome.com.cn/config/series/4484.html"
+        }
+      ],
+      "updated_at": "2026-09-29 09:45:13"
+    },
+    "0632": {
+      "car_id": "0632",
+      "car_name": "奥迪_奥迪A6 China Domestic Version",
+      "brand": "奥迪",
+      "body_group": "轿车",
+      "trims": [
+        {
+          "trim_id": "t-65db6841ba",
+          "name": "A6L 2026款 2.0T 臻选型",
+          "year": "2026",
+          "guide_price_wan": 32.29,
+          "dealer_price_wan": 28.69,
+          "price_text": "经销商参考价 28.69万起",
+          "specs": {
+            "发动机": "2.0T 204马力 L4",
+            "最大功率": "150kW",
+            "最大扭矩": "340N·m",
+            "变速箱": "7挡湿式双离合",
+            "中控屏": "14.5英寸",
+            "辅助驾驶": "L2",
+            "车身": "4门5座三厢车（5142*1874*1464）",
+            "上市": "2026.03",
+            "巡航": "全速自适应巡航"
+          },
+          "highlights": [
+            "全新一代车身（5142mm）",
+            "14.5英寸中控屏",
+            "L2辅助驾驶"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-5382036b4e",
+          "name": "A6L 2026款 2.0T 尊享型",
+          "year": "2026",
+          "guide_price_wan": 35.29,
+          "dealer_price_wan": 30.17,
+          "price_text": "经销商参考价 30.17万起",
+          "specs": {
+            "发动机": "2.0T 272马力 L4",
+            "最大功率": "200kW",
+            "最大扭矩": "400N·m",
+            "变速箱": "7挡湿式双离合",
+            "中控屏": "14.5英寸",
+            "辅助驾驶": "L2 + 华为乾崑智驾",
+            "上市": "2026.03",
+            "辅助驾驶路段": "高速路段"
+          },
+          "highlights": [
+            "华为乾崑智驾（高速路段）",
+            "发动机升级至2.0T 272马力",
+            "14.5英寸中控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-bd40203ed8",
+          "name": "A6L 2026款 2.0T quattro 尊享型",
+          "year": "2026",
+          "guide_price_wan": 38.79,
+          "dealer_price_wan": 33.71,
+          "price_text": "经销商参考价 33.71万起",
+          "specs": {
+            "发动机": "2.0T 272马力 L4",
+            "变速箱": "7挡湿式双离合",
+            "能源类型": "油电混合",
+            "电动机": "24Ps",
+            "中控屏": "14.5英寸",
+            "辅助驾驶": "L2 + 华为乾崑智驾",
+            "驱动": "quattro四驱",
+            "上市": "2026.03",
+            "辅助驾驶路段": "高速路段"
+          },
+          "highlights": [
+            "quattro四驱",
+            "油电混合",
+            "华为乾崑智驾"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-7c19c77fa6",
+          "name": "A6L 2026款 40 TFSI 动感型",
+          "year": "2026",
+          "guide_price_wan": 42.79,
+          "dealer_price_wan": 26.49,
+          "price_text": "经销商参考价 26.49万起",
+          "specs": {
+            "发动机": "2.0T 190马力 L4",
+            "最大功率": "140kW",
+            "最大扭矩": "320N·m",
+            "变速箱": "7挡湿式双离合",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "辅助驾驶": "L2",
+            "上市": "2025.10",
+            "车身": "4门5座三厢车（5050*1886*1475）",
+            "巡航": "定速巡航，全速自适应巡航选装(￥20000)",
+            "辅助泊车入位": "选装(￥4000)"
+          },
+          "highlights": [
+            "上一代车身（5050mm）",
+            "10.1英寸中控屏",
+            "L2辅助驾驶",
+            "优惠幅度最大（指导价42.79万→参考价26.49万起）"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-1e7713516a",
+          "name": "A6L 2026款 45 TFSI 典藏",
+          "year": "2026",
+          "guide_price_wan": 45.49,
+          "dealer_price_wan": 28.16,
+          "price_text": "经销商参考价 28.16万起",
+          "specs": {
+            "上市": "2026.09",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "发动机": "2.0T 245马力 L4",
+            "最大功率": "180kW",
+            "最大扭矩": "370N·m",
+            "变速箱": "7挡湿式双离合",
+            "巡航": "定速巡航"
+          },
+          "highlights": [
+            "2026.09 新上市车款",
+            "2.0T 245马力",
+            "10.1英寸中控屏"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-2c12004a9a",
+          "name": "A6L 2026款 45 TFSI 臻选动感型",
+          "year": "2026",
+          "guide_price_wan": 45.49,
+          "dealer_price_wan": 27.16,
+          "price_text": "经销商参考价 27.16万起",
+          "specs": {
+            "上市": "2025.10",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "发动机": "2.0T 245马力 L4",
+            "最大功率": "180kW",
+            "最大扭矩": "370N·m",
+            "辅助驾驶": "L2",
+            "变速箱": "7挡湿式双离合",
+            "巡航": "定速巡航，全速自适应巡航选装(￥20000)",
+            "液晶屏幕": "选装(￥7100)"
+          },
+          "highlights": [
+            "2.0T 245马力",
+            "L2辅助驾驶",
+            "10.1英寸中控屏",
+            "液晶屏幕选装￥7100"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-6a2cca8338",
+          "name": "A6L 2026款 3.0T quattro 旗舰型",
+          "year": "2026",
+          "guide_price_wan": 46.27,
+          "dealer_price_wan": 42.49,
+          "price_text": "经销商参考价 42.49万起",
+          "specs": {
+            "发动机": "3.0T 367马力 V6",
+            "变速箱": "7挡湿式双离合",
+            "能源类型": "油电混合",
+            "电动机": "24Ps",
+            "中控屏": "14.5英寸",
+            "辅助驾驶": "L2 + 华为乾崑智驾",
+            "驱动": "quattro四驱",
+            "上市": "2026.03",
+            "辅助驾驶路段": "高速路段"
+          },
+          "highlights": [
+            "3.0T V6 367马力",
+            "quattro四驱",
+            "华为乾崑智驾",
+            "全新一代顶配"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-0ee766bc57",
+          "name": "A6L 2026款 45 TFSI quattro 臻选动感型",
+          "year": "2026",
+          "guide_price_wan": 47.99,
+          "dealer_price_wan": 29.98,
+          "price_text": "经销商参考价 29.98万起",
+          "specs": {
+            "上市": "2025.10",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "发动机": "2.0T 245马力 L4",
+            "最大功率": "180kW",
+            "最大扭矩": "370N·m",
+            "驱动": "quattro四驱",
+            "辅助驾驶": "L2",
+            "变速箱": "7挡湿式双离合",
+            "巡航": "定速巡航，全速自适应巡航选装(￥20000)"
+          },
+          "highlights": [
+            "quattro四驱",
+            "2.0T 245马力",
+            "L2辅助驾驶"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-09 23:54:21",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-ad95526e0b",
+          "name": "A6L 2026款 45 TFSI quattro 臻选动感型+尊享包",
+          "year": "2026",
+          "guide_price_wan": 49.98,
+          "dealer_price_wan": 31.23,
+          "price_text": "经销商参考价 31.23万起",
+          "specs": {
+            "上市": "2025.10",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "发动机": "2.0T 245马力 L4",
+            "最大功率": "180kW",
+            "最大扭矩": "370N·m",
+            "驱动": "quattro四驱",
+            "辅助驾驶": "L2",
+            "变速箱": "7挡湿式双离合",
+            "车身": "4门5座三厢车（5050*1886*1475）"
+          },
+          "highlights": [
+            "quattro四驱",
+            "在45 TFSI quattro臻选动感型基础上增加尊享包配置"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-10 00:35:43",
+            "verified": true
+          }
+        },
+        {
+          "trim_id": "t-fda84802cf",
+          "name": "A6L 2026款 55 TFSI quattro 尊享动感型",
+          "year": "2026",
+          "guide_price_wan": 55.89,
+          "dealer_price_wan": 38.01,
+          "price_text": "经销商参考价 38.01万起",
+          "specs": {
+            "上市": "2025.10",
+            "中控屏": "10.1英寸",
+            "中控下屏": "8.6英寸",
+            "发动机": "3.0T 340马力 V6",
+            "最大功率": "250kW",
+            "最大扭矩": "500N·m",
+            "能源类型": "汽油+48V轻混系统",
+            "驱动": "quattro四驱",
+            "辅助驾驶": "L2",
+            "变速箱": "7挡湿式双离合",
+            "车身": "4门5座三厢车（5050*1886*1475）",
+            "油耗": "WLTC 8.5L/100km"
+          },
+          "highlights": [
+            "3.0T V6 340马力",
+            "48V轻混",
+            "quattro四驱",
+            "全系指导价最高（55.89万）"
+          ],
+          "source": {
+            "url": "https://car.autohome.com.cn/config/series/18.html",
+            "site": "汽车之家",
+            "fetched_at": "2026-10-10 00:35:43",
+            "verified": true
+          }
+        }
+      ],
+      "sources": [
+        {
+          "url": "https://car.autohome.com.cn/config/series/18.html",
+          "site": "汽车之家",
+          "fetched_at": "2026-10-10 00:35:43",
+          "verified": true
+        }
+      ],
+      "notes": [
+        {
+          "text": "摘自汽车之家奥迪A6L参数配置页。页面上经销商参考价均显示「暂无报价」，故只记录了厂商指导价。该页同屏列有两代车型：2026款 2.0T/3.0T 系列（2026.03 上市，车身 5142mm，14.5 英寸中控屏，部分车款带华为乾崑智驾）与 40/45/55 TFSI 系列（多为 2025.10 上市，车身 5050mm，10.1 英寸中控屏）。",
+          "at": "2026-10-09 22:43:18",
+          "url": "https://car.autohome.com.cn/config/series/18.html"
+        },
+        {
+          "text": "同页第二批。45 TFSI 典藏上市时间页面上标注 2026.09。",
+          "at": "2026-10-09 22:43:23",
+          "url": "https://car.autohome.com.cn/config/series/18.html"
+        },
+        {
+          "text": "经销商参考价为北京车市「XX万起」，实际随城市与谈判浮动；2026.03 上市的是全新一代（车长5142mm、14.5英寸屏、部分车款搭载华为乾崑智驾），2025.10/2026.09 车款为上一代车身（5050mm、10.1英寸屏）。",
+          "at": "2026-10-09 23:54:21",
+          "url": "https://car.autohome.com.cn/config/series/18.html"
+        },
+        {
+          "text": "2026-10-10 复核，价格与 2026-10-09 抓取一致。补齐档案中缺失的两个高配档次。",
+          "at": "2026-10-10 00:35:43",
+          "url": "https://car.autohome.com.cn/config/series/18.html"
+        }
+      ],
+      "updated_at": "2026-10-10 00:35:43"
+    }
+  }
+}

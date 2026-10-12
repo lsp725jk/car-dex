@@ -1,0 +1,425 @@
+[16:49:40] 候选单模型：['improved_resnet18_224', 'baseline_resnet18_160']
+[16:49:40] 候选集成  ：[]
+[16:49:40] [候选] improved_resnet18_224
+[16:49:40]   前向传播 improved_resnet18_224（resnet18 @224, TTA=True, 2422 张）
+[16:51:21]   未标定 Macro-F1=0.0634  →  最优 (tau=+0.20, t=0.35) Macro-F1=0.0648  unk检出=0.253 已知误拒=0.277  [102s]
+[16:51:21] [候选] baseline_resnet18_160
+[16:51:22]   前向传播 baseline_resnet18_160（resnet18 @160, TTA=True, 2422 张）
+[16:52:34]   未标定 Macro-F1=0.0625  →  最优 (tau=+0.00, t=0.45) Macro-F1=0.0633  unk检出=0.267 已知误拒=0.316  [72s]
+[16:52:34] 排名 improved_resnet18_224                          标定后 0.0648   未标定 0.0634
+[16:52:34] 排名 baseline_resnet18_160                          标定后 0.0633   未标定 0.0625
+[16:52:34] ================================================================================
+[16:52:34] ★ 最佳配置：improved_resnet18_224  tau=+0.20  threshold=0.35  验证集 Macro-F1=0.0648
+[16:52:34] ================================================================================
+[16:52:34] [写出] _scratch_predictions.csv（2422 条记录）
+[16:52:34] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[16:54:28] 候选单模型：['improved_resnet18_224', 'baseline_resnet18_160']
+[16:54:28] 候选集成  ：[]
+[16:54:28] [候选] improved_resnet18_224
+[16:54:28]   前向传播 improved_resnet18_224（resnet18 @224, TTA=True, 2422 张）
+[16:55:52]   未标定 Macro-F1=0.9482  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9510  unk检出=0.912 已知误拒=0.037  [84s]
+[16:55:52] [候选] baseline_resnet18_160
+[16:55:52]   前向传播 baseline_resnet18_160（resnet18 @160, TTA=True, 2422 张）
+[16:56:55]   未标定 Macro-F1=0.8588  →  最优 (tau=+0.30, t=0.55) Macro-F1=0.8650  unk检出=0.852 已知误拒=0.128  [63s]
+[16:56:55] 排名 improved_resnet18_224                          标定后 0.9510   未标定 0.9482
+[16:56:55] 排名 baseline_resnet18_160                          标定后 0.8650   未标定 0.8588
+[16:56:55] ================================================================================
+[16:56:55] ★ 最佳配置：improved_resnet18_224  tau=+0.10  threshold=0.20  验证集 Macro-F1=0.9510
+[16:56:55] ================================================================================
+[16:56:55] [写出] _scratch_predictions.csv（2422 条记录）
+[16:56:55] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[19:14:40] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224']
+[19:14:40] 候选集成  ：['improved_resnet18_224+improved_resnet50_224']
+[19:14:40] [候选] improved_resnet18_224
+[19:14:40]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:14:41]   未标定 Macro-F1=0.9482  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9510  unk检出=0.912 已知误拒=0.037  [0s]
+[19:14:41] [候选] improved_resnet50_224
+[19:14:41]   前向传播 improved_resnet50_224（resnet50 @224, TTA=True, 2422 张）
+[19:16:46]   未标定 Macro-F1=0.9550  →  最优 (tau=-0.20, t=0.20) Macro-F1=0.9592  unk检出=0.939 已知误拒=0.039  [125s]
+[19:16:46] [候选] improved_resnet18_224+improved_resnet50_224
+[19:16:46]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:16:46]   复用缓存 logits_improved_resnet50_224_val_tta.npy
+[19:16:46]   未标定 Macro-F1=0.9587  →  最优 (tau=+0.05, t=0.25) Macro-F1=0.9604  unk检出=0.929 已知误拒=0.034  [0s]
+[19:16:46] 排名 improved_resnet18_224+improved_resnet50_224    标定后 0.9604   未标定 0.9587
+[19:16:46] 排名 improved_resnet50_224                          标定后 0.9592   未标定 0.9550
+[19:16:46] 排名 improved_resnet18_224                          标定后 0.9510   未标定 0.9482
+[19:16:46] ================================================================================
+[19:16:46] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224  tau=+0.05  threshold=0.25  验证集 Macro-F1=0.9604
+[19:16:46] ================================================================================
+[19:16:46] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[19:16:46] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[19:23:38] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224']
+[19:23:38] 候选集成  ：['improved_resnet18_224+improved_resnet50_224']
+[19:23:38] [候选] improved_resnet18_224
+[19:23:38]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:23:39]   未标定 Macro-F1=0.9482  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9510  unk检出=0.912 已知误拒=0.037  [0s]
+[19:23:39] [候选] improved_resnet50_224
+[19:23:39]   复用缓存 logits_improved_resnet50_224_val_tta.npy
+[19:23:39]   未标定 Macro-F1=0.9550  →  最优 (tau=-0.20, t=0.20) Macro-F1=0.9592  unk检出=0.939 已知误拒=0.039  [0s]
+[19:23:39] [候选] improved_resnet18_224+improved_resnet50_224
+[19:23:39]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:23:39]   复用缓存 logits_improved_resnet50_224_val_tta.npy
+[19:23:40]   未标定 Macro-F1=0.9587  →  最优 (tau=+0.05, t=0.25) Macro-F1=0.9604  unk检出=0.929 已知误拒=0.034  [0s]
+[19:23:40] 排名 improved_resnet18_224+improved_resnet50_224    标定后 0.9604   未标定 0.9587
+[19:23:40] 排名 improved_resnet50_224                          标定后 0.9592   未标定 0.9550
+[19:23:40] 排名 improved_resnet18_224                          标定后 0.9510   未标定 0.9482
+[19:23:40] ================================================================================
+[19:23:40] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224  tau=+0.05  threshold=0.25  验证集 Macro-F1=0.9604
+[19:23:40] ================================================================================
+[19:23:40] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[19:23:40] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[19:54:18] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224']
+[19:54:18] 候选集成  ：['improved_resnet18_224+improved_resnet50_224']
+[19:54:18] [候选] improved_resnet18_224
+[19:54:18]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:54:18]   未标定 Macro-F1=0.9482  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9510  unk检出=0.912 已知误拒=0.037  [0s]
+[19:54:18] [候选] improved_resnet50_224
+[19:54:18]   复用缓存 logits_improved_resnet50_224_val_tta.npy
+[19:54:18]   未标定 Macro-F1=0.9550  →  最优 (tau=-0.20, t=0.20) Macro-F1=0.9592  unk检出=0.939 已知误拒=0.039  [0s]
+[19:54:18] [候选] improved_resnet18_224+improved_resnet50_224
+[19:54:18]   复用缓存 logits_improved_resnet18_224_val_tta.npy
+[19:54:18]   复用缓存 logits_improved_resnet50_224_val_tta.npy
+[19:54:19]   未标定 Macro-F1=0.9587  →  最优 (tau=+0.05, t=0.25) Macro-F1=0.9604  unk检出=0.929 已知误拒=0.034  [0s]
+[19:54:19] 排名 improved_resnet18_224+improved_resnet50_224    标定后 0.9604   未标定 0.9587
+[19:54:19] 排名 improved_resnet50_224                          标定后 0.9592   未标定 0.9550
+[19:54:19] 排名 improved_resnet18_224                          标定后 0.9510   未标定 0.9482
+[19:54:19] ================================================================================
+[19:54:19] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224  tau=+0.05  threshold=0.25  验证集 Macro-F1=0.9604
+[19:54:19] ================================================================================
+[19:54:19] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[19:54:19] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[19:55:05] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224']
+[19:55:05] 候选集成  ：['improved_resnet18_224+improved_resnet50_224']
+[19:55:05] [候选] improved_resnet18_224
+[19:55:06]   前向传播 improved_resnet18_224（resnet18 @224, TTA=True, 2422 张, cuda）
+[19:55:26]   未标定 Macro-F1=0.9502  →  最优 (tau=+0.00, t=0.20) Macro-F1=0.9507  unk检出=0.920 已知误拒=0.045  [20s]
+[19:55:26] [候选] improved_resnet50_224
+[19:55:26]   前向传播 improved_resnet50_224（resnet50 @224, TTA=True, 2422 张, cuda）
+[19:55:49]   未标定 Macro-F1=0.9571  →  最优 (tau=+0.00, t=0.35) Macro-F1=0.9597  unk检出=0.930 已知误拒=0.040  [23s]
+[19:55:49] [候选] improved_resnet18_224+improved_resnet50_224
+[19:55:49]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[19:55:49]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[19:55:49]   未标定 Macro-F1=0.9619  →  最优 (tau=+0.20, t=0.25) Macro-F1=0.9625  unk检出=0.905 已知误拒=0.028  [0s]
+[19:55:49] 排名 improved_resnet18_224+improved_resnet50_224    标定后 0.9625   未标定 0.9619
+[19:55:49] 排名 improved_resnet50_224                          标定后 0.9597   未标定 0.9571
+[19:55:49] 排名 improved_resnet18_224                          标定后 0.9507   未标定 0.9502
+[19:55:49] ================================================================================
+[19:55:49] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224  tau=+0.20  threshold=0.25  验证集 Macro-F1=0.9625
+[19:55:49] ================================================================================
+[19:55:49] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[19:55:49] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[21:46:16] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224', 'ft_r50_288', 'baseline_resnet18_160']
+[21:46:16] 候选集成  ：['improved_resnet18_224+improved_resnet50_224', 'improved_resnet18_224+improved_resnet50_224+ft_r50_288', 'improved_resnet50_224+ft_r50_288', 'improved_resnet18_224+ft_r50_288', 'improved_resnet18_224+improved_resnet50_224+ft_r50_288+baseline_resnet18_160']
+[21:46:16] [候选] improved_resnet18_224
+[21:46:16]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:46:16]   未标定 Macro-F1=0.9502  →  最优 (tau=+0.00, t=0.20) Macro-F1=0.9507  unk检出=0.920 已知误拒=0.045  [0s]
+[21:46:16] [候选] improved_resnet50_224
+[21:46:16]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:46:16]   未标定 Macro-F1=0.9571  →  最优 (tau=+0.00, t=0.35) Macro-F1=0.9597  unk检出=0.930 已知误拒=0.040  [0s]
+[21:46:16] [候选] ft_r50_288
+[21:46:17]   前向传播 ft_r50_288（resnet50 @288, TTA=True, 2422 张, cuda）
+[21:46:47]   未标定 Macro-F1=0.9551  →  最优 (tau=+0.30, t=0.20) Macro-F1=0.9563  unk检出=0.895 已知误拒=0.031  [31s]
+[21:46:47] [候选] baseline_resnet18_160
+[21:46:47]   前向传播 baseline_resnet18_160（resnet18 @160, TTA=True, 2422 张, cuda）
+[21:47:08]   未标定 Macro-F1=0.8599  →  最优 (tau=+0.60, t=0.60) Macro-F1=0.8648  unk检出=0.842 已知误拒=0.126  [21s]
+[21:47:08] [候选] improved_resnet18_224+improved_resnet50_224
+[21:47:08]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:08]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:09]   未标定 Macro-F1=0.9619  →  最优 (tau=+0.20, t=0.25) Macro-F1=0.9625  unk检出=0.905 已知误拒=0.028  [0s]
+[21:47:09] [候选] improved_resnet18_224+improved_resnet50_224+ft_r50_288
+[21:47:09]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:09]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:09]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:09]   未标定 Macro-F1=0.9620  →  最优 (tau=+0.05, t=0.20) Macro-F1=0.9646  unk检出=0.937 已知误拒=0.035  [0s]
+[21:47:09] [候选] improved_resnet50_224+ft_r50_288
+[21:47:09]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:09]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:09]   未标定 Macro-F1=0.9593  →  最优 (tau=-0.05, t=0.25) Macro-F1=0.9604  unk检出=0.946 已知误拒=0.043  [0s]
+[21:47:09] [候选] improved_resnet18_224+ft_r50_288
+[21:47:09]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:09]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:10]   未标定 Macro-F1=0.9606  →  最优 (tau=+0.20, t=0.25) Macro-F1=0.9635  unk检出=0.932 已知误拒=0.035  [0s]
+[21:47:10] [候选] improved_resnet18_224+improved_resnet50_224+ft_r50_288+baseline_resnet18_160
+[21:47:10]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:10]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:10]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:10]   复用缓存 logits_baseline_resnet18_160_val_tta_e62d79573e.npy
+[21:47:10]   未标定 Macro-F1=0.9479  →  最优 (tau=+0.40, t=0.35) Macro-F1=0.9549  unk检出=0.896 已知误拒=0.034  [0s]
+[21:47:10] 排名 improved_resnet18_224+improved_resnet50_224+ft_r50_288 标定后 0.9646   未标定 0.9620
+[21:47:10] 排名 improved_resnet18_224+ft_r50_288               标定后 0.9635   未标定 0.9606
+[21:47:10] 排名 improved_resnet18_224+improved_resnet50_224    标定后 0.9625   未标定 0.9619
+[21:47:10] 排名 improved_resnet50_224+ft_r50_288               标定后 0.9604   未标定 0.9593
+[21:47:10] 排名 improved_resnet50_224                          标定后 0.9597   未标定 0.9571
+[21:47:10] 排名 ft_r50_288                                     标定后 0.9563   未标定 0.9551
+[21:47:10] 排名 improved_resnet18_224+improved_resnet50_224+ft_r50_288+baseline_resnet18_160 标定后 0.9549   未标定 0.9479
+[21:47:10] 排名 improved_resnet18_224                          标定后 0.9507   未标定 0.9502
+[21:47:10] 排名 baseline_resnet18_160                          标定后 0.8648   未标定 0.8599
+[21:47:10] ================================================================================
+[21:47:10] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224+ft_r50_288  tau=+0.05  threshold=0.20  验证集 Macro-F1=0.9646
+[21:47:10] ================================================================================
+[21:47:10] [写出] outputs\reports\ensemble_experiment.json（2422 条记录）
+[21:47:10] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[21:47:29] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224', 'ft_r50_288']
+[21:47:29] 候选集成  ：['improved_resnet18_224+improved_resnet50_224+ft_r50_288']
+[21:47:29] [候选] improved_resnet18_224
+[21:47:29]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:29]   未标定 Macro-F1=0.9502  →  最优 (tau=+0.00, t=0.20) Macro-F1=0.9507  unk检出=0.920 已知误拒=0.045  [0s]
+[21:47:29] [候选] improved_resnet50_224
+[21:47:29]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:29]   未标定 Macro-F1=0.9571  →  最优 (tau=+0.00, t=0.35) Macro-F1=0.9597  unk检出=0.930 已知误拒=0.040  [0s]
+[21:47:29] [候选] ft_r50_288
+[21:47:29]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:30]   未标定 Macro-F1=0.9551  →  最优 (tau=+0.30, t=0.20) Macro-F1=0.9563  unk检出=0.895 已知误拒=0.031  [0s]
+[21:47:30] [候选] improved_resnet18_224+improved_resnet50_224+ft_r50_288
+[21:47:30]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[21:47:30]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[21:47:30]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[21:47:30]   未标定 Macro-F1=0.9620  →  最优 (tau=+0.05, t=0.20) Macro-F1=0.9646  unk检出=0.937 已知误拒=0.035  [0s]
+[21:47:30] 排名 improved_resnet18_224+improved_resnet50_224+ft_r50_288 标定后 0.9646   未标定 0.9620
+[21:47:30] 排名 improved_resnet50_224                          标定后 0.9597   未标定 0.9571
+[21:47:30] 排名 ft_r50_288                                     标定后 0.9563   未标定 0.9551
+[21:47:30] 排名 improved_resnet18_224                          标定后 0.9507   未标定 0.9502
+[21:47:30] ================================================================================
+[21:47:30] ★ 最佳配置：improved_resnet18_224+improved_resnet50_224+ft_r50_288  tau=+0.05  threshold=0.20  验证集 Macro-F1=0.9646
+[21:47:30] ================================================================================
+[21:47:30] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[21:47:30] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[22:42:33] 候选单模型：['improved_resnet18_224', 'improved_resnet50_224', 'ft_r50_288', 'r50_288_from_scratch']
+[22:42:33] 候选集成  ：['improved_resnet18_224+improved_resnet50_224+ft_r50_288', 'r50_288_from_scratch+improved_resnet50_224', 'r50_288_from_scratch+improved_resnet18_224', 'r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224', 'r50_288_from_scratch+ft_r50_288', 'r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224+ft_r50_288']
+[22:42:33] [候选] improved_resnet18_224
+[22:42:33]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[22:42:34]   未标定 Macro-F1=0.9502  →  最优 (tau=+0.00, t=0.20) Macro-F1=0.9507  unk检出=0.920 已知误拒=0.045  [0s]
+[22:42:34] [候选] improved_resnet50_224
+[22:42:34]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[22:42:34]   未标定 Macro-F1=0.9571  →  最优 (tau=+0.00, t=0.35) Macro-F1=0.9597  unk检出=0.930 已知误拒=0.040  [0s]
+[22:42:34] [候选] ft_r50_288
+[22:42:34]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[22:42:34]   未标定 Macro-F1=0.9551  →  最优 (tau=+0.30, t=0.20) Macro-F1=0.9563  unk检出=0.895 已知误拒=0.031  [0s]
+[22:42:34] [候选] r50_288_from_scratch
+[22:42:35]   前向传播 r50_288_from_scratch（resnet50 @288, TTA=True, 2422 张, cuda）
+[22:43:06]   未标定 Macro-F1=0.9739  →  最优 (tau=+0.10, t=0.30) Macro-F1=0.9752  unk检出=0.957 已知误拒=0.025  [31s]
+[22:43:06] [候选] improved_resnet18_224+improved_resnet50_224+ft_r50_288
+[22:43:06]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[22:43:06]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[22:43:06]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[22:43:06]   未标定 Macro-F1=0.9620  →  最优 (tau=+0.05, t=0.20) Macro-F1=0.9646  unk检出=0.937 已知误拒=0.035  [0s]
+[22:43:06] [候选] r50_288_from_scratch+improved_resnet50_224
+[22:43:06]   复用缓存 logits_r50_288_from_scratch_val_tta_d711ed3622.npy
+[22:43:06]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[22:43:07]   未标定 Macro-F1=0.9728  →  最优 (tau=-0.10, t=0.00) Macro-F1=0.9732  unk检出=0.954 已知误拒=0.026  [0s]
+[22:43:07] [候选] r50_288_from_scratch+improved_resnet18_224
+[22:43:07]   复用缓存 logits_r50_288_from_scratch_val_tta_d711ed3622.npy
+[22:43:07]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[22:43:07]   未标定 Macro-F1=0.9685  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9719  unk检出=0.923 已知误拒=0.017  [0s]
+[22:43:07] [候选] r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224
+[22:43:07]   复用缓存 logits_r50_288_from_scratch_val_tta_d711ed3622.npy
+[22:43:07]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[22:43:07]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[22:43:07]   未标定 Macro-F1=0.9700  →  最优 (tau=+0.10, t=0.00) Macro-F1=0.9712  unk检出=0.930 已知误拒=0.019  [0s]
+[22:43:07] [候选] r50_288_from_scratch+ft_r50_288
+[22:43:07]   复用缓存 logits_r50_288_from_scratch_val_tta_d711ed3622.npy
+[22:43:07]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[22:43:08]   未标定 Macro-F1=0.9691  →  最优 (tau=+0.20, t=0.25) Macro-F1=0.9723  unk检出=0.946 已知误拒=0.024  [0s]
+[22:43:08] [候选] r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224+ft_r50_288
+[22:43:08]   复用缓存 logits_r50_288_from_scratch_val_tta_d711ed3622.npy
+[22:43:08]   复用缓存 logits_improved_resnet50_224_val_tta_02847a3ff7.npy
+[22:43:08]   复用缓存 logits_improved_resnet18_224_val_tta_5abc291354.npy
+[22:43:08]   复用缓存 logits_ft_r50_288_val_tta_414131a8fb.npy
+[22:43:08]   未标定 Macro-F1=0.9705  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9725  unk检出=0.927 已知误拒=0.020  [0s]
+[22:43:08] 排名 r50_288_from_scratch                           标定后 0.9752   未标定 0.9739
+[22:43:08] 排名 r50_288_from_scratch+improved_resnet50_224     标定后 0.9732   未标定 0.9728
+[22:43:08] 排名 r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224+ft_r50_288 标定后 0.9725   未标定 0.9705
+[22:43:08] 排名 r50_288_from_scratch+ft_r50_288                标定后 0.9723   未标定 0.9691
+[22:43:08] 排名 r50_288_from_scratch+improved_resnet18_224     标定后 0.9719   未标定 0.9685
+[22:43:08] 排名 r50_288_from_scratch+improved_resnet50_224+improved_resnet18_224 标定后 0.9712   未标定 0.9700
+[22:43:08] 排名 improved_resnet18_224+improved_resnet50_224+ft_r50_288 标定后 0.9646   未标定 0.9620
+[22:43:08] 排名 improved_resnet50_224                          标定后 0.9597   未标定 0.9571
+[22:43:08] 排名 ft_r50_288                                     标定后 0.9563   未标定 0.9551
+[22:43:08] 排名 improved_resnet18_224                          标定后 0.9507   未标定 0.9502
+[22:43:08] ================================================================================
+[22:43:08] ★ 最佳配置：r50_288_from_scratch  tau=+0.10  threshold=0.30  验证集 Macro-F1=0.9752
+[22:43:08] ================================================================================
+[22:43:08] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[22:43:08] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[23:41:37] TTA 档位：hflip+multicrop
+[23:41:37] 候选单模型：['r50_288_from_scratch', 'r50_352']
+[23:41:37] 候选集成  ：['r50_288_from_scratch+r50_352']
+[23:41:37] [候选] r50_288_from_scratch
+[23:41:37]   前向传播 r50_288_from_scratch（resnet50 @288, TTA=hflip+multicrop, 2422 张, cuda）
+[23:42:15] TTA 档位：hflip+multicrop
+[23:42:15] 候选单模型：['r50_288_from_scratch', 'r50_352']
+[23:42:15] 候选集成  ：['r50_288_from_scratch+r50_352']
+[23:42:15] [候选] r50_288_from_scratch
+[23:42:15]   前向传播 r50_288_from_scratch（resnet50 @288, TTA=hflip+multicrop, 2422 张, cuda）
+[23:42:26] TTA 档位：hflip+multicrop
+[23:42:26] 候选单模型：['r50_288_from_scratch', 'r50_352']
+[23:42:26] 候选集成  ：['r50_288_from_scratch+r50_352']
+[23:42:26] [候选] r50_288_from_scratch
+[23:42:27]   前向传播 r50_288_from_scratch（resnet50 @288, TTA=hflip+multicrop, 2422 张, cuda）
+[23:43:58]   未标定 Macro-F1=0.9763  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9779  unk检出=0.956 已知误拒=0.019  [92s]
+[23:43:58] [候选] r50_352
+[23:43:59]   前向传播 r50_352（resnet50 @352, TTA=hflip+multicrop, 2422 张, cuda）
+[23:46:04]   未标定 Macro-F1=0.9789  →  最优 (tau=-0.10, t=0.20) Macro-F1=0.9806  unk检出=0.966 已知误拒=0.024  [126s]
+[23:46:04] [候选] r50_288_from_scratch+r50_352
+[23:46:04]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[23:46:04]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[23:46:05]   未标定 Macro-F1=0.9796  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9815  unk检出=0.963 已知误拒=0.019  [0s]
+[23:46:05] 排名 r50_288_from_scratch+r50_352                   标定后 0.9815   未标定 0.9796
+[23:46:05] 排名 r50_352                                        标定后 0.9806   未标定 0.9789
+[23:46:05] 排名 r50_288_from_scratch                           标定后 0.9779   未标定 0.9763
+[23:46:05] ================================================================================
+[23:46:05] ★ 最佳配置：r50_288_from_scratch+r50_352  tau=+0.10  threshold=0.20  验证集 Macro-F1=0.9815
+[23:46:05] ================================================================================
+[23:46:05] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[23:46:05] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[21:11:57] TTA 档位：hflip+multicrop
+[21:11:57] 候选单模型：['r50_288_from_scratch', 'r50_288_supcon', 'r50_352']
+[21:11:57] 候选集成  ：['r50_288_from_scratch+r50_352', 'r50_288_supcon+r50_352', 'r50_288_supcon+r50_288_from_scratch', 'r50_288_supcon+r50_288_from_scratch+r50_352']
+[21:11:57] [候选] r50_288_from_scratch
+[21:11:57]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[21:11:57]   未标定 Macro-F1=0.9763  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9779  unk检出=0.956 已知误拒=0.019  [0s]
+[21:11:57] [候选] r50_288_supcon
+[21:11:58]   前向传播 r50_288_supcon（resnet50 @288, TTA=hflip+multicrop, 2422 张, cuda）
+[21:14:00]   未标定 Macro-F1=0.9765  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9781  unk检出=0.956 已知误拒=0.019  [123s]
+[21:14:00] [候选] r50_352
+[21:14:00]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[21:14:00]   未标定 Macro-F1=0.9789  →  最优 (tau=-0.10, t=0.20) Macro-F1=0.9806  unk检出=0.966 已知误拒=0.024  [1s]
+[21:14:00] [候选] r50_288_from_scratch+r50_352
+[21:14:00]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[21:14:00]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[21:14:01]   未标定 Macro-F1=0.9796  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9815  unk检出=0.963 已知误拒=0.019  [1s]
+[21:14:01] [候选] r50_288_supcon+r50_352
+[21:14:01]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[21:14:01]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[21:14:01]   未标定 Macro-F1=0.9804  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9825  unk检出=0.961 已知误拒=0.019  [0s]
+[21:14:01] [候选] r50_288_supcon+r50_288_from_scratch
+[21:14:01]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[21:14:01]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[21:14:02]   未标定 Macro-F1=0.9786  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9819  unk检出=0.957 已知误拒=0.016  [0s]
+[21:14:02] [候选] r50_288_supcon+r50_288_from_scratch+r50_352
+[21:14:02]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[21:14:02]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[21:14:02]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[21:14:02]   未标定 Macro-F1=0.9806  →  最优 (tau=+0.30, t=0.25) Macro-F1=0.9818  unk检出=0.954 已知误拒=0.016  [1s]
+[21:14:02] 排名 r50_288_supcon+r50_352                         标定后 0.9825   未标定 0.9804
+[21:14:02] 排名 r50_288_supcon+r50_288_from_scratch            标定后 0.9819   未标定 0.9786
+[21:14:02] 排名 r50_288_supcon+r50_288_from_scratch+r50_352    标定后 0.9818   未标定 0.9806
+[21:14:02] 排名 r50_288_from_scratch+r50_352                   标定后 0.9815   未标定 0.9796
+[21:14:02] 排名 r50_352                                        标定后 0.9806   未标定 0.9789
+[21:14:02] 排名 r50_288_supcon                                 标定后 0.9781   未标定 0.9765
+[21:14:02] 排名 r50_288_from_scratch                           标定后 0.9779   未标定 0.9763
+[21:14:02] ================================================================================
+[21:14:02] ★ 最佳配置：r50_288_supcon+r50_352  tau=+0.10  threshold=0.20  验证集 Macro-F1=0.9825
+[21:14:02] ================================================================================
+[21:14:02] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[21:14:02] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[22:07:22] TTA 档位：hflip+multicrop
+[22:07:22] 候选单模型：['r50_288_from_scratch', 'r50_288_supcon', 'r50_352', 'r50_416']
+[22:07:22] 候选集成  ：['r50_288_supcon+r50_352', 'r50_416+r50_352', 'r50_416+r50_288_supcon', 'r50_416+r50_352+r50_288_supcon', 'r50_416+r50_352+r50_288_supcon+r50_288_from_scratch']
+[22:07:22] [候选] r50_288_from_scratch
+[22:07:22]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[22:07:23]   未标定 Macro-F1=0.9763  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9779  unk检出=0.956 已知误拒=0.019  [1s]
+[22:07:23] [候选] r50_288_supcon
+[22:07:23]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:07:24]   未标定 Macro-F1=0.9765  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9781  unk检出=0.956 已知误拒=0.019  [1s]
+[22:07:24] [候选] r50_352
+[22:07:24]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:07:25]   未标定 Macro-F1=0.9789  →  最优 (tau=-0.10, t=0.20) Macro-F1=0.9806  unk检出=0.966 已知误拒=0.024  [1s]
+[22:07:25] [候选] r50_416
+[22:07:26]   前向传播 r50_416（resnet50 @416, TTA=hflip+multicrop, 2422 张, cuda）
+[22:11:36]   未标定 Macro-F1=0.9810  →  最优 (tau=+0.10, t=0.30) Macro-F1=0.9815  unk检出=0.959 已知误拒=0.018  [251s]
+[22:11:36] [候选] r50_288_supcon+r50_352
+[22:11:36]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:11:36]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:11:36]   未标定 Macro-F1=0.9804  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9825  unk检出=0.961 已知误拒=0.019  [0s]
+[22:11:36] [候选] r50_416+r50_352
+[22:11:36]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:11:36]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:11:37]   未标定 Macro-F1=0.9815  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9828  unk检出=0.957 已知误拒=0.015  [0s]
+[22:11:37] [候选] r50_416+r50_288_supcon
+[22:11:37]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:11:37]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:11:37]   未标定 Macro-F1=0.9799  →  最优 (tau=+0.20, t=0.25) Macro-F1=0.9820  unk检出=0.956 已知误拒=0.016  [0s]
+[22:11:37] [候选] r50_416+r50_352+r50_288_supcon
+[22:11:37]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:11:37]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:11:37]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:11:37]   未标定 Macro-F1=0.9798  →  最优 (tau=+0.40, t=0.25) Macro-F1=0.9831  unk检出=0.944 已知误拒=0.011  [0s]
+[22:11:37] [候选] r50_416+r50_352+r50_288_supcon+r50_288_from_scratch
+[22:11:37]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:11:37]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:11:37]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:11:37]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[22:11:38]   未标定 Macro-F1=0.9804  →  最优 (tau=+0.30, t=0.20) Macro-F1=0.9824  unk检出=0.949 已知误拒=0.014  [0s]
+[22:11:38] 排名 r50_416+r50_352+r50_288_supcon                 标定后 0.9831   未标定 0.9798
+[22:11:38] 排名 r50_416+r50_352                                标定后 0.9828   未标定 0.9815
+[22:11:38] 排名 r50_288_supcon+r50_352                         标定后 0.9825   未标定 0.9804
+[22:11:38] 排名 r50_416+r50_352+r50_288_supcon+r50_288_from_scratch 标定后 0.9824   未标定 0.9804
+[22:11:38] 排名 r50_416+r50_288_supcon                         标定后 0.9820   未标定 0.9799
+[22:11:38] 排名 r50_416                                        标定后 0.9815   未标定 0.9810
+[22:11:38] 排名 r50_352                                        标定后 0.9806   未标定 0.9789
+[22:11:38] 排名 r50_288_supcon                                 标定后 0.9781   未标定 0.9765
+[22:11:38] 排名 r50_288_from_scratch                           标定后 0.9779   未标定 0.9763
+[22:11:38] ================================================================================
+[22:11:38] ★ 最佳配置：r50_416+r50_352+r50_288_supcon  tau=+0.40  threshold=0.25  验证集 Macro-F1=0.9831
+[22:11:38] ================================================================================
+[22:11:38] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[22:11:38] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md
+[22:49:36] TTA 档位：hflip+multicrop
+[22:49:36] 候选单模型：['r50_416', 'r50_352', 'r50_288_supcon', 'wide_r50_2_288', 'r50_288_from_scratch']
+[22:49:36] 候选集成  ：['r50_416+r50_352+r50_288_supcon', 'r50_416+r50_352+r50_288_supcon+wide_r50_2_288', 'r50_416+wide_r50_2_288', 'r50_416+r50_352+wide_r50_2_288', 'r50_416+r50_288_supcon+wide_r50_2_288']
+[22:49:36] [候选] r50_416
+[22:49:36]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:49:37]   未标定 Macro-F1=0.9810  →  最优 (tau=+0.10, t=0.30) Macro-F1=0.9815  unk检出=0.959 已知误拒=0.018  [1s]
+[22:49:37] [候选] r50_352
+[22:49:37]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:49:38]   未标定 Macro-F1=0.9789  →  最优 (tau=-0.10, t=0.20) Macro-F1=0.9806  unk检出=0.966 已知误拒=0.024  [1s]
+[22:49:38] [候选] r50_288_supcon
+[22:49:38]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:49:39]   未标定 Macro-F1=0.9765  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9781  unk检出=0.956 已知误拒=0.019  [1s]
+[22:49:39] [候选] wide_r50_2_288
+[22:49:42]   前向传播 wide_r50_2_288（wide_resnet50_2 @288, TTA=hflip+multicrop, 2422 张, cuda）
+[22:54:38]   未标定 Macro-F1=0.9779  →  最优 (tau=-0.20, t=0.00) Macro-F1=0.9798  unk检出=0.966 已知误拒=0.022  [299s]
+[22:54:38] [候选] r50_288_from_scratch
+[22:54:38]   复用缓存 logits_r50_288_from_scratch_val_ttamc_d711ed3622.npy
+[22:54:39]   未标定 Macro-F1=0.9763  →  最优 (tau=+0.20, t=0.20) Macro-F1=0.9779  unk检出=0.956 已知误拒=0.019  [1s]
+[22:54:39] [候选] r50_416+r50_352+r50_288_supcon
+[22:54:39]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:54:39]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:54:39]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:54:41]   未标定 Macro-F1=0.9798  →  最优 (tau=+0.40, t=0.25) Macro-F1=0.9831  unk检出=0.944 已知误拒=0.011  [1s]
+[22:54:41] [候选] r50_416+r50_352+r50_288_supcon+wide_r50_2_288
+[22:54:41]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:54:41]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:54:41]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:54:41]   复用缓存 logits_wide_r50_2_288_val_ttamc_3728d0495c.npy
+[22:54:42]   未标定 Macro-F1=0.9825  →  最优 (tau=+0.05, t=0.20) Macro-F1=0.9834  unk检出=0.964 已知误拒=0.017  [1s]
+[22:54:42] [候选] r50_416+wide_r50_2_288
+[22:54:42]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:54:42]   复用缓存 logits_wide_r50_2_288_val_ttamc_3728d0495c.npy
+[22:54:43]   未标定 Macro-F1=0.9824  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9830  unk检出=0.963 已知误拒=0.015  [1s]
+[22:54:43] [候选] r50_416+r50_352+wide_r50_2_288
+[22:54:43]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:54:43]   复用缓存 logits_r50_352_val_ttamc_72fe46f5ec.npy
+[22:54:43]   复用缓存 logits_wide_r50_2_288_val_ttamc_3728d0495c.npy
+[22:54:44]   未标定 Macro-F1=0.9825  →  最优 (tau=+0.10, t=0.20) Macro-F1=0.9833  unk检出=0.959 已知误拒=0.015  [1s]
+[22:54:44] [候选] r50_416+r50_288_supcon+wide_r50_2_288
+[22:54:44]   复用缓存 logits_r50_416_val_ttamc_314bd25c17.npy
+[22:54:44]   复用缓存 logits_r50_288_supcon_val_ttamc_35d7a60cd7.npy
+[22:54:44]   复用缓存 logits_wide_r50_2_288_val_ttamc_3728d0495c.npy
+[22:54:45]   未标定 Macro-F1=0.9830  →  最优 (tau=+0.20, t=0.00) Macro-F1=0.9845  unk检出=0.957 已知误拒=0.012  [1s]
+[22:54:45] 排名 r50_416+r50_288_supcon+wide_r50_2_288          标定后 0.9845   未标定 0.9830
+[22:54:45] 排名 r50_416+r50_352+r50_288_supcon+wide_r50_2_288  标定后 0.9834   未标定 0.9825
+[22:54:45] 排名 r50_416+r50_352+wide_r50_2_288                 标定后 0.9833   未标定 0.9825
+[22:54:45] 排名 r50_416+r50_352+r50_288_supcon                 标定后 0.9831   未标定 0.9798
+[22:54:45] 排名 r50_416+wide_r50_2_288                         标定后 0.9830   未标定 0.9824
+[22:54:45] 排名 r50_416                                        标定后 0.9815   未标定 0.9810
+[22:54:45] 排名 r50_352                                        标定后 0.9806   未标定 0.9789
+[22:54:45] 排名 wide_r50_2_288                                 标定后 0.9798   未标定 0.9779
+[22:54:45] 排名 r50_288_supcon                                 标定后 0.9781   未标定 0.9765
+[22:54:45] 排名 r50_288_from_scratch                           标定后 0.9779   未标定 0.9763
+[22:54:45] ================================================================================
+[22:54:45] ★ 最佳配置：r50_416+r50_288_supcon+wide_r50_2_288  tau=+0.20  threshold=0.00  验证集 Macro-F1=0.9845
+[22:54:45] ================================================================================
+[22:54:45] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\predictions.csv（2422 条记录）
+[22:54:45] [写出] E:\Hanako\OH-WorkSpace\car-kb-agent\outputs\reports\final_model_choice.json / final_model_choice.md

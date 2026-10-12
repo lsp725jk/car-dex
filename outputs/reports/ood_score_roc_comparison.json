@@ -1,0 +1,104 @@
+{
+  "val_npz": "outputs\\reports\\ood_val_logits\\hflip_k1250_u1250.npz",
+  "target_ur": 0.98,
+  "rows": [
+    {
+      "score": "margin_max + 2.0·known_entropy",
+      "auc": 0.97553472,
+      "kr": 0.2864,
+      "ur": 0.98,
+      "known_accuracy": 0.7136
+    },
+    {
+      "score": "z_unknown（只看未知列）",
+      "auc": 0.97262912,
+      "kr": 0.3016,
+      "ur": 0.98,
+      "known_accuracy": 0.6984
+    },
+    {
+      "score": "margin_max + 1.0·margin_sum",
+      "auc": 0.9739072,
+      "kr": 0.3024,
+      "ur": 0.98,
+      "known_accuracy": 0.6976
+    },
+    {
+      "score": "margin_max + 2.0·margin_sum",
+      "auc": 0.97370304,
+      "kr": 0.3032,
+      "ur": 0.98,
+      "known_accuracy": 0.6968
+    },
+    {
+      "score": "margin_max + 0.25·margin_sum",
+      "auc": 0.97422208,
+      "kr": 0.304,
+      "ur": 0.98,
+      "known_accuracy": 0.696
+    },
+    {
+      "score": "margin_max + 0.5·margin_sum",
+      "auc": 0.97410816,
+      "kr": 0.304,
+      "ur": 0.98,
+      "known_accuracy": 0.696
+    },
+    {
+      "score": "margin_max（现用）",
+      "auc": 0.97437632,
+      "kr": 0.3048,
+      "ur": 0.98,
+      "known_accuracy": 0.6952
+    },
+    {
+      "score": "margin_sum（对比总证据）",
+      "auc": 0.97299584,
+      "kr": 0.3056,
+      "ur": 0.98,
+      "known_accuracy": 0.6944
+    },
+    {
+      "score": "margin_max + 1.0·known_entropy",
+      "auc": 0.9753152,
+      "kr": 0.3064,
+      "ur": 0.98,
+      "known_accuracy": 0.6936
+    },
+    {
+      "score": "margin_max + 0.5·known_entropy",
+      "auc": 0.97499968,
+      "kr": 0.3096,
+      "ur": 0.98,
+      "known_accuracy": 0.6904
+    },
+    {
+      "score": "neg_max_known（只看已知置信度）",
+      "auc": 0.97267584,
+      "kr": 0.3192,
+      "ur": 0.98,
+      "known_accuracy": 0.6808000000000001
+    },
+    {
+      "score": "neg_top1top2_gap（间隔取负）",
+      "auc": 0.966352,
+      "kr": 0.344,
+      "ur": 0.98,
+      "known_accuracy": 0.656
+    },
+    {
+      "score": "known_entropy（已知类熵）",
+      "auc": 0.97247616,
+      "kr": 0.3632,
+      "ur": 0.98,
+      "known_accuracy": 0.6368
+    }
+  ],
+  "baseline": "margin_max（现用）",
+  "best": "margin_max + 2.0·known_entropy",
+  "bootstrap_diff_mean": 0.014785618418204804,
+  "bootstrap_ci95": [
+    -0.050284880873384535,
+    0.06991637829383353
+  ]
+}

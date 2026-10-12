@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>03 配置参数详解 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>03 · 配置参数详解</span></button><div class="nav-list"><a class="lv2" href="#doc04-0-五个配置速览">0. 五个配置速览</a><a class="lv2" href="#doc04-1-模型与输入">1. 模型与输入</a><a class="lv2" href="#doc04-2-数据增强">2. 数据增强</a><a class="lv2" href="#doc04-3-训练循环">3. 训练循环</a><a class="lv2" href="#doc04-4-优化器与学习率">4. 优化器与学习率</a><a class="lv2" href="#doc04-5-损失函数相关">5. 损失函数相关</a><a class="lv2" href="#doc04-6-评估与推理相关">6. 评估与推理相关</a><a class="lv2" href="#doc04-7-只用于记录的字段">7. 只用于记录的字段</a><a class="lv2" href="#doc04-8-最小可跑配置">8. 最小可跑配置</a><a class="lv2" href="#doc04-9-常用改动配方">9. 常用改动配方</a></div></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">03 · 配置参数详解　（4/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc04" data-title="03 配置参数详解"><h1 id="doc04-03-配置参数详解">03 配置参数详解</h1>
+<p>本文档逐字段解释训练配置（<code>configs/train_*.json</code>）里的<strong>每一个参数</strong>：
+它是什么意思、本项目取什么值、调大调小会怎样、什么情况需要动它。</p>
+<p><code>train.py</code> 读取这些 JSON 后交给 <code>src/cardex/engine.py::train_model()</code> 执行。</p>
+<hr />
+<h2 id="doc04-0-五个配置速览">0. 五个配置速览</h2>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>A 基线</th>
+<th>B 类别平衡</th>
+<th>C1 改进</th>
+<th>C2 骨干</th>
+<th>（备用）中等增强</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>配置文件名</td>
+<td><code>train_baseline.json</code></td>
+<td><code>train_weighted.json</code></td>
+<td><code>train_improved.json</code></td>
+<td><code>train_improved_r50.json</code></td>
+<td><code>train_moderate.json</code></td>
+</tr>
+<tr>
+<td><code>run_name</code></td>
+<td><code>baseline_resnet18_160</code></td>
+<td><code>weighted_resnet18_160</code></td>
+<td><code>improved_resnet18_224</code></td>
+<td><code>improved_resnet50_224</code></td>
+<td><code>improved_resnet18_224_moderate</code></td>
+</tr>
+<tr>
+<td><code>arch</code></td>
+<td>resnet18</td>
+<td>resnet18</td>
+<td>resnet18</td>
+<td><strong>resnet50</strong></td>
+<td>resnet18</td>
+</tr>
+<tr>
+<td><code>image_size</code></td>
+<td>160</td>
+<td>160</td>
+<td><strong>224</strong></td>
+<td><strong>224</strong></td>
+<td>224</td>
+</tr>
+<tr>
+<td><code>train_transform</code></td>
+<td>baseline_train</td>
+<td>baseline_train</td>
+<td><strong>strong_train</strong></td>
+<td><strong>strong_train</strong></td>
+<td>moderate_train</td>
+</tr>
+<tr>
+<td><code>epochs</code></td>
+<td>12</td>
+<td>12</td>
+<td>18</td>
+<td>14</td>
+<td>14</td>
+</tr>
+<tr>
+<td><code>label_smoothing</code></td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.1</td>
+<td>0.1</td>
+<td>0.05</td>
+</tr>
+<tr>
+<td><code>class_weight</code></td>
+<td>none</td>
+<td><strong>inverse</strong></td>
+<td>none</td>
+<td>none</td>
+<td>none</td>
+</tr>
+<tr>
+<td><code>ema_decay</code></td>
+<td>0.0</td>
+<td>0.0</td>
+<td>0.999</td>
+<td>0.999</td>
+<td>0.999</td>
+</tr>
+<tr>
+<td><code>mix_prob</code></td>
+<td>0.0</td>
+<td>0.0</td>
+<td><strong>0.35</strong></td>
+<td><strong>0.35</strong></td>
+<td>0.0</td>
+</tr>
+<tr>
+<td><code>tta_hflip</code></td>
+<td>false</td>
+<td>false</td>
+<td><strong>true</strong></td>
+<td><strong>true</strong></td>
+<td>true</td>
+</tr>
+<tr>
+<td><code>warmup_epochs</code></td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td><code>checkpoint_interval</code></td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td>状态</td>
+<td>✅ 已跑</td>
+<td>✅ 已跑</td>
+<td>✅ 已跑</td>
+<td>✅ 已跑</td>
+<td>⬜ 未跑</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc04-1-模型与输入">1. 模型与输入</h2>
+<h3 id="doc04-run_name-字符串-必填"><code>run_name</code>（字符串，<strong>必填</strong>）</h3>
+<ul>
+<li><strong>含义</strong>：本次实验的名字。它决定两个输出目录：</li>
+<li><code>outputs/checkpoints/&lt;run_name&gt;/</code> —— 模型文件</li>
+<li><code>outputs/runs/&lt;run_name&gt;/</code> —— 日志与指标</li>
+<li><strong>本项目值</strong>：如 <code>improved_resnet18_224</code></li>
+<li><strong>注意</strong>：<strong>同名会覆盖</strong>。重跑实验前建议改名（如加 <code>_v2</code> 后缀），或先备份 <code>outputs/</code>。</li>
+<li><strong>命令行覆盖</strong>：<code>python src/train.py --config ... --run-name my_test</code></li>
+</ul>
+<h3 id="doc04-arch-字符串-必填"><code>arch</code>（字符串，<strong>必填</strong>）</h3>
+<ul>
+<li><strong>含义</strong>：骨干网络。</li>
+<li><strong>可选值</strong>（见 <code>src/cardex/models.py::SUPPORTED</code>）：
+  | 值 | 参数量 | 本地权重文件 | 本项目用途 |
+  | --- | --- | --- | --- |
+  | <code>resnet18</code> | 11.2 M | <code>resnet18-f37072fd.pth</code> | A / B / C1 |
+  | <code>resnet50</code> | 23.5 M | <code>resnet50-0676ba61.pth</code>（<strong>V1</strong>） | C2 |
+  | <code>wide_resnet50_2</code> | 66.8 M | <code>wide_resnet50_2-9ba9bcbe.pth</code> | 未用（CPU 太慢） |</li>
+<li><strong>调大的代价</strong>（纯 CPU 实测，含数据加载）：
+  | 配置 | 吞吐（bf16 开） | 单轮耗时 |
+  | --- | --- | --- |
+  | resnet18 @160 | 68.6 img/s | 1.82 min |
+  | resnet18 @224 | 36.3 img/s | 3.44 min |
+  | resnet50 @160 | 25.9 img/s | 4.82 min |
+  | resnet50 @224 | 14.0 img/s | 8.95 min |</li>
+<li><strong>实际收益</strong>：resnet18→resnet50 在同一配方下只提升 <strong>+0.0068</strong> Macro-F1，训练时间却翻倍。
+  <strong>除非算力充裕，优先调 <code>image_size</code> 而不是 <code>arch</code>。</strong></li>
+</ul>
+<blockquote>
+<p>⚠️ <strong>坑</strong>：<code>ResNet50_Weights</code> 的 V1 与 V2 是不同文件。若误写 <code>IMAGENET1K_V2</code>，
+torchvision 会尝试下载 <code>resnet50-11ad3fa6.pth</code>，无网环境下抛 <code>RuntimeError</code>。</p>
+</blockquote>
+<h3 id="doc04-pretrained-布尔"><code>pretrained</code>（布尔）</h3>
+<ul>
+<li><strong>含义</strong>：是否加载 ImageNet 预训练权重。</li>
+<li><strong>本项目值</strong>：<code>true</code>（<strong>始终保持 true</strong>）。</li>
+<li><strong>为什么必须 true</strong>：本项目每类只有 80~186 张训练图（共 7,494 张），
+  从头训练 51 类分类器会严重欠拟合。用 ImageNet 预训练做迁移学习是精度的基础。</li>
+<li><strong>什么时候设 false</strong>：只在做"是否用预训练"的对照实验时。</li>
+</ul>
+<h3 id="doc04-image_size-整数"><code>image_size</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：网络输入的正方形边长（像素）。</li>
+<li><strong>本项目值</strong>：<code>160</code>（基线） / <code>224</code>（改进）。</li>
+<li><strong>作用</strong>：这是<strong>本任务最有效的单一手段</strong>。细粒度车型分类依赖格栅条数、灯组轮廓、
+  车标位置等小尺度线索；160×160 下这些细节只有几个像素，224 下才具备可分性。</li>
+<li><strong>实测收益</strong>：160→224（配合强增强）带来 <strong>+0.1007</strong> Macro-F1。</li>
+<li><strong>权衡</strong>：耗时按面积平方增长（160→224 是 1.96 倍像素）。</li>
+<li><strong>常见取值</strong>：128 / 160 / 192 / 224 / 256 / 288。224 是 ImageNet 的标准输入，也是性价比拐点。</li>
+</ul>
+<hr />
+<h2 id="doc04-2-数据增强">2. 数据增强</h2>
+<h3 id="doc04-train_transform-字符串"><code>train_transform</code>（字符串）</h3>
+<ul>
+<li><strong>含义</strong>：选用哪一套训练期增强流水线。取值由 <code>src/cardex/data.py::build_transform()</code> 识别。</li>
+<li><strong>可选值</strong>：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>值</th>
+<th>流水线</th>
+<th>适用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>baseline_train</code></td>
+<td>RandomResizedCrop + HFlip</td>
+<td>基线对照</td>
+</tr>
+<tr>
+<td><code>moderate_train</code></td>
+<td>RandomResizedCrop + HFlip + ColorJitter + RandomErasing</td>
+<td>中等强度</td>
+</tr>
+<tr>
+<td><code>strong_train</code></td>
+<td>RandomResizedCrop + HFlip + ColorJitter + RandAugment + RandomErasing</td>
+<td>主配方</td>
+</tr>
+<tr>
+<td><code>eval</code></td>
+<td>Resize + CenterCrop（<strong>无随机性</strong>）</td>
+<td>验证/推理（由代码自动使用，不用写在配置里）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>重要</strong>：验证与推理<strong>始终</strong>使用 <code>eval</code> 流水线（确定性的 Resize + CenterCrop），
+与 <code>train_transform</code> 的取值无关。这是保证验证指标可比的前提。</p>
+</blockquote>
+<h3 id="doc04-aug-对象-增强参数集合"><code>aug</code>（对象）—— 增强参数集合</h3>
+<h4 id="doc04-aug-crop_scale-两元素数组"><code>aug.crop_scale</code>（两元素数组）</h4>
+<ul>
+<li><strong>含义</strong>：<code>RandomResizedCrop</code> 的面积占比范围 <code>[下界, 上界]</code>。</li>
+<li><strong>本项目值</strong>：基线 <code>[0.70, 1.0]</code>，改进 <code>[0.50, 1.0]</code>。</li>
+<li><strong>作用</strong>：下界越小，模型越经常"只看到车头或车尾的一部分"。
+  这逼迫它整合格栅、灯组、车身轮廓等多个线索，而不是依赖某一个显著区域（如车标）。</li>
+<li><strong>为什么改进模型要放宽到 0.5</strong>：数据分析发现类内多样性高（近重复率 0.00%），
+  且真实用户照片经常是特写或局部，需要模型对"局部可见"鲁棒。</li>
+<li><strong>风险</strong>：下界太低（如 0.2）会切掉过多语义信息，反而掉分。</li>
+</ul>
+<h4 id="doc04-aug-hflip-浮点-0-1"><code>aug.hflip</code>（浮点 0~1）</h4>
+<ul>
+<li><strong>含义</strong>：水平翻转概率。</li>
+<li><strong>本项目值</strong>：<code>0.5</code>。</li>
+<li><strong>注意</strong>：<strong>不使用垂直翻转</strong>——车辆几乎不会倒置出现，垂直翻转会产生不存在的样本分布。</li>
+</ul>
+<h4 id="doc04-aug-eval_resize_ratio-浮点"><code>aug.eval_resize_ratio</code>（浮点）</h4>
+<ul>
+<li><strong>含义</strong>：推理时"短边缩放比例"。推理流程是：
+  <code>短边缩放到 image_size × ratio</code> → <code>中心裁剪 image_size</code>。</li>
+<li><strong>本项目值</strong>：<code>1.142857</code>（= 256/224）。</li>
+<li><strong>作用</strong>：先把图放大一点再裁，相当于保留更多上下文，比"直接缩放到 224"精度更高（标准 ImageNet 做法）。
+  224 输入对应短边缩放到 <strong>256</strong>；160 输入对应缩放到 <strong>183</strong>。</li>
+<li><strong>⚠️ 必须在训练与推理间保持一致</strong>。本项目把它存进 checkpoint 的 <code>preprocess</code> 字段，
+  推理代码自动读取，所以不会不一致。</li>
+<li><strong>改动风险</strong>：改了它，已有 checkpoint 的推理精度会下降。</li>
+</ul>
+<h4 id="doc04-aug-color_jitter-布尔-四个强度参数"><code>aug.color_jitter</code>（布尔）+ 四个强度参数</h4>
+<ul>
+<li><strong>含义</strong>：颜色抖动开关与强度。</li>
+<li><strong>本项目值</strong>（strong）：<code>brightness=0.35, contrast=0.35, saturation=0.35, hue=0.08</code></li>
+<li><strong>作用</strong>：教学图片多为展厅/户外商业图，色调统一；真实用户照片白平衡、曝光差异大。
+  颜色增强能显著缩小这一域差异。</li>
+<li><strong>hue 为什么只有 0.08</strong>：色相偏移过大（&gt;0.1）会把白车变成蓝车，语义失真。</li>
+</ul>
+<h4 id="doc04-aug-randaugment-布尔-ra_num_ops-ra_magnitude"><code>aug.randaugment</code>（布尔）+ <code>ra_num_ops</code> + <code>ra_magnitude</code></h4>
+<ul>
+<li><strong>含义</strong>：RandAugment 开关、每次随机施加的操作个数、统一强度（1~10）。</li>
+<li><strong>本项目值</strong>：<code>true, 2, 7</code>（基线未使用）。</li>
+<li><strong>作用</strong>：从一组图像操作（旋转、剪切、色调分离、锐化等）中随机挑 2 个，以强度 7 施加。</li>
+<li><strong>代价</strong>：训练任务显著变难，<strong>收敛变慢</strong>——C1 前 5 个 epoch 一直落后于基线，到第 6 轮才反超。</li>
+</ul>
+<h4 id="doc04-aug-random_erasing-浮点-0-1"><code>aug.random_erasing</code>（浮点 0~1）</h4>
+<ul>
+<li><strong>含义</strong>：随机擦除概率（在 ToTensor 之后对张量做）。擦除区域面积占 <code>[0.02, 0.15]</code>。</li>
+<li><strong>本项目值</strong>：<code>0.25</code>（改进） / <code>0.15</code>（中等） / 未设（基线）。</li>
+<li><strong>作用</strong>：随机遮掉一小块，抑制模型对单一显著区域的过强依赖。</li>
+</ul>
+<hr />
+<h2 id="doc04-3-训练循环">3. 训练循环</h2>
+<h3 id="doc04-epochs-整数-必填"><code>epochs</code>（整数，<strong>必填</strong>）</h3>
+<ul>
+<li><strong>含义</strong>：训练轮数。</li>
+<li><strong>本项目值</strong>：12（A/B）/ 18（C1）/ 14（C2、备用）。</li>
+<li><strong>与 <code>scheduler</code> 的关系</strong>：余弦退火的学习率曲线是按 <code>epochs</code> 铺开的，
+  所以<strong>改 <code>epochs</code> 会改变整条学习率曲线</strong>，不是简单"多跑几轮"。</li>
+<li><strong>经验</strong>：强增强配方需要更多轮才收敛（C1 用 18 轮，且第 18 轮才达到最佳）。</li>
+</ul>
+<h3 id="doc04-batch_size-整数"><code>batch_size</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：每个批次多少张图。</li>
+<li><strong>本项目值</strong>：<code>32</code>。</li>
+<li><strong>作用</strong>：影响 BN 统计的稳定性与显存/内存占用。CPU 训练下主要受内存限制。</li>
+<li><strong>注意</strong>：改小（如 8）会明显降低 BN 稳定性，需要同步降低学习率。</li>
+</ul>
+<h3 id="doc04-num_workers-整数"><code>num_workers</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：DataLoader 的子进程数。</li>
+<li><strong>本项目值</strong>：<strong><code>0</code>（必须）</strong>。</li>
+<li><strong>为什么必须 0</strong>：运行环境的沙箱<strong>禁止创建命名管道</strong>，
+  <code>DataLoader(num_workers&gt;0)</code> 依赖 multiprocessing 的 Pipe，会直接抛
+  <code>PermissionError: [WinError 5] 拒绝访问</code>。</li>
+<li><strong>代价</strong>：数据加载与计算串行，实测约损失 30% 吞吐
+  （数据加载单独 188 img/s，计算单独约 70 img/s，串行后合成约 50 img/s）。</li>
+<li><strong>在不受限制的环境下</strong>：改成 <code>4</code> 并配合 <code>persistent_workers=True</code> 即可提速。</li>
+</ul>
+<h3 id="doc04-grad_clip-浮点-0-表示关闭"><code>grad_clip</code>（浮点，0 表示关闭）</h3>
+<ul>
+<li><strong>含义</strong>：梯度范数裁剪阈值。</li>
+<li><strong>本项目值</strong>：<code>5.0</code>。</li>
+<li><strong>作用</strong>：防止梯度爆炸。本项目在早期调试中发现过"学习率过大导致验证损失飙到 2889"的情况，
+  加裁剪是必要的安全网。</li>
+</ul>
+<h3 id="doc04-seed-整数"><code>seed</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：全局随机种子（<code>random</code> / <code>numpy</code> / <code>torch</code>）。</li>
+<li><strong>本项目值</strong>：<code>42</code>（训练）；数据抽样用 <code>20250914</code>。</li>
+<li><strong>作用</strong>：保证可复现。已验证：固定种子后重跑选类与抽数流程，4 个产物 SHA256 完全一致。</li>
+</ul>
+<h3 id="doc04-log_interval-整数"><code>log_interval</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：每多少个 step 打印一次训练进度。</li>
+<li><strong>本项目值</strong>：<code>60</code>（一个 epoch 共 235 个 step）。</li>
+</ul>
+<h3 id="doc04-checkpoint_interval-整数"><code>checkpoint_interval</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：每多少轮保存一个中期 checkpoint（<code>epoch_XX.pt</code>）。</li>
+<li><strong>本项目值</strong>：3 或 4。</li>
+<li><strong>作用</strong>：任务书 4.2.3 要求"保留中期 checkpoint 和最终模型"。</li>
+<li><strong>注意</strong>：<code>best.pt</code> 与 <code>last.pt</code> <strong>每轮都会保存</strong>，与这个参数无关。</li>
+</ul>
+<hr />
+<h2 id="doc04-4-优化器与学习率">4. 优化器与学习率</h2>
+<h3 id="doc04-optimizer-字符串"><code>optimizer</code>（字符串）</h3>
+<ul>
+<li><strong>可选值</strong>：<code>sgd</code> / <code>adamw</code></li>
+<li><strong>本项目值</strong>：<code>sgd</code>（全部实验）。</li>
+<li><strong>为什么用 SGD</strong>：微调预训练 CNN 的常规选择，泛化通常略优于 Adam 系；
+  且对学习率更敏感、行为更可预测。</li>
+<li><strong>什么时候换 adamw</strong>：数据量很小、或骨干是 Transformer 类结构时。</li>
+</ul>
+<h3 id="doc04-lr-浮点-最关键的超参"><code>lr</code>（浮点，<strong>最关键的超参</strong>）</h3>
+<ul>
+<li><strong>含义</strong>：初始学习率（指 <code>param_groups</code> 里骨干的学习率）。</li>
+<li><strong>本项目值</strong>：<code>0.01</code>。</li>
+<li><strong>⚠️ 踩坑记录</strong>：最初把分类头的学习率设成骨干的 <strong>10 倍</strong>（<code>head_lr_mult=10</code>），
+  结果 <code>lr=0.1</code> 直接把模型打崩——训练损失从 4.87 涨到 14.4，验证损失从 41 飙到 <strong>2889</strong>，
+  Macro-F1 卡在 0.007。改成 <code>head_lr_mult=1.0</code> 后立刻正常。</li>
+<li><strong>调参建议</strong>：</li>
+<li>太大 → 损失震荡或发散（表现为 <code>val_loss</code> 远大于 <code>log(51)≈3.9</code>）；</li>
+<li>太小 → 收敛慢、欠拟合；</li>
+<li>batch size 变化时，学习率应大致按比例调整。</li>
+</ul>
+<h3 id="doc04-momentum-浮点"><code>momentum</code>（浮点）</h3>
+<ul>
+<li><strong>含义</strong>：SGD 动量系数。</li>
+<li><strong>本项目值</strong>：<code>0.9</code>。使用 <code>nesterov=True</code>。</li>
+</ul>
+<h3 id="doc04-weight_decay-浮点"><code>weight_decay</code>（浮点）</h3>
+<ul>
+<li><strong>含义</strong>：L2 正则化系数。</li>
+<li><strong>本项目值</strong>：<code>1e-4</code>。</li>
+</ul>
+<h3 id="doc04-head_lr_mult-浮点"><code>head_lr_mult</code>（浮点）</h3>
+<ul>
+<li><strong>含义</strong>：<strong>分类头</strong>学习率相对骨干的倍数。</li>
+<li><strong>本项目值</strong>：<code>1.0</code>（即分类头与骨干同学习率）。</li>
+<li><strong>背景</strong>：分类头是新初始化的，骨干是预训练的，常见的做法是给分类头更大的学习率
+  （<code>3~10</code> 倍）。但本项目实测 <strong>10 倍会发散</strong>（见上面 <code>lr</code> 的踩坑记录），
+  所以统一用 <code>1.0</code>。</li>
+<li><strong>如果想用差分学习率</strong>：建议从 <code>2.0</code> 开始试，同时把 <code>lr</code> 降到 <code>0.005</code> 左右。</li>
+</ul>
+<h3 id="doc04-scheduler-字符串"><code>scheduler</code>（字符串）</h3>
+<ul>
+<li><strong>可选值</strong>：<code>cosine</code> / <code>step</code> / <code>none</code></li>
+<li><strong>本项目值</strong>：<code>cosine</code>。</li>
+<li><strong>作用</strong>：每个 step 按余弦曲线衰减学习率，从峰值平滑降到 0。
+  配合 warmup 是本项目的标准配置。</li>
+<li><strong>注意</strong>：本项目是<strong>按 step 更新</strong>（不是按 epoch），所以曲线更平滑。</li>
+</ul>
+<h3 id="doc04-warmup_epochs-整数"><code>warmup_epochs</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：学习率从 0 线性升到峰值的轮数。</li>
+<li><strong>本项目值</strong>：1（A/B/备用） / 2（C1/C2）。</li>
+<li><strong>作用</strong>：分类头是随机初始化的，训练初期梯度很大；
+  预热可以防止它在头几轮就把预训练特征破坏掉。</li>
+<li><strong>为什么改进模型用 2</strong>：强增强+MixUp 让初期梯度更噪，需要更长的预热。</li>
+</ul>
+<hr />
+<h2 id="doc04-5-损失函数相关">5. 损失函数相关</h2>
+<h3 id="doc04-label_smoothing-浮点-0-1"><code>label_smoothing</code>（浮点 0~1）</h3>
+<ul>
+<li><strong>含义</strong>：标签平滑系数 ε。真实类目标值从 1 变成 <code>1-ε+ε/C</code>，其余类从 0 变成 <code>ε/C</code>（C=51）。</li>
+<li><strong>本项目值</strong>：<code>0.0</code>（A/B） / <code>0.1</code>（C1/C2） / <code>0.05</code>（备用）。</li>
+<li><strong>作用</strong>：防止模型过度自信，改善校准，通常对 Macro-F1 有正收益。</li>
+<li><strong>副作用</strong>：训练损失的最低值被抬高（不再趋近 0），所以<strong>不能用训练损失判断收敛</strong>。</li>
+</ul>
+<h3 id="doc04-class_weight-字符串"><code>class_weight</code>（字符串）</h3>
+<ul>
+<li><strong>可选值</strong>：<code>none</code> / <code>inverse</code> / <code>sqrt_inverse</code></li>
+<li><strong>本项目值</strong>：<code>none</code>（A/C1/C2） / <code>inverse</code>（B）。</li>
+<li><strong>计算公式</strong>（<code>inverse</code>）：
+  <code>w_c = N / (C · n_c)     然后除以均值归一化</code>
+  其中 <code>N</code> 是训练样本总数，<code>C=51</code> 是类别数，<code>n_c</code> 是第 c 类的样本数。
+  这样第 c 类对总损失的<strong>名义贡献</strong>是 <code>n_c · w_c ∝ 1</code>，与类别大小无关。</li>
+<li><strong><code>sqrt_inverse</code></strong> 是它的温和版：<code>w_c ∝ 1/√n_c</code>，贡献正比于 <code>√n_c</code>。</li>
+<li><strong>本项目结论（重要）</strong>：</li>
+<li>单独使用 <code>inverse</code> 会让 Macro-F1 <strong>下降 0.0047</strong>（因为它把 unknown 检出率从 82% 压到 59%）；</li>
+<li>但它把已知类误拒率从 10.3% 降到 4.7%；</li>
+<li><strong>配合推理端一次负向先验校正（τ=−0.40）后净赚 +0.0122</strong>。</li>
+<li>所以：<strong>类别权重不能单独调，必须与推理端的 τ 联合调优</strong>。</li>
+<li><strong>为什么 C1/C2 用 <code>none</code></strong>：基线模型的先验扫描显示 τ=0 处 Macro-F1 最高，
+  说明无权重模型的隐式先验恰好是最优的。这是数据驱动的决策，不是拍脑袋。</li>
+</ul>
+<h3 id="doc04-unknown_weight_mult-浮点"><code>unknown_weight_mult</code>（浮点）</h3>
+<ul>
+<li><strong>含义</strong>：在 <code>class_weight</code> 之上，对 unknown 类额外乘的倍数。</li>
+<li><strong>本项目值</strong>：<code>1.0</code>（等于不额外加权）。</li>
+<li><strong>什么时候用</strong>：如果发现模型"不敢说不认识"（unknown 检出率低），可以调到 <code>1.5~2.0</code>。</li>
+<li><strong>注意</strong>：<code>class_weight: "none"</code> 时这个参数<strong>不起作用</strong>。</li>
+</ul>
+<h3 id="doc04-mixup_alpha-cutmix_alpha-mix_prob-浮点"><code>mixup_alpha</code> / <code>cutmix_alpha</code> / <code>mix_prob</code>（浮点）</h3>
+<ul>
+<li><strong>含义</strong>：</li>
+<li><code>mixup_alpha</code>：MixUp 的 Beta 分布参数 α（两张整图按 <code>λ ~ Beta(α,α)</code> 混合）；</li>
+<li><code>cutmix_alpha</code>：CutMix 的 Beta 分布参数 α（把一张图的矩形区域贴到另一张上）；</li>
+<li><code>mix_prob</code>：一个 batch 施加混合增强的概率（MixUp 与 CutMix 各 50% 概率二选一）。</li>
+<li><strong>本项目值</strong>：C1/C2 <code>0.2 / 0.5 / 0.35</code>；A/B/备用 <code>0 / 0 / 0</code>（关闭）。</li>
+<li><strong>作用</strong>：强正则化手段，抑制过拟合，提升泛化。</li>
+<li><strong>代价</strong>：训练任务变难、收敛变慢；且训练期的"准确率"不再有直观意义
+  （因为一半样本的标签本身就是混合的）。</li>
+<li><strong>关闭方式</strong>：把 <code>mix_prob</code> 设为 <code>0</code>。</li>
+</ul>
+<hr />
+<h2 id="doc04-6-评估与推理相关">6. 评估与推理相关</h2>
+<h3 id="doc04-ema_decay-浮点-0-表示关闭"><code>ema_decay</code>（浮点，0 表示关闭）</h3>
+<ul>
+<li><strong>含义</strong>：权重的指数滑动平均衰减率。<code>0.999</code> 意味着有效平均窗口约 1000 个 step。</li>
+<li><strong>本项目值</strong>：<code>0.999</code>（C1/C2/备用） / <code>0.0</code>（A/B）。</li>
+<li><strong>作用</strong>：训练时维护一份"平滑后的权重"，评估时用它而不是当前权重。
+  能显著降低验证指标的波动，通常带来 +0.5~1%。</li>
+<li><strong>注意</strong>：</li>
+<li>前期 EMA 会"滞后"——C1 前 2 个 epoch 的 EMA 权重还包含大量早期权重，
+    所以早期指标偏低是正常的；</li>
+<li>保存进 <code>best.pt</code> 的 <code>model_state</code> <strong>就是 EMA 权重</strong>（checkpoint 里有 <code>ema: true</code> 标记）。</li>
+<li><strong>步数与衰减的关系</strong>：<code>0.999</code> 配 235 step/epoch 时窗口约 4.3 个 epoch；
+  如果数据集很小（几十 step/epoch），应该调小（如 <code>0.99</code>），否则 EMA 几乎不动。</li>
+</ul>
+<h3 id="doc04-tta_hflip-布尔"><code>tta_hflip</code>（布尔）</h3>
+<ul>
+<li><strong>含义</strong>：推理时是否做水平翻转 TTA——同一张图正着与翻转各跑一次，
+  对 log-softmax 取平均再 softmax。</li>
+<li><strong>本项目值</strong>：<code>true</code>（改进模型） / <code>false</code>（基线）。</li>
+<li><strong>收益</strong>：基线开启 TTA 后从 0.8475 提到 0.8588（<strong>+0.011</strong>）。</li>
+<li><strong>代价</strong>：推理耗时翻倍。</li>
+<li><strong>什么时候该开</strong>：只要推理时间不是瓶颈，就该开。</li>
+<li><strong>注意</strong>：<code>tta_hflip</code> 是训练配置里的字段，但训练过程中<strong>每轮的验证评估也会用到它</strong>，
+  所以它同时影响"选模型的依据"和"最终推理"。</li>
+</ul>
+<h3 id="doc04-amp-布尔"><code>amp</code>（布尔）</h3>
+<ul>
+<li><strong>含义</strong>：CPU bfloat16 混合精度（<code>torch.autocast('cpu', dtype=torch.bfloat16)</code>）。</li>
+<li><strong>本项目值</strong>：<code>true</code>。</li>
+<li><strong>作用</strong>：AMD Zen4 支持 AVX512-BF16，实测<strong>吞吐提升约 1.5 倍</strong>：
+  | 配置 | fp32 | bf16 | 提升 |
+  | --- | --- | --- | --- |
+  | resnet18 @160 | 44.9 img/s | <strong>68.6 img/s</strong> | 1.53× |
+  | resnet18 @224 | 24.3 img/s | <strong>36.3 img/s</strong> | 1.49× |</li>
+<li><strong>安全性</strong>：损失仍在 <strong>float32</strong> 中计算（代码里显式 <code>logits.float()</code>），
+  只是前向与反向的内部运算用 bf16，实测对精度无可见影响。</li>
+<li><strong>⚠️ 一致性坑</strong>：<code>src/evaluate.py</code> 曾默认用 fp32 评估，
+  与训练时的 bf16 产生约 <strong>0.0005</strong> 的指标漂移。
+  现已改为<strong>默认读取 checkpoint 里记录的 <code>amp</code> 设置</strong>，两侧完全一致
+  （基线 0.847508 / 类别平衡 0.842818 / 改进 0.948215）。</li>
+</ul>
+<h3 id="doc04-threads-整数"><code>threads</code>（整数）</h3>
+<ul>
+<li><strong>含义</strong>：<code>torch.set_num_threads()</code> 的值。</li>
+<li><strong>本项目值</strong>：<code>12</code>。</li>
+<li><strong>为什么是 12 而不是 16（逻辑核数）</strong>：实测 16 线程会因<strong>超订阅</strong>反而变慢。
+  完整训练步（含数据加载）实测吞吐：</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>线程</th>
+<th>吞吐</th>
+<th>推算单轮</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>36.5 img/s</td>
+<td>3.42 min</td>
+</tr>
+<tr>
+<td>8</td>
+<td>39.8 img/s</td>
+<td>3.14 min</td>
+</tr>
+<tr>
+<td>10</td>
+<td>42.8 img/s</td>
+<td>2.92 min</td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td><strong>46.2 img/s</strong></td>
+<td><strong>2.70 min</strong></td>
+</tr>
+<tr>
+<td>16</td>
+<td>38.2 img/s</td>
+<td>3.27 min</td>
+</tr>
+</tbody>
+</table>
+<p><strong>12 线程比 16 线程快 17%</strong>。换机器时建议重新测一遍。
+- <strong>命令行覆盖</strong>：<code>--threads 8</code></p>
+<hr />
+<h2 id="doc04-7-只用于记录的字段">7. 只用于记录的字段</h2>
+<h3 id="doc04-note-字符串"><code>note</code>（字符串）</h3>
+<ul>
+<li><strong>含义</strong>：这个配置是干什么的、为什么这么设。</li>
+<li><strong>作用</strong>：写报告时直接引用；半年后回看也能立刻想起当时的决策依据。</li>
+<li><strong>建议</strong>：每次改配置都更新它。</li>
+</ul>
+<hr />
+<h2 id="doc04-8-最小可跑配置">8. 最小可跑配置</h2>
+<p>如果你想从零写一个自己的配置，以下字段是必需的（其余走默认值）：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;run_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;my_experiment&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;arch&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;resnet18&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;image_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_transform&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;strong_train&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;epochs&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">15</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;lr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.01</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>默认值（<code>engine.py</code> 里 <code>cfg.get(...)</code> 的兜底）：<code>pretrained=true</code>、<code>batch_size=32</code>、
+<code>optimizer=sgd</code>、<code>momentum=0.9</code>、<code>weight_decay=1e-4</code>、<code>head_lr_mult=10.0</code>（<strong>注意这个默认偏大，建议显式写 1.0</strong>）、
+<code>scheduler=cosine</code>、<code>warmup_epochs=0</code>、<code>label_smoothing=0</code>、<code>class_weight=none</code>、
+<code>ema_decay=0</code>、<code>tta_hflip=false</code>、<code>grad_clip=0</code>、<code>seed=42</code>、<code>amp=false</code>、<code>threads=CPU 核数</code>。</p>
+<hr />
+<h2 id="doc04-9-常用改动配方">9. 常用改动配方</h2>
+<table>
+<thead>
+<tr>
+<th>我想……</th>
+<th>改什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提升精度</td>
+<td>先调 <code>image_size</code>（160→224），再考虑 <code>epochs</code>、<code>ema_decay</code>、<code>tta_hflip</code></td>
+</tr>
+<tr>
+<td>加快训练</td>
+<td>降 <code>image_size</code>、降 <code>arch</code>、关 <code>mix_prob</code>、降 <code>epochs</code></td>
+</tr>
+<tr>
+<td>缓解过拟合</td>
+<td>开/加强 <code>mix_prob</code>、<code>randaugment</code>、<code>random_erasing</code>、<code>label_smoothing</code>、<code>ema_decay</code></td>
+</tr>
+<tr>
+<td>提升 unknown 检出率</td>
+<td>调大 <code>class_weight=inverse</code> + <code>unknown_weight_mult=1.5</code>，<strong>并且</strong>去跑 <code>calibrate.py</code> 找负的 τ</td>
+</tr>
+<tr>
+<td>减少误拒（known 被判 unknown）</td>
+<td>跑 <code>calibrate.py</code>，用正的 τ 或提高拒识阈值</td>
+</tr>
+<tr>
+<td>换个骨干对比</td>
+<td>改 <code>arch</code>（注意本地权重必须存在）</td>
+</tr>
+<tr>
+<td>做一个轻量冒烟测试</td>
+<td><code>--epochs 2 --limit-train-per-class 12 --limit-val-per-class 6</code></td>
+</tr>
+</tbody>
+</table><div class="docnav"><a class="prev" href="./02_目录与文件全说明.html"><span class="dir">← 上一篇</span><span class="ttl">02 · 目录与文件全说明</span></a><a class="next" href="./04_数据格式与文件约定.html"><span class="dir">下一篇 →</span><span class="ttl">04 · 数据格式与文件约定</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

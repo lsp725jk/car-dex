@@ -1,0 +1,13 @@
+{
+  "champion": "improved_resnet18_224+improved_resnet50_224+ft_r50_288",
+  "members": [
+    "improved_resnet18_224",
+    "improved_resnet50_224",
+    "ft_r50_288"
+  ],
+  "prior_adjust_tau": 0.05,
+  "unknown_threshold": 0.2,
+  "tta_hflip": true,
+  "val_macro_f1": 0.9646,
+  "calibration_source": "outputs/reports/final_model_choice.json（由验证集 Macro-F1 选出）"
+}

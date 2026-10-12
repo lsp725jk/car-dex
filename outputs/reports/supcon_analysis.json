@@ -1,0 +1,18 @@
+{
+  "geometry": {
+    "r50_288_from_scratch": {
+      "intra": 0.05229567532590745,
+      "inter_mean": 0.25915671837166415,
+      "inter_min": 0.14812168438372275,
+      "separation": 4.955605157722805
+    },
+    "r50_288_supcon": {
+      "intra": 0.04686504648379499,
+      "inter_mean": 0.29907603635947977,
+      "inter_min": 0.1583305875570017,
+      "separation": 6.3816438646421565
+    }
+  },
+  "hard_negative_distance": {},
+  "note": "几何统计见 geometry；hard_negative 距离打印在终端"
+}

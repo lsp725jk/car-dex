@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>识车档案 CarDex · 私人车型资料库</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+{% if info.offline %}
+<div class="banner warn">
+  <b>离线替身模式</b> —— 未检测到 <code>DEEPSEEK_API_KEY</code>。当前用内置的脚本化替身驱动
+  同一套 Agent Loop，<b>可以验证工具链是否连通，但不代表真实模型效果</b>。
+  点击左下角 <b>⚙ 设置</b> 填入 API Key 即可切换为真实 <code>{{ info.model }}</code>。
+</div>
+{% endif %}
+
+<header class="topbar">
+  <div class="brand">
+    <button class="btn icon" id="btn-rail" title="收起 / 展开会话侧边栏">☰</button>
+    <div class="logo">识车</div>
+    <div>
+      <b>识车档案 CarDex</b>
+      <span>私人车型资料库 · 对话式看车档案</span>
+    </div>
+  </div>
+  <div class="meta">
+    <span class="chip" id="chip-session" title="会话 ID">会话 —</span>
+    <span class="chip">{{ info.model }}</span>
+    <span class="chip {% if info.offline %}chip-warn{% endif %}">
+      {% if info.offline %}离线替身{% else %}API 已配置{% endif %}
+    </span>
+    <span class="chip">视觉模型 {{ info.vision_models|join(' + ') if info.vision_models else '未找到' }}</span>
+    <button class="btn ghost" id="btn-theme">☾ 暗色</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ============ 最左：会话管理侧边栏（可收缩） ============ -->
+  <aside class="rail" id="rail">
+    <div class="rail-inner">
+      <div class="rail-head">
+        <button class="btn primary block" id="btn-new">＋ 新建会话</button>
+      </div>
+      <div class="rail-filter">
+        <input type="text" id="sess-filter" placeholder="按标题筛选会话…" autocomplete="off">
+      </div>
+      <div class="rail-list" id="sess-list">
+        <div class="rail-empty">正在加载…</div>
+      </div>
+      <div class="rail-foot">
+        <button class="btn ghost block" id="btn-settings" title="API 配置 / 模型配置">
+          <span class="gear" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none"
+                 stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3.2"></circle>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9v0a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+            </svg>
+          </span>
+          设置
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ 中间：对话区 ============ -->
+  <section class="chat">
+    <div class="messages" id="messages">
+      <div class="msg assistant">
+        <div class="avatar">识</div>
+        <div class="bubble">
+          <p>你好，我是你的私人车型资料库助手。你可以：</p>
+          <ul>
+            <li>上传一张车辆照片，我识别它是哪一款（支持本组自训练模型的 50 款车型）</li>
+            <li>让我介绍某款车的档案（品牌、车身类型、看点）</li>
+            <li>把车写进你的看车档案，之后按品牌 / 车身类型检索</li>
+            <li>需要价格、新闻这类最新信息时，打开 <b>🌐 联网搜索</b>，我帮你去公网上查</li>
+          </ul>
+          <p class="hint">试试上传一张车照，然后说「这是什么车？介绍一下，然后加进我的收藏」。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="composer">
+      <div class="attach-preview" id="preview" hidden>
+        <img id="preview-img" alt="待上传图片">
+        <div class="attach-info">
+          <b id="preview-name"></b>
+          <span id="preview-size"></span>
+        </div>
+        <button class="x" id="btn-clear-img" title="移除">×</button>
+      </div>
+      <div class="input-row">
+        <label class="btn upload" for="file" title="上传一张车辆照片">📎 上传图片</label>
+        <input type="file" id="file" accept="image/*" hidden>
+        <button class="btn search" id="btn-websearch" type="button"
+                title="开启后，智能体可以调用 web_search 工具查询公网信息">
+          <span class="dot" aria-hidden="true"></span>🌐 联网搜索
+        </button>
+        <input type="text" id="input" placeholder="输入自然语言指令，例如：这是什么车？介绍一下，然后加进我的收藏" autocomplete="off">
+        <button class="btn primary" id="btn-send">发送</button>
+      </div>
+      <div class="composer-hint" id="composer-hint"></div>
+    </div>
+  </section>
+
+  <!-- ============ 右：侧栏 ============ -->
+  <aside class="side">
+    <div class="card">
+      <h3>运行状态</h3>
+      <div class="kv" id="runtime-kv">
+        <div><span>模型</span><b id="kv-model">{{ info.model }}</b></div>
+        <div><span>模式</span><b id="kv-mode">{% if info.offline %}离线替身{% else %}真实 API{% endif %}</b></div>
+        <div><span>API Key</span><b id="kv-key">{{ info.api_key }}</b></div>
+        <div><span>视觉模型</span><b>{{ info.vision_models|join(' + ') if info.vision_models else '未找到' }}</b></div>
+        <div><span>拒识阈值 t</span><b id="kv-t">{{ info.unknown_threshold }}</b></div>
+        <div><span>低置信提示阈值</span><b id="kv-c">{{ info.display_confidence_threshold }}</b></div>
+        <div><span>先验校正 τ</span><b id="kv-tau">{{ info.prior_adjust_tau }}</b></div>
+        <div><span>联网搜索</span><b id="kv-web">关闭 · {{ info.web_search_provider }}</b></div>
+        <div><span>工具数</span><b id="kv-tools">{{ info.tool_count }}</b></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>我的看车档案 <span class="count" id="rec-count">0</span></h3>
+      <div class="filters">
+        <input type="text" id="rec-kw" placeholder="搜索车型 / 品牌 / 备注">
+        <select id="rec-scope">
+          <option value="session">本会话</option>
+          <option value="all">全部会话</option>
+        </select>
+      </div>
+      <div id="records" class="records"><div class="empty">还没有记录。上传车照后说「记录下来」。</div></div>
+    </div>
+
+    <div class="card">
+      <h3>可用工具 <span class="count" id="tool-count">0</span></h3>
+      <!-- 被门禁挡住的工具（联网类）在这里给一键开启入口。
+           原来只在工具条上标个「未开启」，用户不知道去哪儿开。 -->
+      <div id="tools-gate" class="tools-gate" hidden></div>
+      <div id="tools" class="tools"></div>
+    </div>
+  </aside>
+
+</main>
+
+<!-- ============ 设置弹窗 ============ -->
+<div class="modal-mask" id="settings-mask" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="settings-title">
+    <div class="modal-head">
+      <h2 id="settings-title">设置</h2>
+      <button class="x" id="btn-settings-close" title="关闭">×</button>
+    </div>
+
+    <div class="tabs" id="settings-tabs">
+      <button class="tab active" data-tab="api">API 配置</button>
+      <button class="tab" data-tab="model">模型配置</button>
+      <button class="tab" data-tab="threshold">决策阈值</button>
+      <button class="tab" data-tab="web">联网搜索</button>
+    </div>
+
+    <div class="modal-body">
+
+      <!-- ---- API 配置 ---- -->
+      <section class="tabpane active" data-pane="api">
+        <div class="field">
+          <label>DeepSeek API Key</label>
+          <input type="password" id="set-api-key" autocomplete="off" spellcheck="false"
+                 placeholder="留空 = 保持当前 Key 不变">
+          <p class="tip" id="tip-key"></p>
+        </div>
+        <div class="field">
+          <label>接口地址</label>
+          <input type="text" id="set-api-url" spellcheck="false"
+                 placeholder="https://api.deepseek.com/chat/completions">
+          <p class="tip">走代理或自建网关时改这里。</p>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label>连接超时（秒）</label>
+            <input type="number" id="set-connect-timeout" step="1" min="1" max="120">
+          </div>
+          <div class="field">
+            <label>读取超时（秒）</label>
+            <input type="number" id="set-read-timeout" step="1" min="5" max="600">
+          </div>
+          <div class="field">
+            <label>失败重试次数</label>
+            <input type="number" id="set-max-retries" step="1" min="0" max="10">
+          </div>
+          <div class="field">
+            <label>首次退避（秒）</label>
+            <input type="number" id="set-retry-backoff" step="0.1" min="0.1" max="30">
+          </div>
+        </div>
+        <div class="row-actions">
+          <button class="btn ghost" id="btn-test-api" type="button">测试连接</button>
+          <span class="test-result" id="test-result"></span>
+        </div>
+        <p class="tip block-tip">
+          Key 只会写进 <code>agent/.env.local</code>（已被 <code>.gitignore</code> 忽略），
+          页面、日志与接口响应里一律只显示掩码。
+        </p>
+      </section>
+
+      <!-- ---- 模型配置 ---- -->
+      <section class="tabpane" data-pane="model">
+        <div class="field">
+          <label>模型名</label>
+          <input type="text" id="set-model" spellcheck="false" placeholder="deepseek-v4-flash">
+          <p class="tip">任务书规定为 <code>deepseek-v4-flash</code>。</p>
+        </div>
+        <div class="grid2">
+          <div class="field">
+            <label>temperature</label>
+            <input type="number" id="set-temperature" step="0.1" min="0" max="2">
+          </div>
+          <div class="field">
+            <label>max_tokens</label>
+            <input type="number" id="set-max-tokens" step="128" min="256" max="8192">
+          </div>
+          <div class="field">
+            <label>单轮最大轮数</label>
+            <input type="number" id="set-max-rounds" step="1" min="1" max="30">
+          </div>
+          <div class="field">
+            <label>单轮最大工具调用数</label>
+            <input type="number" id="set-max-tool-calls" step="1" min="1" max="60">
+          </div>
+          <div class="field">
+            <label>识别返回 Top-K</label>
+            <input type="number" id="set-top-k" step="1" min="1" max="10">
+          </div>
+        </div>
+      </section>
+
+      <!-- ---- 决策阈值 ---- -->
+      <section class="tabpane" data-pane="threshold">
+        <div class="grid2">
+          <div class="field">
+            <label>拒识阈值 t</label>
+            <input type="number" id="set-unknown-threshold" step="0.01" min="0" max="1">
+            <p class="tip">低于它就判为 unknown。由验证集扫描得到。</p>
+          </div>
+          <div class="field">
+            <label>低置信提示阈值</label>
+            <input type="number" id="set-display-threshold" step="0.01" min="0" max="1">
+            <p class="tip">低于它会让用户确认，而不是直接下结论。</p>
+          </div>
+          <div class="field">
+            <label>先验校正 τ</label>
+            <input type="number" id="set-prior-tau" step="0.01" min="0" max="1">
+            <p class="tip">用来抵消训练集类别不平衡造成的偏向。</p>
+          </div>
+        </div>
+        <p class="tip block-tip">
+          这三个值原本由 <code>src/calibrate.py</code> 在验证集上扫出来。
+          改它们会立刻影响识别行为，<b>交作业前建议保持默认</b>。
+        </p>
+      </section>
+
+      <!-- ---- 联网搜索 ---- -->
+      <section class="tabpane" data-pane="web">
+        <div class="field">
+          <label>搜索通道</label>
+          <select id="set-web-provider">
+            <option value="bing">bing —— 默认，无需 Key</option>
+            <option value="tavily">tavily —— 需要 TAVILY_API_KEY，质量最好</option>
+            <option value="duckduckgo">duckduckgo —— 需要境外网络</option>
+          </select>
+          <p class="tip" id="tip-provider"></p>
+        </div>
+        <div class="row-actions">
+          <button class="btn ghost" id="btn-test-search" type="button">测试搜索</button>
+          <span class="test-result" id="search-result"></span>
+        </div>
+        <p class="tip block-tip">
+          联网搜索是<b>逐会话</b>开关，在输入框左边的「🌐 联网搜索」按钮里控制。
+          开启后智能体才能看到 <code>web_search</code> 工具。<br>
+          搜索结果属于<b>公网不可信内容</b>，只能作为参考，
+          不会覆盖本组模型的识别结论与档案库资料。
+        </p>
+      </section>
+
+      <div class="modal-note" id="settings-note"></div>
+    </div>
+
+    <div class="modal-foot">
+      <span class="changed" id="settings-changed"></span>
+      <div>
+        <button class="btn ghost" id="btn-settings-reset" type="button">恢复默认</button>
+        <button class="btn primary" id="btn-settings-save" type="button">保存并生效</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+<!--
+  演示辅助开关（不加参数时完全不影响正常使用）。
+  访问 /?demo=1 会加载 /uploads/demo_autoplay.js，让页面自己按分镜跑一遍；
+  再加 &step=1 则每段结束后暂停，按空格才继续，便于录屏时控制节奏。
+
+  为什么做成页面开关：dsh 的浏览器自动化工具操作的是它自己的隐形实例，
+  用户在屏幕上自己开的那扇窗口它够不着。把入口放进页面，用户开的窗口
+  也能一键跑演示，不必去开 F12 控制台。
+-->
+<script>
+(function () {
+  var q = new URLSearchParams(location.search);
+  if (!q.has('demo')) return;
+  window.__DEMO_STEP = q.get('step') === '1';
+  var s = document.createElement('script');
+  s.src = '/uploads/demo_autoplay.js?v=' + Date.now();
+  document.body.appendChild(s);
+  console.log('[demo] 已加载演示脚本，step 模式 =', window.__DEMO_STEP);
+})();
+</script>
+</body>
+</html>

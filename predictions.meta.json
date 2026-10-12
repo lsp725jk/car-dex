@@ -1,0 +1,13 @@
+{
+  "champion": "r50_416+r50_288_supcon+wide_r50_2_288",
+  "members": [
+    "r50_416",
+    "r50_288_supcon",
+    "wide_r50_2_288"
+  ],
+  "prior_adjust_tau": 0.2,
+  "unknown_threshold": 0.0,
+  "tta_hflip": true,
+  "val_macro_f1": 0.98452,
+  "calibration_source": "outputs/reports/final_model_choice.json（由验证集 Macro-F1 选出）"
+}

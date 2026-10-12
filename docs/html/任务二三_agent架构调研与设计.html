@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>任务二三 · Agent 架构调研与设计说明 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>20 · Agent 架构调研与设计</span></button><div class="nav-list"><a class="lv2" href="#doc23-第一部分-调研方法与证据等级">第一部分：调研方法与证据等级</a><a class="lv2" href="#doc23-第二部分-三家-harness-的架构对比">第二部分：三家 harness 的架构对比</a><a class="lv2" href="#doc23-第三部分-本项目吸收了什么">第三部分：本项目吸收了什么</a><a class="lv2" href="#doc23-第四部分-本项目的具体设计">第四部分：本项目的具体设计</a><a class="lv2" href="#doc23-第五部分-两条工程决策的说明">第五部分：两条工程决策的说明</a><a class="lv2" href="#doc23-第六部分-一手证据摘录">第六部分：一手证据摘录</a><a class="lv2" href="#doc23-附录-调研产出物清单">附录：调研产出物清单</a></div></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">20 · Agent 架构调研与设计　（23/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc23" data-title="任务二三 · Agent 架构调研与设计说明"><h1 id="doc23-任务二三-agent-架构调研与设计说明">任务二三 · Agent 架构调研与设计说明</h1>
+<blockquote>
+<p>本文回答三个问题：
+① 市面上主流 agent（Codex、Claude Code、DeepSeek Harness）到底是怎么做的；
+② 它们的共性设计模式是什么；
+③ 本项目「识车档案 CarDex」的任务二、任务三<strong>吸收了什么、简化了什么、为什么</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="doc23-第一部分-调研方法与证据等级">第一部分：调研方法与证据等级</h2>
+<table>
+<thead>
+<tr>
+<th>对象</th>
+<th>证据来源</th>
+<th>等级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DeepSeek Harness</strong></td>
+<td>本机安装的 DSH Desktop 2.0.2，<code>resources/app.asar.unpacked/node_modules/@deepseek-ai/</code> 下 <strong>199 个包</strong>，其中约 150 个带中文 README</td>
+<td><strong>一手</strong>（源码 + 官方文档）</td>
+</tr>
+<tr>
+<td><strong>OpenAI Codex</strong></td>
+<td>本机安装的 Codex Desktop 0.147.0-alpha.6.5 产生的运行产物：<code>~/.codex/sessions/**/rollout-*.jsonl</code>、<code>models.json</code>、<code>logs_2.sqlite</code>（tracing span 与出站请求体）</td>
+<td><strong>一手</strong>（运行产物），标注 <code>[实测]</code></td>
+</tr>
+<tr>
+<td><strong>Claude Code / Agent SDK</strong></td>
+<td><code>code.claude.com/docs</code>（官方文档，可访问）+ AWS Bedrock 官方文档中的 Anthropic Messages API 参数</td>
+<td><strong>官方文档</strong>，<code>platform.claude.com</code> / <code>github.com</code> 在本网络不可达</td>
+</tr>
+</tbody>
+</table>
+<p><strong>证据等级说明</strong>：本报告中 DSH 的结论来自源码与官方 README（最可靠）；Codex 的结论来自本机实测产物，
+少数来自搜索引擎摘要的 PR/Issue 编号，已标注；Claude Code 的结论来自官方文档。
+<strong>凡是查不到的，下文都明确写"未证实"，不做推测性陈述。</strong></p>
+<hr />
+<h2 id="doc23-第二部分-三家-harness-的架构对比">第二部分：三家 harness 的架构对比</h2>
+<h3 id="doc23-2-1-分层结构">2.1 分层结构</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th><strong>DeepSeek Harness</strong></th>
+<th><strong>OpenAI Codex</strong></th>
+<th><strong>Claude Code / Agent SDK</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>形态</td>
+<td>Cordis 插件系统（199 个包），Electron/TUI/Web 都是外壳</td>
+<td>Rust 引擎 + app-server 协议层，TUI/IDE/Desktop 是前端</td>
+<td>CLI 二进制 + SDK 包装（SDK 会 spawn 并监管 <code>claude</code> 子进程）</td>
+</tr>
+<tr>
+<td>循环所在</td>
+<td><code>dsh-agent-loop</code> —— <strong>整个仓库唯一含具体循环逻辑的包</strong></td>
+<td><code>codex-core</code> 的 <code>session::{turn,handlers}</code></td>
+<td>Claude Code 内部（SDK 只消费消息流）</td>
+</tr>
+<tr>
+<td>前端如何接</td>
+<td>订阅事件（<code>session/event</code>、<code>agent/*</code>）</td>
+<td>app-server 协议方法（<code>thread/start</code>、<code>turn/start</code>、<code>thread/resume</code>）</td>
+<td>消费消息流（init / assistant / tool_result / result）</td>
+</tr>
+<tr>
+<td>状态存放</td>
+<td>会话 + 事件日志，持久化是独立插件</td>
+<td>append-only 的 <code>rollout-*.jsonl</code></td>
+<td><code>~/.claude/projects/&lt;project&gt;/&lt;session-id&gt;.jsonl</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 1：分层彻底。</strong> 三家都把「循环」「工具」「会话」「前端」拆成独立层，
+前端只订阅事件流。这带来一个直接好处：<strong>刷新页面 ≠ 重启智能体</strong>。</p>
+<h3 id="doc23-2-2-agent-loop-的终止条件">2.2 Agent Loop 的终止条件</h3>
+<table>
+<thead>
+<tr>
+<th>harness</th>
+<th>主终止条件</th>
+<th>硬上限</th>
+<th>上下文耗尽时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSH</td>
+<td>模型不再产生 <code>tool_calls</code></td>
+<td><strong>"没有内置轮次预算"</strong>（README 明说，需靠 <code>agent/turn-stopping</code> 扩展点自己加）</td>
+<td><code>dsh-compaction</code> 在 <code>agent/pre-step</code> 观测压力后压缩，继续</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>模型不再产生工具调用</td>
+<td><strong>未查证到固定最大轮数</strong></td>
+<td>自动摘要后继续（base instructions 写明 "time never runs out"）</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>响应中<strong>不含 tool call</strong></td>
+<td><code>maxTurns</code>（<strong>只计含工具调用的轮次</strong>）、<code>maxBudgetUsd</code>（含子智能体开销）</td>
+<td>自动压缩（先清旧工具输出，再摘要）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 2：主终止条件是"模型不再调工具"，不是"模型说完成了"。</strong>
+三家都是靠<strong>结构信号</strong>（有没有 tool call）而非自然语言判断结束。</p>
+<p><strong>共同点 3：轮数上限是兜底，不是主要机制。</strong>
+DSH 明确说自己"没有内置轮次预算"；Codex 查不到固定上限；
+只有 Claude Code 提供 <code>maxTurns</code>，且它是<strong>只计工具轮</strong>的——纯聊天不计。</p>
+<h3 id="doc23-2-3-工具机制">2.3 工具机制</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>DSH</th>
+<th>Codex</th>
+<th>Claude Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>定义格式</td>
+<td><code>ToolDefinition</code> = schema + 必填 <code>output{schema, render}</code> + <code>execute(args, exec)</code></td>
+<td><code>{"type":"function", ...}</code>（JSON Schema）或 <code>{"type":"custom"}</code>（freeform，走 grammar）</td>
+<td><code>{"type":"custom","name","description","input_schema": &lt;JSON Schema&gt;}</code></td>
+</tr>
+<tr>
+<td>参数校验</td>
+<td>JSON Schema + 可选 <code>defineTool()</code> 类型化辅助</td>
+<td>function 走 JSON Schema；freeform 走 Lark grammar</td>
+<td>JSON Schema；属性名须匹配 <code>^[a-zA-Z0-9_.-]{1,64}$</code></td>
+</tr>
+<tr>
+<td><strong>执行流水线</strong></td>
+<td><strong>6 段</strong>：<code>tools/pre-execute</code>（可重排的门禁）→ 单调 <code>guard</code> → <code>tools/execute</code>（超时/重试环绕）→ 工具主体 → <code>tools/post-execute</code> → <code>finalizeContent</code> → <code>tools/result</code>（只观测）</td>
+<td><code>exec_policy</code> 判定（审批 + 沙箱）后执行</td>
+<td>hooks：<code>PreToolUse</code> → 规则 → 模式 → <code>PostToolUse</code>/<code>PostToolUseFailure</code>/<code>PostToolBatch</code></td>
+</tr>
+<tr>
+<td>结果格式</td>
+<td><code>{isError:false, value, content, meta?, additionalContexts?}</code> / <code>{isError:true, error:{message, info?}, ...}</code></td>
+<td><code>function_call_output</code> / <code>custom_tool_call_output</code></td>
+<td><code>{content:[blocks], structuredContent?, isError?}</code> + <code>tool_use_id</code></td>
+</tr>
+<tr>
+<td>并发</td>
+<td><code>isConcurrencySafe(args)</code> 精确分类；独占调用成屏障，并行安全调用走有界滚动池（默认 10），<strong>但策略/持久结果/结果上下文仍保持模型顺序</strong></td>
+<td><code>supports_parallel_tool_calls=true</code></td>
+<td>只读工具可并发，写类串行</td>
+</tr>
+<tr>
+<td>输出截断</td>
+<td>——</td>
+<td><code>truncation_policy={"mode":"tokens","limit":10000}</code></td>
+<td>官方工程博客：默认约 25000 token</td>
+</tr>
+<tr>
+<td>取消</td>
+<td>协作式 <code>AbortSignal</code>；未派发的调用收到合成 <code>ABORTED_BEFORE_DISPATCH</code> 结果</td>
+<td>有 <code>op.dispatch.interrupt</code> span</td>
+<td>——</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 4：工具执行不是一行 <code>handler(**args)</code>，而是一条可观测、可干预的流水线。</strong>
+DSH 的 6 段流水线是最完整的一手证据。每一段都有明确职责，
+且<strong>失败一律作为结构化结果回填</strong>，而不是抛异常中断循环。</p>
+<p><strong>共同点 5：工具结果有明确的成功/失败结构，且失败必须让模型看得懂。</strong>
+三家都有 <code>isError</code> / <code>ok:false</code> 之类的字段，配错误信息，让模型据此改道。</p>
+<h3 id="doc23-2-4-权限与沙箱">2.4 权限与沙箱</h3>
+<table>
+<thead>
+<tr>
+<th>harness</th>
+<th>机制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DSH</td>
+<td><code>tools/pre-execute</code> 提供可扩展的<strong>拒绝/询问</strong>门禁；<code>ctx.tools.guard()</code> 提供<strong>单调</strong>拥有方策略（后续监听器不能把拒绝改回允许）；<code>dsh-sandbox</code> / <code>dsh-sandbox-policy</code> / <code>dsh-permission-presets</code> / <code>dsh-plan-mode</code></td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>每回合快照 <code>approval_policy</code> + <code>sandbox_policy{writable_roots, network_access}</code> + <code>permission_profile</code>；<strong>升级走工具参数</strong>（<code>sandbox_permissions:"require_escalated"</code> + <code>justification</code> + <code>prefix_rule</code>），不是全局开关</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td><strong>固定 6 步漏斗</strong>：hooks → deny 规则 → ask 规则 → permission mode → allow 规则 → <code>canUseTool</code> 回调。<strong>hook 的 allow 不能绕过 deny</strong>；规则写成 <code>Bash(npm test *)</code>、<code>Edit(//secrets/**)</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 6：权限是分层的、单调的、可审计的。</strong>
+"单调"指：一旦被拒绝，后置环节不能翻案（DSH 的 guard 明确写"后续 waterfall 监听器无法将守卫的拒绝重新变为允许"）。</p>
+<h3 id="doc23-2-5-上下文管理">2.5 上下文管理</h3>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>DSH</th>
+<th>Codex</th>
+<th>Claude Code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>压缩</td>
+<td><code>dsh-compaction</code> + <code>dsh-compaction-basic</code> + <code>dsh-compaction-tool-result-*</code>，在 <code>agent/pre-step</code> 观测压力</td>
+<td>自动摘要，且"仍能看到全部历史用户请求"</td>
+<td><strong>先丢弃较旧的工具输出，再摘要对话</strong>；保留最近 5 个文件；反复压缩仍填满则<strong>报错停止</strong>（防 thrashing）</td>
+</tr>
+<tr>
+<td>动态上下文</td>
+<td><code>systemPrompt.context()</code> 贡献的<strong>有序动态上下文</strong>，会变成模型历史里带来源的 runtime-context 快照</td>
+<td>user 消息里的 <code>&lt;environment_context&gt;</code>（cwd/shell/日期/时区/权限清单）</td>
+<td>system prompt 里的环境上下文段</td>
+</tr>
+<tr>
+<td>项目记忆</td>
+<td><code>dsh-skill-filesystem</code> + <code>dsh-agent-instructions</code></td>
+<td><code>AGENTS.md</code>（<code>world_state.state.agents_md</code>）</td>
+<td><code>CLAUDE.md</code> / <code>CLAUDE.local.md</code>，<strong>从根到 cwd 全部拼接</strong>，每次请求注入</td>
+</tr>
+<tr>
+<td>子智能体</td>
+<td><code>dsh-subagent</code> + <code>dsh-subagent-*</code>，<strong>在循环之外</strong>作为服务实现，用 <code>ctx.agents.create()</code></td>
+<td><code>/root</code> 团队 agent，4 个并发槽位，<code>fork_turns</code> 语义</td>
+<td><code>Agent</code> 工具，<strong>独立上下文窗口</strong>，只回传最终文本（官方量化约 1–2k token）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 7：子智能体首先是一种上下文压缩手段。</strong>
+Claude Code 官方量化：子智能体自己烧几万 token，回传给父级只有 1–2k。</p>
+<h3 id="doc23-2-6-系统提示词的组织">2.6 系统提示词的组织</h3>
+<table>
+<thead>
+<tr>
+<th>harness</th>
+<th>组织方式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>DSH</strong></td>
+<td><code>dsh-system-prompt</code> 注册表：<strong>有序段</strong> + 工具 schema + 具名变量。段顺序区间有约定：<code>-100</code> harness 身份、<code>0</code> 部署 persona、<code>100–199</code> 工具引导。支持 <code>complete:true</code> 段（成为唯一完整提示词）。变量 <code>{{name}}</code> 严格插值（未知引用直接抛错）。<strong>工具 schema 是组装结果的一部分</strong>——"模型获知自己能做什么是一个连贯整体"</td>
+</tr>
+<tr>
+<td>Codex</td>
+<td>三层：模型级 <code>base_instructions</code>（本机 17730 字符）+ developer 层（应用能力、多 agent 说明）+ user 层 <code>&lt;environment_context&gt;</code>；项目级 <code>AGENTS.md</code>；技能 <code>&lt;skills&gt;</code> + 每技能一份 <code>SKILL.md</code>（渐进披露）</td>
+</tr>
+<tr>
+<td>Claude Code</td>
+<td>三种起点：不设 → 极简默认；<code>preset:"claude_code"</code> → 完整提示；或完全自定义。官方建议取"正确的海拔"——既不要硬编码 if-else，也不要过度笼统</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同点 8：提示词是"组装"出来的，不是拼字符串。</strong>
+三家都有明确的<strong>分层/分段</strong>结构与<strong>动态上下文</strong>机制。</p>
+<hr />
+<h2 id="doc23-第三部分-本项目吸收了什么">第三部分：本项目吸收了什么</h2>
+<p>对照任务书第五节的要求，逐条说明设计映射。</p>
+<h3 id="doc23-3-1-吸收的模式">3.1 吸收的模式</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>借鉴的模式</th>
+<th>本项目落地</th>
+<th>对应任务书要求</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>只有循环是逻辑，其余是环节</strong></td>
+<td><code>agent/loop.py</code> 是唯一的循环实现；权限、门槛、记账、会话状态全部通过注册表的钩子与事件挂载</td>
+<td>5.1 完整流程</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>工具执行流水线</strong>（DSH 6 段 → 本项目 7 步）</td>
+<td><code>agent/tools/registry.py</code>：查表 → 解析 JSON → Schema 校验 → 前置门禁 → 执行（超时+取消）→ 后置处理 → 写调用记录</td>
+<td>5.2 工具设计</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>失败结构化回填，不伪造成功</strong></td>
+<td>每个失败返回 <code>{ok:false, error:{code, message, hint}}</code>，错误码见 <code>agent/errors.py</code>（20 个）</td>
+<td>5.2 失败处理 / 5.5 异常反馈</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>工具定义 = schema + 执行体 + 策略</strong></td>
+<td><code>ToolDefinition</code> 含 <code>parameters</code>（JSON Schema）、<code>timeout_s</code>、<code>concurrency_safe</code>、<code>requires_image</code>、<code>tags</code></td>
+<td>5.2 明确名称/用途/参数/返回/失败</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>主终止条件 = 没有 tool_calls</strong></td>
+<td><code>loop._run_steps()</code> 中 <code>if not calls: return</code></td>
+<td>5.1 完整流程</td>
+</tr>
+<tr>
+<td>6</td>
+<td><strong>轮数上限只作兜底</strong></td>
+<td><code>max_rounds=8</code>、<code>max_tool_calls=16</code>，并在超限时<strong>明确报错而非假装完成</strong></td>
+<td>5.1</td>
+</tr>
+<tr>
+<td>7</td>
+<td><strong>同一工具重复失败要熔断</strong></td>
+<td>同工具 + 同错误码 + 同参数连续 3 次 → <code>MAX_ROUNDS_EXCEEDED</code> 并给出提示</td>
+<td>5.5 异常处理</td>
+</tr>
+<tr>
+<td>8</td>
+<td><strong>工具输出截断</strong></td>
+<td>超过 6000 字符截断，并在截断处写明"请用更精确参数重试"</td>
+<td>工程健壮性</td>
+</tr>
+<tr>
+<td>9</td>
+<td><strong>会话 = append-only 事件日志</strong></td>
+<td><code>agent/session.py</code> 每会话一个 JSONL，事件类型：<code>session_meta</code> / <code>turn_context</code> / <code>user_message</code> / <code>assistant_message</code> / <code>tool_result</code> / <code>error</code> / <code>turn_end</code>；支持重放恢复</td>
+<td>5.4 多轮对话</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>一次 turn 一个策略快照</strong></td>
+<td><code>turn_context</code> 事件记录本轮的图片、阈值、工具清单、离线标记</td>
+<td>5.5 阈值由验证集确定</td>
+</tr>
+<tr>
+<td>11</td>
+<td><strong>提示词按段组装 + 动态上下文</strong></td>
+<td><code>agent/prompts.py</code>：<code>-100</code> 身份 / <code>0</code> 人设 / <code>100-120</code> 业务规则；<code>RuntimeContext</code> 每轮求值（日期、模型、阈值、会话状态）</td>
+<td>5.5 低置信度处理</td>
+</tr>
+<tr>
+<td>12</td>
+<td><strong>前置门禁（可扩展的 allow/deny）</strong></td>
+<td><code>registry.add_gate()</code>：需要图片的工具在会话没有图片时<strong>直接拒绝</strong>，不把无意义调用送进模型</td>
+<td>5.5 异常处理</td>
+</tr>
+<tr>
+<td>13</td>
+<td><strong>工具调用记录</strong></td>
+<td>每次调用写 <code>agent/data/tool_calls.jsonl</code>（会话、轮次、调用 ID、工具、参数、结果、耗时、错误码）</td>
+<td>3.2「提供工具调用记录」</td>
+</tr>
+<tr>
+<td>14</td>
+<td><strong>结构化决策建议</strong></td>
+<td><code>classify_car</code> 返回 <code>decision.action</code> = <code>accept</code> / <code>confirm_with_user</code> / <code>report_unknown</code> + 对应指引</td>
+<td>5.5 unknown 与低置信度</td>
+</tr>
+<tr>
+<td>15</td>
+<td><strong>业务工具与视觉得分离开</strong></td>
+<td>8 个工具分三类：视觉 1 个、知识库 2 个、档案 5 个</td>
+<td>5.2 至少 3 个工具</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc23-3-2-明确没有吸收的部分-及原因">3.2 明确<strong>没有</strong>吸收的部分（及原因）</h3>
+<table>
+<thead>
+<tr>
+<th>未吸收</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>子智能体 / Task 工具</td>
+<td>本任务书未要求；8 个工具的任务规模不需要上下文隔离</td>
+</tr>
+<tr>
+<td>上下文自动压缩</td>
+<td>单次会话消息量很小（&lt; 20 条），压缩带来的复杂度大于收益。<strong>但截断与熔断都做了</strong></td>
+</tr>
+<tr>
+<td>沙箱 / 审批弹窗</td>
+<td>本项目工具的副作用仅限本机 SQLite 与读图片，无 shell / 文件写入。<strong>门禁机制保留了</strong>（<code>add_gate</code>），只是默认策略宽松</td>
+</tr>
+<tr>
+<td>fork / rewind / checkpoint</td>
+<td>超出任务书范围；会话重放已实现，fork 是锦上添花</td>
+</tr>
+<tr>
+<td>多模型路由 / 降级</td>
+<td>任务书规定模型名固定为 <code>deepseek-v4-flash</code></td>
+</tr>
+<tr>
+<td>Code Mode（<code>run_code</code> 单工具）</td>
+<td>DSH 与 Codex 都在往"用代码编排工具"演进，但那是为<strong>几十个工具 + 复杂编排</strong>设计的。本项目 8 个工具，原生 Function Calling 更直观、也更容易向老师解释</td>
+</tr>
+<tr>
+<td>MCP 协议</td>
+<td>超出范围</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>关于 Code Mode 的说明</strong>：DSH 的 <code>dsh-tools</code> 支持 <code>mode: native | code | both</code>，
+Codex 新版也有 <code>exec</code>（V8 isolate + <code>tools.*</code> 编排）。
+这是两家都在走的方向，但<strong>本项目刻意选择了 <code>native</code></strong>——
+任务书要考察的是"模型提出函数名和参数、程序真正执行函数"这条链路，
+用代码编排会把这层遮蔽掉。</p>
+</blockquote>
+<hr />
+<h2 id="doc23-第四部分-本项目的具体设计">第四部分：本项目的具体设计</h2>
+<h3 id="doc23-4-1-目录与模块">4.1 目录与模块</h3>
+<div class="codehilite"><pre><span></span><code>agent/
+├── config.py     配置：模型名、路径、API Key 来源、各类阈值
+├── errors.py     20 个错误码 + AgentError / ToolError
+├── schema.py     轻量 JSON Schema 校验器（零额外依赖）
+├── llm.py        DeepSeekClient（真实）+ ScriptedClient（离线替身，测试替身）
+├── prompts.py    系统提示词分段组装 + 动态运行时上下文
+├── session.py    会话状态 + append-only 事件日志 + 重放恢复
+├── tools/
+│   ├── registry.py  工具注册表 + 7 步执行流水线
+│   ├── vision.py    classify_car       ← 任务书要求的视觉分类工具
+│   ├── profile.py   query_car_info / list_supported_cars
+│   └── garage.py    add_car_record / search_my_records / update_record_note
+│                    / delete_car_record / my_garage_stats
+└── loop.py       Agent Loop（唯一的循环实现）
+</code></pre></div>
+
+<h3 id="doc23-4-2-一轮请求的时序">4.2 一轮请求的时序</h3>
+<div class="codehilite"><pre><span></span><code>用户输入（可带图片）
+  │
+  ├─ 写 user_message 事件；记录 turn_context 快照
+  │
+  └─ 步骤循环（最多 max_rounds=8）
+       ├─ 组装：系统提示词（分段+动态上下文） + 历史 + 8 个工具 schema
+       ├─ 调用 DeepSeek（model=deepseek-v4-flash, tool_choice=auto）
+       ├─ 没有 tool_calls → 返回最终回答，结束
+       ├─ 有 tool_calls → 先落库 assistant 消息，再逐个执行
+       │    └─ 注册表流水线：查表→解析→校验→门禁→执行→后置→记账
+       │         · classify_car 会真实加载 C1+C2 集成模型并前向推理
+       │         · 结果吸收进 session（last_prediction / record_count）
+       └─ 结果以 role=tool 回填 → 下一轮
+  │
+  └─ 写 turn_end 事件；返回 TurnResult（含完整工具调用记录）
+</code></pre></div>
+
+<h3 id="doc23-4-3-与任务书第五节的逐条对照">4.3 与任务书第五节的逐条对照</h3>
+<table>
+<thead>
+<tr>
+<th>任务书要求</th>
+<th>出处</th>
+<th>实现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>统一通过 DeepSeek API，模型名固定 <code>deepseek-v4-flash</code></td>
+<td>5.1</td>
+<td><code>config.MODEL_NAME</code>，<code>DeepSeekClient</code> 走 <code>/chat/completions</code></td>
+</tr>
+<tr>
+<td>完成工具定义、参数传递、工具执行、结果回传、最终回答</td>
+<td>5.1</td>
+<td>见 4.2 时序</td>
+</tr>
+<tr>
+<td>模型不直接接收图片；图片由自训练视觉模型处理</td>
+<td>5.1</td>
+<td><code>classify_car</code> 的 schema <strong>只有文本参数</strong>；<code>loop</code> 只把"已上传图片"这个事实写进动态上下文</td>
+</tr>
+<tr>
+<td><strong>视觉识别必须通过工具调用执行</strong></td>
+<td>5.1</td>
+<td>图片路径不进提示词；模型必须调 <code>classify_car</code> 才拿到结果。离线替身的规则 0 也是"有图先调 classify_car"</td>
+</tr>
+<tr>
+<td>视觉分类工具：真实加载并调用本组训练的模型，返回类别和 confidence</td>
+<td>5.2</td>
+<td><code>agent/tools/vision.py</code>，复用任务一的 <code>CarEnsemble</code>（C1+C2 集成），返回 car_id / car_name / confidence / top_k / is_unknown</td>
+</tr>
+<tr>
+<td>其他工具至少 2 个</td>
+<td>5.2</td>
+<td>提供 <strong>7 个</strong>（知识库 2 + 档案 5）</td>
+</tr>
+<tr>
+<td>每个工具明确名称、用途、输入参数、返回结果、失败处理</td>
+<td>5.2</td>
+<td><code>registry.describe()</code> 可导出全部；失败统一为 <code>{ok:false, error:{code,message,hint}}</code></td>
+</tr>
+<tr>
+<td>连续调用 ≥3 个工具的完整任务</td>
+<td>5.3</td>
+<td>已实测：<code>classify_car → query_car_info → add_car_record</code>，一次请求内完成</td>
+</tr>
+<tr>
+<td>多轮对话，沿用上一轮结果</td>
+<td>5.4</td>
+<td>会话保存 <code>last_prediction</code>；<code>add_car_record</code> 的 <code>car_id</code> 可省略，自动沿用。已实测"第二轮只说『帮我记录下来』，无需重新上传"</td>
+</tr>
+<tr>
+<td>低置信度：展示 Top-K / 请用户确认 / 提示重拍</td>
+<td>5.5</td>
+<td><code>classify_car</code> 返回 <code>low_confidence</code> 与 <code>top_candidates</code>，<code>decision.action = confirm_with_user</code> 并给出指引；提示词有专门一段约束模型行为</td>
+</tr>
+<tr>
+<td>阈值须通过验证集确定并在报告中说明</td>
+<td>5.5</td>
+<td>「拒识阈值 t=0.25」由 <code>src/calibrate.py</code> 扫 204 组选出；「低置信度提示阈值 c=0.70」由 <code>tools/derive_confidence_threshold.py</code> 做选择性预测分析得到（≥0.70 的预测准确率 98.5%，低于它只有 74.9%）</td>
+</tr>
+<tr>
+<td>unknown 时告知"未识别为本组支持的车型"，不编造、不继续业务</td>
+<td>5.5</td>
+<td>工具返回 <code>is_unknown</code> + <code>decision.action=report_unknown</code>；<code>add_car_record</code> 会<strong>主动拒绝</strong>写入 unknown；提示词有专门一段</td>
+</tr>
+<tr>
+<td>处理图片读取失败、API 失败、工具失败</td>
+<td>5.5</td>
+<td><code>IMAGE_NOT_FOUND</code> / <code>IMAGE_UNREADABLE</code> / <code>MODEL_NOT_LOADED</code> / <code>API_REQUEST_FAILED</code> / <code>API_KEY_MISSING</code> / <code>TOOL_TIMEOUT</code> / <code>TOOL_FAILED</code> 等 20 个错误码</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc23-第五部分-两条工程决策的说明">第五部分：两条工程决策的说明</h2>
+<h3 id="doc23-5-1-为什么要有-离线替身-scriptedclient">5.1 为什么要有「离线替身」（ScriptedClient）</h3>
+<p><code>DEEPSEEK_API_KEY</code> 未配置时，系统<strong>不会崩溃</strong>，而是自动切到离线替身模式：</p>
+<ul>
+<li>用规则模拟模型的工具调用决策，<strong>驱动完全相同的 Agent Loop</strong>；</li>
+<li>因此可以在<strong>没有 Key、没有网络</strong>的环境下验证：工具注册、参数校验、
+  执行流水线、错误回传、多轮会话、Web 前端时间线是否全部正常；</li>
+<li><strong>它不是语言模型</strong>，产出的文字只是"能跑通"的证据，<strong>不能当作模型效果</strong>。
+  代码里每个替身回复都带「（离线演示模式：文字由脚本化替身生成。）」标注，
+  UI 上也会显示醒目提示。</li>
+</ul>
+<p>这是<strong>测试替身（test double）</strong>的常规做法，目的是把"环境依赖"与"代码正确性"解耦。</p>
+<h3 id="doc23-5-2-为什么把-决策建议-写进工具返回值">5.2 为什么把「决策建议」写进工具返回值</h3>
+<p>任务书 5.5 节要求模型在 unknown / 低置信度时采取特定行为。
+有两种实现方式：</p>
+<table>
+<thead>
+<tr>
+<th>方案</th>
+<th>做法</th>
+<th>问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>全部写在系统提示词里，指望模型每次都遵守</td>
+<td>提示词很长时容易被忽略；行为不可验证</td>
+</tr>
+<tr>
+<td>B</td>
+<td><strong>工具直接把"该走哪个分支"作为结构化字段返回</strong></td>
+<td>——</td>
+</tr>
+</tbody>
+</table>
+<p>本项目采用 B（并保留提示词里的对应段落作为双保险）：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;ok&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;car_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;is_unknown&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;report_unknown&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;guidance&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;模型判定该车不属于本组支持的 50 款车型。请如实告知用户…&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>好处：① 分支逻辑由<strong>代码</strong>决定，是确定的、可测试的；
+② 提示词可以更短；③ 报告里能直接引用工具返回值证明"确实做了低置信度处理"。</p>
+<hr />
+<h2 id="doc23-第六部分-一手证据摘录">第六部分：一手证据摘录</h2>
+<h3 id="doc23-6-1-dsh-的工具执行流水线-dsh-tools-readme-zh-md-原文">6.1 DSH 的工具执行流水线（<code>dsh-tools/README.zh.md</code> 原文）</h3>
+<blockquote>
+<p>工具插件注册各自的 schema 和执行器；agent loop 依次让每次调用经过
+<code>tools/pre-execute</code>（可扩展的允许／拒绝门禁）→ 已注册的单调守卫 →
+<code>tools/execute</code>（供超时／重试／指标插件使用的环绕分发包装层）→
+<code>tools/post-execute</code>（检查／替换结果、附加上下文）→ 由工具定义持有的
+<code>finalizeContent</code> 边界 → 仅观测的 <code>tools/result</code> 通知。</p>
+</blockquote>
+<h3 id="doc23-6-2-dsh-关于-轮次预算-的原话">6.2 DSH 关于「轮次预算」的原话</h3>
+<blockquote>
+<p><strong>没有内置轮次预算</strong>：工具调用或 steering 会让当前轮次继续；
+限制失控轮次的策略必须从既有生命周期扩展点（如 <code>agent/turn-stopping</code>）执行取消。</p>
+</blockquote>
+<h3 id="doc23-6-3-codex-的-rollout-记录类型-本机实测">6.3 Codex 的 rollout 记录类型（本机实测）</h3>
+<table>
+<thead>
+<tr>
+<th>记录类型</th>
+<th>关键字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>session_meta</code></td>
+<td><code>session_id, cwd, originator, base_instructions, dynamic_tools, context_window</code></td>
+</tr>
+<tr>
+<td><code>turn_context</code></td>
+<td><code>turn_id, cwd, approval_policy, sandbox_policy, permission_profile, model</code></td>
+</tr>
+<tr>
+<td><code>world_state</code></td>
+<td><code>agents_md, environments, current_date, timezone, filesystem</code></td>
+</tr>
+<tr>
+<td><code>response_item</code></td>
+<td><code>payload.type=message</code>（role: developer/user/assistant）</td>
+</tr>
+<tr>
+<td><code>event_msg</code></td>
+<td><code>task_started / task_complete / user_message</code></td>
+</tr>
+</tbody>
+</table>
+<p>（本项目的 <code>session.py</code> 事件类型就是参照这个结构设计的。）</p>
+<h3 id="doc23-6-4-claude-code-的权限评估顺序-官方文档">6.4 Claude Code 的权限评估顺序（官方文档）</h3>
+<blockquote>
+<p><code>1 hooks → 2 deny 规则 → 3 ask 规则 → 4 permission mode → 5 allow 规则 → 6 canUseTool 回调</code></p>
+<p>关键细节：hook 的 <code>allow</code> <strong>不能</strong>跳过 deny/ask 规则；<code>bypassPermissions</code> 也挡不住 deny 规则。</p>
+</blockquote>
+<hr />
+<h2 id="doc23-附录-调研产出物清单">附录：调研产出物清单</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>本文</td>
+<td>三家对比 + 本项目映射</td>
+</tr>
+<tr>
+<td><code>E:\Hanako\OH-WorkSpace\codex-agent-research.md</code></td>
+<td>Codex 调研完整报告（子代理产出）</td>
+</tr>
+<tr>
+<td><code>E:\Hanako\OH-WorkSpace\codex-exec-doc.txt</code></td>
+<td>Codex <code>exec</code> 工具的原始描述</td>
+</tr>
+<tr>
+<td><code>E:\Hanako\OH-WorkSpace\codex-request-body.txt</code></td>
+<td>Codex 出站请求体结构摘录</td>
+</tr>
+<tr>
+<td><code>E:\Hanako\OH-WorkSpace\research-raw/</code></td>
+<td>Claude Code 文档抓取原文与关键词扫描结果</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>Codex 与 Claude 的原始调研产物由子代理写入共享工作区，<strong>不属于本项目提交内容</strong>，
+仅作为调研过程的证据留存。</p>
+</blockquote><div class="docnav"><a class="prev" href="./23_源码清单与提交说明.html"><span class="dir">← 上一篇</span><span class="ttl">★ · 源码清单与提交说明</span></a><a class="next" href="./任务二三_智能体与Web系统说明.html"><span class="dir">下一篇 →</span><span class="ttl">21 · 智能体与 Web 系统说明</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

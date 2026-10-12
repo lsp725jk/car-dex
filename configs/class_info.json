@@ -1,0 +1,4964 @@
+[
+  {
+    "id": "0000",
+    "name_from_new": "江铃_凯运",
+    "name_from_old": "江铃_凯运==JMC_Kaiyun",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0001",
+    "name_from_new": "远程汽车_远程星智H",
+    "name_from_old": "远程汽车_远程星智H==Farizon Auto_Farizon Star H",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0002",
+    "name_from_new": "东风风神_东风风神E70",
+    "name_from_old": "东风风神_东风风神E70==Dongfeng Fengshen_E70",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0003",
+    "name_from_new": "宇通客车_宇通T7",
+    "name_from_old": "宇通客车_宇通T7==Yutong_T7",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0005",
+    "name_from_new": "宝马_宝马M5",
+    "name_from_old": "宝马_宝马M5==BMW_M5",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0006",
+    "name_from_new": "捷豹_捷豹F-PACE",
+    "name_from_old": "捷豹_捷豹F-PACE==Jaguar_F-PACE",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0007",
+    "name_from_new": "比亚迪_海豚",
+    "name_from_old": "比亚迪_海豚==BYD_Dolphin",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0008",
+    "name_from_new": "奥迪_奥迪A7L",
+    "name_from_old": "奥迪_奥迪A7L==Audi_Audi A7L",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0009",
+    "name_from_new": "沃尔沃_沃尔沃S90",
+    "name_from_old": "沃尔沃_沃尔沃S90==Volvo_Volvo S90",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0010",
+    "name_from_new": "荣威_荣威RX3",
+    "name_from_old": "荣威_荣威RX3==Roewe_RX3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0011",
+    "name_from_new": "捷豹_捷豹E-PACE",
+    "name_from_old": "捷豹_捷豹E-PACE==Jaguar_E-PACE",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0013",
+    "name_from_new": "本田_享域",
+    "name_from_old": "本田_享域==Honda_Envix",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0014",
+    "name_from_new": "保时捷_Cayenne Coupe",
+    "name_from_old": "保时捷_Cayenne Coupe==Porsche_Cayenne Coupe",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0015",
+    "name_from_new": "宝马_宝马6系GT",
+    "name_from_old": "宝马_宝马6系GT==BMW_6 Series GT",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0016",
+    "name_from_new": "现代_现代i20",
+    "name_from_old": "现代_现代i20==Hyundai_i20",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0017",
+    "name_from_new": "大众_ID.4 X",
+    "name_from_old": "大众_ID.4 X==Volkswagen_ID.4 X",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0018",
+    "name_from_new": "哪吒汽车_哪吒U",
+    "name_from_old": "哪吒汽车_哪吒U==Nezha Auto_Nezha U",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0019",
+    "name_from_new": "吉利汽车_星瑞",
+    "name_from_old": "吉利汽车_星瑞==Geely_Star Rui",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0020",
+    "name_from_new": "宝马_宝马M4",
+    "name_from_old": "宝马_宝马M4==BMW_M4",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0022",
+    "name_from_new": "名爵_MG Cyberster",
+    "name_from_old": "名爵_MG Cyberster==MG_MG Cyberster",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0023",
+    "name_from_new": "现代_名图",
+    "name_from_old": "现代_名图==Hyundai_Mistra",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0024",
+    "name_from_new": "吉利几何_吉利几何C",
+    "name_from_old": "吉利几何_吉利几何C==Geometry_C",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0025",
+    "name_from_new": "五菱汽车_五菱之光",
+    "name_from_old": "五菱汽车_五菱之光==Wuling Motors_Wuling Sunshine",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0026",
+    "name_from_new": "宝马_宝马5系PHEV",
+    "name_from_old": "宝马_宝马5系PHEV==BMW_5 Series PHEV",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0029",
+    "name_from_new": "保时捷_Macan",
+    "name_from_old": "保时捷_Macan==Porsche_Macan",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0030",
+    "name_from_new": "丰田_丰田bZ3",
+    "name_from_old": "丰田_丰田bZ3==Toyota_bZ3",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0032",
+    "name_from_new": "大众_大众CC",
+    "name_from_old": "大众_大众CC==Volkswagen_Volkswagen CC",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0034",
+    "name_from_new": "大众_探岳GTE",
+    "name_from_old": "大众_探岳GTE==Volkswagen_Tiguan GTE",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0035",
+    "name_from_new": "大众_朗逸",
+    "name_from_old": "大众_朗逸==Volkswagen_Lavida",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0037",
+    "name_from_new": "AITO_问界M5",
+    "name_from_old": "AITO_问界M5==AITO_Ask World M5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0038",
+    "name_from_new": "奥迪_奥迪Q5 e-tron",
+    "name_from_old": "奥迪_奥迪Q5 e-tron==Audi_Q5 e-tron",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0039",
+    "name_from_new": "丰田_赛那",
+    "name_from_old": "丰田_赛那==Toyota_Sienna",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0041",
+    "name_from_new": "吉利汽车_豪越L",
+    "name_from_old": "吉利汽车_豪越L==Geely_Haoyue L",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0043",
+    "name_from_new": "起亚_焕驰",
+    "name_from_old": "起亚_焕驰==Kia_Morning",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0044",
+    "name_from_new": "广汽传祺_传祺GS3",
+    "name_from_old": "广汽传祺_传祺GS3==GAC Trumpchi_Trumpchi GS3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0045",
+    "name_from_new": "岚图_岚图梦想家 EV",
+    "name_from_old": "岚图_岚图梦想家 EV==Lantu_Lantu Dreamer EV",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0046",
+    "name_from_new": "长安凯程_睿行M70",
+    "name_from_old": "长安凯程_睿行M70==Changan Kaicheng_Ruixing M70",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0047",
+    "name_from_new": "吉利汽车_星越L",
+    "name_from_old": "吉利汽车_星越L==Geely_Star Yue L",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0048",
+    "name_from_new": "马自达_马自达CX-4",
+    "name_from_old": "马自达_马自达CX-4==Mazda_Mazda CX-4",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0050",
+    "name_from_new": "金杯_金杯快运",
+    "name_from_old": "金杯_金杯快运==Jinbei_Fast Delivery",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0051",
+    "name_from_new": "长安跨越_跨越星V5 EV",
+    "name_from_old": "长安跨越_跨越星V5 EV==Changan Kuayue_Kuayue Star V5 EV",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0052",
+    "name_from_new": "广汽传祺_传祺GS4",
+    "name_from_old": "广汽传祺_传祺GS4==GAC Trumpchi_Trumpchi GS4",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0053",
+    "name_from_new": "阿斯顿·马丁_阿斯顿·马丁DB12",
+    "name_from_old": "阿斯顿·马丁_阿斯顿·马丁DB12==Aston Martin_Aston Martin DB12",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0055",
+    "name_from_new": "江汽集团_江淮T8",
+    "name_from_old": "江汽集团_江淮T8==JAC Motors_Jianghuai T8",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0056",
+    "name_from_new": "玛莎拉蒂_玛莎拉蒂MC20",
+    "name_from_old": "玛莎拉蒂_玛莎拉蒂MC20==Maserati_Maserati MC20",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0057",
+    "name_from_new": "奔驰_奔驰G级",
+    "name_from_old": "奔驰_奔驰G级==Mercedes-Benz_Mercedes-Benz G-Class",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0058",
+    "name_from_new": "比亚迪_比亚迪e9",
+    "name_from_old": "比亚迪_比亚迪e9==BYD_e9",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0059",
+    "name_from_new": "奔驰_奔驰GLC AMG",
+    "name_from_old": "奔驰_奔驰GLC AMG==Mercedes-Benz_GLC AMG",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0060",
+    "name_from_new": "上汽大通MAXUS_上汽大通MAXUS G50",
+    "name_from_old": "上汽大通MAXUS_上汽大通MAXUS G50==SAIC Maxus_SAIC Maxus G50",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0061",
+    "name_from_new": "丰田_埃尔法",
+    "name_from_old": "丰田_埃尔法==Toyota_Alphard",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0062",
+    "name_from_new": "斯巴鲁_FORESTER森林人",
+    "name_from_old": "斯巴鲁_FORESTER森林人==Subaru_Forester",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0063",
+    "name_from_new": "宝马_宝马3系",
+    "name_from_old": "宝马_宝马3系==BMW_BMW 3 Series",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0064",
+    "name_from_new": "日产_逍客",
+    "name_from_old": "日产_逍客==Nissan_Qashqai",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0065",
+    "name_from_new": "捷尼赛思_捷尼赛思G70",
+    "name_from_old": "捷尼赛思_捷尼赛思G70==Genesis_G70",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0067",
+    "name_from_new": "坦克_赛博坦克300",
+    "name_from_old": "坦克_赛博坦克300==Tank_CyberTank 300",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0068",
+    "name_from_new": "奇瑞_瑞虎8 PLUS鲲鹏e+",
+    "name_from_old": "奇瑞_瑞虎8 PLUS鲲鹏e+==Chery_Tiggo 8 PLUS Kunpeng e+",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0069",
+    "name_from_new": "吉利汽车_帝豪L HiP",
+    "name_from_old": "吉利汽车_帝豪L HiP==Geely_Emgrand L HiP",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0070",
+    "name_from_new": "北汽制造_王牌M7 EV",
+    "name_from_old": "北汽制造_王牌M7 EV==BAIC Weiwang_M7 EV",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0071",
+    "name_from_new": "保时捷_Panamera E-Hybrid",
+    "name_from_old": "保时捷_Panamera E-Hybrid==Porsche_Panamera E-Hybrid",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0072",
+    "name_from_new": "北汽制造_卡路里",
+    "name_from_old": "北汽制造_卡路里==BAIC Manufacturing_Calorie",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0073",
+    "name_from_new": "起亚_起亚K3",
+    "name_from_old": "起亚_起亚K3==Kia_K3",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0074",
+    "name_from_new": "北京_北京BJ80",
+    "name_from_old": "北京_北京BJ80==BAIC_BJ80",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0075",
+    "name_from_new": "起亚_起亚K5",
+    "name_from_old": "起亚_起亚K5==Kia_K5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0076",
+    "name_from_new": "奇瑞_瑞虎7 PLUS",
+    "name_from_old": "奇瑞_瑞虎7 PLUS==Chery_Tiggo 7 PLUS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0077",
+    "name_from_new": "福特_探险者",
+    "name_from_old": "福特_探险者==Ford_Explorer",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0078",
+    "name_from_new": "长安凯程_睿行M80",
+    "name_from_old": "长安凯程_睿行M80==Changan Kaicheng_Ruixing M80",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0080",
+    "name_from_new": "日产_途乐",
+    "name_from_old": "日产_途乐==Nissan_Patrol",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0081",
+    "name_from_new": "五菱汽车_五菱之光小卡",
+    "name_from_old": "五菱汽车_五菱之光小卡==Wuling Motors_Wuling Zhiguang Mini Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0082",
+    "name_from_new": "丰田_凌放HARRIER",
+    "name_from_old": "丰田_凌放HARRIER==Toyota_Harrier",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0083",
+    "name_from_new": "长安欧尚_长安欧尚Z6",
+    "name_from_old": "长安欧尚_长安欧尚Z6==Changan Oushang_Changan Oushang Z6",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0084",
+    "name_from_new": "丰田_Supra",
+    "name_from_old": "丰田_Supra==Toyota_Supra",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0085",
+    "name_from_new": "魏牌_蓝山DHT-PHEV",
+    "name_from_old": "魏牌_蓝山DHT-PHEV==Wei Brand_Lanshan DHT-PHEV",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0086",
+    "name_from_new": "丰田_凌尚",
+    "name_from_old": "丰田_凌尚==Toyota_Allion",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0087",
+    "name_from_new": "奔驰_奔驰EQS SUV",
+    "name_from_old": "奔驰_奔驰EQS SUV==Mercedes-Benz_EQS SUV",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0088",
+    "name_from_new": "长安_逸动EV",
+    "name_from_old": "长安_逸动EV==Changan_Eado EV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0089",
+    "name_from_new": "长城_风骏7",
+    "name_from_old": "长城_风骏7==Great Wall_Wingle 7",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0091",
+    "name_from_new": "沃尔沃_沃尔沃C40 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃C40 RECHARGE==Volvo_C40 Recharge",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0092",
+    "name_from_new": "本田_本田S660",
+    "name_from_old": "本田_本田S660==Honda_S660",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0093",
+    "name_from_new": "现代_现代i10",
+    "name_from_old": "现代_现代i10==Hyundai_i10",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0094",
+    "name_from_new": "捷途_捷途旅行者",
+    "name_from_old": "捷途_捷途旅行者==Jetour_Jetour Traveler",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0095",
+    "name_from_new": "中兴_大领主",
+    "name_from_old": "中兴_大领主==ZTE_Grand Lord",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0096",
+    "name_from_new": "上汽大通MAXUS_上汽大通MAXUS G20",
+    "name_from_old": "上汽大通MAXUS_上汽大通MAXUS G20==SAIC Maxus_G20",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0097",
+    "name_from_new": "捷途_捷途X90",
+    "name_from_old": "捷途_捷途X90==Jetour_X90",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0098",
+    "name_from_new": "SERES赛力斯_赛力斯SF5",
+    "name_from_old": "SERES赛力斯_赛力斯SF5==SERES_SF5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0099",
+    "name_from_new": "丰田_Mirai",
+    "name_from_old": "丰田_Mirai==Toyota_Mirai",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0101",
+    "name_from_new": "宝马_宝马i3",
+    "name_from_old": "宝马_宝马i3==BMW_BMW i3",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0102",
+    "name_from_new": "宝马_宝马i7",
+    "name_from_old": "宝马_宝马i7==BMW_i7",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0103",
+    "name_from_new": "大众_途观L PHEV",
+    "name_from_old": "大众_途观L PHEV==Volkswagen_Tiguan L PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0104",
+    "name_from_new": "奔驰_奔驰E级AMG",
+    "name_from_old": "奔驰_奔驰E级AMG==Mercedes-Benz_E-Class AMG",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0105",
+    "name_from_new": "捷达_捷达VS5",
+    "name_from_old": "捷达_捷达VS5==Jetta_Jetta VS5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0106",
+    "name_from_new": "五十铃_TAGA达咖",
+    "name_from_old": "五十铃_TAGA达咖==Isuzu_TAGA Dacar",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0107",
+    "name_from_new": "名爵_MG5天蝎座",
+    "name_from_old": "名爵_MG5天蝎座==MG_MG5 Scorpio",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0108",
+    "name_from_new": "福特_新世代全顺",
+    "name_from_old": "福特_新世代全顺==Ford_New Generation Transit",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0109",
+    "name_from_new": "奔驰_威霆",
+    "name_from_old": "奔驰_威霆==Mercedes-Benz_Mercedes-Benz Vito",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0110",
+    "name_from_new": "奥迪_奥迪A3",
+    "name_from_old": "奥迪_奥迪A3==Audi_Audi A3",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0111",
+    "name_from_new": "比亚迪_驱逐舰 05",
+    "name_from_old": "比亚迪_驱逐舰 05==BYD_Destroyer 05",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0112",
+    "name_from_new": "阿斯顿·马丁_阿斯顿·马丁DBX",
+    "name_from_old": "阿斯顿·马丁_阿斯顿·马丁DBX==Aston Martin_DBX",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0114",
+    "name_from_new": "丰田_卡罗拉双擎E+",
+    "name_from_old": "丰田_卡罗拉双擎E+==Toyota_Corolla Twin E+",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0115",
+    "name_from_new": "丰田_奕泽E进擎",
+    "name_from_old": "丰田_奕泽E进擎==Toyota_C-HR",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0116",
+    "name_from_new": "奇瑞_艾瑞泽5",
+    "name_from_old": "奇瑞_艾瑞泽5==Chery_Arrizo 5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0117",
+    "name_from_new": "五菱汽车_五菱荣光小卡EV",
+    "name_from_old": "五菱汽车_五菱荣光小卡EV==Wuling Motors_Wuling Rongguang Mini Truck EV",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0118",
+    "name_from_new": "特斯拉_Cybertruck",
+    "name_from_old": "特斯拉_Cybertruck==Tesla_Cybertruck",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0119",
+    "name_from_new": "凯迪拉克_凯迪拉克XT6",
+    "name_from_old": "凯迪拉克_凯迪拉克XT6==Cadillac_Cadillac XT6",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0120",
+    "name_from_new": "宝马_宝马X5",
+    "name_from_old": "宝马_宝马X5==BMW_BMW X5",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0121",
+    "name_from_new": "福田_图雅诺智蓝 EV",
+    "name_from_old": "福田_图雅诺智蓝 EV==Foton_Toyano Zhilan EV",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0122",
+    "name_from_new": "比亚迪_海豹",
+    "name_from_old": "比亚迪_海豹==BYD_Seal",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0123",
+    "name_from_new": "名爵_MG6",
+    "name_from_old": "名爵_MG6==MG_MG6",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0124",
+    "name_from_new": "本田_本田HR-V",
+    "name_from_old": "本田_本田HR-V==Honda_HR-V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0126",
+    "name_from_new": "捷豹_捷豹F-TYPE",
+    "name_from_old": "捷豹_捷豹F-TYPE==Jaguar_Jaguar F-TYPE",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0127",
+    "name_from_new": "东风小康_东风小康K02",
+    "name_from_old": "东风小康_东风小康K02==Dongfeng Xiaokang_Dongfeng Xiaokang K02",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0128",
+    "name_from_new": "思皓_花仙子",
+    "name_from_old": "思皓_花仙子==Sihao_Flower Fairy",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0129",
+    "name_from_new": "保时捷_保时捷911",
+    "name_from_old": "保时捷_保时捷911==Porsche_Porsche 911",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0130",
+    "name_from_new": "长安跨越_跨越星V5",
+    "name_from_old": "长安跨越_跨越星V5==Changan Kuayue_Kuayue Star V5",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0131",
+    "name_from_new": "沃尔沃_沃尔沃S60 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃S60 RECHARGE==Volvo_S60 Recharge",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0132",
+    "name_from_new": "长安_长安UNI-K",
+    "name_from_old": "长安_长安UNI-K==Changan_Changan UNI-K",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0133",
+    "name_from_new": "东风风神_皓极",
+    "name_from_old": "东风风神_皓极==Dongfeng Fengshen_Aeolus Haoji",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0134",
+    "name_from_new": "埃安_AION S",
+    "name_from_old": "埃安_AION S==GAC Aion_AION S",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0135",
+    "name_from_new": "奔腾_奔腾T90",
+    "name_from_old": "奔腾_奔腾T90==Besturn_T90",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0136",
+    "name_from_new": "别克_昂科威",
+    "name_from_old": "别克_昂科威==Buick_Envision",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0137",
+    "name_from_new": "凯迪拉克_凯迪拉克CT6",
+    "name_from_old": "凯迪拉克_凯迪拉克CT6==Cadillac_Cadillac CT6",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0138",
+    "name_from_new": "荣威_荣威RX5",
+    "name_from_old": "荣威_荣威RX5==Roewe_Roewe RX5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0139",
+    "name_from_new": "奔驰_奔驰A级",
+    "name_from_old": "奔驰_奔驰A级==Mercedes-Benz_Mercedes-Benz A-Class",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0140",
+    "name_from_new": "雪佛兰_开拓者",
+    "name_from_old": "雪佛兰_开拓者==Chevrolet_Trailblazer",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0141",
+    "name_from_new": "江淮瑞风_瑞风M3",
+    "name_from_old": "江淮瑞风_瑞风M3==JAC Refine_Refine M3",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0142",
+    "name_from_new": "福特_全顺",
+    "name_from_old": "福特_全顺==Ford_Transit",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0146",
+    "name_from_new": "奔驰_奔驰GLA AMG",
+    "name_from_old": "奔驰_奔驰GLA AMG==Mercedes-Benz_GLA AMG",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0147",
+    "name_from_new": "摩根_摩根Plus 4",
+    "name_from_old": "摩根_摩根Plus 4==Morgan_Plus Four",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0148",
+    "name_from_new": "哪吒汽车_哪吒AYA",
+    "name_from_old": "哪吒汽车_哪吒AYA==Nezha Auto_Nezha AYA",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0149",
+    "name_from_new": "路特斯_Emira",
+    "name_from_old": "路特斯_Emira==Lotus_Emira",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0151",
+    "name_from_new": "理念_广汽本田VE-1",
+    "name_from_old": "理念_广汽本田VE-1==Everus_VE-1",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0152",
+    "name_from_new": "奔驰_奔驰EQE SUV",
+    "name_from_old": "奔驰_奔驰EQE SUV==Mercedes-Benz_EQE SUV",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0153",
+    "name_from_new": "长安凯程_神骐T30",
+    "name_from_old": "长安凯程_神骐T30==Changan Kaicheng_Shenqi T30",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0154",
+    "name_from_new": "丰田_丰田86",
+    "name_from_old": "丰田_丰田86==Toyota_Toyota 86",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0155",
+    "name_from_new": "丰田_威兰达高性能版",
+    "name_from_old": "丰田_威兰达高性能版==Toyota_Venza",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0157",
+    "name_from_new": "星途_星途揽月",
+    "name_from_old": "星途_星途揽月==Exeed_Exeed Luny",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0158",
+    "name_from_new": "北汽昌河_北汽EV5",
+    "name_from_old": "北汽昌河_北汽EV5==BAIC Changhe_EV5",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0159",
+    "name_from_new": "奔驰_奔驰S级",
+    "name_from_old": "奔驰_奔驰S级==Mercedes-Benz_Mercedes-Benz S-Class",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0160",
+    "name_from_new": "五菱汽车_五菱宏光MINIEV",
+    "name_from_old": "五菱汽车_五菱宏光MINIEV==Wuling Motors_Wuling Hongguang MINIEV",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0161",
+    "name_from_new": "本田_缤智",
+    "name_from_old": "本田_缤智==Honda_HR-V",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0162",
+    "name_from_new": "东风小康_东风小康C31",
+    "name_from_old": "东风小康_东风小康C31==Dongfeng Xiaokang_Dongfeng Xiaokang C31",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0163",
+    "name_from_new": "东风纳米_东风纳米EX1",
+    "name_from_old": "东风纳米_东风纳米EX1==Dongfeng Nano_Dongfeng Nano EX1",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0164",
+    "name_from_new": "奔驰_迈巴赫S级",
+    "name_from_old": "奔驰_迈巴赫S级==Mercedes-Benz_Maybach S-Class",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0165",
+    "name_from_new": "东风小康_东风小康EC36",
+    "name_from_old": "东风小康_东风小康EC36==Dongfeng Xiaokang_EC36",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0166",
+    "name_from_new": "魏牌_高山",
+    "name_from_old": "魏牌_高山==Wei Brand_Gaoshan",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0167",
+    "name_from_new": "雪铁龙_雪铁龙C6",
+    "name_from_old": "雪铁龙_雪铁龙C6==Citroën_C6",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0168",
+    "name_from_new": "领克_领克06",
+    "name_from_old": "领克_领克06==Lynk & Co_Lynk & Co 06",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0169",
+    "name_from_new": "福特_EVOS",
+    "name_from_old": "福特_EVOS==Ford_EVOS",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0171",
+    "name_from_new": "比亚迪_元Pro",
+    "name_from_old": "比亚迪_元Pro==BYD_Yuan Pro",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0172",
+    "name_from_new": "比亚迪_比亚迪e2",
+    "name_from_old": "比亚迪_比亚迪e2==BYD_e2",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0173",
+    "name_from_new": "英菲尼迪_英菲尼迪Q50L",
+    "name_from_old": "英菲尼迪_英菲尼迪Q50L==Infiniti_Q50L",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0174",
+    "name_from_new": "smart_smart EQ forfour",
+    "name_from_old": "smart_smart EQ forfour==smart_EQ forfour",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0175",
+    "name_from_new": "奔驰_奔驰E级PHEV",
+    "name_from_old": "奔驰_奔驰E级PHEV==Mercedes-Benz_E-Class PHEV",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0176",
+    "name_from_new": "哈弗_哈弗酷狗",
+    "name_from_old": "哈弗_哈弗酷狗==Haval_Haval Cool Dog",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0177",
+    "name_from_new": "东风_锐骐",
+    "name_from_old": "东风_锐骐==Dongfeng_Rich",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0178",
+    "name_from_new": "丰田_柯斯达",
+    "name_from_old": "丰田_柯斯达==Toyota_Coaster",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0179",
+    "name_from_new": "众泰_众泰T300",
+    "name_from_old": "众泰_众泰T300==Zotye_T300",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0181",
+    "name_from_new": "Jeep_牧马人4xe PHEV",
+    "name_from_old": "Jeep_牧马人4xe PHEV==Jeep_Wrangler 4xe PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0182",
+    "name_from_new": "奔驰_迈巴赫GLS",
+    "name_from_old": "奔驰_迈巴赫GLS==Mercedes-Benz_Maybach GLS",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0183",
+    "name_from_new": "保时捷_保时捷718",
+    "name_from_old": "保时捷_保时捷718==Porsche_Porsche 718",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0184",
+    "name_from_new": "小鹏汽车_小鹏G9",
+    "name_from_old": "小鹏汽车_小鹏G9==Xpeng_Xpeng G9",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0185",
+    "name_from_new": "红旗_红旗H5",
+    "name_from_old": "红旗_红旗H5==Hongqi_Hongqi H5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0186",
+    "name_from_new": "本田_雅阁 PHEV",
+    "name_from_old": "本田_雅阁 PHEV==Honda_Accord PHEV",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0188",
+    "name_from_new": "阿斯顿·马丁_阿斯顿·马丁DB11",
+    "name_from_old": "阿斯顿·马丁_阿斯顿·马丁DB11==Aston Martin_Aston Martin DB11",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0190",
+    "name_from_new": "奇瑞_瑞虎8 PRO",
+    "name_from_old": "奇瑞_瑞虎8 PRO==Chery_Tiggo 8 PRO",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0191",
+    "name_from_new": "起亚_赛图斯",
+    "name_from_old": "起亚_赛图斯==Kia_Cerato",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0192",
+    "name_from_new": "比亚迪_唐DM",
+    "name_from_old": "比亚迪_唐DM==BYD_Tang DM",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0193",
+    "name_from_new": "长安_长安CS35 PLUS",
+    "name_from_old": "长安_长安CS35 PLUS==Changan_Changan CS35 PLUS",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0194",
+    "name_from_new": "红旗_红旗E-HS9",
+    "name_from_old": "红旗_红旗E-HS9==Hongqi_Hongqi E-HS9",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0195",
+    "name_from_new": "启辰_启辰D60",
+    "name_from_old": "启辰_启辰D60==Venucia_D60",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0196",
+    "name_from_new": "五菱汽车_五菱星驰",
+    "name_from_old": "五菱汽车_五菱星驰==Wuling Motors_Wuling Xingchi",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0198",
+    "name_from_new": "江汽集团_星锐",
+    "name_from_old": "江汽集团_星锐==JMC_Transit",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0200",
+    "name_from_new": "宝马_宝马X6",
+    "name_from_old": "宝马_宝马X6==BMW_X6",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0201",
+    "name_from_new": "广汽传祺_传祺M8",
+    "name_from_old": "广汽传祺_传祺M8==GAC Trumpchi_Trumpchi M8",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0202",
+    "name_from_new": "荣威_荣威iMAX8",
+    "name_from_old": "荣威_荣威iMAX8==Roewe_Roewe iMAX8",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0203",
+    "name_from_new": "名爵_MG7",
+    "name_from_old": "名爵_MG7==MG_MG7",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0204",
+    "name_from_new": "瑞驰_瑞驰EC35",
+    "name_from_old": "瑞驰_瑞驰EC35==Riich_EC35",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0205",
+    "name_from_new": "星途_星途追风 PHEV",
+    "name_from_old": "星途_星途追风 PHEV==Exeed_TxL PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0206",
+    "name_from_new": "兰博基尼_Revuelto",
+    "name_from_old": "兰博基尼_Revuelto==Lamborghini_Revuelto",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0207",
+    "name_from_new": "启辰_启辰D60 EV",
+    "name_from_old": "启辰_启辰D60 EV==Venucia_D60 EV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0208",
+    "name_from_new": "本田_皓影 PHEV",
+    "name_from_old": "本田_皓影 PHEV==Honda_HR-V PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0210",
+    "name_from_new": "长安凯程_欧诺S",
+    "name_from_old": "长安凯程_欧诺S==Changan Kaicheng_Ouno S",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0211",
+    "name_from_new": "名爵_MG5",
+    "name_from_old": "名爵_MG5==MG_MG5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0213",
+    "name_from_new": "丰田_雷凌",
+    "name_from_old": "丰田_雷凌==Toyota_Levin",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0214",
+    "name_from_new": "福田_祥菱M",
+    "name_from_old": "福田_祥菱M==Foton_Xiangling M",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0218",
+    "name_from_new": "长安_长安UNI-T",
+    "name_from_old": "长安_长安UNI-T==Changan_Changan UNI-T",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0220",
+    "name_from_new": "东风_御风EM26",
+    "name_from_old": "东风_御风EM26==Dongfeng_Yufeng EM26",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0221",
+    "name_from_new": "红旗_红旗LS7",
+    "name_from_old": "红旗_红旗LS7==Hongqi_Hongqi LS7",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0222",
+    "name_from_new": "宝马_宝马X7",
+    "name_from_old": "宝马_宝马X7==BMW_BMW X7",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0223",
+    "name_from_new": "东风风行_风行游艇",
+    "name_from_old": "东风风行_风行游艇==Dongfeng Fengxing_Yacht",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0224",
+    "name_from_new": "江铃_域虎9",
+    "name_from_old": "江铃_域虎9==JMC_Yuhu 9",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0225",
+    "name_from_new": "兰博基尼_Urus",
+    "name_from_old": "兰博基尼_Urus==Lamborghini_Urus",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0227",
+    "name_from_new": "腾势_腾势N7",
+    "name_from_old": "腾势_腾势N7==Denza_N7",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0228",
+    "name_from_new": "领克_领克05",
+    "name_from_old": "领克_领克05==Lynk & Co_Lynk & Co 05",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0230",
+    "name_from_new": "林肯_航海家",
+    "name_from_old": "林肯_航海家==Lincoln_Navigator",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0231",
+    "name_from_new": "荣威_荣威i5",
+    "name_from_old": "荣威_荣威i5==Roewe_Roewe i5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0232",
+    "name_from_new": "五菱汽车_五菱星辰",
+    "name_from_old": "五菱汽车_五菱星辰==Wuling Motors_Wuling Xingchen",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0233",
+    "name_from_new": "斯柯达_速派",
+    "name_from_old": "斯柯达_速派==Škoda_Superb",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0234",
+    "name_from_new": "蔚来_蔚来ES7",
+    "name_from_old": "蔚来_蔚来ES7==NIO_ES7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0236",
+    "name_from_new": "英菲尼迪_英菲尼迪QX60",
+    "name_from_old": "英菲尼迪_英菲尼迪QX60==Infiniti_QX60",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0238",
+    "name_from_new": "北京汽车_魔方",
+    "name_from_old": "北京汽车_魔方==BAIC_Magic Box",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0239",
+    "name_from_new": "大众_探岳",
+    "name_from_old": "大众_探岳==Volkswagen_Teramont",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0240",
+    "name_from_new": "东风_御风",
+    "name_from_old": "东风_御风==Dongfeng_Yufeng",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0241",
+    "name_from_new": "五十铃_庆铃五十铃T17",
+    "name_from_old": "五十铃_庆铃五十铃T17==Isuzu_Qingling Isuzu T17",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0242",
+    "name_from_new": "丰田_RAV4荣放双擎E+",
+    "name_from_old": "丰田_RAV4荣放双擎E+==Toyota_RAV4 Prime",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0244",
+    "name_from_new": "特斯拉_Roadster",
+    "name_from_old": "特斯拉_Roadster==Tesla_Roadster",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0245",
+    "name_from_new": "长城_山海炮",
+    "name_from_old": "长城_山海炮==Great Wall_Mountain and Sea Cannon",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0246",
+    "name_from_new": "福特_领界",
+    "name_from_old": "福特_领界==Ford_Territory",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0247",
+    "name_from_new": "丰田_一汽丰田bZ4X",
+    "name_from_old": "丰田_一汽丰田bZ4X==Toyota_bZ4X",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0249",
+    "name_from_new": "大众_威然",
+    "name_from_old": "大众_威然==Volkswagen_Viloran",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0250",
+    "name_from_new": "中国重汽VGV_VGV U75",
+    "name_from_old": "中国重汽VGV_VGV U75==China National Heavy Duty Truck Group VGV_U75",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0251",
+    "name_from_new": "别克_昂科旗",
+    "name_from_old": "别克_昂科旗==Buick_Enclave",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0252",
+    "name_from_new": "北汽制造_勇士",
+    "name_from_old": "北汽制造_勇士==BAIC_Warrior",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0255",
+    "name_from_new": "启辰_启辰T60 EV",
+    "name_from_old": "启辰_启辰T60 EV==Venucia_T60 EV",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0256",
+    "name_from_new": "沃尔沃_沃尔沃V60",
+    "name_from_old": "沃尔沃_沃尔沃V60==Volvo_V60",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0257",
+    "name_from_new": "东风纳米_纳米BOX",
+    "name_from_old": "东风纳米_纳米BOX==Dongfeng Nano_Nano BOX",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0259",
+    "name_from_new": "宝骏_宝骏KiWi EV",
+    "name_from_old": "宝骏_宝骏KiWi EV==Baojun_Baojun KiWi EV",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0260",
+    "name_from_new": "雷克萨斯_雷克萨斯LM",
+    "name_from_old": "雷克萨斯_雷克萨斯LM==Lexus_Lexus LM",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0261",
+    "name_from_new": "哈弗_哈弗H5",
+    "name_from_old": "哈弗_哈弗H5==Haval_Haval H5",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0262",
+    "name_from_new": "荣威_荣威Ei5",
+    "name_from_old": "荣威_荣威Ei5==Roewe_Ei5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0264",
+    "name_from_new": "MINI_MINI",
+    "name_from_old": "MINI_MINI==MINI_MINI",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0265",
+    "name_from_new": "五菱汽车_五菱荣光EV",
+    "name_from_old": "五菱汽车_五菱荣光EV==Wuling Motors_Wuling Rongguang EV",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0266",
+    "name_from_new": "奥迪_奥迪Q7",
+    "name_from_old": "奥迪_奥迪Q7==Audi_Audi Q7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0267",
+    "name_from_new": "大众_辉昂",
+    "name_from_old": "大众_辉昂==Volkswagen_Phauson",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0268",
+    "name_from_new": "大众_ID.6 X",
+    "name_from_old": "大众_ID.6 X==Volkswagen_ID.6 X",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0269",
+    "name_from_new": "东风小康_东风小康C36",
+    "name_from_old": "东风小康_东风小康C36==Dongfeng Xiaokang_C36",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0271",
+    "name_from_new": "奇瑞_欧萌达",
+    "name_from_old": "奇瑞_欧萌达==Chery_Omoda",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0272",
+    "name_from_new": "长安_长安CS75 PLUS",
+    "name_from_old": "长安_长安CS75 PLUS==Changan_Changan CS75 PLUS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0273",
+    "name_from_new": "长安凯程_长安之星9",
+    "name_from_old": "长安凯程_长安之星9==Changan Kaicheng_Changan Star 9",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0274",
+    "name_from_new": "北京汽车_北京EX3",
+    "name_from_old": "北京汽车_北京EX3==BAIC_Beijing EX3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0275",
+    "name_from_new": "MINI_MINI COUNTRYMAN",
+    "name_from_old": "MINI_MINI COUNTRYMAN==MINI_COUNTRYMAN",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0276",
+    "name_from_new": "哈弗_哈弗M6",
+    "name_from_old": "哈弗_哈弗M6==Haval_Haval M6",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0278",
+    "name_from_new": "大众_探岳X",
+    "name_from_old": "大众_探岳X==Volkswagen_Tayron X",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0279",
+    "name_from_new": "本田_本田LIFE",
+    "name_from_old": "本田_本田LIFE==Honda_Honda LIFE",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0280",
+    "name_from_new": "远程汽车_远程星享V",
+    "name_from_old": "远程汽车_远程星享V==Farizon Auto_Farizon Star V",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0281",
+    "name_from_new": "宝马_宝马1系",
+    "name_from_old": "宝马_宝马1系==BMW_BMW 1 Series",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0282",
+    "name_from_new": "奔驰_奔驰EQE",
+    "name_from_old": "奔驰_奔驰EQE==Mercedes-Benz_Mercedes-Benz EQE",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0283",
+    "name_from_new": "奇瑞_艾瑞泽5 PLUS",
+    "name_from_old": "奇瑞_艾瑞泽5 PLUS==Chery_Arrizo 5 PLUS",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0284",
+    "name_from_new": "宝马_宝马X4 M",
+    "name_from_old": "宝马_宝马X4 M==BMW_BMW X4 M",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0285",
+    "name_from_new": "东风小康_东风小康K01",
+    "name_from_old": "东风小康_东风小康K01==Dongfeng Xiaokang_Dongfeng Xiaokang K01",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0287",
+    "name_from_new": "奇瑞_瑞虎3x",
+    "name_from_old": "奇瑞_瑞虎3x==Chery_Tiggo 3x",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0288",
+    "name_from_new": "红旗_红旗E-HS3",
+    "name_from_old": "红旗_红旗E-HS3==Hongqi_E-HS3",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0289",
+    "name_from_new": "丰田_威飒",
+    "name_from_old": "丰田_威飒==Toyota_Venza",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0290",
+    "name_from_new": "奥迪_奥迪RS 5",
+    "name_from_old": "奥迪_奥迪RS 5==Audi_RS 5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0291",
+    "name_from_new": "雷克萨斯_雷克萨斯ES",
+    "name_from_old": "雷克萨斯_雷克萨斯ES==Lexus_Lexus ES",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0294",
+    "name_from_new": "长安欧尚_长安欧尚Z6 iDD新能源",
+    "name_from_old": "长安欧尚_长安欧尚Z6 iDD新能源==Changan Oushang_Changan Oushang Z6 iDD New Energy",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0296",
+    "name_from_new": "捷途_捷途X70",
+    "name_from_old": "捷途_捷途X70==Jetour_Jetour X70",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0298",
+    "name_from_new": "特斯拉_Model X",
+    "name_from_old": "特斯拉_Model X==Tesla_Model X",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0299",
+    "name_from_new": "本田_本田CR-V PHEV",
+    "name_from_old": "本田_本田CR-V PHEV==Honda_CR-V PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0300",
+    "name_from_new": "红旗_红旗HQ9",
+    "name_from_old": "红旗_红旗HQ9==Hongqi_Hongqi HQ9",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0302",
+    "name_from_new": "吉利汽车_远景X6",
+    "name_from_old": "吉利汽车_远景X6==Geely_Vision X6",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0303",
+    "name_from_new": "大众_桑塔纳",
+    "name_from_old": "大众_桑塔纳==Volkswagen_Santana",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0304",
+    "name_from_new": "宝马_宝马X4",
+    "name_from_old": "宝马_宝马X4==BMW_BMW X4",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0305",
+    "name_from_new": "英菲尼迪_英菲尼迪QX50",
+    "name_from_old": "英菲尼迪_英菲尼迪QX50==Infiniti_QX50",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0306",
+    "name_from_new": "大众_Arteon",
+    "name_from_old": "大众_Arteon==Volkswagen_Arteon",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0307",
+    "name_from_new": "红旗_红旗H9",
+    "name_from_old": "红旗_红旗H9==Hongqi_Hongqi H9",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0308",
+    "name_from_new": "现代_胜达",
+    "name_from_old": "现代_胜达==Hyundai_Santa Fe",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0309",
+    "name_from_new": "大众_途昂",
+    "name_from_old": "大众_途昂==Volkswagen_Teramont",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0310",
+    "name_from_new": "长安_逸动",
+    "name_from_old": "长安_逸动==Changan_Eado",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0311",
+    "name_from_new": "长安跨越_跨越王X1 EV",
+    "name_from_old": "长安跨越_跨越王X1 EV==Changan Kuayue_Kuayue King X1 EV",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0312",
+    "name_from_new": "大众_大众ID.3",
+    "name_from_old": "大众_大众ID.3==Volkswagen_Volkswagen ID.3",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0313",
+    "name_from_new": "DS_DS 9 PHEV",
+    "name_from_old": "DS_DS 9 PHEV==DS_9 PHEV",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0315",
+    "name_from_new": "大众_途安L",
+    "name_from_old": "大众_途安L==Volkswagen_Touran L",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0317",
+    "name_from_new": "奔驰_AMG GT",
+    "name_from_old": "奔驰_AMG GT==Mercedes-Benz_AMG GT",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0318",
+    "name_from_new": "特斯拉_Model Y",
+    "name_from_old": "特斯拉_Model Y==Tesla_Model Y",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0319",
+    "name_from_new": "东南_东南DX5",
+    "name_from_old": "东南_东南DX5==Soueast_DX5",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0320",
+    "name_from_new": "凯翼_炫界",
+    "name_from_old": "凯翼_炫界==Karry_Xuanjie",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0321",
+    "name_from_new": "长安_逸动DT",
+    "name_from_old": "长安_逸动DT==Changan_Eado DT",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0322",
+    "name_from_new": "比亚迪_秦EV",
+    "name_from_old": "比亚迪_秦EV==BYD_Qin EV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0323",
+    "name_from_new": "金杯_新海狮X30L",
+    "name_from_old": "金杯_新海狮X30L==Jinbei_New Sealion X30L",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0324",
+    "name_from_new": "长安凯程_神骐T20",
+    "name_from_old": "长安凯程_神骐T20==Changan Kaicheng_Shenqi T20",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0325",
+    "name_from_new": "奥迪_奥迪R8",
+    "name_from_old": "奥迪_奥迪R8==Audi_Audi R8",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0328",
+    "name_from_new": "起亚_奕跑",
+    "name_from_old": "起亚_奕跑==Kia_KX Cross",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0329",
+    "name_from_new": "奥迪_奥迪A7",
+    "name_from_old": "奥迪_奥迪A7==Audi_Audi A7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0331",
+    "name_from_new": "本田_ZR-V 致在",
+    "name_from_old": "本田_ZR-V 致在==Honda_ZR-V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0332",
+    "name_from_new": "奥迪_奥迪RS e-tron GT",
+    "name_from_old": "奥迪_奥迪RS e-tron GT==Audi_RS e-tron GT",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0333",
+    "name_from_new": "标致_标致2008",
+    "name_from_old": "标致_标致2008==Peugeot_Peugeot 2008",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0334",
+    "name_from_new": "沃尔沃_沃尔沃XC90",
+    "name_from_old": "沃尔沃_沃尔沃XC90==Volvo_Volvo XC90",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0335",
+    "name_from_new": "奔驰_奔驰GLB AMG",
+    "name_from_old": "奔驰_奔驰GLB AMG==Mercedes-Benz_GLB AMG",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0336",
+    "name_from_new": "奔腾_奔腾T77",
+    "name_from_old": "奔腾_奔腾T77==Besturn_T77",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0337",
+    "name_from_new": "捷途_捷途X90 PLUS",
+    "name_from_old": "捷途_捷途X90 PLUS==Jetour_Jetour X90 PLUS",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0338",
+    "name_from_new": "沃尔沃_沃尔沃V90",
+    "name_from_old": "沃尔沃_沃尔沃V90==Volvo_V90",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0340",
+    "name_from_new": "奥迪_奥迪Q6",
+    "name_from_old": "奥迪_奥迪Q6==Audi_Audi Q6",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0341",
+    "name_from_new": "奥迪_奥迪RS 7",
+    "name_from_old": "奥迪_奥迪RS 7==Audi_Audi RS 7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0342",
+    "name_from_new": "长安_长安CS15",
+    "name_from_old": "长安_长安CS15==Changan_Changan CS15",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0343",
+    "name_from_new": "东风风神_东风风神AX7",
+    "name_from_old": "东风风神_东风风神AX7==Dongfeng Fengshen_AX7",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0345",
+    "name_from_new": "华晨新日_华晨新日i03",
+    "name_from_old": "华晨新日_华晨新日i03==Brilliance Xinday_New Day i03",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0346",
+    "name_from_new": "五菱汽车_五菱荣光小卡",
+    "name_from_old": "五菱汽车_五菱荣光小卡==Wuling Motors_Wuling Rongguang Mini Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0347",
+    "name_from_new": "方程豹_豹5",
+    "name_from_old": "方程豹_豹5==Equation Leopard_Leopard 5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0348",
+    "name_from_new": "名爵_MG领航",
+    "name_from_old": "名爵_MG领航==MG_Pilot",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0349",
+    "name_from_new": "本田_奥德赛",
+    "name_from_old": "本田_奥德赛==Honda_Odyssey",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0350",
+    "name_from_new": "宝马_宝马2系",
+    "name_from_old": "宝马_宝马2系==BMW_BMW 2 Series",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0351",
+    "name_from_new": "菲亚特_菲亚特500e",
+    "name_from_old": "菲亚特_菲亚特500e==Fiat_500e",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0352",
+    "name_from_new": "东风风光_风光580",
+    "name_from_old": "东风风光_风光580==Dongfeng Fengguang_580",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0353",
+    "name_from_new": "迈凯伦_迈凯伦675LT",
+    "name_from_old": "迈凯伦_迈凯伦675LT==McLaren_675LT",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0354",
+    "name_from_new": "奔驰_奔驰CLA AMG",
+    "name_from_old": "奔驰_奔驰CLA AMG==Mercedes-Benz_CLA AMG",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0355",
+    "name_from_new": "起亚_傲跑",
+    "name_from_old": "起亚_傲跑==Kia_Seltos",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0356",
+    "name_from_new": "奇瑞_瑞虎5x",
+    "name_from_old": "奇瑞_瑞虎5x==Chery_Tiggo 5x",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0357",
+    "name_from_new": "东风小康_东风小康C32",
+    "name_from_old": "东风小康_东风小康C32==Dongfeng Xiaokang_Dongfeng Xiaokang C32",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0358",
+    "name_from_new": "长安_长安CS55 PLUS",
+    "name_from_old": "长安_长安CS55 PLUS==Changan_Changan CS55 PLUS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0360",
+    "name_from_new": "宝马_宝马7系",
+    "name_from_old": "宝马_宝马7系==BMW_BMW 7 Series",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0362",
+    "name_from_new": "奔驰_奔驰A级AMG",
+    "name_from_old": "奔驰_奔驰A级AMG==Mercedes-Benz_Mercedes-Benz A-Class AMG",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0363",
+    "name_from_new": "比亚迪_宋Pro DM-i",
+    "name_from_old": "比亚迪_宋Pro DM-i==BYD_Song Pro DM-i",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0364",
+    "name_from_new": "名爵_MG4 EV",
+    "name_from_old": "名爵_MG4 EV==MG_MG4 EV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0365",
+    "name_from_new": "开瑞_海豚EV",
+    "name_from_old": "开瑞_海豚EV==Karry_Dolphin EV",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0366",
+    "name_from_new": "魏牌_拿铁DHT",
+    "name_from_old": "魏牌_拿铁DHT==Wei Brand_Latte DHT",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0367",
+    "name_from_new": "本田_思域",
+    "name_from_old": "本田_思域==Honda_Civic",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0368",
+    "name_from_new": "日产_骐达TIIDA",
+    "name_from_old": "日产_骐达TIIDA==Nissan_Tiida",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0370",
+    "name_from_new": "宝马_宝马iX3",
+    "name_from_old": "宝马_宝马iX3==BMW_BMW iX3",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0371",
+    "name_from_new": "五菱汽车_凯捷Victory",
+    "name_from_old": "五菱汽车_凯捷Victory==Wuling Motors_Kaijie Victory",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0372",
+    "name_from_new": "岚图_岚图追光",
+    "name_from_old": "岚图_岚图追光==Lantu_Chase Light",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0374",
+    "name_from_new": "长安_长安UNI-V",
+    "name_from_old": "长安_长安UNI-V==Changan_Changan UNI-V",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0375",
+    "name_from_new": "零跑汽车_零跑C01",
+    "name_from_old": "零跑汽车_零跑C01==Leapmotor_Leapmotor C01",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0376",
+    "name_from_new": "标致_标致508L",
+    "name_from_old": "标致_标致508L==Peugeot_508L",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0377",
+    "name_from_new": "雪铁龙_天逸 C5 AIRCROSS",
+    "name_from_old": "雪铁龙_天逸 C5 AIRCROSS==Citroën_C5 Aircross",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0378",
+    "name_from_new": "现代_菲斯塔",
+    "name_from_old": "现代_菲斯塔==Hyundai_Fiesta",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0379",
+    "name_from_new": "本田_本田UR-V",
+    "name_from_old": "本田_本田UR-V==Honda_Honda UR-V",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0380",
+    "name_from_new": "大众_探影",
+    "name_from_old": "大众_探影==Volkswagen_Taos",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0381",
+    "name_from_new": "雪铁龙_凡尔赛C5 X",
+    "name_from_old": "雪铁龙_凡尔赛C5 X==Citroën_C5 X",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0382",
+    "name_from_new": "丰田_威尔法",
+    "name_from_old": "丰田_威尔法==Toyota_Alphard",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0383",
+    "name_from_new": "福田_风景G5",
+    "name_from_old": "福田_风景G5==Foton_View G5",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0384",
+    "name_from_new": "东风风行_风行T5",
+    "name_from_old": "东风风行_风行T5==Dongfeng Fengxing_T5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0385",
+    "name_from_new": "五十铃_D-MAX",
+    "name_from_old": "五十铃_D-MAX==Isuzu_D-MAX",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0389",
+    "name_from_new": "比亚迪_秦PLUS DM-i",
+    "name_from_old": "比亚迪_秦PLUS DM-i==BYD_Qin PLUS DM-i",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0390",
+    "name_from_new": "沃尔沃_沃尔沃XC60",
+    "name_from_old": "沃尔沃_沃尔沃XC60==Volvo_Volvo XC60",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0391",
+    "name_from_new": "合创汽车_合创A06",
+    "name_from_old": "合创汽车_合创A06==Hycan_A06",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0392",
+    "name_from_new": "奔驰_奔驰GLS AMG",
+    "name_from_old": "奔驰_奔驰GLS AMG==Mercedes-Benz_GLS AMG",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0393",
+    "name_from_new": "大众_速腾",
+    "name_from_old": "大众_速腾==Volkswagen_Jetta",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0394",
+    "name_from_new": "本田_皓影",
+    "name_from_old": "本田_皓影==Honda_HR-V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0395",
+    "name_from_new": "五菱汽车_五菱荣光新卡专用车",
+    "name_from_old": "五菱汽车_五菱荣光新卡专用车==Wuling Motors_Wuling Rongguang New Truck Special Purpose Vehicle",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0396",
+    "name_from_new": "宝马_宝马XM",
+    "name_from_old": "宝马_宝马XM==BMW_XM",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0397",
+    "name_from_new": "长安_长安CS95",
+    "name_from_old": "长安_长安CS95==Changan_CS95",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0398",
+    "name_from_new": "本田_飞度",
+    "name_from_old": "本田_飞度==Honda_Fit",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0399",
+    "name_from_new": "荣威_荣威eRX5",
+    "name_from_old": "荣威_荣威eRX5==Roewe_eRX5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0400",
+    "name_from_new": "奥迪_奥迪S4",
+    "name_from_old": "奥迪_奥迪S4==Audi_S4",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0401",
+    "name_from_new": "长安_长安UNI-K 智电iDD",
+    "name_from_old": "长安_长安UNI-K 智电iDD==Changan_UNI-K iDD",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0402",
+    "name_from_new": "别克_微蓝6",
+    "name_from_old": "别克_微蓝6==Buick_Velite 6",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0403",
+    "name_from_new": "钧天汽车_钧天黑武士Youth",
+    "name_from_old": "钧天汽车_钧天黑武士Youth==Juntian_Auto Black Warrior Youth",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0404",
+    "name_from_new": "宝马_宝马X1",
+    "name_from_old": "宝马_宝马X1==BMW_BMW X1",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0405",
+    "name_from_new": "五菱汽车_五菱荣光新卡",
+    "name_from_old": "五菱汽车_五菱荣光新卡==Wuling Motors_Wuling Rongguang New Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0407",
+    "name_from_new": "马自达_马自达CX-8",
+    "name_from_old": "马自达_马自达CX-8==Mazda_CX-8",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0408",
+    "name_from_new": "凯迪拉克_IQ锐歌",
+    "name_from_old": "凯迪拉克_IQ锐歌==Cadillac_Cadillac Lyriq",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0409",
+    "name_from_new": "长安_锐程CC",
+    "name_from_old": "长安_锐程CC==Changan_Raeton CC",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0410",
+    "name_from_new": "凌宝汽车_凌宝COCO",
+    "name_from_old": "凌宝汽车_凌宝COCO==Lingbao Auto_Lingbao COCO",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0411",
+    "name_from_new": "本田_型格",
+    "name_from_old": "本田_型格==Honda_Honda Envix",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0414",
+    "name_from_new": "斯柯达_柯米克GT",
+    "name_from_old": "斯柯达_柯米克GT==Škoda_Kamiq GT",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0415",
+    "name_from_new": "路虎_揽胜极光",
+    "name_from_old": "路虎_揽胜极光==Land Rover_Range Rover Evoque",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0416",
+    "name_from_new": "大运_悦虎",
+    "name_from_old": "大运_悦虎==Dayun_Yuehu",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0417",
+    "name_from_new": "北京_北京BJ90",
+    "name_from_old": "北京_北京BJ90==BAIC_BJ90",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0418",
+    "name_from_new": "大众_途岳",
+    "name_from_old": "大众_途岳==Volkswagen_Teramont",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0419",
+    "name_from_new": "奔腾_奔腾B70",
+    "name_from_old": "奔腾_奔腾B70==Besturn_B70",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0420",
+    "name_from_new": "大众_宝来",
+    "name_from_old": "大众_宝来==Volkswagen_Bora",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0421",
+    "name_from_new": "凌宝汽车_凌宝BOX",
+    "name_from_old": "凌宝汽车_凌宝BOX==Lingbao Auto_Lingbao BOX",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0422",
+    "name_from_new": "宾利_添越",
+    "name_from_old": "宾利_添越==Bentley_Bentayga",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0423",
+    "name_from_new": "道奇_RAM Trucks",
+    "name_from_old": "道奇_RAM Trucks==Dodge_RAM Trucks",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0424",
+    "name_from_new": "宝马_宝马X3 M",
+    "name_from_old": "宝马_宝马X3 M==BMW_BMW X3 M",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0425",
+    "name_from_new": "丰田_威兰达",
+    "name_from_old": "丰田_威兰达==Toyota_Venza",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0426",
+    "name_from_new": "福特_福特GT",
+    "name_from_old": "福特_福特GT==Ford_Ford GT",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0428",
+    "name_from_new": "零跑汽车_零跑T03",
+    "name_from_old": "零跑汽车_零跑T03==Leapmotor_Leapmotor T03",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0429",
+    "name_from_new": "雷克萨斯_雷克萨斯LX",
+    "name_from_old": "雷克萨斯_雷克萨斯LX==Lexus_Lexus LX",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0431",
+    "name_from_new": "橙仕_橙仕01",
+    "name_from_old": "橙仕_橙仕01==Chengshi_Chengshi 01",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0432",
+    "name_from_new": "奔驰_奔驰GLE",
+    "name_from_old": "奔驰_奔驰GLE==Mercedes-Benz_Mercedes-Benz GLE",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0433",
+    "name_from_new": "福田_图雅诺",
+    "name_from_old": "福田_图雅诺==Foton_Tunland",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0434",
+    "name_from_new": "斯柯达_柯珞克",
+    "name_from_old": "斯柯达_柯珞克==Škoda_Karoq",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0436",
+    "name_from_new": "广汽传祺_传祺M6",
+    "name_from_old": "广汽传祺_传祺M6==GAC Trumpchi_Trumpchi M6",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0437",
+    "name_from_new": "比亚迪_比亚迪D1",
+    "name_from_old": "比亚迪_比亚迪D1==BYD_BYD D1",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0438",
+    "name_from_new": "五菱汽车_五菱荣光V",
+    "name_from_old": "五菱汽车_五菱荣光V==Wuling Motors_Wuling Rongguang V",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0439",
+    "name_from_new": "斯巴鲁_CROSSTREK旭豹",
+    "name_from_old": "斯巴鲁_CROSSTREK旭豹==Subaru_Crosstrek",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0440",
+    "name_from_new": "奔驰_奔驰B级",
+    "name_from_old": "奔驰_奔驰B级==Mercedes-Benz_B-Class",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0441",
+    "name_from_new": "宝马_宝马M3",
+    "name_from_old": "宝马_宝马M3==BMW_M3",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0442",
+    "name_from_new": "蔚来_蔚来ET7",
+    "name_from_old": "蔚来_蔚来ET7==NIO_ET7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0443",
+    "name_from_new": "奔驰_奔驰EQB",
+    "name_from_old": "奔驰_奔驰EQB==Mercedes-Benz_EQB",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0444",
+    "name_from_new": "奥迪_奥迪RS Q8",
+    "name_from_old": "奥迪_奥迪RS Q8==Audi_RS Q8",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0445",
+    "name_from_new": "奔驰_奔驰CLA",
+    "name_from_old": "奔驰_奔驰CLA==Mercedes-Benz_Mercedes-Benz CLA",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0446",
+    "name_from_new": "北京_北京BJ30",
+    "name_from_old": "北京_北京BJ30==BAIC_BJ30",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0447",
+    "name_from_new": "哈弗_哈弗枭龙",
+    "name_from_old": "哈弗_哈弗枭龙==Haval_Jolion",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0448",
+    "name_from_new": "凯迪拉克_凯迪拉克XT4",
+    "name_from_old": "凯迪拉克_凯迪拉克XT4==Cadillac_Cadillac XT4",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0449",
+    "name_from_new": "奔驰_奔驰SL级AMG",
+    "name_from_old": "奔驰_奔驰SL级AMG==Mercedes-Benz_Mercedes-Benz SL-Class AMG",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0450",
+    "name_from_new": "吉利汽车_星越L 增程电动版",
+    "name_from_old": "吉利汽车_星越L 增程电动版==Geely_Star L ER-EV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0451",
+    "name_from_new": "奥迪_奥迪A5",
+    "name_from_old": "奥迪_奥迪A5==Audi_Audi A5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0452",
+    "name_from_new": "智己汽车_智己LS7",
+    "name_from_old": "智己汽车_智己LS7==Zhiji Auto_Zhiji LS7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0453",
+    "name_from_new": "猛士_猛士917",
+    "name_from_old": "猛士_猛士917==Mengshi_917",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0454",
+    "name_from_new": "奇瑞_瑞虎8",
+    "name_from_old": "奇瑞_瑞虎8==Chery_Tiggo 8",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0456",
+    "name_from_new": "奥迪_奥迪A8",
+    "name_from_old": "奥迪_奥迪A8==Audi_Audi A8",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0457",
+    "name_from_new": "奔腾_奔腾T55",
+    "name_from_old": "奔腾_奔腾T55==Besturn_T55",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0458",
+    "name_from_new": "别克_威朗",
+    "name_from_old": "别克_威朗==Buick_Verano",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0461",
+    "name_from_new": "吉利汽车_吉利ICON",
+    "name_from_old": "吉利汽车_吉利ICON==Geely_Geely ICON",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0462",
+    "name_from_new": "凯翼_轩度",
+    "name_from_old": "凯翼_轩度==Karry_KuanDu",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0464",
+    "name_from_new": "路虎_卫士",
+    "name_from_old": "路虎_卫士==Land Rover_Defender",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0465",
+    "name_from_new": "福特_Mustang",
+    "name_from_old": "福特_Mustang==Ford_Mustang",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0466",
+    "name_from_new": "长安凯程_长安凯程F300",
+    "name_from_old": "长安凯程_长安凯程F300==Changan Kaicheng_Kaicheng F300",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0467",
+    "name_from_new": "丰田_格瑞维亚",
+    "name_from_old": "丰田_格瑞维亚==Toyota_Granvia",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0468",
+    "name_from_new": "哈弗_哈弗H6",
+    "name_from_old": "哈弗_哈弗H6==Haval_Haval H6",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0469",
+    "name_from_new": "马自达_阿特兹",
+    "name_from_old": "马自达_阿特兹==Mazda_Atenza",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0470",
+    "name_from_new": "宾利_飞驰PHEV",
+    "name_from_old": "宾利_飞驰PHEV==Bentley_Flying Spur PHEV",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0471",
+    "name_from_new": "长安_长安CS85 COUPE",
+    "name_from_old": "长安_长安CS85 COUPE==Changan_CS85 COUPE",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0472",
+    "name_from_new": "路虎_发现",
+    "name_from_old": "路虎_发现==Land Rover_Discovery",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0473",
+    "name_from_new": "吉利汽车_博越",
+    "name_from_old": "吉利汽车_博越==Geely_Bo Yue",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0474",
+    "name_from_new": "丰田_皇冠陆放",
+    "name_from_old": "丰田_皇冠陆放==Toyota_Crown Kluger",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0475",
+    "name_from_new": "五十铃_铃拓",
+    "name_from_old": "五十铃_铃拓==Isuzu_Lingtuo",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0476",
+    "name_from_new": "雷克萨斯_雷克萨斯RX",
+    "name_from_old": "雷克萨斯_雷克萨斯RX==Lexus_Lexus RX",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0477",
+    "name_from_new": "哈弗_哈弗神兽",
+    "name_from_old": "哈弗_哈弗神兽==Haval_Divine Beast",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0478",
+    "name_from_new": "江汽集团_悍途",
+    "name_from_old": "江汽集团_悍途==JAC Motors_Hanttu",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0479",
+    "name_from_new": "本田_英仕派",
+    "name_from_old": "本田_英仕派==Honda_Inspire",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0480",
+    "name_from_new": "宝马_宝马Z4",
+    "name_from_old": "宝马_宝马Z4==BMW_BMW Z4",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0481",
+    "name_from_new": "本田_Freed",
+    "name_from_old": "本田_Freed==Honda_Freed",
+    "type_info": "MPV####小型MPV==MPV####Small MPV"
+  },
+  {
+    "id": "0482",
+    "name_from_new": "红旗_红旗HS7",
+    "name_from_old": "红旗_红旗HS7==Hongqi_Hongqi HS7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0483",
+    "name_from_new": "丰田_凯美瑞",
+    "name_from_old": "丰田_凯美瑞==Toyota_Camry",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0484",
+    "name_from_new": "马自达_马自达CX-5",
+    "name_from_old": "马自达_马自达CX-5==Mazda_Mazda CX-5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0485",
+    "name_from_new": "五菱汽车_五菱Nano EV",
+    "name_from_old": "五菱汽车_五菱Nano EV==Wuling Motors_Wuling Nano EV",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0486",
+    "name_from_new": "广汽传祺_传祺GS8",
+    "name_from_old": "广汽传祺_传祺GS8==GAC Trumpchi_Trumpchi GS8",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0487",
+    "name_from_new": "宝马_宝马8系",
+    "name_from_old": "宝马_宝马8系==BMW_BMW 8 Series",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0489",
+    "name_from_new": "上汽大通MAXUS_上汽大通MAXUS T70",
+    "name_from_old": "上汽大通MAXUS_上汽大通MAXUS T70==SAIC Maxus_SAIC Maxus T70",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0490",
+    "name_from_new": "起亚_智跑",
+    "name_from_old": "起亚_智跑==Kia_Sportage",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0491",
+    "name_from_new": "启辰_启辰大V",
+    "name_from_old": "启辰_启辰大V==Venucia_D V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0492",
+    "name_from_new": "捷豹_捷豹XFL",
+    "name_from_old": "捷豹_捷豹XFL==Jaguar_Jaguar XFL",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0493",
+    "name_from_new": "斯柯达_柯迪亚克GT",
+    "name_from_old": "斯柯达_柯迪亚克GT==Škoda_Kodiaq GT",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0495",
+    "name_from_new": "奔驰_奔驰GLE轿跑",
+    "name_from_old": "奔驰_奔驰GLE轿跑==Mercedes-Benz_GLE Coupe",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0496",
+    "name_from_new": "依维柯_依维柯得意",
+    "name_from_old": "依维柯_依维柯得意==Iveco_Daily",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0497",
+    "name_from_new": "宾利_飞驰",
+    "name_from_old": "宾利_飞驰==Bentley_Flying Spur",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0498",
+    "name_from_new": "阿尔法·罗密欧_Tonale托纳利",
+    "name_from_old": "阿尔法·罗密欧_Tonale托纳利==Alfa Romeo_Tonale",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0499",
+    "name_from_new": "捷尼赛思_捷尼赛思GV80",
+    "name_from_old": "捷尼赛思_捷尼赛思GV80==Genesis_GV80",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0500",
+    "name_from_new": "大众_T-ROC探歌",
+    "name_from_old": "大众_T-ROC探歌==Volkswagen_T-ROC",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0501",
+    "name_from_new": "中兴_小老虎",
+    "name_from_old": "中兴_小老虎==ZTE_Little Tiger",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0502",
+    "name_from_new": "大众_ID.6 CROZZ",
+    "name_from_old": "大众_ID.6 CROZZ==Volkswagen_ID.6 CROZZ",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0503",
+    "name_from_new": "马自达_马自达CX-50行也",
+    "name_from_old": "马自达_马自达CX-50行也==Mazda_Mazda CX-50",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0505",
+    "name_from_new": "东风风光_风光MINIEV",
+    "name_from_old": "东风风光_风光MINIEV==Dongfeng Fengguang_MINIEV",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0507",
+    "name_from_new": "领克_领克09 EM-P",
+    "name_from_old": "领克_领克09 EM-P==Lynk & Co_Lynk & Co 09 EM-P",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0508",
+    "name_from_new": "领克_领克02",
+    "name_from_old": "领克_领克02==Lynk & Co_02",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0509",
+    "name_from_new": "日产_途达",
+    "name_from_old": "日产_途达==Nissan_Terra",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0510",
+    "name_from_new": "丰田_汉兰达",
+    "name_from_old": "丰田_汉兰达==Toyota_Highlander",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0511",
+    "name_from_new": "欧拉_欧拉好猫",
+    "name_from_old": "欧拉_欧拉好猫==Ora_Ora Good Cat",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0513",
+    "name_from_new": "大众_高尔夫",
+    "name_from_old": "大众_高尔夫==Volkswagen_Golf",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0514",
+    "name_from_new": "长安跨越_跨越王X1",
+    "name_from_old": "长安跨越_跨越王X1==Changan Kuayue_Kuayue King X1",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0515",
+    "name_from_new": "别克_昂科拉GX",
+    "name_from_old": "别克_昂科拉GX==Buick_Encore GX",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0517",
+    "name_from_new": "现代_悦动",
+    "name_from_old": "现代_悦动==Hyundai_Yuedong",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0518",
+    "name_from_new": "江铃_顺达",
+    "name_from_old": "江铃_顺达==JMC_Shunda",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0519",
+    "name_from_new": "别克_君威",
+    "name_from_old": "别克_君威==Buick_Regal",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0520",
+    "name_from_new": "零跑汽车_零跑C11",
+    "name_from_old": "零跑汽车_零跑C11==Leapmotor_Leapmotor C11",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0521",
+    "name_from_new": "长安欧尚_奔奔E-Star",
+    "name_from_old": "长安欧尚_奔奔E-Star==Changan Oushang_BenBen E-Star",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0522",
+    "name_from_new": "大众_途昂X",
+    "name_from_old": "大众_途昂X==Volkswagen_Touareg X",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0524",
+    "name_from_new": "坦克_坦克300",
+    "name_from_old": "坦克_坦克300==Tank_Tank 300",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0525",
+    "name_from_new": "魏牌_拿铁DHT-PHEV",
+    "name_from_old": "魏牌_拿铁DHT-PHEV==Wei Brand_Latte DHT-PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0526",
+    "name_from_new": "路虎_发现运动版",
+    "name_from_old": "路虎_发现运动版==Land Rover_Discovery Sport",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0527",
+    "name_from_new": "宝骏_悦也",
+    "name_from_old": "宝骏_悦也==Baojun_Yueye",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0528",
+    "name_from_new": "长安_逸达",
+    "name_from_old": "长安_逸达==Changan_Eado",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0532",
+    "name_from_new": "标致_标致508L PHEV",
+    "name_from_old": "标致_标致508L PHEV==Peugeot_508L PHEV",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0533",
+    "name_from_new": "本田_冠道",
+    "name_from_old": "本田_冠道==Honda_Avancier",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0534",
+    "name_from_new": "长安_长安UNI-V 智电iDD",
+    "name_from_old": "长安_长安UNI-V 智电iDD==Changan_Changan UNI-V iDD",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0535",
+    "name_from_new": "金杯_阁瑞斯",
+    "name_from_old": "金杯_阁瑞斯==Jinbei_Geruisi",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0536",
+    "name_from_new": "林肯_林肯Z",
+    "name_from_old": "林肯_林肯Z==Lincoln_Lincoln Z",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0537",
+    "name_from_new": "江铃_宝典",
+    "name_from_old": "江铃_宝典==JMC_Baodian",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0538",
+    "name_from_new": "奥迪_奥迪A4 China Domestic Version",
+    "name_from_old": "奥迪_奥迪A4 China Domestic Version==Audi_Audi A4 China Domestic Version",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0539",
+    "name_from_new": "大众_凌渡",
+    "name_from_old": "大众_凌渡==Volkswagen_Lamando",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0540",
+    "name_from_new": "名爵_MG ONE",
+    "name_from_old": "名爵_MG ONE==MG_ONE",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0541",
+    "name_from_new": "马自达_马自达3 昂克赛拉",
+    "name_from_old": "马自达_马自达3 昂克赛拉==Mazda_Mazda3 Axela",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0542",
+    "name_from_new": "东风风神_奕炫",
+    "name_from_old": "东风风神_奕炫==Dongfeng Fengshen_Aeolus Yixuan",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0543",
+    "name_from_new": "本田_本田XR-V",
+    "name_from_old": "本田_本田XR-V==Honda_Honda XR-V",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0544",
+    "name_from_new": "DS_DS 9",
+    "name_from_old": "DS_DS 9==DS_9",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0545",
+    "name_from_new": "奥迪_奥迪Q2L",
+    "name_from_old": "奥迪_奥迪Q2L==Audi_Audi Q2L",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0546",
+    "name_from_new": "五菱汽车_五菱电卡",
+    "name_from_old": "五菱汽车_五菱电卡==Wuling Motors_Wuling Electric Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0548",
+    "name_from_new": "凯翼_凯翼昆仑",
+    "name_from_old": "凯翼_凯翼昆仑==Karry_Kunlun",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0549",
+    "name_from_new": "保时捷_Cayenne",
+    "name_from_old": "保时捷_Cayenne==Porsche_Cayenne",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0550",
+    "name_from_new": "长安凯程_神骐T10 EV",
+    "name_from_old": "长安凯程_神骐T10 EV==Changan Kaicheng_Shenqi T10 EV",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0551",
+    "name_from_new": "路虎_揽胜",
+    "name_from_old": "路虎_揽胜==Land Rover_Range Rover",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0552",
+    "name_from_new": "金龙_凯锐浩克",
+    "name_from_old": "金龙_凯锐浩克==King Long_Kai Rui Hulk",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0554",
+    "name_from_new": "东风小康_东风小康K05S",
+    "name_from_old": "东风小康_东风小康K05S==Dongfeng Xiaokang_K05S",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0555",
+    "name_from_new": "哈弗_哈弗H9",
+    "name_from_old": "哈弗_哈弗H9==Haval_Haval H9",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0556",
+    "name_from_new": "江铃_福顺",
+    "name_from_old": "江铃_福顺==Jiangling_Joyear",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0558",
+    "name_from_new": "现代_现代ix35",
+    "name_from_old": "现代_现代ix35==Hyundai_ix35",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0560",
+    "name_from_new": "捷尼赛思_捷尼赛思G90",
+    "name_from_old": "捷尼赛思_捷尼赛思G90==Genesis_G90",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0561",
+    "name_from_new": "斯柯达_明锐",
+    "name_from_old": "斯柯达_明锐==Škoda_Octavia",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0562",
+    "name_from_new": "奔驰_奔驰EQS",
+    "name_from_old": "奔驰_奔驰EQS==Mercedes-Benz_EQS",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0563",
+    "name_from_new": "东风风行_风行T5 EVO",
+    "name_from_old": "东风风行_风行T5 EVO==Dongfeng Fengxing_T5 EVO",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0564",
+    "name_from_new": "大众_途观L",
+    "name_from_old": "大众_途观L==Volkswagen_Tiguan L",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0565",
+    "name_from_new": "江铃_特顺",
+    "name_from_old": "江铃_特顺==Jiangling_Special Transit",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0567",
+    "name_from_new": "奥迪_奥迪Q8",
+    "name_from_old": "奥迪_奥迪Q8==Audi_Q8",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0568",
+    "name_from_new": "吉利汽车_帝豪",
+    "name_from_old": "吉利汽车_帝豪==Geely_Emgrand",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0569",
+    "name_from_new": "现代_伊兰特",
+    "name_from_old": "现代_伊兰特==Hyundai_Elantra",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0570",
+    "name_from_new": "五菱汽车_五菱荣光新卡EV",
+    "name_from_old": "五菱汽车_五菱荣光新卡EV==Wuling Motors_Wuling Rongguang New Truck EV",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0571",
+    "name_from_new": "阿尔法·罗密欧_Stelvio斯坦维",
+    "name_from_old": "阿尔法·罗密欧_Stelvio斯坦维==Alfa Romeo_Stelvio",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0572",
+    "name_from_new": "玛莎拉蒂_总裁",
+    "name_from_old": "玛莎拉蒂_总裁==Maserati_Quattroporte",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0574",
+    "name_from_new": "吉利银河_银河L6",
+    "name_from_old": "吉利银河_银河L6==Geely Galaxy_Galaxy L6",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0575",
+    "name_from_new": "长安_长安CS75",
+    "name_from_old": "长安_长安CS75==Changan_Changan CS75",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0576",
+    "name_from_new": "哈弗_哈弗赤兔",
+    "name_from_old": "哈弗_哈弗赤兔==Haval_Haval Chitu",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0577",
+    "name_from_new": "奥迪_奥迪e-tron GT",
+    "name_from_old": "奥迪_奥迪e-tron GT==Audi_e-tron GT",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0578",
+    "name_from_new": "蔚来_蔚来ET5",
+    "name_from_old": "蔚来_蔚来ET5==NIO_NIO ET5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0580",
+    "name_from_new": "奔驰_奔驰G级AMG",
+    "name_from_old": "奔驰_奔驰G级AMG==Mercedes-Benz_G-Class AMG",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0581",
+    "name_from_new": "中国重汽VGV_VGV U75PLUS",
+    "name_from_old": "中国重汽VGV_VGV U75PLUS==China National Heavy Duty Truck Group VGV_U75PLUS",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0582",
+    "name_from_new": "宝马_宝马5系",
+    "name_from_old": "宝马_宝马5系==BMW_BMW 5 Series",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0583",
+    "name_from_new": "小鹏汽车_小鹏P7",
+    "name_from_old": "小鹏汽车_小鹏P7==Xpeng_Xpeng P7",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0584",
+    "name_from_new": "五十铃_翼放ES7",
+    "name_from_old": "五十铃_翼放ES7==Isuzu_V-Max ES7",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0587",
+    "name_from_new": "奔驰_奔驰GLA",
+    "name_from_old": "奔驰_奔驰GLA==Mercedes-Benz_Mercedes-Benz GLA",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0588",
+    "name_from_new": "合创汽车_合创V09",
+    "name_from_old": "合创汽车_合创V09==Hechuang Auto_Hechuang V09",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0589",
+    "name_from_new": "别克_昂科拉",
+    "name_from_old": "别克_昂科拉==Buick_Encore",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0590",
+    "name_from_new": "五菱汽车_五菱缤果",
+    "name_from_old": "五菱汽车_五菱缤果==Wuling Motors_Wuling Bingo",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0591",
+    "name_from_new": "现代_库斯途",
+    "name_from_old": "现代_库斯途==Hyundai_Custo",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0594",
+    "name_from_new": "极越_极越01",
+    "name_from_old": "极越_极越01==Extreme K01",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0595",
+    "name_from_new": "凯迪拉克_凯迪拉克XT5",
+    "name_from_old": "凯迪拉克_凯迪拉克XT5==Cadillac_Cadillac XT5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0596",
+    "name_from_new": "雪佛兰_雪佛兰畅巡",
+    "name_from_old": "雪佛兰_雪佛兰畅巡==Chevrolet_Menlo",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0597",
+    "name_from_new": "沃尔沃_沃尔沃XC60 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃XC60 RECHARGE==Volvo_XC60 Recharge",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0600",
+    "name_from_new": "比亚迪_宋MAX DM-i",
+    "name_from_old": "比亚迪_宋MAX DM-i==BYD_Song MAX DM-i",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0601",
+    "name_from_new": "岚图_岚图FREE",
+    "name_from_old": "岚图_岚图FREE==Lantu_FREE",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0602",
+    "name_from_new": "仰望_仰望U8",
+    "name_from_old": "仰望_仰望U8==Yongwang_Yongwang U8",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0604",
+    "name_from_new": "Jeep_自由侠4xe",
+    "name_from_old": "Jeep_自由侠4xe==Jeep_Renegade 4xe",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0606",
+    "name_from_new": "比亚迪_元PLUS",
+    "name_from_old": "比亚迪_元PLUS==BYD_Yuan PLUS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0607",
+    "name_from_new": "红旗_红旗E-QM5",
+    "name_from_old": "红旗_红旗E-QM5==Hongqi_Hongqi E-QM5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0608",
+    "name_from_new": "极氪_ZEEKR 001",
+    "name_from_old": "极氪_ZEEKR 001==Zeekr_Zeekr 001",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0609",
+    "name_from_new": "宝马_宝马i4",
+    "name_from_old": "宝马_宝马i4==BMW_i4",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0610",
+    "name_from_new": "奔驰_奔驰EQC",
+    "name_from_old": "奔驰_奔驰EQC==Mercedes-Benz_EQC",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0611",
+    "name_from_new": "沃尔沃_沃尔沃XC40",
+    "name_from_old": "沃尔沃_沃尔沃XC40==Volvo_Volvo XC40",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0612",
+    "name_from_new": "保时捷_Panamera",
+    "name_from_old": "保时捷_Panamera==Porsche_Panamera",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0613",
+    "name_from_new": "宝马_宝马M8",
+    "name_from_old": "宝马_宝马M8==BMW_M8",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0614",
+    "name_from_new": "奥迪_奥迪Q5L",
+    "name_from_old": "奥迪_奥迪Q5L==Audi_Audi Q5L",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0615",
+    "name_from_new": "福特_锐际",
+    "name_from_old": "福特_锐际==Ford_Edge ST-Line",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0616",
+    "name_from_new": "丰田_锋兰达",
+    "name_from_old": "丰田_锋兰达==Toyota_Highlander",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0617",
+    "name_from_new": "福特_锐界",
+    "name_from_old": "福特_锐界==Ford_Edge",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0619",
+    "name_from_new": "福特_撼路者",
+    "name_from_old": "福特_撼路者==Ford_Bronco",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0620",
+    "name_from_new": "深蓝汽车_深蓝S7",
+    "name_from_old": "深蓝汽车_深蓝S7==Deep Blue Auto_Deep Blue S7",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0621",
+    "name_from_new": "北京汽车_北京X7",
+    "name_from_old": "北京汽车_北京X7==BAIC_X7",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0622",
+    "name_from_new": "丰田_丰田C-HR",
+    "name_from_old": "丰田_丰田C-HR==Toyota_Toyota C-HR",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0623",
+    "name_from_new": "比亚迪_比亚迪e3",
+    "name_from_old": "比亚迪_比亚迪e3==BYD_e3",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0624",
+    "name_from_new": "思铭_东风本田M-NV",
+    "name_from_old": "思铭_东风本田M-NV==Ciimo_Dongfeng Honda M-NV",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0627",
+    "name_from_new": "雪佛兰_迈锐宝XL",
+    "name_from_old": "雪佛兰_迈锐宝XL==Chevrolet_Malibu XL",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0630",
+    "name_from_new": "中国重汽VGV_VGV VX7",
+    "name_from_old": "中国重汽VGV_VGV VX7==China National Heavy Duty Truck Group VGV_VGV VX7",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0631",
+    "name_from_new": "Polestar极星_Polestar 1",
+    "name_from_old": "Polestar极星_Polestar 1==Polestar_Polestar 1",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0632",
+    "name_from_new": "奥迪_奥迪A6 China Domestic Version",
+    "name_from_old": "奥迪_奥迪A6 China Domestic Version==Audi_A6 China Domestic Version",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0633",
+    "name_from_new": "雪佛兰_星迈罗",
+    "name_from_old": "雪佛兰_星迈罗==Chevrolet_Camaro",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0634",
+    "name_from_new": "哈弗_哈弗H6S",
+    "name_from_old": "哈弗_哈弗H6S==Haval_H6S",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0635",
+    "name_from_new": "长城_金刚炮",
+    "name_from_old": "长城_金刚炮==Great Wall_King Kong Cannon",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0636",
+    "name_from_new": "长安欧尚_长安欧尚X7 PLUS",
+    "name_from_old": "长安欧尚_长安欧尚X7 PLUS==Changan Oushang_Changan Oushang X7 PLUS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0637",
+    "name_from_new": "广汽传祺_影酷",
+    "name_from_old": "广汽传祺_影酷==GAC Trumpchi_Yingku",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0638",
+    "name_from_new": "日产_蓝鸟",
+    "name_from_old": "日产_蓝鸟==Nissan_Bluebird",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0639",
+    "name_from_new": "金杯_金杯海狮",
+    "name_from_old": "金杯_金杯海狮==Jinbei_Sealion",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0640",
+    "name_from_new": "钧天汽车_勇猛者",
+    "name_from_old": "钧天汽车_勇猛者==Junten_Audacious",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0643",
+    "name_from_new": "奥迪_奥迪S5",
+    "name_from_old": "奥迪_奥迪S5==Audi_S5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0644",
+    "name_from_new": "保时捷_Taycan",
+    "name_from_old": "保时捷_Taycan==Porsche_Taycan",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0645",
+    "name_from_new": "凯翼_凯翼X3",
+    "name_from_old": "凯翼_凯翼X3==Karry_Karry X3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0646",
+    "name_from_new": "沃尔沃_沃尔沃XC90 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃XC90 RECHARGE==Volvo_XC90 Recharge",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0647",
+    "name_from_new": "五菱汽车_五菱Air ev晴空",
+    "name_from_old": "五菱汽车_五菱Air ev晴空==Wuling Motors_Wuling Air ev",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0648",
+    "name_from_new": "雷克萨斯_雷克萨斯NX",
+    "name_from_old": "雷克萨斯_雷克萨斯NX==Lexus_Lexus NX",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0649",
+    "name_from_new": "奔驰_奔驰GLC轿跑",
+    "name_from_old": "奔驰_奔驰GLC轿跑==Mercedes-Benz_GLC Coupe",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0650",
+    "name_from_new": "马自达_马自达CX-30 EV",
+    "name_from_old": "马自达_马自达CX-30 EV==Mazda_CX-30 EV",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0651",
+    "name_from_new": "欧拉_欧拉好猫GT",
+    "name_from_old": "欧拉_欧拉好猫GT==Ora_Ora Good Cat GT",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0652",
+    "name_from_new": "奔驰_奔驰GLB",
+    "name_from_old": "奔驰_奔驰GLB==Mercedes-Benz_Mercedes-Benz GLB",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0653",
+    "name_from_new": "奥迪_奥迪Q4 e-tron",
+    "name_from_old": "奥迪_奥迪Q4 e-tron==Audi_Audi Q4 e-tron",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0654",
+    "name_from_new": "上汽大通MAXUS_上汽大通MAXUS T90",
+    "name_from_old": "上汽大通MAXUS_上汽大通MAXUS T90==SAIC Maxus_SAIC Maxus T90",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0655",
+    "name_from_new": "日产_纳瓦拉",
+    "name_from_old": "日产_纳瓦拉==Nissan_Navarra",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0656",
+    "name_from_new": "荣威_荣威iMAX8 EV",
+    "name_from_old": "荣威_荣威iMAX8 EV==Roewe_iMAX8 EV",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0657",
+    "name_from_new": "北京_北京BJ40",
+    "name_from_old": "北京_北京BJ40==Beijing Auto_Beijing BJ40",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0658",
+    "name_from_new": "五十铃_mu-X牧游侠",
+    "name_from_old": "五十铃_mu-X牧游侠==Isuzu_mu-X",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0659",
+    "name_from_new": "本田_凌派",
+    "name_from_old": "本田_凌派==Honda_Gienia",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0660",
+    "name_from_new": "奇瑞_瑞虎7",
+    "name_from_old": "奇瑞_瑞虎7==Chery_Tiggo 7",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0662",
+    "name_from_new": "林肯_冒险家",
+    "name_from_old": "林肯_冒险家==Lincoln_Corsair",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0663",
+    "name_from_new": "福特_锐际PHEV",
+    "name_from_old": "福特_锐际PHEV==Ford_Escape PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0664",
+    "name_from_new": "东风风光_风光500",
+    "name_from_old": "东风风光_风光500==Dongfeng Fengguang_500",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0665",
+    "name_from_new": "本田_艾力绅",
+    "name_from_old": "本田_艾力绅==Honda_Odyssey",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0666",
+    "name_from_new": "奥迪_奥迪S6",
+    "name_from_old": "奥迪_奥迪S6==Audi_S6",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0667",
+    "name_from_new": "雷克萨斯_雷克萨斯RZ",
+    "name_from_old": "雷克萨斯_雷克萨斯RZ==Lexus_Lexus RZ",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0668",
+    "name_from_new": "法拉利_法拉利296",
+    "name_from_old": "法拉利_法拉利296==Ferrari_Ferrari 296",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0670",
+    "name_from_new": "哪吒汽车_哪吒V",
+    "name_from_old": "哪吒汽车_哪吒V==Nezha Auto_Nezha V",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0671",
+    "name_from_new": "宝马_宝马M2",
+    "name_from_old": "宝马_宝马M2==BMW_M2",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0672",
+    "name_from_new": "大众_ID.4 CROZZ",
+    "name_from_old": "大众_ID.4 CROZZ==Volkswagen_ID.4 CROZZ",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0673",
+    "name_from_new": "雪铁龙_雪铁龙C3-XR",
+    "name_from_old": "雪铁龙_雪铁龙C3-XR==Citroën_C3-XR",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0674",
+    "name_from_new": "标致_标致408",
+    "name_from_old": "标致_标致408==Peugeot_408",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0675",
+    "name_from_new": "沙龙汽车_机甲龙",
+    "name_from_old": "沙龙汽车_机甲龙==Saloon_Mecha Dragon",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0676",
+    "name_from_new": "福特_蒙迪欧",
+    "name_from_old": "福特_蒙迪欧==Ford_Mondeo",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0677",
+    "name_from_new": "东风风神_奕炫MAX",
+    "name_from_old": "东风风神_奕炫MAX==Dongfeng Fengshen_Yixuan MAX",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0678",
+    "name_from_new": "大众_揽境",
+    "name_from_old": "大众_揽境==Volkswagen_Tiguan",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0679",
+    "name_from_new": "玛莎拉蒂_Levante",
+    "name_from_old": "玛莎拉蒂_Levante==Maserati_Levante",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0680",
+    "name_from_new": "斯柯达_柯迪亚克",
+    "name_from_old": "斯柯达_柯迪亚克==Škoda_Kodiaq",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0681",
+    "name_from_new": "路虎_揽胜星脉",
+    "name_from_old": "路虎_揽胜星脉==Land Rover_Range Rover Velar",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0682",
+    "name_from_new": "本田_本田CR-V",
+    "name_from_old": "本田_本田CR-V==Honda_CR-V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0683",
+    "name_from_new": "宝马_宝马X3",
+    "name_from_old": "宝马_宝马X3==BMW_BMW X3",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0685",
+    "name_from_new": "东风风神_奕炫GS",
+    "name_from_old": "东风风神_奕炫GS==Dongfeng Fengshen_Aeolus GS",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0687",
+    "name_from_new": "开云汽车_开云电皮卡",
+    "name_from_old": "开云汽车_开云电皮卡==Kaiyun Motors_Kaiyun Electric Pickup",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0688",
+    "name_from_new": "奔驰_奔驰C级",
+    "name_from_old": "奔驰_奔驰C级==Mercedes-Benz_Mercedes-Benz C-Class",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0689",
+    "name_from_new": "蔚来_蔚来ES6",
+    "name_from_old": "蔚来_蔚来ES6==NIO_NIO ES6",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0690",
+    "name_from_new": "道奇_挑战者",
+    "name_from_old": "道奇_挑战者==Dodge_Challenger",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0691",
+    "name_from_new": "昊铂_昊铂SSR",
+    "name_from_old": "昊铂_昊铂SSR==Hao Bo_Hao Bo SSR",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0692",
+    "name_from_new": "金杯_小海狮X30",
+    "name_from_old": "金杯_小海狮X30==Jinbei_Minibus X30",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0693",
+    "name_from_new": "宾利_欧陆",
+    "name_from_old": "宾利_欧陆==Bentley_Continental",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0694",
+    "name_from_new": "北汽昌河_北斗星X5",
+    "name_from_old": "北汽昌河_北斗星X5==BAIC Changhe_Beidouxing X5",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0695",
+    "name_from_new": "奇瑞新能源_QQ冰淇淋",
+    "name_from_old": "奇瑞新能源_QQ冰淇淋==Chery New Energy_QQ Ice Cream",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0696",
+    "name_from_new": "别克_别克GL8",
+    "name_from_old": "别克_别克GL8==Buick_GL8",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0697",
+    "name_from_new": "东风风行_菱智",
+    "name_from_old": "东风风行_菱智==Dongfeng Fengxing_Lingzhi",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0698",
+    "name_from_new": "丰田_亚洲龙",
+    "name_from_old": "丰田_亚洲龙==Toyota_Avalon",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0699",
+    "name_from_new": "大众_Polo",
+    "name_from_old": "大众_Polo==Volkswagen_Polo",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0701",
+    "name_from_new": "标致_标致5008",
+    "name_from_old": "标致_标致5008==Peugeot_5008",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0702",
+    "name_from_new": "MINI_MINI CLUBMAN",
+    "name_from_old": "MINI_MINI CLUBMAN==MINI_MINI CLUBMAN",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0703",
+    "name_from_new": "比亚迪_比亚迪M3",
+    "name_from_old": "比亚迪_比亚迪M3==BYD_M3",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0704",
+    "name_from_new": "日产_日产GT-R",
+    "name_from_old": "日产_日产GT-R==Nissan_Nissan GT-R",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0707",
+    "name_from_new": "埃安_AION LX",
+    "name_from_old": "埃安_AION LX==GAC Aion_AION LX",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0708",
+    "name_from_new": "DS_DS 7",
+    "name_from_old": "DS_DS 7==DS_7",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0709",
+    "name_from_new": "奥迪_奥迪Q5L Sportback",
+    "name_from_old": "奥迪_奥迪Q5L Sportback==Audi_Audi Q5L Sportback",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0711",
+    "name_from_new": "金杯_新海狮S",
+    "name_from_old": "金杯_新海狮S==Jinbei_New Sealion S",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0713",
+    "name_from_new": "劳斯莱斯_古思特",
+    "name_from_old": "劳斯莱斯_古思特==Rolls-Royce_Ghost",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0715",
+    "name_from_new": "大众_途观X",
+    "name_from_old": "大众_途观X==Volkswagen_Tiguan X",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0716",
+    "name_from_new": "比亚迪_海鸥",
+    "name_from_old": "比亚迪_海鸥==BYD_Seagull",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0717",
+    "name_from_new": "名爵_MG ZS",
+    "name_from_old": "名爵_MG ZS==MG_ZS",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0718",
+    "name_from_new": "电动屋_YOUNG光小新",
+    "name_from_old": "电动屋_YOUNG光小新==Dongdian Motor_YOUNG Guang Xiaoxin",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0720",
+    "name_from_new": "劳斯莱斯_幻影",
+    "name_from_old": "劳斯莱斯_幻影==Rolls-Royce_Phantom",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0721",
+    "name_from_new": "路虎_揽胜极光PHEV",
+    "name_from_old": "路虎_揽胜极光PHEV==Land Rover_Range Rover Evoque PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0722",
+    "name_from_new": "本田_雅阁",
+    "name_from_old": "本田_雅阁==Honda_Accord",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0723",
+    "name_from_new": "红旗_红旗H7",
+    "name_from_old": "红旗_红旗H7==Hongqi_H7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0724",
+    "name_from_new": "丰田_威驰FS",
+    "name_from_old": "丰田_威驰FS==Toyota_Vios FS",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0725",
+    "name_from_new": "三菱_欧蓝德",
+    "name_from_old": "三菱_欧蓝德==Mitsubishi_Outlander",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0726",
+    "name_from_new": "奥迪_奥迪Q3 Sportback",
+    "name_from_old": "奥迪_奥迪Q3 Sportback==Audi_Q3 Sportback",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0727",
+    "name_from_new": "奔驰_奔驰E级",
+    "name_from_old": "奔驰_奔驰E级==Mercedes-Benz_Mercedes-Benz E-Class",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0728",
+    "name_from_new": "起亚_嘉华",
+    "name_from_old": "起亚_嘉华==Kia_Carnival",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0729",
+    "name_from_new": "中兴_威虎",
+    "name_from_old": "中兴_威虎==ZTE_Tiger",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0732",
+    "name_from_new": "捷尼赛思_捷尼赛思G80",
+    "name_from_old": "捷尼赛思_捷尼赛思G80==Genesis_G80",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0734",
+    "name_from_new": "阿斯顿·马丁_Vanquish",
+    "name_from_old": "阿斯顿·马丁_Vanquish==Aston Martin_Vanquish",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0735",
+    "name_from_new": "福特_途睿欧",
+    "name_from_old": "福特_途睿欧==Ford_Tourneo",
+    "type_info": "MPV####中型MPV==MPV####Mid-size MPV"
+  },
+  {
+    "id": "0736",
+    "name_from_new": "海马_海马7X",
+    "name_from_old": "海马_海马7X==Haima_7X",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0737",
+    "name_from_new": "雷达汽车_雷达RD6",
+    "name_from_old": "雷达汽车_雷达RD6==Radar Auto_Radar RD6",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0738",
+    "name_from_new": "捷途_捷途X70 PLUS",
+    "name_from_old": "捷途_捷途X70 PLUS==Jetour_Jetour X70 PLUS",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0739",
+    "name_from_new": "路虎_发现运动版PHEV",
+    "name_from_old": "路虎_发现运动版PHEV==Land Rover_Discovery Sport PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0740",
+    "name_from_new": "福田_风景G7",
+    "name_from_old": "福田_风景G7==Foton_View G7",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0741",
+    "name_from_new": "长城_风骏5",
+    "name_from_old": "长城_风骏5==Great Wall_Wingle 5",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0742",
+    "name_from_new": "雪佛兰_科鲁泽",
+    "name_from_old": "雪佛兰_科鲁泽==Chevrolet_Cruze",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0743",
+    "name_from_new": "哈弗_哈弗大狗",
+    "name_from_old": "哈弗_哈弗大狗==Haval_Haval Big Dog",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0744",
+    "name_from_new": "红旗_红旗HS5",
+    "name_from_old": "红旗_红旗HS5==Hongqi_Hongqi HS5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0745",
+    "name_from_new": "玛莎拉蒂_Ghibli",
+    "name_from_old": "玛莎拉蒂_Ghibli==Maserati_Ghibli",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0746",
+    "name_from_new": "别克_君越",
+    "name_from_old": "别克_君越==Buick_LaCrosse",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0748",
+    "name_from_new": "标致_标致4008",
+    "name_from_old": "标致_标致4008==Peugeot_4008",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0750",
+    "name_from_new": "起亚_起亚EV5",
+    "name_from_old": "起亚_起亚EV5==Kia_Kia EV5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0751",
+    "name_from_new": "荣威_CLEVER",
+    "name_from_old": "荣威_CLEVER==Roewe_CLEVER",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0753",
+    "name_from_new": "东风_锐骐6",
+    "name_from_old": "东风_锐骐6==Dongfeng_Rich 6",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0754",
+    "name_from_new": "创维汽车_创维HT-i",
+    "name_from_old": "创维汽车_创维HT-i==Skyworth_HT-i",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0755",
+    "name_from_new": "埃安_AION V",
+    "name_from_old": "埃安_AION V==GAC Aion_AION V",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0758",
+    "name_from_new": "起亚_狮铂拓界",
+    "name_from_old": "起亚_狮铂拓界==Kia_Seltos",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0759",
+    "name_from_new": "奔驰_奔驰CLS",
+    "name_from_old": "奔驰_奔驰CLS==Mercedes-Benz_Mercedes-Benz CLS",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0760",
+    "name_from_new": "广汽传祺_影豹",
+    "name_from_old": "广汽传祺_影豹==GAC Trumpchi_Shadow Leopard",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0761",
+    "name_from_new": "北京_北京F40",
+    "name_from_old": "北京_北京F40==Beijing Auto_Beijing F40",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0762",
+    "name_from_new": "奥迪_奥迪Q3",
+    "name_from_old": "奥迪_奥迪Q3==Audi_Audi Q3",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0763",
+    "name_from_new": "雪佛兰_探界者",
+    "name_from_old": "雪佛兰_探界者==Chevrolet_Equinox",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0764",
+    "name_from_new": "北京汽车_北京X3",
+    "name_from_old": "北京汽车_北京X3==BAIC_X3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0765",
+    "name_from_new": "五十铃_翼放ES5",
+    "name_from_old": "五十铃_翼放ES5==Isuzu_V-Max ES5",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0768",
+    "name_from_new": "福特_福克斯",
+    "name_from_old": "福特_福克斯==Ford_Focus",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0769",
+    "name_from_new": "长安欧尚_长安欧尚X5",
+    "name_from_old": "长安欧尚_长安欧尚X5==Changan Oushang_Changan Oushang X5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0770",
+    "name_from_new": "宝马_宝马X6 M",
+    "name_from_old": "宝马_宝马X6 M==BMW_X6 M",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0771",
+    "name_from_new": "东风风行_风行M7",
+    "name_from_old": "东风风行_风行M7==Dongfeng Fengxing_M7",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0773",
+    "name_from_new": "吉利汽车_嘉际",
+    "name_from_old": "吉利汽车_嘉际==Geely_Jiaji",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0774",
+    "name_from_new": "五十铃_翼放EC5",
+    "name_from_old": "五十铃_翼放EC5==Isuzu_Wing Release EC5",
+    "type_info": "卡车####轻卡==Truck####Light Truck"
+  },
+  {
+    "id": "0775",
+    "name_from_new": "北京汽车_北京EU5",
+    "name_from_old": "北京汽车_北京EU5==BAIC_EU5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0776",
+    "name_from_new": "大众_迈腾GTE",
+    "name_from_old": "大众_迈腾GTE==Volkswagen_Passat GTE",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0778",
+    "name_from_new": "保时捷_Cayenne E-Hybrid",
+    "name_from_old": "保时捷_Cayenne E-Hybrid==Porsche_Cayenne E-Hybrid",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0779",
+    "name_from_new": "菱势汽车_菱势黄金卡",
+    "name_from_old": "菱势汽车_菱势黄金卡==Ling Shi Motors_Ling Shi Gold Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0781",
+    "name_from_new": "日产_天籁",
+    "name_from_old": "日产_天籁==Nissan_Altima",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0782",
+    "name_from_new": "理想汽车_理想L7",
+    "name_from_old": "理想汽车_理想L7==Li Auto_Li L7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0783",
+    "name_from_new": "铃木_吉姆尼",
+    "name_from_old": "铃木_吉姆尼==Suzuki_Jimny",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0784",
+    "name_from_new": "马自达_马自达CX-30",
+    "name_from_old": "马自达_马自达CX-30==Mazda_Mazda CX-30",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0785",
+    "name_from_new": "宝骏_云朵",
+    "name_from_old": "宝骏_云朵==Baojun_U-Cloud",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0786",
+    "name_from_new": "凯迪拉克_凯迪拉克CT5",
+    "name_from_old": "凯迪拉克_凯迪拉克CT5==Cadillac_Cadillac CT5",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0787",
+    "name_from_new": "长安_长安F70",
+    "name_from_old": "长安_长安F70==Changan_Changan F70",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0788",
+    "name_from_new": "玛莎拉蒂_Grecale",
+    "name_from_old": "玛莎拉蒂_Grecale==Maserati_Grecale",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0789",
+    "name_from_new": "五菱汽车_五菱宏光PLUS",
+    "name_from_old": "五菱汽车_五菱宏光PLUS==Wuling Motors_Wuling Hongguang PLUS",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0790",
+    "name_from_new": "起亚_起亚KX5",
+    "name_from_old": "起亚_起亚KX5==Kia_KX5",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0791",
+    "name_from_new": "蔚来_蔚来ES8",
+    "name_from_old": "蔚来_蔚来ES8==NIO_NIO ES8",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0793",
+    "name_from_new": "大众_途锐",
+    "name_from_old": "大众_途锐==Volkswagen_Touareg",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0794",
+    "name_from_new": "Polestar极星_Polestar 2",
+    "name_from_old": "Polestar极星_Polestar 2==Polestar_2",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0795",
+    "name_from_new": "昊铂_昊铂GT",
+    "name_from_old": "昊铂_昊铂GT==Hoplus_GT",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0796",
+    "name_from_new": "奔驰_奔驰V级",
+    "name_from_old": "奔驰_奔驰V级==Mercedes-Benz_Mercedes-Benz V-Class",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0797",
+    "name_from_new": "吉利几何_吉利几何A",
+    "name_from_old": "吉利几何_吉利几何A==Geometry_A",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0798",
+    "name_from_new": "长安凯程_长安之星9 EV",
+    "name_from_old": "长安凯程_长安之星9 EV==Changan Kaicheng_Changan Star 9 EV",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0799",
+    "name_from_new": "五菱汽车_五菱荣光小卡专用车",
+    "name_from_old": "五菱汽车_五菱荣光小卡专用车==Wuling Motors_Wuling Rongguang Mini Truck Special Purpose Vehicle",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0801",
+    "name_from_new": "荣威_荣威i6 MAX",
+    "name_from_old": "荣威_荣威i6 MAX==Roewe_i6 MAX",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0802",
+    "name_from_new": "起亚_起亚EV6",
+    "name_from_old": "起亚_起亚EV6==Kia_EV6",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0803",
+    "name_from_new": "现代_途胜",
+    "name_from_old": "现代_途胜==Hyundai_Tucson",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0804",
+    "name_from_new": "大众_途铠",
+    "name_from_old": "大众_途铠==Volkswagen_Taigun",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0805",
+    "name_from_new": "比亚迪_唐EV",
+    "name_from_old": "比亚迪_唐EV==BYD_Tang EV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0806",
+    "name_from_new": "林肯_领航员",
+    "name_from_old": "林肯_领航员==Lincoln_Navigator",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0807",
+    "name_from_new": "奥迪_奥迪SQ5",
+    "name_from_old": "奥迪_奥迪SQ5==Audi_SQ5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0808",
+    "name_from_new": "吉利汽车_缤瑞",
+    "name_from_old": "吉利汽车_缤瑞==Geely_Binrui",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0809",
+    "name_from_new": "迈凯伦_迈凯伦Artura",
+    "name_from_old": "迈凯伦_迈凯伦Artura==McLaren_McLaren Artura",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0810",
+    "name_from_new": "高合_高合HiPhi X",
+    "name_from_old": "高合_高合HiPhi X==HiPhi_HiPhi X",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0811",
+    "name_from_new": "东风风光_风光330",
+    "name_from_old": "东风风光_风光330==Dongfeng Fengguang_Fengguang 330",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0812",
+    "name_from_new": "蔚来_蔚来ET5T",
+    "name_from_old": "蔚来_蔚来ET5T==NIO_ET5T",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0814",
+    "name_from_new": "领克_领克01 PHEV",
+    "name_from_old": "领克_领克01 PHEV==Lynk & Co_01 PHEV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0816",
+    "name_from_new": "江铃_域虎7",
+    "name_from_old": "江铃_域虎7==JMC_Yuhu 7",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0817",
+    "name_from_new": "欧拉_欧拉芭蕾猫",
+    "name_from_old": "欧拉_欧拉芭蕾猫==Ora_Ballet Cat",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0818",
+    "name_from_new": "飞凡汽车_飞凡R7",
+    "name_from_old": "飞凡汽车_飞凡R7==Feifan Auto_Feifan R7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0820",
+    "name_from_new": "沃尔沃_沃尔沃XC40 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃XC40 RECHARGE==Volvo_XC40 Recharge",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0821",
+    "name_from_new": "福田_大将军G9",
+    "name_from_old": "福田_大将军G9==Foton_General G9",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0822",
+    "name_from_new": "阿斯顿·马丁_阿斯顿·马丁DBS",
+    "name_from_old": "阿斯顿·马丁_阿斯顿·马丁DBS==Aston Martin_Aston Martin DBS",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0823",
+    "name_from_new": "丰田_RAV4荣放",
+    "name_from_old": "丰田_RAV4荣放==Toyota_RAV4",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0824",
+    "name_from_new": "吉利几何_吉利几何E萤火虫",
+    "name_from_old": "吉利几何_吉利几何E萤火虫==Geely Geometry_Geely Geometry E Firefly",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0825",
+    "name_from_new": "东风_猛士M50",
+    "name_from_old": "东风_猛士M50==Dongfeng_Mengshi M50",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0826",
+    "name_from_new": "大众_迈腾",
+    "name_from_old": "大众_迈腾==Volkswagen_Magotan",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0827",
+    "name_from_new": "特斯拉_Model S",
+    "name_from_old": "特斯拉_Model S==Tesla_Model S",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0828",
+    "name_from_new": "福特_领睿",
+    "name_from_old": "福特_领睿==Ford_Evolve",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0829",
+    "name_from_new": "丰田_广汽丰田bZ4X",
+    "name_from_old": "丰田_广汽丰田bZ4X==Toyota_bZ4X",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0830",
+    "name_from_new": "小米汽车_小米SU7",
+    "name_from_old": "小米汽车_小米SU7==Xiaomi_Xiaomi SU7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0831",
+    "name_from_new": "云度_云兔",
+    "name_from_old": "云度_云兔==Yudo_π3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0833",
+    "name_from_new": "捷达_捷达VA3",
+    "name_from_old": "捷达_捷达VA3==Jetta_VA3",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0834",
+    "name_from_new": "雷克萨斯_雷克萨斯LS",
+    "name_from_old": "雷克萨斯_雷克萨斯LS==Lexus_Lexus LS",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0835",
+    "name_from_new": "东南_东南DX3",
+    "name_from_old": "东南_东南DX3==Soueast_DX3",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0836",
+    "name_from_new": "广汽传祺_传祺GA6",
+    "name_from_old": "广汽传祺_传祺GA6==GAC Trumpchi_GA6",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0837",
+    "name_from_new": "奔驰_奔驰C级AMG",
+    "name_from_old": "奔驰_奔驰C级AMG==Mercedes-Benz_C-Class AMG",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0838",
+    "name_from_new": "捷途_捷途大圣",
+    "name_from_old": "捷途_捷途大圣==Jetour_Jetour Dasheng",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0839",
+    "name_from_new": "凯迪拉克_凯迪拉克CT4",
+    "name_from_old": "凯迪拉克_凯迪拉克CT4==Cadillac_Cadillac CT4",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0841",
+    "name_from_new": "阿维塔_阿维塔 11",
+    "name_from_old": "阿维塔_阿维塔 11==Avatr_Avatr 11",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0842",
+    "name_from_new": "北汽制造_勇士皮卡",
+    "name_from_old": "北汽制造_勇士皮卡==BAIC Manufacturing_Warrior Pickup",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0843",
+    "name_from_new": "科尼赛克_Gemera",
+    "name_from_old": "科尼赛克_Gemera==Koenigsegg_Gemera",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0844",
+    "name_from_new": "奇瑞_瑞虎8 PLUS",
+    "name_from_old": "奇瑞_瑞虎8 PLUS==Chery_Tiggo 8 PLUS",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0845",
+    "name_from_new": "合创汽车_合创Z03",
+    "name_from_old": "合创汽车_合创Z03==Hycan_Z03",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0847",
+    "name_from_new": "大众_蔚揽",
+    "name_from_old": "大众_蔚揽==Volkswagen_Teramont",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0848",
+    "name_from_new": "阿尔法·罗密欧_Giulia朱丽叶",
+    "name_from_old": "阿尔法·罗密欧_Giulia朱丽叶==Alfa Romeo_Giulia",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0849",
+    "name_from_new": "小鹏汽车_小鹏P5",
+    "name_from_old": "小鹏汽车_小鹏P5==Xpeng_P5",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0851",
+    "name_from_new": "领克_领克09",
+    "name_from_old": "领克_领克09==Lynk & Co_Lynk & Co 09",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0852",
+    "name_from_new": "阿斯顿·马丁_Vantage",
+    "name_from_old": "阿斯顿·马丁_Vantage==Aston Martin_Vantage",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0853",
+    "name_from_new": "小鹏汽车_小鹏G3",
+    "name_from_old": "小鹏汽车_小鹏G3==Xpeng_G3",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0854",
+    "name_from_new": "劳斯莱斯_库里南",
+    "name_from_old": "劳斯莱斯_库里南==Rolls-Royce_Cullinan",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0855",
+    "name_from_new": "广汽传祺_传祺GA8",
+    "name_from_old": "广汽传祺_传祺GA8==GAC Trumpchi_GA8",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0856",
+    "name_from_new": "路特斯_路特斯Eletre",
+    "name_from_old": "路特斯_路特斯Eletre==Lotus_Eletre",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0857",
+    "name_from_new": "雷克萨斯_雷克萨斯UX",
+    "name_from_old": "雷克萨斯_雷克萨斯UX==Lexus_UX",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0858",
+    "name_from_new": "蓝电_蓝电E5",
+    "name_from_old": "蓝电_蓝电E5==Blue Electric_Blue Electric E5",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0859",
+    "name_from_new": "五菱汽车_五菱佳辰",
+    "name_from_old": "五菱汽车_五菱佳辰==Wuling Motors_Wuling Jiachen",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0861",
+    "name_from_new": "坦克_坦克500",
+    "name_from_old": "坦克_坦克500==Tank_Tank 500",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0864",
+    "name_from_new": "ARCFOX极狐_极狐 阿尔法S",
+    "name_from_old": "ARCFOX极狐_极狐 阿尔法S==ARCFOX_αS",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0865",
+    "name_from_new": "日产_楼兰",
+    "name_from_old": "日产_楼兰==Nissan_Murano",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0866",
+    "name_from_new": "宝马_宝马iX",
+    "name_from_old": "宝马_宝马iX==BMW_iX",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0867",
+    "name_from_new": "江汽集团_江淮iEV7",
+    "name_from_old": "江汽集团_江淮iEV7==JAC Motors_JAC iEV7",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0870",
+    "name_from_new": "宝马_宝马4系",
+    "name_from_old": "宝马_宝马4系==BMW_BMW 4 Series",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0871",
+    "name_from_new": "埃安_AION Y",
+    "name_from_old": "埃安_AION Y==GAC Aion_AION Y",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0872",
+    "name_from_new": "捷途_捷途大圣i-DM",
+    "name_from_old": "捷途_捷途大圣i-DM==Jetour_Daisheng i-DM",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0873",
+    "name_from_new": "蔚来_蔚来EC6",
+    "name_from_old": "蔚来_蔚来EC6==NIO_EC6",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0874",
+    "name_from_new": "日产_ARIYA 艾睿雅",
+    "name_from_old": "日产_ARIYA 艾睿雅==Nissan_ARIYA",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0875",
+    "name_from_new": "长安凯程_睿行M60",
+    "name_from_old": "长安凯程_睿行M60==Changan Kaicheng_Rui Xing M60",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0876",
+    "name_from_new": "江铃集团新能源_易至EV3",
+    "name_from_old": "江铃集团新能源_易至EV3==Jiangling Motors New Energy_Easy EV3",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0879",
+    "name_from_new": "法拉利_法拉利Roma",
+    "name_from_old": "法拉利_法拉利Roma==Ferrari_Ferrari Roma",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0880",
+    "name_from_new": "长安跨越_新豹T3",
+    "name_from_old": "长安跨越_新豹T3==Changan Kuayue_New Leopard T3",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0881",
+    "name_from_new": "启辰_启辰大V DD-i超混动",
+    "name_from_old": "启辰_启辰大V DD-i超混动==Venucia_Venucia D V DD-i Super Hybrid",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0882",
+    "name_from_new": "日产_劲客",
+    "name_from_old": "日产_劲客==Nissan_Kicks",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0883",
+    "name_from_new": "长安_锐程PLUS",
+    "name_from_old": "长安_锐程PLUS==Changan_Raeton PLUS",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0884",
+    "name_from_new": "比亚迪_宋PLUS DM-i",
+    "name_from_old": "比亚迪_宋PLUS DM-i==BYD_Song PLUS DM-i",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0885",
+    "name_from_new": "比亚迪_护卫舰 07",
+    "name_from_old": "比亚迪_护卫舰 07==BYD_Frigate 07",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0886",
+    "name_from_new": "五菱汽车_五菱征程",
+    "name_from_old": "五菱汽车_五菱征程==Wuling_Journey",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0887",
+    "name_from_new": "长安跨越_跨越者D5",
+    "name_from_old": "长安跨越_跨越者D5==Changan Kuayue_Kuayue D5",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0888",
+    "name_from_new": "魏牌_摩卡DHT-PHEV",
+    "name_from_old": "魏牌_摩卡DHT-PHEV==Wei Brand_Mocha DHT-PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0889",
+    "name_from_new": "奇瑞新能源_小蚂蚁",
+    "name_from_old": "奇瑞新能源_小蚂蚁==Chery New Energy_Little Ant",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0890",
+    "name_from_new": "长安_览拓者",
+    "name_from_old": "长安_览拓者==Changan_Explorer",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0891",
+    "name_from_new": "路特斯_Evija",
+    "name_from_old": "路特斯_Evija==Lotus_Evija",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0892",
+    "name_from_new": "日产_Cube",
+    "name_from_old": "日产_Cube==Nissan_Cube",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0893",
+    "name_from_new": "奇瑞新能源_无界Pro",
+    "name_from_old": "奇瑞新能源_无界Pro==Chery New Energy_Boundary Pro",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0894",
+    "name_from_new": "北汽制造_212",
+    "name_from_old": "北汽制造_212==Beiqi_Manufacturing 212",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0895",
+    "name_from_new": "福特_福特F-150 Raptor",
+    "name_from_old": "福特_福特F-150 Raptor==Ford_Ford F-150 Raptor",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0896",
+    "name_from_new": "长安启源_长安启源A07",
+    "name_from_old": "长安启源_长安启源A07==Changan Qiyuan_Changan Qiyuan A07",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0897",
+    "name_from_new": "丰田_威驰",
+    "name_from_old": "丰田_威驰==Toyota_Vios",
+    "type_info": "轿车####小型车==Sedan####Small Sedan"
+  },
+  {
+    "id": "0898",
+    "name_from_new": "丰田_奕泽IZOA",
+    "name_from_old": "丰田_奕泽IZOA==Toyota_C-HR IZOA",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0899",
+    "name_from_new": "领克_领克02 Hatchback",
+    "name_from_old": "领克_领克02 Hatchback==Lynk & Co_02 Hatchback",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0900",
+    "name_from_new": "荣威_荣威RX5 MAX",
+    "name_from_old": "荣威_荣威RX5 MAX==Roewe_RX5 MAX",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0902",
+    "name_from_new": "日产_奇骏",
+    "name_from_old": "日产_奇骏==Nissan_X-Trail",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0904",
+    "name_from_new": "智己汽车_智己L7",
+    "name_from_old": "智己汽车_智己L7==ZiJi_L7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0905",
+    "name_from_new": "法拉利_California T",
+    "name_from_old": "法拉利_California T==Ferrari_California T",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0906",
+    "name_from_new": "宝马_宝马7系PHEV",
+    "name_from_old": "宝马_宝马7系PHEV==BMW_7 Series PHEV",
+    "type_info": "轿车####大型车==Sedan####Large Sedan"
+  },
+  {
+    "id": "0909",
+    "name_from_new": "Jeep_角斗士",
+    "name_from_old": "Jeep_角斗士==Jeep_Gladiator",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0910",
+    "name_from_new": "小虎_小虎FEV",
+    "name_from_old": "小虎_小虎FEV==Xiaohu_Xiaohu FEV",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0911",
+    "name_from_new": "奔腾_奔腾T99",
+    "name_from_old": "奔腾_奔腾T99==Besturn_T99",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0912",
+    "name_from_new": "五菱汽车_五菱征途",
+    "name_from_old": "五菱汽车_五菱征途==Wuling Motors_Wuling Zhengtu",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0914",
+    "name_from_new": "五菱汽车_五菱宏光S3",
+    "name_from_old": "五菱汽车_五菱宏光S3==Wuling Motors_Wuling Hongguang S3",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0915",
+    "name_from_new": "江淮瑞风_瑞风L6 MAX",
+    "name_from_old": "江淮瑞风_瑞风L6 MAX==JAC_Refine L6 MAX",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0916",
+    "name_from_new": "奥迪_奥迪RS 4",
+    "name_from_old": "奥迪_奥迪RS 4==Audi_RS 4",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0917",
+    "name_from_new": "丰田_卡罗拉",
+    "name_from_old": "丰田_卡罗拉==Toyota_Corolla",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0918",
+    "name_from_new": "长安跨越_跨越王X3",
+    "name_from_old": "长安跨越_跨越王X3==Changan Kuayue_Kuayue King X3",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0919",
+    "name_from_new": "捷豹_捷豹XEL",
+    "name_from_old": "捷豹_捷豹XEL==Jaguar_Jaguar XEL",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0921",
+    "name_from_new": "长安_长安Lumin",
+    "name_from_old": "长安_长安Lumin==Changan_Changan Lumin",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0922",
+    "name_from_new": "林肯_飞行家",
+    "name_from_old": "林肯_飞行家==Lincoln_Aviator",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0923",
+    "name_from_new": "丰田_卡罗拉锐放",
+    "name_from_old": "丰田_卡罗拉锐放==Toyota_Corolla Cross",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0924",
+    "name_from_new": "名爵_MG6 PHEV",
+    "name_from_old": "名爵_MG6 PHEV==MG_MG6 PHEV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0925",
+    "name_from_new": "吉利汽车_熊猫",
+    "name_from_old": "吉利汽车_熊猫==Geely_Panda",
+    "type_info": "轿车####微型车==Sedan####Micro Sedan"
+  },
+  {
+    "id": "0926",
+    "name_from_new": "福田_风景G9",
+    "name_from_old": "福田_风景G9==Foton_View G9",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0927",
+    "name_from_new": "大众_揽巡",
+    "name_from_old": "大众_揽巡==Volkswagen_Touareg",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0928",
+    "name_from_new": "路虎_揽胜运动版",
+    "name_from_old": "路虎_揽胜运动版==Land Rover_Range Rover Sport",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0930",
+    "name_from_new": "大众_帕萨特PHEV",
+    "name_from_old": "大众_帕萨特PHEV==Volkswagen_Passat PHEV",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0931",
+    "name_from_new": "星途_星途瑶光",
+    "name_from_old": "星途_星途瑶光==Exeed_Exeed Yaoguang",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0933",
+    "name_from_new": "福特_Ranger",
+    "name_from_old": "福特_Ranger==Ford_Ranger",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0934",
+    "name_from_new": "比亚迪_汉EV",
+    "name_from_old": "比亚迪_汉EV==BYD_Han EV",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0935",
+    "name_from_new": "比亚迪_宋PLUS EV",
+    "name_from_old": "比亚迪_宋PLUS EV==BYD_Song PLUS EV",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0936",
+    "name_from_new": "奔驰_奔驰GLC",
+    "name_from_old": "奔驰_奔驰GLC==Mercedes-Benz_Mercedes-Benz GLC",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0938",
+    "name_from_new": "奔腾_奔腾NAT",
+    "name_from_old": "奔腾_奔腾NAT==Besturn_Besturn NAT",
+    "type_info": "MPV####紧凑型MPV==MPV####Compact MPV"
+  },
+  {
+    "id": "0939",
+    "name_from_new": "ARCFOX极狐_极狐 阿尔法T",
+    "name_from_old": "ARCFOX极狐_极狐 阿尔法T==ARCFOX_αT",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0941",
+    "name_from_new": "启辰_启辰T60",
+    "name_from_old": "启辰_启辰T60==Venucia_T60",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0942",
+    "name_from_new": "五十铃_瑞迈",
+    "name_from_old": "五十铃_瑞迈==Isuzu_Ruimai",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0943",
+    "name_from_new": "奇瑞_艾瑞泽8",
+    "name_from_old": "奇瑞_艾瑞泽8==Chery_Arrizo 8",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0945",
+    "name_from_new": "星途_星途追风",
+    "name_from_old": "星途_星途追风==Exeed_TxL",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0946",
+    "name_from_new": "玛莎拉蒂_GranTurismo",
+    "name_from_old": "玛莎拉蒂_GranTurismo==Maserati_GranTurismo",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0948",
+    "name_from_new": "依维柯_依维柯欧胜",
+    "name_from_old": "依维柯_依维柯欧胜==Iveco_Eurocargo",
+    "type_info": "轻客####轻客==Bus####Bus"
+  },
+  {
+    "id": "0949",
+    "name_from_new": "AITO_问界M7",
+    "name_from_old": "AITO_问界M7==AITO_Ask World M7",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0950",
+    "name_from_new": "Jeep_牧马人",
+    "name_from_old": "Jeep_牧马人==Jeep_Wrangler",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0951",
+    "name_from_new": "哈弗_哈弗枭龙MAX",
+    "name_from_old": "哈弗_哈弗枭龙MAX==Haval_Haval Jolion MAX",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0952",
+    "name_from_new": "特斯拉_Model 3",
+    "name_from_old": "特斯拉_Model 3==Tesla_Model 3",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0953",
+    "name_from_new": "雷克萨斯_雷克萨斯LC",
+    "name_from_old": "雷克萨斯_雷克萨斯LC==Lexus_Lexus LC",
+    "type_info": "跑车####跑车==Sports Car####Sports Car"
+  },
+  {
+    "id": "0955",
+    "name_from_new": "斯巴鲁_OUTBACK傲虎",
+    "name_from_old": "斯巴鲁_OUTBACK傲虎==Subaru_Outback",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0956",
+    "name_from_new": "荣威_荣威D7 DMH",
+    "name_from_old": "荣威_荣威D7 DMH==Roewe_D7 DMH",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0957",
+    "name_from_new": "福特_领裕",
+    "name_from_old": "福特_领裕==Ford_Evolve",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0958",
+    "name_from_new": "奔驰_奔驰GLS",
+    "name_from_old": "奔驰_奔驰GLS==Mercedes-Benz_Mercedes-Benz GLS",
+    "type_info": "SUV####大型SUV==SUV####Large SUV"
+  },
+  {
+    "id": "0959",
+    "name_from_new": "斯柯达_柯米克",
+    "name_from_old": "斯柯达_柯米克==Škoda_Kamiq",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0960",
+    "name_from_new": "捷达_捷达VS7",
+    "name_from_old": "捷达_捷达VS7==Jetta_VS7",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0961",
+    "name_from_new": "沃尔沃_沃尔沃S60",
+    "name_from_old": "沃尔沃_沃尔沃S60==Volvo_Volvo S60",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0963",
+    "name_from_new": "欧拉_欧拉闪电猫",
+    "name_from_old": "欧拉_欧拉闪电猫==Ora_Lightning Cat",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0964",
+    "name_from_new": "长城_炮",
+    "name_from_old": "长城_炮==Great Wall_Cannon",
+    "type_info": "卡车####皮卡==Truck####Pickup Truck"
+  },
+  {
+    "id": "0965",
+    "name_from_new": "江铃_顺威小卡",
+    "name_from_old": "江铃_顺威小卡==Jiangling_Shunwei Mini Truck",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0966",
+    "name_from_new": "比亚迪_汉DM",
+    "name_from_old": "比亚迪_汉DM==BYD_Han DM",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0967",
+    "name_from_new": "长安跨越_跨越王X5",
+    "name_from_old": "长安跨越_跨越王X5==Changan Kuayue_Kuayue King X5",
+    "type_info": "卡车####微卡==Truck####Micro Truck"
+  },
+  {
+    "id": "0968",
+    "name_from_new": "吉利汽车_缤越",
+    "name_from_old": "吉利汽车_缤越==Geely_Binyue",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0971",
+    "name_from_new": "沃尔沃_沃尔沃S90 RECHARGE",
+    "name_from_old": "沃尔沃_沃尔沃S90 RECHARGE==Volvo_S90 Recharge",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0974",
+    "name_from_new": "东风小康_东风小康K07S",
+    "name_from_old": "东风小康_东风小康K07S==Dongfeng Xiaokang_Dongfeng Xiaokang K07S",
+    "type_info": "微面####微面==Van####Van"
+  },
+  {
+    "id": "0975",
+    "name_from_new": "日产_轩逸",
+    "name_from_old": "日产_轩逸==Nissan_Sylphy",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0976",
+    "name_from_new": "星途_星途凌云",
+    "name_from_old": "星途_星途凌云==Exeed_Exeed Cloud",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  },
+  {
+    "id": "0977",
+    "name_from_new": "宝马_宝马X2",
+    "name_from_old": "宝马_宝马X2==BMW_BMW X2",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0978",
+    "name_from_new": "领克_领克01",
+    "name_from_old": "领克_领克01==Lynk & Co_Lynk & Co 01",
+    "type_info": "SUV####紧凑型SUV==SUV####Compact SUV"
+  },
+  {
+    "id": "0979",
+    "name_from_new": "雪佛兰_创酷",
+    "name_from_old": "雪佛兰_创酷==Chevrolet_Trax",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0980",
+    "name_from_new": "现代_帕里斯帝",
+    "name_from_old": "现代_帕里斯帝==Hyundai_Palisade",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0983",
+    "name_from_new": "江淮瑞风_瑞风M4",
+    "name_from_old": "江淮瑞风_瑞风M4==JAC_Refine M4",
+    "type_info": "MPV####中大型MPV==MPV####Upper Mid-size MPV"
+  },
+  {
+    "id": "0984",
+    "name_from_new": "斯柯达_昕锐",
+    "name_from_old": "斯柯达_昕锐==Škoda_ScalA",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0985",
+    "name_from_new": "飞凡汽车_飞凡F7",
+    "name_from_old": "飞凡汽车_飞凡F7==Feifan Auto_Feifan F7",
+    "type_info": "轿车####中大型车==Sedan####Upper Mid-size Sedan"
+  },
+  {
+    "id": "0986",
+    "name_from_new": "现代_索纳塔",
+    "name_from_old": "现代_索纳塔==Hyundai_Sonata",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0987",
+    "name_from_new": "领克_领克03",
+    "name_from_old": "领克_领克03==Lynk & Co_Lynk & Co 03",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0989",
+    "name_from_new": "比亚迪_秦PLUS EV",
+    "name_from_old": "比亚迪_秦PLUS EV==BYD_Qin PLUS EV",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0990",
+    "name_from_new": "奔驰_奔驰GLE AMG",
+    "name_from_old": "奔驰_奔驰GLE AMG==Mercedes-Benz_GLE AMG",
+    "type_info": "SUV####中大型SUV==SUV####Upper Mid-size SUV"
+  },
+  {
+    "id": "0991",
+    "name_from_new": "丰田_亚洲狮",
+    "name_from_old": "丰田_亚洲狮==Toyota_Asian Lion",
+    "type_info": "轿车####紧凑型车==Sedan####Compact Sedan"
+  },
+  {
+    "id": "0992",
+    "name_from_new": "大众_帕萨特",
+    "name_from_old": "大众_帕萨特==Volkswagen_Passat",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0994",
+    "name_from_new": "奥迪_奥迪Q2L e-tron",
+    "name_from_old": "奥迪_奥迪Q2L e-tron==Audi_Audi Q2L e-tron",
+    "type_info": "SUV####小型SUV==SUV####Small SUV"
+  },
+  {
+    "id": "0995",
+    "name_from_new": "深蓝汽车_深蓝SL03",
+    "name_from_old": "深蓝汽车_深蓝SL03==Deep Blue Auto_Deep Blue SL03",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0996",
+    "name_from_new": "红旗_红旗H6",
+    "name_from_old": "红旗_红旗H6==Hongqi_Hongqi H6",
+    "type_info": "轿车####中型车==Sedan####Mid-size Sedan"
+  },
+  {
+    "id": "0998",
+    "name_from_new": "哈弗_哈弗二代大狗PHEV",
+    "name_from_old": "哈弗_哈弗二代大狗PHEV==Haval_Haval Big Dog 2nd Gen PHEV",
+    "type_info": "SUV####中型SUV==SUV####Mid-size SUV"
+  }
+]

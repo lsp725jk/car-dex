@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>14 · GPU 加速实战（从&quot;有卡用不上&quot;到 10× 提速） — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>14 · GPU 加速实战</span></button><div class="nav-list"><a class="lv2" href="#doc15-1-起点-有卡-但用不上">1. 起点：有卡，但用不上</a><a class="lv2" href="#doc15-2-装-cuda-版-一个-cu126-的坑">2. 装 CUDA 版：一个 +cu126 的坑</a><a class="lv2" href="#doc15-3-代码改造-把硬编码的-cpu-拿掉">3. 代码改造：把硬编码的 CPU 拿掉</a><a class="lv2" href="#doc15-4-踩到的-4-个坑">4. 踩到的 4 个坑</a><a class="lv2" href="#doc15-5-性能剖析-真正的瓶颈在哪">5. 性能剖析：真正的瓶颈在哪</a><a class="lv2" href="#doc15-6-结果">6. 结果</a><a class="lv2" href="#doc15-6-4-顺手修掉的一个真-bug-缓存不看权重">6.4 顺手修掉的一个真 bug：缓存不看权重</a><a class="lv2" href="#doc15-7-配置项">7. 配置项</a><a class="lv2" href="#doc15-8-温度与功耗-笔记本要注意">8. 温度与功耗（笔记本要注意）</a><a class="lv2" href="#doc15-9-这次改造对交付物的影响">9. 这次改造对交付物的影响</a></div></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">14 · GPU 加速实战　（15/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc15" data-title="14 · GPU 加速实战（从&quot;有卡用不上&quot;到 10× 提速）"><h1 id="doc15-14-gpu-加速实战-从-有卡用不上-到-10-提速">14 · GPU 加速实战（从"有卡用不上"到 10× 提速）</h1>
+<blockquote>
+<p>这篇记录一件很典型的事：<strong>机器上明明有块 RTX 4060，训练却一直跑在 CPU 上</strong>。
+从定位原因、改造代码、到排查性能瓶颈，全过程连同踩的坑一并写下来。</p>
+<p>这不是"装个包就完事"——中途踩到 4 个真坑，其中两个会直接把程序搞崩。</p>
+</blockquote>
+<hr />
+<h2 id="doc15-1-起点-有卡-但用不上">1. 起点：有卡，但用不上</h2>
+<p>一开始的自检结论是"CPU-only"：</p>
+<div class="codehilite"><pre><span></span><code>torch 版本    : 2.13.0+cpu
+编译时 CUDA   : None          ← 关键
+CUDA 可用     : False
+设备数        : 0
+</code></pre></div>
+
+<p>而硬件其实是：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU</td>
+<td><strong>NVIDIA GeForce RTX 4060 Laptop GPU</strong></td>
+</tr>
+<tr>
+<td>显存</td>
+<td>8 GB（<code>nvidia-smi</code> 报 8188 MiB）</td>
+</tr>
+<tr>
+<td>计算能力</td>
+<td><strong>sm_89</strong>（Ada Lovelace 架构，第 4 代张量核心）</td>
+</tr>
+<tr>
+<td>驱动</td>
+<td>616.92，CUDA UMD <strong>13.4</strong></td>
+</tr>
+<tr>
+<td>CPU</td>
+<td>AMD Ryzen 9 7940H，8 核 16 线程</td>
+</tr>
+<tr>
+<td>内存</td>
+<td>31.2 GB</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ 顺带一提：<code>Win32_VideoController</code> 报的 <code>AdapterRAM = 4 GB</code> 是<strong>错的</strong> ——
+这个 WMI 字段是 32 位无符号整数，超过 4 GB 会截断。要看真实显存请用 <code>nvidia-smi</code>。</p>
+</blockquote>
+<p><strong>结论</strong>：卡没问题，是 <strong>PyTorch 装成了 CPU-only 构建</strong>。
+<code>torch.cuda.is_available()</code> 只看编译时有没有链接 CUDA，跟驱动/卡无关。</p>
+<hr />
+<h2 id="doc15-2-装-cuda-版-一个-cu126-的坑">2. 装 CUDA 版：一个 <code>+cu126</code> 的坑</h2>
+<p>第一步就踩了坑。这样装是<strong>没用的</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="p">==</span><span class="n">2</span><span class="p">.</span><span class="n">13</span><span class="p">.</span><span class="n">0</span> <span class="n">torchvision</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">28</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span><span class="n">-index-url</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">pytorch</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">whl</span><span class="p">/</span><span class="n">cu126</span>
+<span class="c"># → Requirement already satisfied: torch==2.13.0 ...</span>
+</code></pre></div>
+
+<p>pip 认为"已经满足了"，因为 <strong>PEP 440 规定</strong>：</p>
+<blockquote>
+<p>如果版本说明符里写的是<strong>公共版本号</strong>（不含本地版本段），
+那么候选版本的本地版本段在匹配时<strong>必须被忽略</strong>。</p>
+</blockquote>
+<p>也就是说 <code>==2.13.0</code> 会匹配上已装的 <code>2.13.0+cpu</code>。必须<strong>显式带上本地版本段</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="s2">&quot;torch==2.13.0+cu126&quot;</span> <span class="s2">&quot;torchvision==0.28.0+cu126&quot;</span> <span class="p">`</span>
+    <span class="p">-</span><span class="n">-index-url</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">pytorch</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">whl</span><span class="p">/</span><span class="n">cu126</span>
+</code></pre></div>
+
+<p><strong>下载 2.6 GB</strong>，装完验证：</p>
+<div class="codehilite"><pre><span></span><code>torch 版本    : 2.13.0+cu126
+编译时 CUDA   : 12.6
+cuDNN         : 91002
+CUDA 可用     : True
+设备名        : NVIDIA GeForce RTX 4060 Laptop GPU
+计算能力      : sm_89
+</code></pre></div>
+
+<h3 id="doc15-怎么选-cuda-版本">怎么选 CUDA 版本</h3>
+<p>PyTorch 官方索引上各 CUDA 版本的构建情况（实测探测）：</p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th>最高版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cu124</code></td>
+<td>2.6.0</td>
+<td>太旧</td>
+</tr>
+<tr>
+<td><strong><code>cu126</code></strong></td>
+<td><strong>2.14.0</strong>，含 <strong>2.13.0</strong></td>
+<td>✅ <strong>选它</strong>：与已装版本号完全一致，零 API 变化</td>
+</tr>
+<tr>
+<td><code>cu128</code></td>
+<td>2.11.0</td>
+<td>不覆盖 2.13</td>
+</tr>
+<tr>
+<td><code>cu130</code></td>
+<td>2.14.0，含 2.13.0</td>
+<td>也可以，但 cu126 更成熟</td>
+</tr>
+</tbody>
+</table>
+<p><strong>选 <code>cu126</code> 的核心理由</strong>：它的版本号 <code>2.13.0</code> 和原来<strong>一模一样</strong>，
+所以这次替换不会引入任何 API 行为变化 —— 出问题只能是设备相关，不会是版本升级。</p>
+<h3 id="doc15-风险与回滚">风险与回滚</h3>
+<p>装之前先备份（<code>outputs/env_backup/</code>），回滚命令：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="p">==</span><span class="n">2</span><span class="p">.</span><span class="n">13</span><span class="p">.</span><span class="n">0</span> <span class="n">torchvision</span><span class="p">==</span><span class="n">0</span><span class="p">.</span><span class="n">28</span><span class="p">.</span><span class="n">0</span> <span class="p">-</span><span class="n">-index-url</span> <span class="n">https</span><span class="p">://</span><span class="n">download</span><span class="p">.</span><span class="n">pytorch</span><span class="p">.</span><span class="n">org</span><span class="p">/</span><span class="n">whl</span><span class="p">/</span><span class="n">cpu</span>
+</code></pre></div>
+
+<p>装完 pip 会报告几个依赖冲突：</p>
+<div class="codehilite"><pre><span></span><code>torchaudio 2.6.0 requires torch==2.6.0, but you have torch 2.13.0+cu126 which is incompatible.
+chatterbox-tts 0.1.7 requires torch==2.6.0, ...
+</code></pre></div>
+
+<p>这些是<strong>用户环境里其他项目</strong>的包，和本项目无关（本项目不用 torchaudio / TTS）。
+它们原本就和 <code>torch 2.13.0+cpu</code> 冲突，不是这次造成的。</p>
+<hr />
+<h2 id="doc15-3-代码改造-把硬编码的-cpu-拿掉">3. 代码改造：把硬编码的 CPU 拿掉</h2>
+<p>装完 CUDA 版 torch，<strong>训练依然跑在 CPU 上</strong> —— 因为代码里根本没有设备处理：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 改造前（src/cardex/engine.py）</span>
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autocast</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span><span class="p">,</span> <span class="n">enabled</span><span class="o">=</span><span class="n">amp</span><span class="p">):</span>   <span class="c1"># ← 写死 &quot;cpu&quot;</span>
+    <span class="n">outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+<span class="c1"># 而且没有 model.to(device)，也没把数据搬到 GPU</span>
+</code></pre></div>
+
+<h3 id="doc15-3-1-新增设备选择工具-src-cardex-utils-py">3.1 新增设备选择工具（<code>src/cardex/utils.py</code>）</h3>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">get_device</span><span class="p">(</span><span class="n">prefer</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">prefer</span> <span class="ow">and</span> <span class="n">prefer</span> <span class="o">!=</span> <span class="s2">&quot;auto&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="n">prefer</span><span class="p">)</span>          <span class="c1"># 显式指定优先</span>
+    <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>               <span class="c1"># 没有就老实回退</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">autocast_dtype</span><span class="p">(</span><span class="n">device</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">torch</span><span class="o">.</span><span class="n">dtype</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;混合精度用什么类型 —— 这个选择很关键。&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">float16</span> <span class="k">if</span> <span class="n">device</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;cuda&quot;</span> <span class="k">else</span> <span class="n">torch</span><span class="o">.</span><span class="n">bfloat16</span>
+</code></pre></div>
+
+<p><strong>为什么精度类型要分设备</strong>：</p>
+<ul>
+<li><strong>CUDA 用 <code>float16</code></strong>：现代 N 卡（图灵及以后）有 fp16 张量核心，
+  这才是真正快的那个；bf16 在消费级卡上经常没有对应加速。</li>
+<li><strong>CPU 用 <code>bfloat16</code></strong>：CPU 上 fp16 几乎没有加速，bf16 在支持 AVX512-BF16 的
+  CPU 上约 1.5×。而且 bf16 的指数位和 fp32 一样宽，<strong>不容易溢出</strong>。</li>
+</ul>
+<p>顺带还加了两个 CUDA 专属开关：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">benchmark</span> <span class="o">=</span> <span class="kc">True</span>       <span class="c1"># 输入尺寸固定时自动选最快卷积算法</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">matmul</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># 矩阵乘用 TF32（精度损失极小）</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">backends</span><span class="o">.</span><span class="n">cudnn</span><span class="o">.</span><span class="n">allow_tf32</span> <span class="o">=</span> <span class="kc">True</span>
+</code></pre></div>
+
+<h3 id="doc15-3-2-训练循环-engine-py">3.2 训练循环（<code>engine.py</code>）</h3>
+<div class="codehilite"><pre><span></span><code><span class="n">device</span> <span class="o">=</span> <span class="n">get_device</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;auto&quot;</span><span class="p">))</span>
+<span class="n">on_cuda</span> <span class="o">=</span> <span class="n">device</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="s2">&quot;cuda&quot;</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>                             <span class="c1"># ① 模型搬到设备</span>
+<span class="k">if</span> <span class="n">ema</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">ema</span><span class="o">.</span><span class="n">ema</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>                       <span class="c1"># ② EMA 副本也要搬</span>
+
+<span class="k">for</span> <span class="n">images</span><span class="p">,</span> <span class="n">targets</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">train_loader</span><span class="p">:</span>
+    <span class="n">images</span> <span class="o">=</span> <span class="n">images</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>    <span class="c1"># ③ 数据搬到设备</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="n">targets</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="n">non_blocking</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="o">...</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">autocast</span><span class="p">(</span><span class="n">device</span><span class="o">.</span><span class="n">type</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">autocast_dtype</span><span class="p">(</span><span class="n">device</span><span class="p">),</span> <span class="n">enabled</span><span class="o">=</span><span class="n">amp</span><span class="p">):</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">images</span><span class="p">)</span>
+</code></pre></div>
+
+<h3 id="doc15-3-3-推理侧">3.3 推理侧</h3>
+<p><code>CarClassifier</code> 本来就支持 <code>device=</code> 参数，只是默认写死 <code>"cpu"</code>。
+改成默认 <code>"auto"</code>，并把同一处写死的 <code>autocast("cpu")</code> 也改成动态。</p>
+<h3 id="doc15-3-4-agent-侧">3.4 Agent 侧</h3>
+<p><code>agent/config.py</code> 新增 <code>vision_device: str = "auto"</code>，
+<code>agent/tools/vision.py</code> 把它传给分类器，并纳入模型缓存键
+（换设备要重新加载模型）。</p>
+<hr />
+<h2 id="doc15-4-踩到的-4-个坑">4. 踩到的 4 个坑</h2>
+<h3 id="doc15-坑-1-scatter_-设备不匹配-会把训练打断">坑 1：<code>scatter_</code> 设备不匹配（会把训练打断）</h3>
+<div class="codehilite"><pre><span></span><code>RuntimeError: Expected all tensors to be on the same device,
+but got index is on cuda:0, different from other tensors on cpu
+</code></pre></div>
+
+<p><strong>位置</strong>：<code>data.py</code> 的 <code>mixup_cutmix_batch()</code>。</p>
+<p><strong>原因</strong>：这个函数在训练循环里被调用，此时 <code>images</code> 已经在 GPU 上了，
+但函数内部<strong>新建的张量没指定 device</strong>，默认落在 CPU：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">targets_1h</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_classes</span><span class="p">),</span> <span class="n">off</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">images</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>  <span class="c1"># ← 漏了 device</span>
+<span class="n">targets_1h</span><span class="o">.</span><span class="n">scatter_</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">targets</span><span class="o">.</span><span class="n">unsqueeze</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">on</span><span class="p">)</span>   <span class="c1"># targets 在 cuda → 炸</span>
+</code></pre></div>
+
+<p><strong>修复</strong>：所有新建张量显式带上 <code>device=device</code>，<code>torch.randperm</code> 也一样。</p>
+<blockquote>
+<p><strong>教训</strong>：从 CPU 搬到 GPU 时，最难查的不是"忘了 <code>model.to(device)</code>"，
+而是<strong>散落在工具函数里新建的张量</strong>。凡是 <code>torch.full</code> / <code>torch.zeros</code> /
+<code>torch.randperm</code> / <code>torch.tensor</code> 都要问一句"该在哪个设备上"。</p>
+</blockquote>
+<h3 id="doc15-坑-2-windows-多进程-dataloader-无限递归">坑 2：Windows 多进程 DataLoader 无限递归</h3>
+<p>自己写性能分析脚本时踩的。脚本卡死 10 分钟，CPU 被刷满。</p>
+<p><strong>原因</strong>：Windows 上多进程用 <strong>spawn</strong>（不是 fork），子进程会<strong>重新导入主模块</strong>。
+脚本没有 <code>if __name__ == "__main__":</code> 保护，子进程一导入就又去创建子进程：</p>
+<div class="codehilite"><pre><span></span><code>主进程 → 6 个 worker → 每个 worker 又导入主模块 → 又创建 6 个 worker → ...
+</code></pre></div>
+
+<p><strong>修复</strong>：加 <code>if __name__ == "__main__": main()</code>。
+项目里 <code>src/*.py</code> 所有正式脚本<strong>本来就有</strong>这个保护（这次是自建脚本踩的）。</p>
+<h3 id="doc15-坑-3-num_workers-的默认值不能一刀切">坑 3：<code>num_workers</code> 的默认值不能一刀切</h3>
+<p>原来统一是 <code>0</code>。原因是早期受限的沙箱环境禁止<strong>命名管道</strong>，
+而 Python 多进程要用管道传数据，<code>num_workers&gt;0</code> 会直接 <code>PermissionError</code>。</p>
+<p>但这在 GPU 上是灾难：<strong>数据增强全在 CPU 上做，串行跑就把 GPU 饿死了</strong>。
+改成按设备给不同默认值：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">default_workers</span> <span class="o">=</span> <span class="mi">6</span> <span class="k">if</span> <span class="n">on_cuda</span> <span class="k">else</span> <span class="mi">0</span>
+<span class="n">num_workers</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;num_workers&quot;</span><span class="p">,</span> <span class="n">default_workers</span><span class="p">))</span>
+</code></pre></div>
+
+<h3 id="doc15-坑-4-小数据集上多进程反而更慢">坑 4：小数据集上多进程反而更慢</h3>
+<p>第一个冒烟测试（每类 8 张，只有 13 个 batch）用 4 个 worker，
+<strong>比单进程还慢一倍</strong>（33s → 72s）。</p>
+<p><strong>原因</strong>：Windows 上每个 worker 都要 spawn 一个新进程并<strong>重新 import torch</strong>（约 3~5 秒）。
+13 个 batch 根本摊不平这个启动开销，而 <code>val_loader</code> 又要再来一遍。</p>
+<p><strong>结论</strong>：<code>num_workers</code> 要按<strong>数据量</strong>而不是按"越多越好"来定。
+真实训练集 7494 张 = 235 batch/epoch，worker 启动开销被充分摊薄，这时才划算。</p>
+<hr />
+<h2 id="doc15-5-性能剖析-真正的瓶颈在哪">5. 性能剖析：真正的瓶颈在哪</h2>
+<p>改造完之后训练能跑了，但<strong>每个 step 2.3 秒</strong>——
+对一块 4060 来说慢得离谱。不猜，<strong>直接给训练循环分段计时</strong>：</p>
+<div class="codehilite"><pre><span></span><code>=== num_workers=0  平均 373 ms/步 ===
+  ① 取数据              295.4 ms/步    79.2%   ← 罪魁祸首
+  ② mixup/cutmix          3.1 ms/步     0.8%
+  ③ 前向                 32.7 ms/步     8.8%
+  ④ 反向                 29.5 ms/步     7.9%
+  ⑤ 裁剪+更新              7.7 ms/步     2.1%
+  ⑥ EMA 更新              4.2 ms/步     1.1%
+  ⑦ loss.item()          0.1 ms/步     0.0%
+
+=== num_workers=4  平均 131 ms/步 ===
+  ① 取数据               76.0 ms/步    57.9%
+  ③ 前向                 21.3 ms/步    16.2%
+  ④ 反向                 23.8 ms/步    18.1%
+</code></pre></div>
+
+<p><strong>读出来的结论</strong>：</p>
+<ol>
+<li><code>num_workers=0</code> 时，<strong>79% 的时间 GPU 在干等数据</strong>。</li>
+<li>真正的 GPU 计算只要 <strong>45 ms/步</strong>（前向 21 + 反向 24）。</li>
+<li>开 4 个 worker 后数据侧从 295 → 76 ms，<strong>总步时从 373 → 131 ms（2.8×）</strong>。</li>
+<li>数据侧<strong>仍然是瓶颈</strong>（76 ms &gt; 45 ms）。</li>
+</ol>
+<p>继续加 worker：</p>
+<table>
+<thead>
+<tr>
+<th>worker 数</th>
+<th>每批数据准备</th>
+<th>每 epoch 数据侧</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>114 ms</td>
+<td>27 s</td>
+</tr>
+<tr>
+<td><strong>6</strong></td>
+<td><strong>48 ms</strong></td>
+<td><strong>11 s</strong></td>
+</tr>
+</tbody>
+</table>
+<p>单张图的"解码 + 增强"要 <strong>10.0 ms</strong>（7494 张单线程需要 75 秒/epoch）——
+这就是为什么要靠多进程把它摊到多个核上。</p>
+<blockquote>
+<p><strong>方法论</strong>：性能问题<strong>不要猜</strong>。加 <code>torch.cuda.synchronize()</code> + 分段计时，
+10 分钟就能定位。我先按"可能是数据加载"猜了一轮，方向对了但量级猜错了
+（以为是 330ms 对 61ms，实际是 295ms 对 45ms，而且真实训练里还有别的开销）。</p>
+</blockquote>
+<hr />
+<h2 id="doc15-6-结果">6. 结果</h2>
+<h3 id="doc15-6-1-训练速度-12-8-倍">6.1 训练速度：12.8 倍</h3>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>配置</th>
+<th>CPU 耗时</th>
+<th><strong>GPU 耗时</strong></th>
+<th>加速比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td>ResNet18 @224，18 epochs</td>
+<td>86.6 min</td>
+<td><strong>8.7 min</strong></td>
+<td><strong>10.0×</strong></td>
+</tr>
+<tr>
+<td>C2</td>
+<td>ResNet50 @224，14 epochs</td>
+<td>175.2 min</td>
+<td><strong>11.8 min</strong></td>
+<td><strong>14.8×</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>合计</strong></td>
+<td><strong>261.8 min（4.4 小时）</strong></td>
+<td><strong>20.5 min</strong></td>
+<td><strong>12.8×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>稳态数据：C1 约 <strong>19 秒/epoch</strong>（不含验证），GPU 利用率 51%、功耗 63 W；
+C2 因为是 ResNet50、计算更重，GPU 利用率达到 <strong>99%</strong>。</p>
+<ul>
+<li>C1 里 GPU 只忙 51% —— 数据增强还没完全跟上（瓶颈在 CPU）；</li>
+<li>C2 里 GPU 忙到 99% —— 计算本身重到把数据侧盖过去了。</li>
+</ul>
+<p>这说明<strong>"加卡"不是万能</strong>：模型越小，数据管道越容易成为新瓶颈。</p>
+<h3 id="doc15-6-2-精度-略有提升">6.2 精度：略有提升</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CPU 训练</th>
+<th><strong>GPU 训练</strong></th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1 单模型（标定后 Macro-F1）</td>
+<td>0.9510</td>
+<td>0.9507</td>
+<td>−0.0003</td>
+</tr>
+<tr>
+<td>C2 单模型</td>
+<td>0.9592</td>
+<td><strong>0.9597</strong></td>
+<td>+0.0005</td>
+</tr>
+<tr>
+<td><strong>C1+C2 集成（两人）</strong></td>
+<td><strong>0.9604</strong></td>
+<td><strong>0.9625</strong></td>
+<td><strong>+0.0021</strong></td>
+</tr>
+<tr>
+<td><strong>C1+C2+微调成员（三人）</strong></td>
+<td>—</td>
+<td><strong>0.9646</strong></td>
+<td>见 <a href="./15_微调实战指南.html">15 · 微调实战指南</a> 第 11 节</td>
+</tr>
+</tbody>
+</table>
+<p><strong>精度没有因为换设备而下降</strong>，集成还略好一点。
+差别来自 cuDNN 的非确定性（同样是 seed=42，GPU 上的卷积算法选择和 CPU 不同），
+属于随机波动 —— 结论是"<strong>换设备只影响快慢，不影响质量</strong>"。</p>
+<blockquote>
+<p>上表最后一行的三人集成，是在 GPU 重训之后<strong>又用原数据微调出一个 288px 的新成员</strong>得到的
+（单独看它只有 0.9563，比父模型还差，但和另外两个成员互补）。
+这一节讲的是 GPU 带来的速度，微调带来的精度提升见第 15 篇。</p>
+<p>有意思的细节：推理侧用 GPU 跑集成模型，同一张图得到的置信度是
+<strong>0.9618</strong>，与 CPU 路径<strong>完全一致</strong>；换新权重后是 0.9672。
+float16 推理在这个任务上没有带来可见偏差。</p>
+</blockquote>
+<p>标定参数也跟着更新了：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CPU 版</th>
+<th>GPU 版</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>先验校正 τ</td>
+<td>+0.05</td>
+<td><strong>+0.20</strong></td>
+</tr>
+<tr>
+<td>拒识阈值 t</td>
+<td>0.25</td>
+<td>0.25</td>
+</tr>
+<tr>
+<td>unknown 检出率</td>
+<td>0.929</td>
+<td>0.905</td>
+</tr>
+<tr>
+<td>已知类误拒率</td>
+<td>0.034</td>
+<td><strong>0.028</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（τ 的取值本来就该由每一版权重的验证集扫描决定，变了是正常的。）</p>
+<h3 id="doc15-6-3-推理速度也快了">6.3 推理速度也快了</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>CPU</th>
+<th>GPU</th>
+<th>加速</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>集成模型加载（含 CUDA 上下文初始化）</td>
+<td>6.4 s</td>
+<td>~5.6 s</td>
+<td>—</td>
+</tr>
+<tr>
+<td>单张推理（含 TTA）</td>
+<td>141~170 ms</td>
+<td><strong>77~80 ms</strong></td>
+<td><strong>≈2×</strong></td>
+</tr>
+<tr>
+<td>同上（模型已热）</td>
+<td>141 ms</td>
+<td><strong>26~33 ms</strong></td>
+<td><strong>≈5×</strong></td>
+</tr>
+<tr>
+<td>校准集 2422 张前向</td>
+<td>数分钟</td>
+<td><strong>20~23 s</strong></td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>对 Web 系统来说，用户点"识别"的等待从 0.17 秒降到 0.03 秒。</p>
+<hr />
+<h2 id="doc15-6-4-顺手修掉的一个真-bug-缓存不看权重">6.4 顺手修掉的一个真 bug：缓存不看权重</h2>
+<p>第一次重训完跑 <code>finalize.py</code>，输出的数字和 CPU 版<strong>一字不差</strong>
+（0.9482 / 0.9550 / 0.9587 → 0.9510 / 0.9592 / 0.9604），
+而且日志里写着：</p>
+<div class="codehilite"><pre><span></span><code>[候选] improved_resnet18_224
+  复用缓存 logits_improved_resnet18_224_val_tta.npy      ← 用的是旧权重的结果！
+</code></pre></div>
+
+<p><strong>根因</strong>：缓存文件名只按 <code>run 名 + split + 是否 TTA</code> 拼，<strong>完全没看 checkpoint 有没有变</strong>。
+重训之后权重全换了，它照样读旧缓存 —— 指标、排名、<code>predictions.csv</code> 全是旧的，
+<strong>而且没有任何报错</strong>。</p>
+<p><strong>修复</strong>：缓存键里加上 checkpoint 指纹（文件大小 + mtime 的 MD5 前 10 位）：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_ckpt_fingerprint</span><span class="p">(</span><span class="n">ckpt_path</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">st</span> <span class="o">=</span> <span class="n">ckpt_path</span><span class="o">.</span><span class="n">stat</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">st</span><span class="o">.</span><span class="n">st_size</span><span class="si">}</span><span class="s2">:</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">st</span><span class="o">.</span><span class="n">st_mtime</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()[:</span><span class="mi">10</span><span class="p">]</span>
+
+<span class="n">cache</span> <span class="o">=</span> <span class="n">cache_dir</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;logits_</span><span class="si">{</span><span class="n">run</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">split</span><span class="si">}{</span><span class="s1">&#39;_tta&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">tta</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;&#39;</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">fp</span><span class="si">}</span><span class="s2">.npy&quot;</span>
+</code></pre></div>
+
+<p>换权重、改 TTA 设置都会自动算一份新的；顺手也把这个文件改成了设备无关。</p>
+<blockquote>
+<p><strong>教训</strong>：<strong>缓存键必须包含"被缓存内容的全部输入"</strong>。
+少一个维度，就会出现"改了东西但结果没变"这种最难查的问题 ——
+因为它<strong>不报错</strong>，看起来一切正常。这次是因为我对 CPU 版的数字太熟
+（0.9604 是之前反复验证过的），一眼看出"一模一样"不对劲。</p>
+</blockquote>
+<hr />
+<h2 id="doc15-7-配置项">7. 配置项</h2>
+<p>改完之后，设备选择是<strong>配置驱动</strong>的，不用改代码：</p>
+<div class="codehilite"><pre><span></span><code>// configs/train_improved.json
+{
+  &quot;device&quot;: &quot;auto&quot;,        // auto / cuda / cuda:0 / cpu
+  &quot;num_workers&quot;: 6,        // GPU 训练时必开，否则数据增强饿死 GPU
+  &quot;pin_memory&quot;: true,      // 锁页内存，加速 CPU→GPU 拷贝
+  &quot;amp&quot;: true              // 混合精度（CUDA 下自动用 fp16）
+}
+</code></pre></div>
+
+<p><code>agent/config.py</code> 里也加了对应的推理设备开关：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">vision_device</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;auto&quot;</span>   <span class="c1"># &quot;auto&quot; / &quot;cuda&quot; / &quot;cpu&quot;</span>
+</code></pre></div>
+
+<p><strong>默认全是 <code>auto</code></strong> —— 有卡就用卡，没卡就老实回退 CPU，不需要改任何代码。</p>
+<hr />
+<h2 id="doc15-8-温度与功耗-笔记本要注意">8. 温度与功耗（笔记本要注意）</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>训练时</th>
+<th>空闲</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPU 温度</td>
+<td><strong>88~89 °C</strong></td>
+<td>61 °C</td>
+</tr>
+<tr>
+<td>功耗</td>
+<td>57~63 W</td>
+<td>4.8 W</td>
+</tr>
+<tr>
+<td>显存占用</td>
+<td>2.4~4.2 GB</td>
+<td>2.2 GB（桌面）</td>
+</tr>
+</tbody>
+</table>
+<p>88~89 °C 对笔记本 GPU 属于"正常偏热"（一般 90~95 °C 才降频），
+但<strong>长时间训练建议垫高散热</strong>。8 GB 显存跑 ResNet50@224/batch32 用 4.2 GB，
+还有余量可以再调大 batch。</p>
+<hr />
+<h2 id="doc15-9-这次改造对交付物的影响">9. 这次改造对交付物的影响</h2>
+<table>
+<thead>
+<tr>
+<th>项</th>
+<th>变化</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>classes.txt</code></td>
+<td>不变</td>
+</tr>
+<tr>
+<td>模型权重</td>
+<td><strong>重新训练</strong>（GPU 版），精度基本持平</td>
+</tr>
+<tr>
+<td><code>predictions.csv</code></td>
+<td>需要用新权重重新生成</td>
+</tr>
+<tr>
+<td>代码</td>
+<td><code>utils.py</code> / <code>engine.py</code> / <code>inference.py</code> / <code>data.py</code> / 配置 —— 全部改成<strong>设备无关</strong></td>
+</tr>
+<tr>
+<td>CPU 环境</td>
+<td>依然可跑（<code>device: "auto"</code> 自动回退），旧权重复份在 <code>*_cpu</code> 目录</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>相关文档</strong>：<a href="./13_技术栈全解.html">13 · 技术栈全解</a>（PyTorch 训练技巧逐项讲解）·
+<a href="./07_实验记录与结果分析.html">07 · 实验记录与结果分析</a>（5 组实验完整数据）</p><div class="docnav"><a class="prev" href="./13_技术栈全解.html"><span class="dir">← 上一篇</span><span class="ttl">13 · 技术栈全解</span></a><a class="next" href="./15_微调实战指南.html"><span class="dir">下一篇 →</span><span class="ttl">15 · 微调实战指南</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

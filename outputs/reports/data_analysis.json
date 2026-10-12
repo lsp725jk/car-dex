@@ -1,0 +1,74 @@
+{
+  "counts": {
+    "train_total": 7494,
+    "val_total": 2422,
+    "train_known": 5534,
+    "val_known": 1834,
+    "train_unknown": 1960,
+    "val_unknown": 588,
+    "train_min": 80,
+    "train_max": 186,
+    "train_mean": 110.68,
+    "imbalance_train": 2.325,
+    "imbalance_val": 2.385
+  },
+  "quality": {
+    "n_images": 9916,
+    "n_broken": 0,
+    "n_unique_sizes": 1730,
+    "top_sizes": [
+      {
+        "size": "667x500",
+        "count": 2268
+      },
+      {
+        "size": "750x500",
+        "count": 824
+      },
+      {
+        "size": "500x375",
+        "count": 537
+      },
+      {
+        "size": "500x333",
+        "count": 318
+      },
+      {
+        "size": "751x500",
+        "count": 191
+      },
+      {
+        "size": "640x480",
+        "count": 157
+      },
+      {
+        "size": "640x427",
+        "count": 145
+      },
+      {
+        "size": "889x500",
+        "count": 139
+      }
+    ],
+    "aspect_mean": 1.421,
+    "duplicate_groups": 1,
+    "duplicate_cross_split": 0,
+    "duplicate_within_split": 1
+  },
+  "near_duplicate_avg_rate": 0.0,
+  "unknown_composition": {
+    "n_sources": 98,
+    "n_brands": 85,
+    "by_category": {
+      "SUV": 39,
+      "轿车": 33,
+      "MPV": 6,
+      "轻客": 3,
+      "卡车": 9,
+      "跑车": 5,
+      "微面": 3
+    },
+    "hard_negative": 34,
+    "other_brand": 64
+  }
+}

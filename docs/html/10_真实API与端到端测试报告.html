@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>10 · 真实 API 与端到端测试报告 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>10 · 真实API与端到端测试报告</span></button><div class="nav-list"><a class="lv2" href="#doc11-1-结论摘要">1. 结论摘要</a><a class="lv2" href="#doc11-2-测试环境">2. 测试环境</a><a class="lv2" href="#doc11-3-一键启动">3. 一键启动</a><a class="lv2" href="#doc11-4-l0-环境自检-tools-selfcheck-py">4. L0 —— 环境自检（tools/selfcheck.py）</a><a class="lv2" href="#doc11-5-l1-工具层-tools-e2e_test-py---stage-a">5. L1 —— 工具层（tools/e2e_test.py --stage A）</a><a class="lv2" href="#doc11-6-l2-模型层-tools-e2e_test-py---stage-b">6. L2 —— 模型层（tools/e2e_test.py --stage B）</a><a class="lv2" href="#doc11-7-l3-web-系统端到端-浏览器实测">7. L3 —— Web 系统端到端（浏览器实测）</a><a class="lv2" href="#doc11-8-本次发现并修复的缺陷">8. 本次发现并修复的缺陷</a><a class="lv2" href="#doc11-9-异常路径测试">9. 异常路径测试</a><a class="lv2" href="#doc11-10-复现步骤">10. 复现步骤</a><a class="lv2" href="#doc11-11-尚未覆盖-已知限制">11. 尚未覆盖 / 已知限制</a><a class="lv2" href="#doc11-12-结论">12. 结论</a></div></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">10 · 真实API与端到端测试报告　（11/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc11" data-title="10 · 真实 API 与端到端测试报告"><h1 id="doc11-10-真实-api-与端到端测试报告">10 · 真实 API 与端到端测试报告</h1>
+<blockquote>
+<p>本文记录 <strong>接入真实 DeepSeek API 之后</strong>的全链路测试：环境自检 → 工具层 → 模型层 → Web 端到端 → 异常路径。
+所有结论都来自本机实测，命令可原样复现。</p>
+<p><strong>合规声明</strong>：本报告、本文档、以及仓库中任何 <code>.py / .md / .html / 截图</code> <strong>均不含真实 API Key</strong>。
+Key 只存在于两个地方：环境变量 <code>DEEPSEEK_API_KEY</code>，或 <code>agent/.env.local</code>（已被 <code>.gitignore</code> 忽略，不随作业提交）。
+文档与界面中一律显示掩码，形如 <code>sk-f…fbe5（长度 35）</code>。</p>
+</blockquote>
+<hr />
+<h2 id="doc11-1-结论摘要">1. 结论摘要</h2>
+<table>
+<thead>
+<tr>
+<th>测试层</th>
+<th>脚本</th>
+<th>结果</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L0 环境自检</td>
+<td><code>tools/selfcheck.py --all</code></td>
+<td><strong>37 / 37 通过</strong></td>
+<td>依赖、交付文件、模型权重、API 连通性、真实视觉推理</td>
+</tr>
+<tr>
+<td>L1 工具层</td>
+<td><code>tools/e2e_test.py --stage A</code></td>
+<td><strong>20 / 20 通过</strong></td>
+<td>不走模型，逐个验证参数校验 / 门禁 / 错误码 / 拒识分支</td>
+</tr>
+<tr>
+<td>L2 模型层</td>
+<td><code>tools/e2e_test.py --stage B</code></td>
+<td><strong>33 / 33 通过</strong></td>
+<td>真实 DeepSeek API，8 个对话场景、共 13 轮</td>
+</tr>
+<tr>
+<td>L3 Web 端到端</td>
+<td>浏览器实测</td>
+<td><strong>通过</strong></td>
+<td>上传 → 对话 → 三工具链 → 档案落库 → 拒识，含截图</td>
+</tr>
+<tr>
+<td>L4 提交前自查</td>
+<td><code>src/verify_submission.py</code></td>
+<td><strong>41 / 41 通过</strong></td>
+<td>任务一交付物合规</td>
+</tr>
+<tr>
+<td>L4 提交前自查</td>
+<td><code>tools/verify_agent.py</code></td>
+<td><strong>59 / 59 通过</strong></td>
+<td>任务书第五、六节逐条</td>
+</tr>
+</tbody>
+</table>
+<p><strong>合计 190 项检查全部通过</strong>，并且在测试过程中<strong>发现并修复了 5 个真实代码缺陷 + 4 个工程环境坑</strong>（见第 8 节）——
+这正是"接入真实 Key 之后再跑一遍"的价值：离线替身跑通不代表真实链路没问题。
+其中第 8 个缺陷（瞬时网络故障直接判死）是<strong>实机使用中真实触发</strong>后排查修掉的，
+第 9 个（超长工具结果截断成非法 JSON）是回归时<strong>间歇性失败</strong>顺藤摸瓜挖出来的——
+数据越用越多才会踩到，属于"上线一段时间后必然爆发"的那类缺陷。</p>
+<hr />
+<h2 id="doc11-2-测试环境">2. 测试环境</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>实测值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>操作系统</td>
+<td>Windows（<code>C:\WINDOWS</code>，内核 26100）</td>
+</tr>
+<tr>
+<td>Shell</td>
+<td>Windows PowerShell <strong>5.1</strong>（Desktop 版；本机<strong>未安装</strong> PowerShell 7，脚本已按 5.1 兼容编写）</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.13.5（Anaconda，<code>C:\ProgramData\anaconda3\python.exe</code>）</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>2.13.0+cpu（CUDA 不可用，全程 CPU 推理）</td>
+</tr>
+<tr>
+<td>torchvision</td>
+<td>0.28.0</td>
+</tr>
+<tr>
+<td>Flask / requests / Pillow / NumPy</td>
+<td>3.1.0 / 2.32.3 / 11.1.0 / 2.1.3</td>
+</tr>
+<tr>
+<td>推理线程</td>
+<td>8（PyTorch 默认）</td>
+</tr>
+<tr>
+<td>接口</td>
+<td><code>https://api.deepseek.com/chat/completions</code></td>
+</tr>
+<tr>
+<td>模型名</td>
+<td><code>deepseek-v4-flash</code>（任务书规定，代码中为常量 <code>MODEL_NAME</code>）</td>
+</tr>
+<tr>
+<td>视觉模型</td>
+<td><code>improved_resnet18_224</code> + <code>improved_resnet50_224</code> 集成，TTA 水平翻转，τ=0.05，t=0.25</td>
+</tr>
+<tr>
+<td>端口</td>
+<td>5000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc11-2-1-关于接口返回的一个实测发现">2.1 关于接口返回的一个实测发现</h3>
+<p><code>deepseek-v4-flash</code> 在本机表现为<strong>带思维链的模型</strong>：响应里除 <code>message.content</code> 外还有 <code>message.reasoning_content</code>，
+且 <code>usage.completion_tokens</code> <strong>包含思维链 token</strong>。实测一次"只回复两个字"的请求消耗 133~218 token。</p>
+<p>对本项目的影响：</p>
+<ul>
+<li><code>agent/llm.py</code> 只取 <code>message.content</code> 与 <code>message.tool_calls</code>，多出来的 <code>reasoning_content</code> 被自然忽略，<strong>无需改动</strong>；</li>
+<li>但 <code>max_tokens: 2048</code> 是<strong>总预算</strong>，思维链会占用一部分。若把 <code>max_tokens</code> 调到很小（如 20），
+  会出现 <code>finish_reason=length</code> 且 <code>content</code> 为空——本项目已把这种情况翻译成明确的错误码
+  <code>API_RESPONSE_INVALID</code>「输出被 max_tokens 截断」，而不是让空回复静默通过。</li>
+</ul>
+<hr />
+<h2 id="doc11-3-一键启动">3. 一键启动</h2>
+<h3 id="doc11-3-1-交付的启动文件">3.1 交付的启动文件</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>start.bat</code></td>
+<td><strong>双击入口</strong>。自动挑 PowerShell（<code>pwsh</code> → <code>Program Files\PowerShell\7</code> → <code>WindowsApps</code> → 系统自带 5.1），转调 <code>start.ps1</code></td>
+</tr>
+<tr>
+<td><code>start.ps1</code></td>
+<td>真正的启动脚本：找 Python → 确认 Key → 环境自检 → 起服务</td>
+</tr>
+<tr>
+<td><code>tools/selfcheck.py</code></td>
+<td>启动前的环境自检，也可单独运行</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><code>start.ps1</code> 必须以 <strong>UTF-8 with BOM</strong> 保存。Windows PowerShell 5.1 读取无 BOM 的 <code>.ps1</code> 时会按系统 ANSI（本机 GBK）解码，
+中文字符串会变成乱码并直接导致语法错误。这是实测踩到的坑，见第 8 节 BUG-4。</p>
+</blockquote>
+<h3 id="doc11-3-2-启动流程">3.2 启动流程</h3>
+<div class="codehilite"><pre><span></span><code>  双击 start.bat
+        │
+        ├─ 1. 找 Python：.venv → Anaconda → PATH，并优先选「已装 torch+flask」的那个
+        ├─ 2. 确认 API Key：环境变量 DEEPSEEK_API_KEY ＞ agent/.env.local
+        │      都没有 → 当场提示粘贴一次，写进 agent/.env.local（已 gitignore）
+        │      直接回车 → 离线替身模式（页面顶部会有醒目提示）
+        ├─ 3. 环境自检：依赖 / 交付文件 / 权重 / 工具装配，有 FAIL 就中止并给出修复建议
+        │      -DeepCheck 额外做「真实 API 调用 + 真实视觉推理」两项实测
+        ├─ 4. 选端口：5000 被占用则自动顺延到 5001…（最多试 20 个）
+        └─ 5. 拉起 web/app.py，打印访问地址，并延迟 3 秒自动打开浏览器
+</code></pre></div>
+
+<h3 id="doc11-3-3-参数">3.3 参数</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>默认</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-Mode web\|cli\|check</code></td>
+<td><code>web</code></td>
+<td>启动 Web 系统 / 命令行智能体 / 只自检</td>
+</tr>
+<tr>
+<td><code>-Port &lt;n&gt;</code></td>
+<td><code>5000</code></td>
+<td>Web 端口，被占用自动顺延</td>
+</tr>
+<tr>
+<td><code>-BindHost &lt;ip&gt;</code></td>
+<td><code>127.0.0.1</code></td>
+<td>只监听本机；要局域网访问可传 <code>0.0.0.0</code></td>
+</tr>
+<tr>
+<td><code>-Offline</code></td>
+<td>关</td>
+<td>强制离线替身（即使已配 Key）</td>
+</tr>
+<tr>
+<td><code>-DeepCheck</code></td>
+<td>关</td>
+<td>自检时额外跑真实 API 与真实视觉推理</td>
+</tr>
+<tr>
+<td><code>-NoCheck</code></td>
+<td>关</td>
+<td>跳过自检，直接启动</td>
+</tr>
+<tr>
+<td><code>-NoBrowser</code></td>
+<td>关</td>
+<td>不自动开浏览器</td>
+</tr>
+<tr>
+<td><code>-Install</code></td>
+<td>关</td>
+<td>启动前执行 <code>pip install -r requirements.txt</code></td>
+</tr>
+<tr>
+<td><code>-Image &lt;路径&gt;</code></td>
+<td>—</td>
+<td><code>cli</code> 模式：先绑定一张图片</td>
+</tr>
+<tr>
+<td><code>-Question &lt;文本&gt;</code></td>
+<td>—</td>
+<td><code>cli</code> 模式：只问一次就退出</td>
+</tr>
+</tbody>
+</table>
+<p>常用组合：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span>                          <span class="c"># 起 Web（最常用，等价于双击 start.bat）</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Mode</span> <span class="n">check</span> <span class="n">-DeepCheck</span>   <span class="c"># 只做全量自检（含真实 API + 视觉推理实测）</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Mode</span> <span class="nb">cli </span>               <span class="c"># 命令行对话调试</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Port</span> <span class="n">8000</span> <span class="n">-NoBrowser</span>    <span class="c"># 换端口、不开浏览器</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Install</span>                 <span class="c"># 缺依赖时先装依赖</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span> <span class="n">-Offline</span>                 <span class="c"># 无网/无 Key 时演示（页面会标注「离线替身」）</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc11-4-l0-环境自检-tools-selfcheck-py">4. L0 —— 环境自检（<code>tools/selfcheck.py</code>）</h2>
+<div class="codehilite"><pre><span></span><code>python tools/selfcheck.py            # 快检（不联网）
+python tools/selfcheck.py --api      # 加做真实 API 连通性
+python tools/selfcheck.py --vision   # 加做真实视觉推理
+python tools/selfcheck.py --all      # 全量
+python tools/selfcheck.py --json     # JSON 输出（供脚本解析）
+</code></pre></div>
+
+<p>实测输出（节选，<code>--all</code>，<strong>37 项全过</strong>）：</p>
+<div class="codehilite"><pre><span></span><code>【依赖】        torch 2.13.0 (CUDA 可用: False)、torchvision 0.28.0、flask 3.1.0、
+               requests 2.32.3、PIL 11.1.0、numpy 2.1.3
+【API Key】    来源：agent/.env.local · sk-f…fbe5（长度 35）
+               密钥文件已在 .gitignore 中 → 不会随作业提交
+               接口模型名 deepseek-v4-flash
+【交付文件】    classes.txt 250 B · predictions.csv 71,844 B
+               classes.txt 校验通过：50 行 · 4 位数字 · 升序 · 无 BOM · 不含 unknown
+               predictions.csv 表头正确：2422 行数据
+【视觉模型】    improved_resnet18_224/best.pt 42.8 MB + improved_resnet50_224/best.pt 90.4 MB
+【运行时】      torch 线程数 8 · 目录可写 · 端口 5000 空闲 · 磁盘剩余 494.5 GB
+【智能体装配】  工具 8 个；视觉工具 1 个；非视觉工具 7 个（满足「≥1 + ≥2」）
+【API 连通性】  HTTP 200 · 模型 deepseek-flash · 1020 ms · tokens 133 · 回复 &#39;在线&#39;
+【视觉推理实测】0003_0009.jpg → 宇通客车_宇通T7 (96.18%, unknown=False) · 170 ms
+               模型常驻复用：第二次调用 154 ms
+</code></pre></div>
+
+<p><code>selfcheck.py</code> 不只是"跑一下 import"，它把任务书的硬性约束也编成了断言：
+<code>classes.txt</code> 的行数/位数/升序/BOM/不含 unknown、<code>predictions.csv</code> 的表头、集成权重是否齐全、工具数量是否达标。</p>
+<hr />
+<h2 id="doc11-5-l1-工具层-tools-e2e_test-py---stage-a">5. L1 —— 工具层（<code>tools/e2e_test.py --stage A</code>）</h2>
+<p><strong>不经过模型</strong>，直接调 <code>ToolRegistry.execute</code>，因此结果确定、毫秒级（总计 6.8 s，其中 6.4 s 是首次加载视觉模型）。</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>检查项</th>
+<th>预期</th>
+<th>实测</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A1</td>
+<td>识别支持车型</td>
+<td>成功 + 具体车型 + Top-5 + 结构化建议</td>
+<td>宇通客车_宇通T7 96.18%，<code>decision.action=accept</code></td>
+</tr>
+<tr>
+<td>A2</td>
+<td>识别范围外车型</td>
+<td><code>is_unknown=True</code> + <code>report_unknown</code></td>
+<td>car_id=unknown，conf=87.69%</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>未上传图片就调用</td>
+<td>前置门禁拒绝</td>
+<td><code>DENIED_BY_POLICY</code></td>
+</tr>
+<tr>
+<td>A4</td>
+<td>图片路径不存在</td>
+<td>如实报错</td>
+<td><code>IMAGE_NOT_FOUND</code></td>
+</tr>
+<tr>
+<td>A5</td>
+<td><code>top_k=999</code> 越界</td>
+<td>Schema 拦截</td>
+<td><code>INVALID_ARGUMENTS</code>「$.top_k: 不能大于 10」</td>
+</tr>
+<tr>
+<td>A6</td>
+<td>传多余参数</td>
+<td><code>additionalProperties:false</code> 拦截</td>
+<td><code>INVALID_ARGUMENTS</code></td>
+</tr>
+<tr>
+<td>A7</td>
+<td>参数不是合法 JSON</td>
+<td>解析失败报错</td>
+<td><code>INVALID_ARGUMENTS</code></td>
+</tr>
+<tr>
+<td>A8</td>
+<td>调用未注册工具</td>
+<td>报错并列出可用工具</td>
+<td><code>UNKNOWN_TOOL</code></td>
+</tr>
+<tr>
+<td>A9</td>
+<td>查询范围外车型 <code>0022</code></td>
+<td>拒绝，不编造资料</td>
+<td><code>CAR_NOT_FOUND</code></td>
+</tr>
+<tr>
+<td>A10</td>
+<td>没有识别结果就写档案</td>
+<td>拒绝</td>
+<td><code>DEPENDENCY_MISSING</code></td>
+</tr>
+<tr>
+<td>A11</td>
+<td>按车身类型筛选清单</td>
+<td>SUV 恰好 21 款</td>
+<td>返回 21 款</td>
+</tr>
+<tr>
+<td>A12</td>
+<td>把 unknown 写进档案</td>
+<td>拒绝（会话状态路径）</td>
+<td><code>UNKNOWN_CAR</code></td>
+</tr>
+<tr>
+<td>A12b</td>
+<td>显式传 <code>car_id="unknown"</code></td>
+<td>拒绝（显式参数路径）</td>
+<td><code>UNKNOWN_CAR</code></td>
+</tr>
+<tr>
+<td>A13</td>
+<td>低置信度分支</td>
+<td><code>confirm_with_user</code>（把显示阈值临时抬到 1.01 构造）</td>
+<td>命中，指引文本正确</td>
+</tr>
+<tr>
+<td>A14</td>
+<td>工具调用记录落盘</td>
+<td><code>agent/data/tool_calls.jsonl</code> 存在且字段完整</td>
+<td>实测 186 行</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这一层的意义</strong>：任务书 5.5「低置信度 / unknown / 异常情况处理」如果只靠大模型自由发挥，
+是无法验证的。这里把它下沉成<strong>确定性的工具行为</strong>——工具结果里直接带 <code>decision.action</code>
+（<code>accept</code> / <code>confirm_with_user</code> / <code>report_unknown</code>）和对应的中文指引，模型只要照着走就行。</p>
+<hr />
+<h2 id="doc11-6-l2-模型层-tools-e2e_test-py---stage-b">6. L2 —— 模型层（<code>tools/e2e_test.py --stage B</code>）</h2>
+<p>真实调用 DeepSeek API，8 个场景、13 轮对话，<strong>总计 37.9 秒</strong>（33 / 33 全过）。</p>
+<h3 id="doc11-6-1-场景总表">6.1 场景总表</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>用户输入</th>
+<th>本轮工具</th>
+<th>轮次</th>
+<th>耗时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 纯文本问候</td>
+<td>你好，介绍一下你能做什么</td>
+<td>—（0 次）</td>
+<td>1</td>
+<td>3.4 s</td>
+</tr>
+<tr>
+<td>S2 上传图后识别</td>
+<td>这是什么车？</td>
+<td><code>classify_car</code> → <code>query_car_info</code></td>
+<td>3</td>
+<td>10.2 s（含首次加载视觉模型 6.8 s）</td>
+</tr>
+<tr>
+<td>S3 <strong>单轮 3 工具串联</strong></td>
+<td>识别…查资料…加进收藏</td>
+<td><code>classify_car</code> → <code>query_car_info</code> → <code>add_car_record</code></td>
+<td>4</td>
+<td>5.4 s</td>
+</tr>
+<tr>
+<td>S4 多轮同会话</td>
+<td>①这是什么车 ②它是什么品牌/车身类型 ③加进档案，备注"赛道日拍的"</td>
+<td>①2 次 ②<strong>0 次</strong> ③<code>add_car_record</code></td>
+<td>3+1+2</td>
+<td>3.9+2.2+3.2 s</td>
+</tr>
+<tr>
+<td>S5 范围外车型</td>
+<td>这张照片里是什么车？帮我记录一下</td>
+<td>仅 <code>classify_car</code>（拒识后不写档案）</td>
+<td>2</td>
+<td>3.3 s</td>
+</tr>
+<tr>
+<td>S6 无图要求识别</td>
+<td>帮我识别一下我刚拍的车</td>
+<td><code>classify_car</code> → 被门禁拒绝</td>
+<td>2</td>
+<td>2.5 s</td>
+</tr>
+<tr>
+<td>S7 档案检索统计</td>
+<td>我的看车档案里都有什么？按品牌汇总</td>
+<td><code>my_garage_stats</code> → <code>search_my_records</code></td>
+<td>2</td>
+<td>3.7 s</td>
+</tr>
+<tr>
+<td>S8 范围外提问</td>
+<td>你能识别奔驰S级和宝马3系吗</td>
+<td><code>list_supported_cars</code> ×2</td>
+<td>2</td>
+<td>2.8 s</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc11-6-2-关键验证点">6.2 关键验证点</h3>
+<p><strong>① 视觉识别确实由模型自己发起（不是外部预先算好塞进提示词）</strong></p>
+<p>S2 的事件流里，<code>classify_car</code> 出现在模型的 <code>tool_calls</code> 中：</p>
+<div class="codehilite"><pre><span></span><code>你 &gt; 我上传了一张车的照片，这是什么车？
+  ↳ classify_car({&quot;top_k&quot;: 5})
+    [OK] classify_car 6825ms  宇通客车_宇通T7 · 0003 · 96.2%
+  ↳ query_car_info({&quot;car_id_or_name&quot;: &quot;0003&quot;})
+    [OK] query_car_info 2ms  宇通客车_宇通T7｜宇通客车｜轻客
+</code></pre></div>
+
+<p>这正是任务书 5.1 要考察的点：图片不是"后台先算好、把结论拼进 Prompt"，而是模型在循环里自主决定调用工具，
+工具<strong>真实加载 checkpoint 并前向推理</strong>（首次 6.8 s 是模型加载，之后同图 141~170 ms）。</p>
+<p><strong>② 单轮内 ≥3 个工具串联（任务书 5.3 硬性要求）</strong></p>
+<p>S3 一轮内完成 <code>classify_car → query_car_info → add_car_record</code>，三个工具全部 <code>ok</code>，
+并返回档案记录号（实测 <code>#19</code>），证明写库真的发生了。</p>
+<p><strong>③ 多轮会话沿用上文（任务书 5.4）</strong></p>
+<p>S4 第 2 轮<strong>没有重新上传图片</strong>，本轮工具列表为空 <code>[]</code>——模型直接沿用会话里第 1 轮的视觉结果作答：</p>
+<div class="codehilite"><pre><span></span><code>你 &gt; 它是什么品牌、什么车身类型？给我讲讲。
+助手 &gt; **品牌：宇通客车**（国产商用车品牌，主要做客车/大巴）
+       **车身类型：轻客 —— 轻型客车**
+</code></pre></div>
+
+<p>第 3 轮说"加进我的档案，备注写赛道日拍的"，模型省略 <code>car_id</code> 直接调 <code>add_car_record</code>，
+工具回退到 <code>session.last_prediction</code>，记录写入且 <code>note='赛道日拍的'</code>。</p>
+<p><strong>④ 拒识处理（任务书 5.5）</strong></p>
+<p>S5 用一张<strong>不在 50 类里</strong>的图（<code>data/val/unknown/0022_0022.jpg</code>）：</p>
+<div class="codehilite"><pre><span></span><code>结论：这张照片我认不出来——未识别为本组支持的车型
+（模型判定它不属于我能识别的 50 款车，置信度 0.877，属于明确拒识，不是「差一点认出来」）。
+...
+| 候选 | 相似度 |
+| 法拉利 Roma | 0.020 |   ← 5 个候选全部列出，且明确标注&quot;不是结论&quot;
+| 比亚迪 汉EV  | 0.014 |
+...
+这些分数都很低，等于没有指向性，所以我不给你编一个车型，也不会把它写进档案。
+</code></pre></div>
+
+<p>断言全部命中：<code>is_unknown=True</code>、本轮<strong>没有</strong>调用 <code>add_car_record</code>、回复里明确说明未识别。</p>
+<p><strong>⑤ 无图片时的异常反馈（任务书 5.5）</strong></p>
+<p>S6 在没有图片的会话里要求识别，模型仍然发起 <code>classify_car</code> 调用，
+被注册表的前置门禁拦下（<code>DENIED_BY_POLICY</code>），失败原因如实回传给模型，模型据此转述给用户：</p>
+<div class="codehilite"><pre><span></span><code>我这边还没收到图片，所以暂时没法识别。麻烦你在界面里上传一张车辆照片，我再帮你认。
+拍的时候注意：正侧面或斜前方 45°、车身完整入镜、光线充足……
+</code></pre></div>
+
+<p><strong>智能体没有崩</strong>，也没有编造一个结果。</p>
+<h3 id="doc11-6-3-模型自发表现出的-好行为-未在提示词中要求">6.3 模型自发表现出的"好行为"（未在提示词中要求）</h3>
+<ul>
+<li>S7 汇总档案时，模型自己发现"15 条记录只覆盖 2 款车、重复很多"，主动指出
+  <code>0975_0007.jpg</code> 被反复写入，并提议清理重复；</li>
+<li>S5 拒识时主动说明"你这张（20260915-112416）和之前那张宇通T7 不是同一张图，所以你档案里那条记录没受影响"；</li>
+<li>S8 被问"能不能识别奔驰S级"时，先查清单再回答，并补充"同品牌的 E 级/5 系外观接近，拍到这两款把握更大"。</li>
+</ul>
+<hr />
+<h2 id="doc11-7-l3-web-系统端到端-浏览器实测">7. L3 —— Web 系统端到端（浏览器实测）</h2>
+<p>用真实浏览器访问 <code>http://127.0.0.1:5000/</code>，走完整交互路径。</p>
+<h3 id="doc11-7-1-实测步骤">7.1 实测步骤</h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>操作</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>打开页面</td>
+<td>顶栏显示会话号、<code>deepseek-v4-flash</code>、<strong>API 已配置</strong>、视觉模型两个；右栏"运行状态"显示 t=0.25 / 显示阈值 0.7 / τ=0.05 / 工具数 8</td>
+</tr>
+<tr>
+<td>2</td>
+<td>上传一张车辆照片</td>
+<td>预览出现，提示"图片已就绪，发送消息时我会调用 classify_car 识别它"</td>
+</tr>
+<tr>
+<td>3</td>
+<td>发送"这是什么车？介绍一下，然后加进我的收藏"</td>
+<td><strong>3 轮 · 3 次工具调用 · 12.0 s</strong>；工具时间线依次出现 <code>classify_car</code> / <code>query_car_info</code> / <code>add_car_record</code>，三张卡片都是"成功"</td>
+</tr>
+<tr>
+<td>4</td>
+<td>查看视觉结果卡片</td>
+<td>宇通客车_宇通T7 · <strong>96.2%</strong> · "置信度充足" · Top-5 候选条形图</td>
+</tr>
+<tr>
+<td>5</td>
+<td>查看右栏档案面板</td>
+<td>立即出现 1 条记录：<code>宇通客车_宇通T7 0003 · 宇通客车 · 轻客 · 置信度 96.2%</code></td>
+</tr>
+<tr>
+<td>6</td>
+<td>再发"我的看车档案里都有什么？"</td>
+<td>同一会话第 2 轮，<strong>2 轮 · 2 次工具 · 4.5 s</strong>，模型给出品牌分布与覆盖率统计（15 条记录 / 覆盖 30%）</td>
+</tr>
+<tr>
+<td>7</td>
+<td>换一张<strong>范围外</strong>的车图再问</td>
+<td><code>classify_car</code> 卡片变为灰色 <code>report_unknown</code> 样式："未识别（unknown）87.7%"，列出 5 个真实候选车型并标注"仅供参考，非结论"</td>
+</tr>
+<tr>
+<td>8</td>
+<td>确认档案面板</td>
+<td><strong>仍然是 1 条</strong>——拒识结果没有被写入档案（符合任务书 5.5）</td>
+</tr>
+</tbody>
+</table>
+<p>截图见 <code>docs/images/</code>（下方直接内嵌）：</p>
+<p><strong>1) 上传后页面状态</strong> —— 顶栏显示会话号、模型、<strong>API 已配置</strong>、两个视觉模型；右栏是运行状态与档案面板。</p>
+<p><img alt="上传图片" src="../images/web-01-upload.png" /></p>
+<p><strong>2) 三工具链完成</strong> —— <code>3 轮 · 3 次工具调用 · 12.0s</code>，档案面板立即出现 <code>宇通客车_宇通T7 0003 · 轻客 · 置信度 96.2%</code>。</p>
+<p><img alt="对话与工具链" src="../images/web-02-chat.png" /></p>
+<p><strong>3) 视觉结果卡片（本次新增）</strong> —— 车型 + 96.2% + "置信度充足" + Top-5 候选条形图，下方保留原始 JSON。</p>
+<p><img alt="视觉结果卡片" src="../images/web-03-vision-card.png" /></p>
+<p><strong>4) 同一会话第 2 轮</strong> —— 未重新上传图片，模型基于会话状态给出品牌分布与覆盖率统计。</p>
+<p><img alt="多轮追问" src="../images/web-04-multiturn.png" /></p>
+<p><strong>5) 拒识分支</strong> —— 灰色卡片："未识别（unknown）87.7%"，5 个真实候选车型全部标注"仅供参考，非结论"。</p>
+<p><img alt="拒识" src="../images/web-05-unknown.png" /></p>
+<h3 id="doc11-7-2-本次顺带做的一处界面改进">7.2 本次顺带做的一处界面改进</h3>
+<p><code>classify_car</code> 的工具卡片原先只把结果 JSON 原样铺开（要展开才看得到，且要自己找 <code>top_candidates</code>）。
+现在在 JSON 之上增加了一张<strong>视觉结果卡片</strong>：</p>
+<ul>
+<li>车型 + 置信度大字；</li>
+<li>一行结论（<code>置信度充足</code> / <code>置信度偏低，建议向用户确认</code> / <code>判定不属于本组支持的 50 款车型</code>）；</li>
+<li>Top-K 候选的横向条形图；</li>
+<li>三种分支用不同的左侧色条区分：绿=接受、黄=需确认、灰=拒识。</li>
+</ul>
+<p>这让任务书 5.5 要求的"低置信度 / unknown"处理在界面上<strong>一眼可见</strong>，而不只是藏在模型的行文里。</p>
+<hr />
+<h2 id="doc11-8-本次发现并修复的缺陷">8. 本次发现并修复的缺陷</h2>
+<blockquote>
+<p>接入真实 Key 之前，这些缺陷都被离线替身"掩盖"着——因为替身只走固定分支，既不读 <code>top_candidates</code>，
+也不会遇到网络故障。</p>
+</blockquote>
+<p><strong>代码缺陷 5 个</strong>：BUG-1（集成丢失 Top-K）、BUG-2（Top-K 混入 unknown）、
+BUG-3（骨架自查被真实模型污染）、BUG-8（瞬时网络故障直接判死 + 报错不可读）、
+BUG-9（超长工具结果截断成非法 JSON，整轮对话崩掉）。</p>
+<p><strong>工程环境坑 4 个</strong>：BUG-4（PS 5.1 读无 BOM 的 <code>.ps1</code> 变乱码）、BUG-5（<code>ErrorActionPreference='Stop'</code> 被 stderr 打断）、
+BUG-6（PS 5.1 吃掉单引号串里的双引号）、BUG-7（<code>web/app.py</code> 缺 <code>--offline</code>）。</p>
+<p><strong>一个共同规律</strong>：这 5 个代码缺陷里，<strong>4 个都只在"真实使用一段时间、状态变多"之后才会出现</strong>
+（档案记录累积 → 结果变长 → 触发 BUG-9；网络波动 → 触发 BUG-8；换图片/换会话 → 触发 BUG-1）。
+离线替身永远走固定的短路径，所以一个都发现不了。</p>
+<h3 id="doc11-bug-1-严重-集成推理丢掉了-top-k-候选">BUG-1（严重）集成推理丢掉了 Top-K 候选</h3>
+<p><strong>现象</strong>：<code>CarEnsemble.predict_path(path, top_k=5)</code> 收下了 <code>top_k</code> 参数却<strong>从未使用</strong>，
+返回体里没有 <code>top_candidates</code>，导致 <code>classify_car</code> 的 <code>top_candidates</code> 恒为 <code>[]</code>。</p>
+<p><strong>影响</strong>：任务一最终交付的就是 <strong>C1+C2 集成</strong>，也就是说<strong>交付配置下</strong>，
+任务书 5.5 要求的"低置信度时展示 Top-K 让用户确认"完全没有数据可用。</p>
+<p><strong>定位</strong>：<code>src/cardex/inference.py</code> —— <code>CarEnsemble.predict_batch()</code> 只返回
+<code>label_id / label_name / index / confidence / is_unknown</code>，而 <code>predict_path()</code> 直接透传它的结果。
+（单模型 <code>CarClassifier.predict_image()</code> 是返回 <code>top_k</code> 的，所以问题只在集成路径上。）</p>
+<p><strong>修复</strong>：给 <code>predict_batch()</code> 增加可选参数 <code>top_k</code>，对<strong>校正后的集成概率</strong>排序并附上候选列表；
+<code>predict_path()</code> 透传。因为参数可选，<code>src/finalize.py</code>、<code>src/evaluate.py</code> 等既有调用<strong>行为完全不变</strong>
+（<code>predictions.csv</code> 与 0.9604 的 Macro-F1 不受影响）。</p>
+<p><strong>验证</strong>：A1b 由 FAIL 转 PASS，S5 场景下模型能列出 5 个真实候选。</p>
+<h3 id="doc11-bug-2-top-k-里混进了-unknown-这一行">BUG-2 Top-K 里混进了 <code>unknown</code> 这一行</h3>
+<p><strong>现象</strong>：修复 BUG-1 后，候选列表第 1 名是 <code>unknown</code>（因为它的概率最高，如 87.7%）。</p>
+<p><strong>影响</strong>：<code>unknown</code> 不是"候选车型"，它是"以上都不是"这个<strong>结论本身</strong>。
+把它列进"最相似的几款车"，语义上是错的。</p>
+<p><strong>修复</strong>：<code>agent/tools/vision.py</code> 向分类器多要一个候选（<code>top_k + 1</code>），
+过滤掉 <code>car_id == "unknown"</code> 后再截取 <code>top_k</code>，保证返回给模型的永远是 K 个<strong>真实车型</strong>。</p>
+<h3 id="doc11-bug-3-测试可信度-verify_agent-py-在有-key-时会静默切换成真实模型">BUG-3（测试可信度）<code>verify_agent.py</code> 在有 Key 时会静默切换成真实模型</h3>
+<p><strong>现象</strong>：接入 Key 后重跑 <code>tools/verify_agent.py</code>，由 <strong>59/59</strong> 变成 <strong>57/59</strong>。</p>
+<p><strong>根因</strong>：该脚本调用 <code>load_config()</code>，而 <code>load_config</code> 在"有 Key"时会自动选 <code>DeepSeekClient</code>。
+于是这套<strong>本该可复现</strong>的骨架自查，悄悄变成了"真实模型行为测试"，
+两条依赖具体措辞/固定工具序列的断言随之失败。</p>
+<p><strong>修复</strong>：<code>verify_agent.py</code> 默认强制 <code>cfg.offline = True</code>（并在输出里打印当前模式），
+新增 <code>--live</code> 才切到真实模型；同时把两条断言改得更严谨——
+"回复说明了未识别"改为接受同义表述，多轮写档案那条在 <code>--live</code> 下如实降级为 WARN 并说明原因。</p>
+<p><strong>分工因此更清晰</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>管什么</th>
+<th>是否可复现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/verify_agent.py</code></td>
+<td>智能体<strong>骨架</strong>（工具注册、门禁、会话、错误码、Web 路由）</td>
+<td>是（离线替身）</td>
+</tr>
+<tr>
+<td><code>tools/e2e_test.py</code></td>
+<td><strong>真实模型</strong>行为（工具链、多轮、拒识话术）</td>
+<td>否（模型有随机性，但 13 轮全部符合预期）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc11-bug-4-工程环境-powershell-5-1-会把无-bom-的-ps1-读成乱码">BUG-4（工程环境）PowerShell 5.1 会把无 BOM 的 <code>.ps1</code> 读成乱码</h3>
+<p><strong>现象</strong>：<code>start.ps1</code> 报一堆语法错误，报错里中文全是 <code>鐪熷疄</code> 这样的乱码。</p>
+<p><strong>根因</strong>：Windows PowerShell 5.1 对<strong>没有 BOM</strong> 的 <code>.ps1</code> 按系统 ANSI 代码页（本机 GBK）解码。
+文件是 UTF-8，于是每个中文字符串都变成了乱码，连引号配对都被破坏。</p>
+<p><strong>修复</strong>：<code>start.ps1</code> 以 <strong>UTF-8 with BOM</strong> 保存（<code>start.bat</code> 内容全为 ASCII，不受影响）。</p>
+<h3 id="doc11-bug-5-工程环境-erroractionpreference-stop-会被-python-的-stderr-打断">BUG-5（工程环境）<code>$ErrorActionPreference='Stop'</code> 会被 Python 的 stderr 打断</h3>
+<p><strong>现象</strong>：启动脚本在 <code>python -c ...</code> 之后直接终止。</p>
+<p><strong>根因</strong>：PowerShell 5.1 把外部程序写到 stderr 的每一行都包装成 <code>NativeCommandError</code> 错误记录，
+在 <code>Stop</code> 语义下会变成终止性错误。</p>
+<p><strong>修复</strong>：脚本统一用 <code>Continue</code>，关键步骤显式判断 <code>$LASTEXITCODE</code> / 显式 <code>-ErrorAction Stop</code>，
+并在代码里写明了原因，避免后人"顺手改回去"。</p>
+<h3 id="doc11-bug-6-工程环境-ps-5-1-传参给外部程序会吃掉单引号串里的双引号">BUG-6（工程环境）PS 5.1 传参给外部程序会吃掉单引号串里的双引号</h3>
+<p><strong>现象</strong>：<code>python -c 'import sys;print("%d.%d.%d"%sys.version_info[:3])'</code> 送到 Python 变成
+<code>print(%d.%d.%d%sys.version_info[:3])</code>，报 <code>SyntaxError</code>（实测复现）。</p>
+<p><strong>根因</strong>：PS 5.1 在拼装外部程序命令行时对参数重新加引号，单引号串内部的 <code>"</code> 被吞掉。</p>
+<p><strong>修复</strong>：传给外部程序的 Python 代码统一写成「PowerShell 双引号 + Python 单引号」。</p>
+<h3 id="doc11-bug-8-严重-实机触发-瞬时网络故障直接判死-且报错无法阅读">BUG-8（严重，实机触发）瞬时网络故障直接判死，且报错无法阅读</h3>
+<p><strong>现象</strong>：实机使用中出现</p>
+<div class="codehilite"><pre><span></span><code>API_REQUEST_FAILED：调用 DeepSeek 接口失败：ConnectionError: HTTPSConnectionPool(
+host=&#39;api.deepseek.com&#39;, port=443): Max retries exceeded with url: /chat/completions
+(Caused by NameResolutionError(...: Failed to resolve &#39;api.deepseek.com&#39;
+([Errno 11001] getaddrinfo failed)))
+</code></pre></div>
+
+<p><strong>排查结论</strong>：这是<strong>一次瞬时 DNS 解析失败</strong>，不是配置或代码问题。
+复查时 DNS 已恢复（Python <code>getaddrinfo</code> 13 ms、<code>nslookup</code> 正常），
+连续 3 次真实 API 调用全部成功（2.0 s / 1.8 s / 2.0 s）。</p>
+<p><strong>但它暴露了两个真实缺陷</strong>：</p>
+<ol>
+<li><strong>零重试</strong>。DNS 抖动通常一两秒就自愈，而项目是"一次失败 = 整轮失败"——
+   用户得把自己刚打的那句话重新打一遍。对比主流 agent harness，网络类瞬时故障都会退避重试。</li>
+<li><strong>报错不可读</strong>。把 urllib3 的异常字符串原样抛出，用户看到的是 <code>HTTPSConnectionPool</code>、
+   <code>Max retries exceeded</code>、<code>NameResolutionError</code> 这一串——既看不出坏在哪一层，也看不出该怎么办。</li>
+</ol>
+<p><strong>修复</strong>：把"发请求"和"重试策略"拆开（<code>agent/llm.py</code>）：</p>
+<ul>
+<li>新增 <code>classify_request_error()</code>：按网络栈<strong>自下而上分层</strong>判定，翻译成带修复建议的错误码 ——</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>触发条件</th>
+<th>是否重试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NETWORK_DNS_FAILED</code></td>
+<td><code>NameResolutionError</code> / <code>getaddrinfo failed</code> / <code>[Errno 11001]</code></td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>NETWORK_UNREACHABLE</code></td>
+<td>其他连接失败、代理失败</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>NETWORK_TLS_FAILED</code></td>
+<td><code>SSLError</code> / 证书校验失败</td>
+<td>❌（配置问题，重试无意义）</td>
+</tr>
+<tr>
+<td><code>API_TIMEOUT</code></td>
+<td>连接或读取超时</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMITED</code> / <code>API_SERVER_ERROR</code></td>
+<td>HTTP 429 / 5xx</td>
+<td>✅</td>
+</tr>
+<tr>
+<td><code>API_REQUEST_FAILED</code></td>
+<td>HTTP 400 / 401 / 402 / 403</td>
+<td>❌（<strong>快速失败</strong>，附明确建议）</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><code>complete()</code> 只在 <code>retryable</code> 时做<strong>指数退避 + ±25% 抖动</strong>重试
+  （默认 <code>max_retries=3</code>、<code>retry_backoff=0.8</code> → 约 0.8 s / 1.6 s / 3.2 s）；</li>
+<li>重试过程通过 <code>notify</code> 回调广播 <code>api_retry</code> / <code>api_recovered</code> 事件，
+  Web 前端实时显示"网络波动（NETWORK_DNS_FAILED），正在自动重试 2/4，1.6s 后重发…"，
+  用户知道系统在自救，而不是界面卡死；</li>
+<li>网络类错误失败后，前端把用户刚才那句话<strong>放回输入框</strong>，直接再点一次发送即可。</li>
+</ul>
+<p><strong>实测验证</strong>（构造四类故障）：</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>构造</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>E-A 域名解析失败</td>
+<td>指向不存在的域名</td>
+<td><code>NETWORK_DNS_FAILED</code>，<code>retryable=True</code>，实际尝试 3 次，广播 2 次 <code>api_retry</code>，提示指向 DNS 而非代码</td>
+</tr>
+<tr>
+<td>E-B 连不上的 IP</td>
+<td>指向非路由地址 <code>10.255.255.1</code></td>
+<td><code>API_TIMEOUT</code>（ConnectTimeout），重试 2 次，4.2 s 后失败</td>
+</tr>
+<tr>
+<td>E-C Key 无效</td>
+<td>假 Key</td>
+<td><code>API_REQUEST_FAILED</code>，<code>retryable=False</code>，<strong>0.1 s 快速失败，零重试</strong></td>
+</tr>
+<tr>
+<td>E-D 正常调用</td>
+<td>—</td>
+<td><code>retries=0</code>，1.3 s</td>
+</tr>
+<tr>
+<td>E-E 重试后成功</td>
+<td>前 2 次强制失败、第 3 次放行</td>
+<td>第 3 次成功，<code>retries=2</code>，事件序列 <code>api_retry, api_retry, api_recovered</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>浏览器端实测</strong>：另起一个实例把 <code>api_url</code> 指向 <code>https://127.0.0.1:9</code>（必然连接失败），在真实浏览器里发消息：</p>
+<ul>
+<li>输入框下方实时显示 <code>网络波动（NETWORK_UNREACHABLE），正在自动重试 3/4，1.1s 后重发…</code>；
+  <img alt="重试中" src="../images/web-06-retry.png" /></li>
+<li>重试耗尽后给出完整错误卡片——<strong>错误码 + 原因 + 建议 + 「已自动重试 3 次仍未成功」</strong>，
+  并且<strong>把用户刚打的那句话放回输入框</strong>，直接再点一次发送即可；
+  临时重试提示在收尾时被清除，不会一直挂在界面上。
+  <img alt="重试耗尽" src="../images/web-07-retry-final.png" /></li>
+</ul>
+<p><strong>修复过程中又挖出一个连带缺陷</strong>：<code>TurnResult.to_dict()</code> 只带了 <code>error.code</code> 和 <code>error.message</code>，
+<strong>把 <code>info</code>（含 <code>hint</code> 修复建议）丢掉了</strong>。于是 SSE 的 <code>error</code> 事件虽然带了建议，
+但随后 <code>result</code> 事件会用 <code>to_dict()</code> 的内容<strong>覆盖</strong>界面，导致用户最终只看到一句
+"无法连接到 DeepSeek 接口"，看不到该怎么处理——正是本次问题的原始症状。
+已给 <code>TurnResult</code> 增加 <code>error_info</code> 字段并贯通到前端。</p>
+<p><strong>顺带发现</strong>：诊断脚本第一版只测解析结果的<strong>第一个 IP</strong>，报了假 FAIL。
+逐个测才发现 <code>api.deepseek.com</code> 的三个 A 记录里
+<code>112.48.148.243</code> <strong>稳定不通</strong>（连续两次 5 s 超时），另两个 6~8 ms 正常。
+已改为<strong>逐个 IP 实测并分级报告</strong>（全通=OK、部分不通=WARN 并说明不影响使用、全不通=FAIL）。
+实测 8 次真实请求延迟 896~1836 ms、零重试——因为该 IP 在解析结果里始终排最后，
+请求直接命中可达节点。这条信息现在会出现在 <code>selfcheck.py --net</code> 里。</p>
+<h3 id="doc11-bug-9-严重-真实模型下约-1-8-概率触发-超长工具结果被截断成非法-json-整轮对话崩掉">BUG-9（严重，真实模型下约 1/8 概率触发）超长工具结果被截断成非法 JSON，整轮对话崩掉</h3>
+<p><strong>发现过程</strong>：全量回归时 <code>e2e_test.py</code> 的 S7 场景突然从通过变成</p>
+<div class="codehilite"><pre><span></span><code>[FAIL] S7 档案汇总轮次成功
+[FAIL] S7b 基于真实档案数据给出汇总        0 字
+[OK]   S7a 调用了档案类工具
+</code></pre></div>
+
+<p><strong>特点</strong>：工具有明确返回（<code>my_garage_stats 共 33 条记录</code>），但整轮 <code>ok=False</code>、回复 0 字。
+而且<strong>时好时坏</strong>——单跑 4 次挂 1 次，典型的"和输入长度有关"的间歇性缺陷。</p>
+<p><strong>定位</strong>：加 <code>traceback</code> 直接调 <code>_run_steps</code> 绕开 <code>run_turn</code> 的兜底 try，复现出完整调用栈：</p>
+<div class="codehilite"><pre><span></span><code>File &quot;agent/loop.py&quot;, line 323, in _run_steps
+    session.add_tool_result(call.id, call.name,
+        truncate(res.content(), MAX_TOOL_RESULT_CHARS), ...)
+File &quot;agent/session.py&quot;, line 97, in add_tool_result
+    &quot;result&quot;: json.loads(content) if content and content.lstrip().startswith(&quot;{&quot;) else content,
+json.decoder.JSONDecodeError: Invalid control character at: line 1 column 3001 (char 3000)
+</code></pre></div>
+
+<p><strong>根因</strong>：两处各自都有问题，凑在一起就炸。</p>
+<ol>
+<li><code>loop.truncate()</code> 是<strong>纯文本</strong>截断：<code>text[:3000] + "\n…（已截断）…\n" + text[-3000:]</code>。
+   对一个 JSON 字符串这么切，切出来的当然<strong>不再是合法 JSON</strong>——
+   插入的那段说明文字带着裸换行，正好落在某个未闭合的字符串里。</li>
+<li><code>session.add_tool_result()</code> 看到内容以 <code>{</code> 开头就无条件 <code>json.loads()</code>，
+   把这个解析失败<strong>直接抛了出去</strong>。而事件日志里的 <code>result</code> 字段只是<strong>审计/展示用的副本</strong>，
+   它解析失败<strong>不应该</strong>有能力打断一轮真实对话。</li>
+</ol>
+<p><strong>触发条件</strong>：工具结果超过 <code>MAX_TOOL_RESULT_CHARS = 6000</code> 字符。
+<code>my_garage_stats(scope=all)</code> 在档案积累到 33 条记录时正好越线——数据越多越容易踩。
+（本项目档案记录是累积的，所以这是个"用久了必然出现"的缺陷。）</p>
+<p><strong>修复（两层）</strong>：</p>
+<ul>
+<li><strong>治本</strong> —— 新增 <code>loop.truncate_tool_result()</code>：<strong>结构化裁剪</strong>。
+  先 <code>json.loads</code>，再按 <code>(字符串上限, 列表保留项数)</code> 的档位逐级瘦身
+  （<code>(2000,50) → (500,20) → (200,8) → (80,3) → (40,1) → (20,0)</code>），
+  一装得下就停手，最后重新序列化。<strong>保证输出的永远是合法 JSON。</strong>
+  裁剪后在结果里显式加 <code>_truncated: true</code> / <code>_original_chars</code> / <code>_notice</code>，
+  让模型知道"这份数据不完整、需要精确参数就重调"，而不是把残缺数据当成全部事实。
+  非 JSON 内容（理论上不该有）退回文本截断。<code>truncate()</code> 保留但明确标注<strong>只用于纯文本</strong>。</li>
+<li><strong>兜底</strong> —— <code>session._parse_for_log()</code>：解析失败就原样存字符串，绝不外抛。</li>
+</ul>
+<p><strong>实测</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>用例</th>
+<th>修复前</th>
+<th>修复后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6614 字符的 <code>my_garage_stats</code> 结果</td>
+<td>✗ <code>JSONDecodeError: Invalid control character at char 3000</code></td>
+<td>✓ 合法 JSON，4168 字符；保留 <code>ok</code> / <code>total_records</code> / 20 条记录 / 全部品牌 + 裁剪标记</td>
+</tr>
+<tr>
+<td>长度边界 10 / 100 / 1000 / 5999 / 6000 / 6001 / 20000 / 200000</td>
+<td>—</td>
+<td>✓ 全部为合法 JSON，且均未超限</td>
+</tr>
+<tr>
+<td>非 JSON（纯文本 / 空 / 数组）</td>
+<td>—</td>
+<td>✓ 不抛异常</td>
+</tr>
+<tr>
+<td><code>_parse_for_log</code> 收到非法 JSON</td>
+<td>✗ 抛出</td>
+<td>✓ 原样返回字符串</td>
+</tr>
+<tr>
+<td><strong>原失败场景压测（3 种问法 × 4 次）</strong></td>
+<td>约 1/8 崩</td>
+<td><strong>12/12 全部成功</strong>，回复 360~1537 字</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3 id="doc11-bug-7-web-app-py-缺少---offline">BUG-7 <code>web/app.py</code> 缺少 <code>--offline</code></h3>
+<p><strong>现象</strong>：<code>start.ps1 -Offline</code> 无处可传，无法在已配置 Key 的机器上强制演示离线模式。</p>
+<p><strong>修复</strong>：<code>web/app.py</code> 增加 <code>--offline</code>，命中时按需重建模块级的 <code>CONFIG</code> / <code>AGENT</code>。</p>
+<hr />
+<h2 id="doc11-9-异常路径测试">9. 异常路径测试</h2>
+<p>单独构造异常，验证错误被<strong>如实上报</strong>而不是被吞掉或伪装成功：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>构造方式</th>
+<th>实测结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无效 API Key</td>
+<td>用 <code>sk-000…</code> 假 Key 直连</td>
+<td><code>API_REQUEST_FAILED</code> · HTTP 401 · 提示"API Key 无效或已失效"</td>
+</tr>
+<tr>
+<td>模型名不存在</td>
+<td><code>model='no-such-model-xyz'</code></td>
+<td><code>API_REQUEST_FAILED</code> · HTTP 400 · 提示"检查模型名、请求参数与消息顺序"</td>
+</tr>
+<tr>
+<td>未配置 Key 时强行走真实客户端</td>
+<td><code>api_key=''</code></td>
+<td><code>API_KEY_MISSING</code> · 并给出配置指引</td>
+</tr>
+<tr>
+<td>未配置 Key 时自动降级</td>
+<td>临时移走 <code>.env.local</code></td>
+<td><code>offline=True</code>，客户端自动变成 <code>ScriptedClient</code>，掩码显示"(未配置)"</td>
+</tr>
+<tr>
+<td>图片无法解析 / 超 12 MB</td>
+<td>Web 上传接口</td>
+<td><code>IMAGE_UNREADABLE</code> / <code>FILE_TOO_LARGE</code>（前端也先拦一道）</td>
+</tr>
+<tr>
+<td>单条消息超 2000 字</td>
+<td>Web 对话接口</td>
+<td><code>TOO_LONG</code></td>
+</tr>
+<tr>
+<td>连续 3 次相同失败</td>
+<td>循环内熔断</td>
+<td>提前终止，避免模型原地打转耗尽预算</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc11-10-复现步骤">10. 复现步骤</h2>
+<div class="codehilite"><pre><span></span><code><span class="nb">cd </span><span class="n">E</span><span class="p">:\</span><span class="n">Hanako</span><span class="p">\</span><span class="n">OH-WorkSpace</span><span class="p">\</span><span class="n">car-kb-agent</span>
+
+<span class="c"># 0) 确认 Key 已配置（密钥只写 .env.local / 环境变量，绝不进代码与报告）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">selfcheck</span><span class="p">.</span><span class="n">py</span>                     <span class="c"># 看到「API Key 来源：agent/.env.local」即可</span>
+
+<span class="c"># 1) 全量环境自检（依赖 + 交付文件 + 权重 + 真实 API + 真实视觉推理）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">selfcheck</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-all</span>
+
+<span class="c"># 2) 工具层（确定性，约 7 秒）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">e2e_test</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-stage</span> <span class="n">A</span>
+
+<span class="c"># 3) 模型层（真实 API，约 40 秒，13 轮对话）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">e2e_test</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-stage</span> <span class="n">B</span>
+
+<span class="c"># 4) 只跑某一个场景</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">e2e_test</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-stage</span> <span class="n">B</span> <span class="p">-</span><span class="n">-only</span> <span class="n">S3</span><span class="p">,</span><span class="n">S5</span>
+
+<span class="c"># 5) 离线对照（无 Key / 断网时也能跑，结果不代表模型效果）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">e2e_test</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-offline</span>
+
+<span class="c"># 6) 提交前自查</span>
+<span class="n">python</span> <span class="n">src</span><span class="p">/</span><span class="n">verify_submission</span><span class="p">.</span><span class="n">py</span>               <span class="c"># 任务一：41 项</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">verify_agent</span><span class="p">.</span><span class="n">py</span>                  <span class="c"># 任务二三：59 项（离线骨架）</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">verify_agent</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-live</span>           <span class="c"># 任务二三：切真实模型再跑一遍</span>
+
+<span class="c"># 7) 一键启动 Web</span>
+<span class="p">.\</span><span class="n">start</span><span class="p">.</span><span class="n">ps1</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc11-11-尚未覆盖-已知限制">11. 尚未覆盖 / 已知限制</h2>
+<ol>
+<li><strong>教师测试集未提供</strong>：仓库里的 <code>predictions.csv</code> 是在本地 <code>data/val</code>（2422 张，含 588 张 unknown）上的
+   <strong>演练结果</strong>，Macro-F1 = 0.9604。拿到测试目录后执行
+   <code>python src/predict_batch.py --input-dir &lt;dir&gt;</code> 重新生成即可，脚本与格式均无需改动。</li>
+<li><strong>并发未压测</strong>：Flask 以 <code>threaded=True</code> 运行，Agent 对同一会话加锁、不同会话可并发，
+   但本次只测了单用户顺序交互。</li>
+<li><strong>真实模型的措辞不保证逐字一致</strong>：L2 的 33 项断言全部是对<strong>行为</strong>（调了哪些工具、成功与否、
+   状态是否正确）的检查，只有极少数涉及措辞的断言做了同义放宽。多次运行结果可能个别措辞不同，
+   但工具链与状态机不变。</li>
+<li><strong><code>reasoning_content</code> 未展示</strong>：接口返回的思维链被有意忽略，没有写进会话日志，
+   以免把模型内部推理与业务事实混在一起。</li>
+<li><strong>超时参数按 CPU 环境调过</strong>：视觉工具 <code>timeout_s=120</code>，模型 <code>read_timeout=90</code>。
+   换到更慢的机器上首次加载模型可能需要放宽。</li>
+</ol>
+<hr />
+<h2 id="doc11-12-结论">12. 结论</h2>
+<p>接入真实 API 后，任务二、任务三的全部链路——<strong>环境 → 工具 → 模型 → Web → 异常</strong>——
+均已在真实条件下跑通并通过检查（L0~L4 合计 190 项）。</p>
+<p>更重要的是，这次真实链路测试<strong>暴露了 5 个仅靠离线自测发现不了的代码缺陷</strong>
+（最严重的一个会让任务书 5.5 的"低置信度展示 Top-K"在最终交付配置下无数据可用；
+另外两个是实机使用中真实触发、导致整轮失败的瞬时网络故障处理，
+以及数据累积后必然爆发的超长工具结果截断崩坏），它们都已被修复并纳入回归。</p>
+<hr />
+<p><strong>相关文档</strong>：<a href="./05_脚本与命令手册.html">05 · 脚本与命令手册</a> · <a href="./03_配置参数详解.html">03 · 配置参数详解</a> · <a href="./08_常见问题与排错.html">08 · 常见问题与排错</a> · <a href="./09_任务二三交接说明.html">09 · 任务二三交接说明</a></p><div class="docnav"><a class="prev" href="./09_任务二三交接说明.html"><span class="dir">← 上一篇</span><span class="ttl">09 · 任务二三交接说明</span></a><a class="next" href="./11_Web界面与会话管理.html"><span class="dir">下一篇 →</span><span class="ttl">11 · Web界面与会话管理</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

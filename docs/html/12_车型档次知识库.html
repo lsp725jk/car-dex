@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>12 · 车型档次知识库（价格 / 参数 / 档次差异） — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>12 · 车型档次知识库</span></button><div class="nav-list"><a class="lv2" href="#doc13-1-为什么需要它">1. 为什么需要它</a><a class="lv2" href="#doc13-2-数据模型">2. 数据模型</a><a class="lv2" href="#doc13-3-反编造-三道防线">3. 反编造：三道防线</a><a class="lv2" href="#doc13-4-关键实现-结构化表格抽取">4. 关键实现：结构化表格抽取</a><a class="lv2" href="#doc13-5-两个新工具">5. 两个新工具</a><a class="lv2" href="#doc13-6-用户自己的看车档案也能记档次">6. 用户自己的看车档案也能记档次</a><a class="lv2" href="#doc13-7-实测数据">7. 实测数据</a><a class="lv2" href="#doc13-8-途中修掉的一个真-bug">8. 途中修掉的一个真 bug</a><a class="lv2" href="#doc13-9-途中修掉的第二个坑-重复运行会累积出重复档次">9. 途中修掉的第二个坑：重复运行会累积出重复档次</a><a class="lv2" href="#doc13-10-稳定性-两个只在反复跑时才暴露的问题">10. 稳定性：两个只在反复跑时才暴露的问题</a><a class="lv2" href="#doc13-11-最终数据">11. 最终数据</a><a class="lv2" href="#doc13-12-怎么自己验证">12. 怎么自己验证</a></div></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">12 · 车型档次知识库　（13/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc13" data-title="12 · 车型档次知识库（价格 / 参数 / 档次差异）"><h1 id="doc13-12-车型档次知识库-价格-参数-档次差异">12 · 车型档次知识库（价格 / 参数 / 档次差异）</h1>
+<blockquote>
+<p>本文说明「<strong>档案库支持车辆各档次（标准版、豪华版……）的价格与参数，以及档次之间的差别</strong>」
+和「<strong>搜索到的信息可以存进档案</strong>」这两件事是怎么做的。</p>
+<p>核心难点只有一个：<strong>数据从哪来，以及怎么保证不是编的。</strong></p>
+</blockquote>
+<hr />
+<h2 id="doc13-1-为什么需要它">1. 为什么需要它</h2>
+<p>教师数据集只提供 <strong>类别 ID + 车型名</strong>。所以原始档案库里一款车只有：</p>
+<div class="codehilite"><pre><span></span><code>品牌 · 车身大类 · 车身细分 · 一句话简介 · 看点标签 · 数据集样本量
+</code></pre></div>
+
+<p><strong>没有价格、没有配置、更没有"舒适版比豪华版差在哪"</strong>。</p>
+<p>而"看车"这件事，用户最关心的恰恰就是这些。于是本项目把档次信息做成一层
+<strong>可以不断积累的知识</strong>：联网查到 → 存进档案库 → 以后直接查，不必再联网。</p>
+<div class="codehilite"><pre><span></span><code>web_search 找报价/配置页
+   → browse_page 打开（结构化抽取表格）
+      → save_car_trims 存进档案库（必须带来源 URL）
+         → query_car_info / compare_car_trims 直接回答
+</code></pre></div>
+
+<hr />
+<h2 id="doc13-2-数据模型">2. 数据模型</h2>
+<p>新增一个<strong>独立文件</strong> <code>agent/data/car_trims.json</code>：</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;schema&quot;: 1,
+  &quot;cars&quot;: {
+    &quot;0975&quot;: {
+      &quot;car_id&quot;: &quot;0975&quot;,
+      &quot;car_name&quot;: &quot;日产_轩逸&quot;,
+      &quot;brand&quot;: &quot;日产&quot;,
+      &quot;body_group&quot;: &quot;轿车&quot;,
+      &quot;trims&quot;: [
+        {
+          &quot;trim_id&quot;: &quot;t-3f9a1c2b7e&quot;,
+          &quot;name&quot;: &quot;2026款 1.6L CVT 舒适版&quot;,
+          &quot;year&quot;: &quot;2026&quot;,
+          &quot;guide_price_wan&quot;: 8.49,       // 厂商指导价（万元）
+          &quot;dealer_price_wan&quot;: 7.49,      // 经销商参考价
+          &quot;price_text&quot;: &quot;7.49万起&quot;,       // 页面原话，保留以防换算有争议
+          &quot;specs&quot;: {                     // 有区分度的参数
+            &quot;发动机&quot;: &quot;1.6L 135马力 L4（HR16）&quot;,
+            &quot;变速箱&quot;: &quot;CVT无级变速&quot;,
+            &quot;中控彩色屏幕&quot;: &quot;有&quot;,
+            &quot;中控屏幕尺寸&quot;: &quot;8英寸&quot;
+          },
+          &quot;highlights&quot;: [&quot;车系入门款，1.6L+CVT 自动挡&quot;],
+          &quot;source&quot;: {
+            &quot;url&quot;: &quot;https://car.autohome.com.cn/config/series/448.html&quot;,
+            &quot;site&quot;: &quot;汽车之家&quot;,
+            &quot;fetched_at&quot;: &quot;2026-09-15 23:28:41&quot;,
+            &quot;verified&quot;: true               // 这个 URL 真的在本会话用 browse_page 打开过
+          }
+        }
+      ],
+      &quot;sources&quot;: [ /* 去重后的来源列表，最多保留 12 条 */ ],
+      &quot;notes&quot;:   [ /* 伴随数据一起记下的补充说明 */ ],
+      &quot;updated_at&quot;: &quot;2026-09-15 23:28:41&quot;
+    }
+  }
+}
+</code></pre></div>
+
+<p><strong>为什么和 <code>car_profiles.json</code> 分开</strong>：后者由 <code>tools/build_car_profiles.py</code>
+从数据集<strong>重新生成</strong>，档次是运行时积累的知识，不能被重新生成覆盖掉。</p>
+<hr />
+<h2 id="doc13-3-反编造-三道防线">3. 反编造：三道防线</h2>
+<p>价格是<strong>最容易被大模型顺手编一个</strong>的东西（而且编得还挺像）。这个项目的底线是
+"查不到就说查不到"，所以：</p>
+<table>
+<thead>
+<tr>
+<th>防线</th>
+<th>做法</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 来源必填</td>
+<td><code>source_url</code> 是<strong>必填参数</strong>，不合法直接 <code>INVALID_ARGUMENTS</code></td>
+<td>没有来源的数据根本进不了库</td>
+</tr>
+<tr>
+<td>② 来源核验</td>
+<td>扫描本会话事件日志，检查该 URL 是否<strong>真的用 <code>browse_page</code> 打开过</strong></td>
+<td>模型不能凭空给个链接就说"我查到了"；没打开过的会标 <code>verified: false</code></td>
+</tr>
+<tr>
+<td>③ 界面展示</td>
+<td>每条数据带 <code>source.site</code> / <code>fetched_at</code> / <code>verified</code>，前端直接画出来</td>
+<td>用户一眼看到数据出处与抓取时间，未核实的会显示黄色「未核实」标签</td>
+</tr>
+</tbody>
+</table>
+<p>提示词里也把话说死了：</p>
+<blockquote>
+<p><strong>只写正文里真实出现过的字段</strong>。没读到排量就别填排量，没读到经销商价就留空 ——
+<strong>宁可字段少，也不能有编的</strong>。</p>
+</blockquote>
+<p>实测效果（问一款从没查过的车）：</p>
+<blockquote>
+<p>宝马 X7 在咱们的车型库里（宝马 · 大型 SUV，ID 0222），但<strong>档案库里还没有它的档次和价格数据</strong>
+——教师数据集本来就不含价格，这块得联网去查。……
+训练数据里的车价早就过期了，<strong>我编一个数只会误导你</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="doc13-4-关键实现-结构化表格抽取">4. 关键实现：结构化表格抽取</h2>
+<p>这是整条链路里<strong>最容易踩坑</strong>的一步，值得单独讲。</p>
+<p>汽车之家的「参数配置」页是一张 <strong>241 行 × 15 列</strong>的大表：
+<strong>行 = 参数项，列 = 各个档次</strong>。而且它被拆成了 <strong>28 张 <code>&lt;table&gt;</code></strong>，
+其中档次名单独占一张宽而扁的表。</p>
+<h3 id="doc13-踩过的三个坑">踩过的三个坑</h3>
+<p><strong>坑 1：用 <code>innerText</code> 读会拍平。</strong>
+<code>document.body.innerText</code> 把表格按<strong>行</strong>展开成一列文本：</p>
+<div class="codehilite"><pre><span></span><code>厂商指导价
+基本参数
+厂
+级别
+能源类型
+…
+</code></pre></div>
+
+<p>列与档次的对应关系<strong>彻底丢失</strong> —— 你知道有"12.3英寸"，但不知道是哪一档的。</p>
+<p><strong>坑 2：还会被长度限制截断。</strong>
+该页 <code>innerText</code> 有 21,000 字，而 <code>browse_page</code> 默认只回 6,000（最大 12,000）。
+被截掉的恰好是<strong>下半部分</strong>，也就是天窗、座椅、辅助驾驶这些<strong>真正有区分度的装备项</strong>。</p>
+<p><strong>坑 3：档次名的表头要单独找。</strong>
+28 张表里挑"最宽的"，会选中「电池/充电」那张分节表 —— 它的首行只有第一格有字、
+其余都是 <code>-</code>。真正的档次名表首行<strong>几乎每一格都填着配置名</strong>。</p>
+<h3 id="doc13-解法-browse_page-extract-tables">解法：<code>browse_page(extract="tables")</code></h3>
+<p>新增结构化抽取模式，直接读 DOM 的表格结构：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1">// 挑「首行非空单元格最多」的宽表当列名行 —— 比按宽/高排序靠谱得多</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">filled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span><span class="nx">t</span><span class="p">.</span><span class="nx">grid</span><span class="p">[</span><span class="mf">0</span><span class="p">]</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="p">[]).</span><span class="nx">filter</span><span class="p">(</span><span class="nx">c</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">c</span><span class="w"> </span><span class="o">!==</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">header</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">wide</span><span class="p">.</span><span class="nx">slice</span><span class="p">().</span><span class="nx">sort</span><span class="p">((</span><span class="nx">a</span><span class="p">,</span><span class="w"> </span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">filled</span><span class="p">(</span><span class="nx">b</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nx">filled</span><span class="p">(</span><span class="nx">a</span><span class="p">))[</span><span class="mf">0</span><span class="p">];</span>
+</code></pre></div>
+
+<p>返回三部分：</p>
+<ul>
+<li><code>table_header</code> —— <strong>列名行（各档次的名称）</strong>，用它对齐后面的列；</li>
+<li><code>tables[].grid</code> —— 各分表，<strong>行列结构完整保留</strong>；</li>
+<li><code>row_keywords</code> —— 只保留行名匹配的行（240 行里真正有用的往往就几十行）。</li>
+</ul>
+<p>实测效果：</p>
+<div class="codehilite"><pre><span></span><code>[列名行]  2026款 1.6L CVT 舒适版 | 2026款 1.6L CVT 舒享版 | … | 2023款 超混电驱 超智驾Max
+
+[表] 原 25 行 → 返回 6 行
+   中控彩色屏幕   | 触控液晶屏 | 触控液晶屏 | … | -    | 触控液晶屏
+   中控屏幕尺寸   | 12.3英寸   | 12.3英寸   | … | -    | 8英寸
+   中控屏幕分辨率 | 1920x720   | 1920x720   | … | -    | -
+</code></pre></div>
+
+<p>同一次抽取还能拿到 <code>辅助驾驶系统 = ProPILOT</code>、<code>辅助驾驶等级 = L2</code> 这类
+<strong>只在高配才有</strong>的装备 —— 这正是回答"贵在哪"的依据。</p>
+<hr />
+<h2 id="doc13-5-两个新工具">5. 两个新工具</h2>
+<h3 id="doc13-save_car_trims-把搜到的信息存进档案"><code>save_car_trims</code> —— 把搜到的信息存进档案</h3>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>car_id_or_name</code></td>
+<td>车型</td>
+</tr>
+<tr>
+<td><code>source_url</code></td>
+<td><strong>必填</strong>，数据来源页面</td>
+</tr>
+<tr>
+<td><code>source_site</code></td>
+<td>可选，站点名</td>
+</tr>
+<tr>
+<td><code>trims[]</code></td>
+<td>档次数组：<code>name</code> / <code>year</code> / <code>guide_price_wan</code> / <code>dealer_price_wan</code> / <code>price_text</code> / <code>specs</code> / <code>highlights</code></td>
+</tr>
+<tr>
+<td><code>replace</code></td>
+<td>默认 <code>false</code> 按名称合并；<code>true</code> 整体替换</td>
+</tr>
+<tr>
+<td><code>note</code></td>
+<td>可选，随数据记下的补充说明</td>
+</tr>
+</tbody>
+</table>
+<p><strong>按名称合并</strong>意味着可以分批写、多次补：实测模型自己就分了 3 批
+（2026款汽油 / 2023款超混电驱 / 2026款经典），合并成 14 个档次。</p>
+<p><strong>价格归一化</strong>：网页上格式五花八门，统一转成万元 ——</p>
+<table>
+<thead>
+<tr>
+<th>输入</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>7.99</code> / <code>7.99万</code> / <code>6.39万起</code></td>
+<td>7.99 / 7.99 / 6.39</td>
+</tr>
+<tr>
+<td><code>¥79,900</code> / <code>79900元</code> / <code>￥139,900</code></td>
+<td>7.99 / 7.99 / 13.99</td>
+</tr>
+<tr>
+<td><code>12.5 万元</code></td>
+<td>12.5</td>
+</tr>
+<tr>
+<td><code>面议</code> / <code>None</code> / <code>0</code></td>
+<td><code>None</code>（宁可留空，也不猜）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc13-compare_car_trims-比出档次之间的差别"><code>compare_car_trims</code> —— 比出档次之间的差别</h3>
+<p>关键在于<strong>只列有差别的项</strong>。网页上那张表里大部分行是全系一致的
+（"车身结构：4门5座三厢车"），全列出来没有信息量。</p>
+<div class="codehilite"><pre><span></span><code>输入：12 个档次的 specs（每档 6~8 项）
+输出：differing_specs = [中控彩色屏幕, 发动机, 变速箱, 最大功率,
+                        最大扭矩, 能源类型, 中控屏幕尺寸,
+                        辅助驾驶系统, 辅助驾驶等级]     ← 9 项真正有差别的
+      identical_specs_count = 各档次完全一致的那些（已省略）
+</code></pre></div>
+
+<p>支持 <code>trim_names</code> 只比其中几个（如 <code>["舒适版","豪华版"]</code>）。</p>
+<p><strong>还没有数据时不会瞎编</strong>，而是返回可执行的指引：</p>
+<blockquote>
+<p>档案库里还没有 日产_轩逸 的档次数据。可以先用 web_search 找到该车型的报价/配置页，
+再用 browse_page 打开读正文，最后用 save_car_trims 存进来。</p>
+</blockquote>
+<hr />
+<h2 id="doc13-6-用户自己的看车档案也能记档次">6. 用户自己的看车档案也能记档次</h2>
+<p>注意区分两个库：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>车型知识库</th>
+<th>用户看车档案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件</td>
+<td><code>agent/data/car_trims.json</code></td>
+<td><code>agent/data/garage.db</code>（SQLite）</td>
+</tr>
+<tr>
+<td>内容</td>
+<td><strong>客观数据</strong>：这款车有哪些档次、多少钱、差在哪</td>
+<td><strong>主观记录</strong>：用户看过/想买哪一款</td>
+</tr>
+<tr>
+<td>写入工具</td>
+<td><code>save_car_trims</code>（需要来源）</td>
+<td><code>add_car_record</code>（记用户的话）</td>
+</tr>
+<tr>
+<td>谁能看</td>
+<td>所有会话共享</td>
+<td>按 <code>session_id</code> 隔离</td>
+</tr>
+</tbody>
+</table>
+<p><code>add_car_record</code> 新增了 <code>trim</code> 参数。用户说「我就要舒适版，记下来」时：</p>
+<ul>
+<li>会去档次库里<strong>核对</strong>这个档次是否存在；</li>
+<li>存在 → 带出指导价，<code>trim_matched</code> + <code>guide_price_wan</code>；</li>
+<li>不存在 → <code>trim_unverified: true</code>，并如实说明"档案库里还没有这款车的档次数据，未做核对"。</li>
+</ul>
+<p>数据库用 <code>ALTER TABLE</code> 平滑迁移（<code>MIGRATIONS</code> 列表），老库不用重建。</p>
+<hr />
+<h2 id="doc13-7-实测数据">7. 实测数据</h2>
+<p>用真实模型 + 真实浏览器跑一遍（<code>tools/verify_trims.py</code>，<strong>17 项全过</strong>）：</p>
+<div class="codehilite"><pre><span></span><code>你 &gt; 日产轩逸有哪些配置版本？各自多少钱？帮我上网查清楚，然后存进档案库里…
+
+  ↳ query_car_info(轩逸)          → 日产_轩逸｜日产｜轿车
+  ↳ web_search ×3                 → 找到汽车之家报价页/配置页
+  ↳ browse_page(配置页, extract=&quot;tables&quot;,
+                row_keywords=[&quot;天窗&quot;,&quot;座椅&quot;,&quot;气囊&quot;,&quot;轮毂&quot;,&quot;倒车影像&quot;,…])
+  ↳ browse_page(报价页)
+  ↳ save_car_trims ×3（分 3 批）  → 存入 14 个档次，已核验来源
+
+助手 &gt; 轩逸的配置和价格我查全了，已经存进档案库
+      （数据来源：汽车之家轩逸参数配置/报价页，2026-09 抓取，官方渠道为准）。
+</code></pre></div>
+
+<p>入库结果：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>档次数量</td>
+<td><strong>14 个</strong></td>
+</tr>
+<tr>
+<td>价格跨度</td>
+<td>指导价 <strong>7.99 – 17.49 万</strong></td>
+</tr>
+<tr>
+<td>带价格的档次</td>
+<td>14 / 14</td>
+</tr>
+<tr>
+<td>带参数配置的档次</td>
+<td>14 / 14</td>
+</tr>
+<tr>
+<td>带装备说明（highlights）的档次</td>
+<td>9 / 14</td>
+</tr>
+<tr>
+<td><strong>能比出来的差异参数</strong></td>
+<td><strong>9 项</strong></td>
+</tr>
+<tr>
+<td>来源核验</td>
+<td>✅ <code>verified: true</code>（汽车之家配置页）</td>
+</tr>
+</tbody>
+</table>
+<p>几个档次的真实数据：</p>
+<table>
+<thead>
+<tr>
+<th>档次</th>
+<th>指导价</th>
+<th>经销商</th>
+<th>该档特点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026款 经典 1.6L CVT安心版</td>
+<td>7.99 万</td>
+<td>6.39 万</td>
+<td>全系最便宜的自动挡</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT舒适版</td>
+<td>8.49 万</td>
+<td>7.49 万</td>
+<td>车系入门款，无中控屏</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT舒享版</td>
+<td>9.49 万</td>
+<td>8.39 万</td>
+<td>8英寸中控触控屏</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT 科技版</td>
+<td>10.49 万</td>
+<td>9.49 万</td>
+<td>中控屏升级到 12.3 英寸</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT 旗舰版</td>
+<td>11.99 万</td>
+<td>10.99 万</td>
+<td>ProPILOT L2 辅助驾驶（汽油版独有）</td>
+</tr>
+<tr>
+<td>2023款 超混电驱 超豪华Ultra</td>
+<td>17.49 万</td>
+<td>14.19 万</td>
+<td>车系顶配</td>
+</tr>
+</tbody>
+</table>
+<p><strong>第二轮换个新会话（不联网）问"豪华科技版比舒适版贵多少"</strong> —— 直接从档案库回答：</p>
+<blockquote>
+<p>差价 <strong>3.0 万元</strong>（指导价 8.49 → 11.49 万，终端参考价同样差 3 万）。
+档案库里记到的配置差异只有两项：中控彩色屏幕（无 → 有）、中控屏幕尺寸（无 → 12.3 英寸）。
+<strong>得说明一句</strong>：库里目前只沉淀了这两项区分性配置，像天窗、座椅材质、辅助驾驶、气囊数
+这些能体现「贵在哪」的装备项还没抓全，所以我没法告诉你这 3 万还买到了什么。</p>
+<p>最后这段"没抓全就说没抓全"正是我们要的：<strong>能力上多了一个数据源，诚实标准没有降</strong>。</p>
+</blockquote>
+<p><img alt="档次对比" src="../images/ui-09-trims.png" /></p>
+<hr />
+<h2 id="doc13-8-途中修掉的一个真-bug">8. 途中修掉的一个真 bug</h2>
+<p>第一次跑，<strong>第 1 轮直接失败</strong>，错误码 <code>API_RESPONSE_INVALID</code>：</p>
+<div class="codehilite"><pre><span></span><code>输出被 max_tokens 截断
+</code></pre></div>
+
+<p><strong>原因</strong>：模型想把整张配置表（10 个档次 × 几十项参数）<strong>一次性</strong>塞进一个
+<code>save_car_trims</code> 调用，2048 个 token 根本不够。</p>
+<p><strong>三处修复</strong>：</p>
+<ol>
+<li><strong><code>max_tokens</code> 2048 → 4096</strong>，并新增 <code>max_tokens_ceiling = 8192</code>；</li>
+<li><strong>撞上截断自动补救</strong>：新增错误码 <code>OUTPUT_TRUNCATED</code>，客户端见到它会把
+   <code>max_tokens</code> 直接提到上限<strong>再试一次</strong>（而不是把这一轮判死、让用户重说一遍）；
+   界面会提示「输出被截断，已把 max_tokens 从 4096 提到 8192 重试」；</li>
+<li><strong>引导分批写</strong>：工具描述与提示词都写明"一次 6~8 个档次，多了分几次调用"，
+   并强调 <code>specs</code> 只填<strong>有区分度</strong>的项，别把整张参数表抄进来。</li>
+</ol>
+<p>修复后模型自己就分成了 3 批（<code>save_car_trims ×3</code>），一次通过。</p>
+<blockquote>
+<p>附带教训：第一版虽然存成功了，但只记了发动机/变速箱/驱动形式 ——
+<code>compare_car_trims</code> 比出来"所有档次参数完全一样"，<strong>等于白存</strong>。
+于是在提示词里补了一句：真正决定档次差别的是<strong>配置装备</strong>（天窗、座椅、中控屏、
+辅助驾驶），这些务必写进 <code>specs</code> 或 <code>highlights</code>。改完之后差异参数从 0 变成 9 项。</p>
+</blockquote>
+<hr />
+<h2 id="doc13-9-途中修掉的第二个坑-重复运行会累积出重复档次">9. 途中修掉的第二个坑：重复运行会累积出重复档次</h2>
+<p>知识库是<strong>越用越厚</strong>的，所以"同一档次被反复写进来"是个必须处理的问题。
+实测两次抓取后出现了这样的近似重名：</p>
+<div class="codehilite"><pre><span></span><code>2023款 超混电驱 全电驱大屏      ← 同一次抓取叫「全电驱大屏」
+2023款 超混电驱 全电驱大屏版    ← 另一次叫「全电驱大屏版」
+2023款 超混电驱 超Ultra        ← 另一次叫「超豪华Ultra」
+2023款 超混电驱 超豪华Ultra
+</code></pre></div>
+
+<p>16 条里有 2 条其实是重复的。按名称精确合并不住，于是加了<strong>模糊归并</strong>。</p>
+<h3 id="doc13-第一版模糊归并是错的-而且是我自己写错的">第一版模糊归并是错的（而且是我自己写错的）</h3>
+<p>第一版用 <code>difflib.SequenceMatcher</code> 相似度 ≥ 0.86 判定。跑清洗时：</p>
+<div class="codehilite"><pre><span></span><code>清洗重复: 16 → 10 个档次     ← 直接丢了 6 个真档次！
+</code></pre></div>
+
+<p><strong>根因</strong>：中文档次名恰恰只差一个字 —— <code>舒适版</code> / <code>舒享版</code> 相似度 <strong>0.93</strong>，
+<code>科技版</code> / <code>舒享科技版</code> 也很像。用字符相似度判别，等于按"长得像"合并，
+把<strong>不同的档次错误地并成一个</strong>。</p>
+<h3 id="doc13-改对之后的判据-价格-缩写关系">改对之后的判据：价格 &gt; 缩写关系</h3>
+<p>按可靠性从高到低：</p>
+<ol>
+<li><strong>价格</strong>。名字会骗人，价格不会：
+   * <code>科技版 10.49万</code> 与 <code>舒享科技版 10.99万</code> —— 名字像缩写关系，但<strong>价格不同就是两款车</strong>；
+   * <code>超Ultra 17.49万</code> 与 <code>超豪华Ultra 17.49万</code> —— 同价，就是同一档次的两种写法。</li>
+<li><strong>缩写关系</strong>（删字，不是换字）：
+   * <code>全电驱大屏</code> ⊂ <code>全电驱大屏版</code>（连续子串）→ 同一档；
+   * <code>超Ultra</code> 是 <code>超豪华Ultra</code> 的<strong>子序列</strong>（中间插了"豪华"）→ 同一档；
+   * <code>舒适版</code> <strong>不是</strong> <code>舒享版</code> 的子序列（"适"没出现在"舒享版"里）→ 不同档次。</li>
+<li><strong>括号注解要剥掉</strong>。模型偶尔会自己加说明：
+   <code>2026款 1.6L CVT 科技（指导价11.49万款）</code> —— 括号里是对同一档的解释，
+   不剥掉就永远合并不上（长度差太多，子串/子序列规则全失效）。</li>
+<li><strong>合并时保留哪个名字</strong>：不能只比长度（注解名更长，会被留下来），
+   要<strong>先排除带注解的</strong>，再在剩下的里选归一化后更长的（<code>超豪华Ultra</code> &gt; <code>超Ultra</code>）。</li>
+<li>长度护栏：差别超过 6 个字不算缩写，避免「1.6L CVT」吞掉「1.6L CVT 豪华科技版」。</li>
+</ol>
+<p><strong>写进代码的原则：拿不准就不合并。</strong> 多一条重复记录只是有点烦，错误合并会真的丢数据。</p>
+<p>11 个用例全过（含上面这些易混对），并且<strong>连跑两遍完整链路，档次数量稳定在 14，零重复</strong>。</p>
+<blockquote>
+<p>还提供了 <code>dedupe_car(cfg, car_id)</code> 做<strong>补账清理</strong>：归并规则是逐步收紧的，
+早期存进去的数据可能带着按旧规则没合并的重复项，这个函数能洗一遍
+（顺便把残留的括号注解从名字里去掉）。实测把 19 条洗成 18 条 ——
+而少掉的那条正是重复项，其余 17 条里包含<strong>2024 / 2026 / 2023 三个年款的真档次</strong>，
+它们是不同年款，本来就该并存。</p>
+</blockquote>
+<hr />
+<h2 id="doc13-10-稳定性-两个只在反复跑时才暴露的问题">10. 稳定性：两个只在反复跑时才暴露的问题</h2>
+<p>跑一遍过、跑四遍挂两遍 —— 这两个问题都是<strong>反复测试</strong>才逼出来的。</p>
+<h3 id="doc13-问题-a-预算用尽就交白卷">问题 A：预算用尽就交白卷</h3>
+<p>配置表任务很重（要开好几个页面、抓大表格），实测 12 轮预算偶尔不够用。
+原来的行为是<strong>直接抛 <code>MAX_ROUNDS_EXCEEDED</code>，回复 0 字</strong> ——
+明明已经抓到一堆资料，却因为"轮数用完了"一个字都不给用户。</p>
+<p><strong>修复：预算用尽前先要一次「不带工具的最终回答」</strong>（<code>loop.py</code>）：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 预算用尽：先要一次「不带工具的最终回答」，别直接判死</span>
+<span class="n">final_messages</span> <span class="o">=</span> <span class="p">[</span><span class="n">system</span><span class="p">]</span> <span class="o">+</span> <span class="n">session</span><span class="o">.</span><span class="n">public_messages</span><span class="p">()</span> <span class="o">+</span> <span class="p">[{</span>
+    <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="s2">&quot;&lt;budget_exhausted&gt;…不允许再调用任何工具，&quot;</span>
+               <span class="s2">&quot;请立刻基于已经拿到的工具结果给出最终回答。&quot;</span>
+               <span class="s2">&quot;信息不足的部分如实说明「这部分没查到」…绝对不要编造数据。&lt;/budget_exhausted&gt;&quot;</span>
+<span class="p">}]</span>
+<span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">complete</span><span class="p">(</span><span class="n">final_messages</span><span class="p">,</span> <span class="p">[])</span>      <span class="c1"># ← 不给工具，逼它开口</span>
+</code></pre></div>
+
+<p>只有连这一下也说不出话，才如实报错。<strong>这是"尽力而为"和"直接失败"的区别。</strong></p>
+<h3 id="doc13-问题-b-来源核验过严-明明开了却说没开">问题 B：来源核验过严，明明开了却说没开</h3>
+<p><code>verified</code> 偶尔为 <code>false</code> —— 模型读的是
+<code>…/config/series/448.html?pvareaid=3311700</code>，保存时写的是 <code>…/config/series/448.html</code>。
+<strong>明明是同一个页面</strong>，却被判成"没打开过"。</p>
+<p><strong>修复：URL 归一化要比对得宽容，但不能放水</strong>：</p>
+<div class="codehilite"><pre><span></span><code>去掉协议（http/https）→ 去掉 www. → 去掉 ?query / #fragment → 去掉结尾斜杠和 .html
+然后：完全相同，或一个是另一个的前缀（页面带子路径）才算同一个页面。
+</code></pre></div>
+
+<p>同时在核验失败时，<strong>把本会话真正打开过的 URL 列表回给模型</strong>，
+让它自己用正确的 URL 重调一次 —— 而不是让它带着一个"未核实"的标记继续。</p>
+<p>修完之后<strong>连跑 4 遍，17/17 全过</strong>，不再有随机失败。</p>
+<hr />
+<h2 id="doc13-11-最终数据">11. 最终数据</h2>
+<p>清理后的轩逸档次库：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>档次数量</td>
+<td><strong>18 个</strong>（覆盖 2023 / 2024 / 2026 三个年款）</td>
+</tr>
+<tr>
+<td>价格跨度</td>
+<td>指导价 <strong>7.99 – 17.49 万</strong></td>
+</tr>
+<tr>
+<td>带价格</td>
+<td>18 / 18</td>
+</tr>
+<tr>
+<td>带参数配置</td>
+<td>18 / 18</td>
+</tr>
+<tr>
+<td>带装备说明</td>
+<td>14 / 18</td>
+</tr>
+<tr>
+<td><strong>可比出的差异参数</strong></td>
+<td><strong>16 项</strong></td>
+</tr>
+<tr>
+<td>来源核验</td>
+<td>✅ <code>verified: true</code>（汽车之家配置页）</td>
+</tr>
+</tbody>
+</table>
+<p>16 项差异参数里既有动力（排量 / 发动机 / 变速箱 / 最大功率 / 最大扭矩 / 能源类型），
+也有<strong>真正决定"贵在哪"的装备项</strong>：</p>
+<div class="codehilite"><pre><span></span><code>中控屏 · 中控屏幕尺寸 · 中控彩色屏幕 · 辅助驾驶系统 · 辅助驾驶等级
+巡航系统 · 胎压监测 · 车身结构 · 燃油标号 · 最大马力
+</code></pre></div>
+
+<p>各档次的装备说明示例（<code>highlights</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>档次</th>
+<th>指导价</th>
+<th>该档多出来的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026款 1.6L CVT 舒享版</td>
+<td>9.49 万</td>
+<td>8英寸触控液晶屏</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT 科技版</td>
+<td>10.49 万</td>
+<td>12.3英寸触控液晶屏（1920x720）</td>
+</tr>
+<tr>
+<td>2026款 经典 1.6L CVT XE 舒心天窗版</td>
+<td>11.86 万</td>
+<td>天窗</td>
+</tr>
+<tr>
+<td>2026款 1.6L CVT 旗舰版</td>
+<td>11.99 万</td>
+<td>12.3英寸触控屏 + <strong>ProPILOT 辅助驾驶（L2）</strong></td>
+</tr>
+<tr>
+<td>2023款 超混电驱 全电驱Pro</td>
+<td>13.89 万</td>
+<td>e-POWER 汽油电驱系统</td>
+</tr>
+<tr>
+<td>2023款 超混电驱 超智驾Max</td>
+<td>15.59 万</td>
+<td>ProPILOT 辅助驾驶（L2级）+ 12.3英寸中控屏</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc13-12-怎么自己验证">12. 怎么自己验证</h2>
+<div class="codehilite"><pre><span></span><code><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">verify_trims</span><span class="p">.</span><span class="n">py</span>     <span class="c"># 17 项：真实模型 + 真实浏览器跑完整链路，含反编造</span>
+<span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">verify_agent</span><span class="p">.</span><span class="n">py</span>     <span class="c"># 115 项：其中 28 项覆盖档次库（含价格归一化、来源核验）</span>
+</code></pre></div>
+
+<p>单测某个工具：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">sys</span><span class="o">,</span><span class="w"> </span><span class="nn">threading</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.loop</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionStore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.tools.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">ToolContext</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">load_config</span><span class="p">();</span> <span class="n">ag</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">store</span><span class="o">=</span><span class="n">SessionStore</span><span class="p">(</span><span class="n">cfg</span><span class="p">))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">create</span><span class="p">();</span> <span class="n">s</span><span class="o">.</span><span class="n">set_web_search</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">ToolContext</span><span class="p">(</span><span class="n">session_id</span><span class="o">=</span><span class="n">s</span><span class="o">.</span><span class="n">session_id</span><span class="p">,</span> <span class="n">turn_id</span><span class="o">=</span><span class="s2">&quot;t&quot;</span><span class="p">,</span> <span class="n">call_id</span><span class="o">=</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">,</span>
+                  <span class="n">session</span><span class="o">=</span><span class="n">s</span><span class="p">,</span> <span class="n">signal</span><span class="o">=</span><span class="n">threading</span><span class="o">.</span><span class="n">Event</span><span class="p">(),</span> <span class="n">image_path</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">registry</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;c&quot;</span><span class="p">,</span> <span class="s2">&quot;compare_car_trims&quot;</span><span class="p">,</span>
+                        <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">({</span><span class="s2">&quot;car_id_or_name&quot;</span><span class="p">:</span> <span class="s2">&quot;轩逸&quot;</span><span class="p">}),</span> <span class="n">ctx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">payload</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)[:</span><span class="mi">1500</span><span class="p">])</span>
+</code></pre></div>
+
+<hr />
+<p><strong>相关文档</strong>：<a href="./11_Web界面与会话管理.html">11 · Web 界面与会话管理</a>（联网搜索与浏览器抓取）·
+<a href="./05_脚本与命令手册.html">05 · 脚本与命令手册</a> · <a href="./08_常见问题与排错.html">08 · 常见问题与排错</a></p><div class="docnav"><a class="prev" href="./11_Web界面与会话管理.html"><span class="dir">← 上一篇</span><span class="ttl">11 · Web界面与会话管理</span></a><a class="next" href="./13_技术栈全解.html"><span class="dir">下一篇 →</span><span class="ttl">13 · 技术栈全解</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

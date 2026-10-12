@@ -1,0 +1,446 @@
+{
+  "purpose": "低置信度提示阈值：预测仍为具体车型但置信度偏低时，智能体展示 Top-K / 请用户确认 / 提示重拍",
+  "distinct_from": {
+    "unknown_threshold": 0.25,
+    "note": "t 是模型决策的一部分（<t 则改判 unknown）；c 只影响智能体的措辞，不改变判定结果"
+  },
+  "prior_adjust_tau": 0.05,
+  "n_val": 2422,
+  "target_accuracy": 0.985,
+  "recommended_display_threshold": 0.7,
+  "at_recommended": {
+    "c": 0.7,
+    "coverage": 0.8291,
+    "accepted_accuracy": 0.9851,
+    "low_conf_accuracy": 0.7488
+  },
+  "sweep": [
+    {
+      "c": 0.3,
+      "coverage": 0.9785,
+      "accepted_accuracy": 0.9549,
+      "low_conf_accuracy": 0.4808
+    },
+    {
+      "c": 0.31,
+      "coverage": 0.9765,
+      "accepted_accuracy": 0.9556,
+      "low_conf_accuracy": 0.4912
+    },
+    {
+      "c": 0.32,
+      "coverage": 0.974,
+      "accepted_accuracy": 0.9572,
+      "low_conf_accuracy": 0.4762
+    },
+    {
+      "c": 0.33,
+      "coverage": 0.9699,
+      "accepted_accuracy": 0.9587,
+      "low_conf_accuracy": 0.4932
+    },
+    {
+      "c": 0.34,
+      "coverage": 0.9678,
+      "accepted_accuracy": 0.959,
+      "low_conf_accuracy": 0.5128
+    },
+    {
+      "c": 0.35,
+      "coverage": 0.9649,
+      "accepted_accuracy": 0.9619,
+      "low_conf_accuracy": 0.4706
+    },
+    {
+      "c": 0.36,
+      "coverage": 0.9612,
+      "accepted_accuracy": 0.9631,
+      "low_conf_accuracy": 0.4894
+    },
+    {
+      "c": 0.37,
+      "coverage": 0.9587,
+      "accepted_accuracy": 0.9643,
+      "low_conf_accuracy": 0.49
+    },
+    {
+      "c": 0.38,
+      "coverage": 0.9554,
+      "accepted_accuracy": 0.9654,
+      "low_conf_accuracy": 0.5
+    },
+    {
+      "c": 0.39,
+      "coverage": 0.9525,
+      "accepted_accuracy": 0.9666,
+      "low_conf_accuracy": 0.5043
+    },
+    {
+      "c": 0.4,
+      "coverage": 0.95,
+      "accepted_accuracy": 0.967,
+      "low_conf_accuracy": 0.5207
+    },
+    {
+      "c": 0.41,
+      "coverage": 0.9476,
+      "accepted_accuracy": 0.9682,
+      "low_conf_accuracy": 0.5197
+    },
+    {
+      "c": 0.42,
+      "coverage": 0.9438,
+      "accepted_accuracy": 0.9685,
+      "low_conf_accuracy": 0.5441
+    },
+    {
+      "c": 0.43,
+      "coverage": 0.9426,
+      "accepted_accuracy": 0.9685,
+      "low_conf_accuracy": 0.554
+    },
+    {
+      "c": 0.44,
+      "coverage": 0.9381,
+      "accepted_accuracy": 0.9701,
+      "low_conf_accuracy": 0.56
+    },
+    {
+      "c": 0.45,
+      "coverage": 0.9352,
+      "accepted_accuracy": 0.9709,
+      "low_conf_accuracy": 0.5669
+    },
+    {
+      "c": 0.46,
+      "coverage": 0.9327,
+      "accepted_accuracy": 0.9721,
+      "low_conf_accuracy": 0.5644
+    },
+    {
+      "c": 0.47,
+      "coverage": 0.9298,
+      "accepted_accuracy": 0.9725,
+      "low_conf_accuracy": 0.5765
+    },
+    {
+      "c": 0.48,
+      "coverage": 0.9273,
+      "accepted_accuracy": 0.9724,
+      "low_conf_accuracy": 0.5909
+    },
+    {
+      "c": 0.49,
+      "coverage": 0.924,
+      "accepted_accuracy": 0.9727,
+      "low_conf_accuracy": 0.6033
+    },
+    {
+      "c": 0.5,
+      "coverage": 0.9203,
+      "accepted_accuracy": 0.974,
+      "low_conf_accuracy": 0.6062
+    },
+    {
+      "c": 0.51,
+      "coverage": 0.9158,
+      "accepted_accuracy": 0.9743,
+      "low_conf_accuracy": 0.6225
+    },
+    {
+      "c": 0.52,
+      "coverage": 0.9121,
+      "accepted_accuracy": 0.9751,
+      "low_conf_accuracy": 0.6291
+    },
+    {
+      "c": 0.53,
+      "coverage": 0.9075,
+      "accepted_accuracy": 0.9759,
+      "low_conf_accuracy": 0.6384
+    },
+    {
+      "c": 0.54,
+      "coverage": 0.9034,
+      "accepted_accuracy": 0.9771,
+      "low_conf_accuracy": 0.641
+    },
+    {
+      "c": 0.55,
+      "coverage": 0.8972,
+      "accepted_accuracy": 0.9775,
+      "low_conf_accuracy": 0.6586
+    },
+    {
+      "c": 0.56,
+      "coverage": 0.891,
+      "accepted_accuracy": 0.9778,
+      "low_conf_accuracy": 0.6742
+    },
+    {
+      "c": 0.57,
+      "coverage": 0.8881,
+      "accepted_accuracy": 0.9781,
+      "low_conf_accuracy": 0.679
+    },
+    {
+      "c": 0.58,
+      "coverage": 0.8836,
+      "accepted_accuracy": 0.9785,
+      "low_conf_accuracy": 0.6879
+    },
+    {
+      "c": 0.59,
+      "coverage": 0.8794,
+      "accepted_accuracy": 0.9798,
+      "low_conf_accuracy": 0.6884
+    },
+    {
+      "c": 0.6,
+      "coverage": 0.8761,
+      "accepted_accuracy": 0.9797,
+      "low_conf_accuracy": 0.6967
+    },
+    {
+      "c": 0.61,
+      "coverage": 0.8704,
+      "accepted_accuracy": 0.9815,
+      "low_conf_accuracy": 0.6975
+    },
+    {
+      "c": 0.62,
+      "coverage": 0.8637,
+      "accepted_accuracy": 0.9823,
+      "low_conf_accuracy": 0.7061
+    },
+    {
+      "c": 0.63,
+      "coverage": 0.86,
+      "accepted_accuracy": 0.9827,
+      "low_conf_accuracy": 0.7109
+    },
+    {
+      "c": 0.64,
+      "coverage": 0.8551,
+      "accepted_accuracy": 0.9831,
+      "low_conf_accuracy": 0.7179
+    },
+    {
+      "c": 0.65,
+      "coverage": 0.8514,
+      "accepted_accuracy": 0.9835,
+      "low_conf_accuracy": 0.7222
+    },
+    {
+      "c": 0.66,
+      "coverage": 0.8472,
+      "accepted_accuracy": 0.9844,
+      "low_conf_accuracy": 0.7243
+    },
+    {
+      "c": 0.67,
+      "coverage": 0.8448,
+      "accepted_accuracy": 0.9844,
+      "low_conf_accuracy": 0.7287
+    },
+    {
+      "c": 0.68,
+      "coverage": 0.841,
+      "accepted_accuracy": 0.9843,
+      "low_conf_accuracy": 0.7351
+    },
+    {
+      "c": 0.69,
+      "coverage": 0.8357,
+      "accepted_accuracy": 0.9842,
+      "low_conf_accuracy": 0.7437
+    },
+    {
+      "c": 0.7,
+      "coverage": 0.8291,
+      "accepted_accuracy": 0.9851,
+      "low_conf_accuracy": 0.7488
+    },
+    {
+      "c": 0.71,
+      "coverage": 0.8233,
+      "accepted_accuracy": 0.9865,
+      "low_conf_accuracy": 0.75
+    },
+    {
+      "c": 0.72,
+      "coverage": 0.8154,
+      "accepted_accuracy": 0.9873,
+      "low_conf_accuracy": 0.7562
+    },
+    {
+      "c": 0.73,
+      "coverage": 0.8088,
+      "accepted_accuracy": 0.9883,
+      "low_conf_accuracy": 0.7603
+    },
+    {
+      "c": 0.74,
+      "coverage": 0.7993,
+      "accepted_accuracy": 0.9897,
+      "low_conf_accuracy": 0.7654
+    },
+    {
+      "c": 0.75,
+      "coverage": 0.794,
+      "accepted_accuracy": 0.9912,
+      "low_conf_accuracy": 0.7655
+    },
+    {
+      "c": 0.76,
+      "coverage": 0.7886,
+      "accepted_accuracy": 0.9911,
+      "low_conf_accuracy": 0.7715
+    },
+    {
+      "c": 0.77,
+      "coverage": 0.7845,
+      "accepted_accuracy": 0.9911,
+      "low_conf_accuracy": 0.7759
+    },
+    {
+      "c": 0.78,
+      "coverage": 0.7766,
+      "accepted_accuracy": 0.991,
+      "low_conf_accuracy": 0.7837
+    },
+    {
+      "c": 0.79,
+      "coverage": 0.768,
+      "accepted_accuracy": 0.9914,
+      "low_conf_accuracy": 0.79
+    },
+    {
+      "c": 0.8,
+      "coverage": 0.7547,
+      "accepted_accuracy": 0.9918,
+      "low_conf_accuracy": 0.7997
+    },
+    {
+      "c": 0.81,
+      "coverage": 0.7444,
+      "accepted_accuracy": 0.9922,
+      "low_conf_accuracy": 0.8061
+    },
+    {
+      "c": 0.82,
+      "coverage": 0.7291,
+      "accepted_accuracy": 0.9932,
+      "low_conf_accuracy": 0.814
+    },
+    {
+      "c": 0.83,
+      "coverage": 0.718,
+      "accepted_accuracy": 0.9942,
+      "low_conf_accuracy": 0.8184
+    },
+    {
+      "c": 0.84,
+      "coverage": 0.7036,
+      "accepted_accuracy": 0.9941,
+      "low_conf_accuracy": 0.8273
+    },
+    {
+      "c": 0.85,
+      "coverage": 0.6899,
+      "accepted_accuracy": 0.994,
+      "low_conf_accuracy": 0.8349
+    },
+    {
+      "c": 0.86,
+      "coverage": 0.6726,
+      "accepted_accuracy": 0.9939,
+      "low_conf_accuracy": 0.8436
+    },
+    {
+      "c": 0.87,
+      "coverage": 0.6515,
+      "accepted_accuracy": 0.9943,
+      "low_conf_accuracy": 0.8519
+    },
+    {
+      "c": 0.88,
+      "coverage": 0.6296,
+      "accepted_accuracy": 0.9941,
+      "low_conf_accuracy": 0.8606
+    },
+    {
+      "c": 0.89,
+      "coverage": 0.6028,
+      "accepted_accuracy": 0.9945,
+      "low_conf_accuracy": 0.869
+    },
+    {
+      "c": 0.9,
+      "coverage": 0.5698,
+      "accepted_accuracy": 0.9949,
+      "low_conf_accuracy": 0.8781
+    },
+    {
+      "c": 0.91,
+      "coverage": 0.538,
+      "accepted_accuracy": 0.9946,
+      "low_conf_accuracy": 0.8865
+    },
+    {
+      "c": 0.92,
+      "coverage": 0.4967,
+      "accepted_accuracy": 0.995,
+      "low_conf_accuracy": 0.895
+    },
+    {
+      "c": 0.93,
+      "coverage": 0.4521,
+      "accepted_accuracy": 0.9945,
+      "low_conf_accuracy": 0.9035
+    },
+    {
+      "c": 0.94,
+      "coverage": 0.3922,
+      "accepted_accuracy": 0.9947,
+      "low_conf_accuracy": 0.9124
+    },
+    {
+      "c": 0.95,
+      "coverage": 0.3295,
+      "accepted_accuracy": 0.995,
+      "low_conf_accuracy": 0.92
+    },
+    {
+      "c": 0.96,
+      "coverage": 0.2572,
+      "accepted_accuracy": 0.9968,
+      "low_conf_accuracy": 0.9266
+    },
+    {
+      "c": 0.97,
+      "coverage": 0.1846,
+      "accepted_accuracy": 0.9978,
+      "low_conf_accuracy": 0.9327
+    },
+    {
+      "c": 0.98,
+      "coverage": 0.1024,
+      "accepted_accuracy": 1.0,
+      "low_conf_accuracy": 0.9384
+    },
+    {
+      "c": 0.99,
+      "coverage": 0.0285,
+      "accepted_accuracy": 1.0,
+      "low_conf_accuracy": 0.9431
+    },
+    {
+      "c": 1.0,
+      "coverage": 0.0,
+      "accepted_accuracy": NaN,
+      "low_conf_accuracy": 0.9447
+    }
+  ],
+  "source_logits": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\runs\\improved_resnet50_224\\logits_val_tta.npz"
+}

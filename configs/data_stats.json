@@ -1,0 +1,1612 @@
+{
+  "source_zip": "C:\\Users\\y\\Downloads\\数据集.zip",
+  "seed": 20250914,
+  "unknown_train_per_source": 20,
+  "unknown_val_per_source": 6,
+  "unknown_source_count": 98,
+  "unknown_hard_negative_count": 34,
+  "unknown_other_brand_count": 64,
+  "train_total": 7494,
+  "val_total": 2422,
+  "train_known_total": 5534,
+  "train_unknown_total": 1960,
+  "val_known_total": 1834,
+  "val_unknown_total": 588,
+  "per_class": {
+    "train": {
+      "0003": {
+        "n": 94,
+        "label": "0003",
+        "name": "",
+        "index": 0
+      },
+      "0019": {
+        "n": 111,
+        "label": "0019",
+        "name": "",
+        "index": 1
+      },
+      "0025": {
+        "n": 91,
+        "label": "0025",
+        "name": "",
+        "index": 2
+      },
+      "0035": {
+        "n": 108,
+        "label": "0035",
+        "name": "",
+        "index": 3
+      },
+      "0061": {
+        "n": 80,
+        "label": "0061",
+        "name": "",
+        "index": 4
+      },
+      "0119": {
+        "n": 117,
+        "label": "0119",
+        "name": "",
+        "index": 5
+      },
+      "0161": {
+        "n": 114,
+        "label": "0161",
+        "name": "",
+        "index": 6
+      },
+      "0183": {
+        "n": 123,
+        "label": "0183",
+        "name": "",
+        "index": 7
+      },
+      "0194": {
+        "n": 114,
+        "label": "0194",
+        "name": "",
+        "index": 8
+      },
+      "0222": {
+        "n": 115,
+        "label": "0222",
+        "name": "",
+        "index": 9
+      },
+      "0225": {
+        "n": 112,
+        "label": "0225",
+        "name": "",
+        "index": 10
+      },
+      "0264": {
+        "n": 102,
+        "label": "0264",
+        "name": "",
+        "index": 11
+      },
+      "0291": {
+        "n": 112,
+        "label": "0291",
+        "name": "",
+        "index": 12
+      },
+      "0307": {
+        "n": 114,
+        "label": "0307",
+        "name": "",
+        "index": 13
+      },
+      "0323": {
+        "n": 108,
+        "label": "0323",
+        "name": "",
+        "index": 14
+      },
+      "0349": {
+        "n": 112,
+        "label": "0349",
+        "name": "",
+        "index": 15
+      },
+      "0371": {
+        "n": 95,
+        "label": "0371",
+        "name": "",
+        "index": 16
+      },
+      "0374": {
+        "n": 108,
+        "label": "0374",
+        "name": "",
+        "index": 17
+      },
+      "0418": {
+        "n": 119,
+        "label": "0418",
+        "name": "",
+        "index": 18
+      },
+      "0432": {
+        "n": 118,
+        "label": "0432",
+        "name": "",
+        "index": 19
+      },
+      "0465": {
+        "n": 82,
+        "label": "0465",
+        "name": "",
+        "index": 20
+      },
+      "0496": {
+        "n": 109,
+        "label": "0496",
+        "name": "",
+        "index": 21
+      },
+      "0549": {
+        "n": 112,
+        "label": "0549",
+        "name": "",
+        "index": 22
+      },
+      "0555": {
+        "n": 118,
+        "label": "0555",
+        "name": "",
+        "index": 23
+      },
+      "0582": {
+        "n": 111,
+        "label": "0582",
+        "name": "",
+        "index": 24
+      },
+      "0583": {
+        "n": 109,
+        "label": "0583",
+        "name": "",
+        "index": 25
+      },
+      "0589": {
+        "n": 114,
+        "label": "0589",
+        "name": "",
+        "index": 26
+      },
+      "0614": {
+        "n": 113,
+        "label": "0614",
+        "name": "",
+        "index": 27
+      },
+      "0632": {
+        "n": 186,
+        "label": "0632",
+        "name": "",
+        "index": 28
+      },
+      "0651": {
+        "n": 112,
+        "label": "0651",
+        "name": "",
+        "index": 29
+      },
+      "0681": {
+        "n": 118,
+        "label": "0681",
+        "name": "",
+        "index": 30
+      },
+      "0696": {
+        "n": 114,
+        "label": "0696",
+        "name": "",
+        "index": 31
+      },
+      "0704": {
+        "n": 89,
+        "label": "0704",
+        "name": "",
+        "index": 32
+      },
+      "0727": {
+        "n": 117,
+        "label": "0727",
+        "name": "",
+        "index": 33
+      },
+      "0742": {
+        "n": 117,
+        "label": "0742",
+        "name": "",
+        "index": 34
+      },
+      "0760": {
+        "n": 108,
+        "label": "0760",
+        "name": "",
+        "index": 35
+      },
+      "0768": {
+        "n": 108,
+        "label": "0768",
+        "name": "",
+        "index": 36
+      },
+      "0783": {
+        "n": 114,
+        "label": "0783",
+        "name": "",
+        "index": 37
+      },
+      "0784": {
+        "n": 114,
+        "label": "0784",
+        "name": "",
+        "index": 38
+      },
+      "0806": {
+        "n": 115,
+        "label": "0806",
+        "name": "",
+        "index": 39
+      },
+      "0851": {
+        "n": 109,
+        "label": "0851",
+        "name": "",
+        "index": 40
+      },
+      "0854": {
+        "n": 108,
+        "label": "0854",
+        "name": "",
+        "index": 41
+      },
+      "0873": {
+        "n": 105,
+        "label": "0873",
+        "name": "",
+        "index": 42
+      },
+      "0879": {
+        "n": 106,
+        "label": "0879",
+        "name": "",
+        "index": 43
+      },
+      "0884": {
+        "n": 104,
+        "label": "0884",
+        "name": "",
+        "index": 44
+      },
+      "0894": {
+        "n": 114,
+        "label": "0894",
+        "name": "",
+        "index": 45
+      },
+      "0934": {
+        "n": 114,
+        "label": "0934",
+        "name": "",
+        "index": 46
+      },
+      "0950": {
+        "n": 113,
+        "label": "0950",
+        "name": "",
+        "index": 47
+      },
+      "0975": {
+        "n": 106,
+        "label": "0975",
+        "name": "",
+        "index": 48
+      },
+      "0987": {
+        "n": 108,
+        "label": "0987",
+        "name": "",
+        "index": 49
+      },
+      "unknown": {
+        "n": 1960,
+        "label": "unknown"
+      }
+    },
+    "val": {
+      "0003": {
+        "n": 31,
+        "label": "0003",
+        "name": "",
+        "index": 0
+      },
+      "0019": {
+        "n": 37,
+        "label": "0019",
+        "name": "",
+        "index": 1
+      },
+      "0025": {
+        "n": 30,
+        "label": "0025",
+        "name": "",
+        "index": 2
+      },
+      "0035": {
+        "n": 36,
+        "label": "0035",
+        "name": "",
+        "index": 3
+      },
+      "0061": {
+        "n": 26,
+        "label": "0061",
+        "name": "",
+        "index": 4
+      },
+      "0119": {
+        "n": 39,
+        "label": "0119",
+        "name": "",
+        "index": 5
+      },
+      "0161": {
+        "n": 38,
+        "label": "0161",
+        "name": "",
+        "index": 6
+      },
+      "0183": {
+        "n": 41,
+        "label": "0183",
+        "name": "",
+        "index": 7
+      },
+      "0194": {
+        "n": 38,
+        "label": "0194",
+        "name": "",
+        "index": 8
+      },
+      "0222": {
+        "n": 38,
+        "label": "0222",
+        "name": "",
+        "index": 9
+      },
+      "0225": {
+        "n": 37,
+        "label": "0225",
+        "name": "",
+        "index": 10
+      },
+      "0264": {
+        "n": 34,
+        "label": "0264",
+        "name": "",
+        "index": 11
+      },
+      "0291": {
+        "n": 37,
+        "label": "0291",
+        "name": "",
+        "index": 12
+      },
+      "0307": {
+        "n": 38,
+        "label": "0307",
+        "name": "",
+        "index": 13
+      },
+      "0323": {
+        "n": 36,
+        "label": "0323",
+        "name": "",
+        "index": 14
+      },
+      "0349": {
+        "n": 37,
+        "label": "0349",
+        "name": "",
+        "index": 15
+      },
+      "0371": {
+        "n": 31,
+        "label": "0371",
+        "name": "",
+        "index": 16
+      },
+      "0374": {
+        "n": 36,
+        "label": "0374",
+        "name": "",
+        "index": 17
+      },
+      "0418": {
+        "n": 39,
+        "label": "0418",
+        "name": "",
+        "index": 18
+      },
+      "0432": {
+        "n": 39,
+        "label": "0432",
+        "name": "",
+        "index": 19
+      },
+      "0465": {
+        "n": 27,
+        "label": "0465",
+        "name": "",
+        "index": 20
+      },
+      "0496": {
+        "n": 36,
+        "label": "0496",
+        "name": "",
+        "index": 21
+      },
+      "0549": {
+        "n": 37,
+        "label": "0549",
+        "name": "",
+        "index": 22
+      },
+      "0555": {
+        "n": 39,
+        "label": "0555",
+        "name": "",
+        "index": 23
+      },
+      "0582": {
+        "n": 37,
+        "label": "0582",
+        "name": "",
+        "index": 24
+      },
+      "0583": {
+        "n": 36,
+        "label": "0583",
+        "name": "",
+        "index": 25
+      },
+      "0589": {
+        "n": 38,
+        "label": "0589",
+        "name": "",
+        "index": 26
+      },
+      "0614": {
+        "n": 37,
+        "label": "0614",
+        "name": "",
+        "index": 27
+      },
+      "0632": {
+        "n": 62,
+        "label": "0632",
+        "name": "",
+        "index": 28
+      },
+      "0651": {
+        "n": 37,
+        "label": "0651",
+        "name": "",
+        "index": 29
+      },
+      "0681": {
+        "n": 39,
+        "label": "0681",
+        "name": "",
+        "index": 30
+      },
+      "0696": {
+        "n": 38,
+        "label": "0696",
+        "name": "",
+        "index": 31
+      },
+      "0704": {
+        "n": 29,
+        "label": "0704",
+        "name": "",
+        "index": 32
+      },
+      "0727": {
+        "n": 39,
+        "label": "0727",
+        "name": "",
+        "index": 33
+      },
+      "0742": {
+        "n": 39,
+        "label": "0742",
+        "name": "",
+        "index": 34
+      },
+      "0760": {
+        "n": 36,
+        "label": "0760",
+        "name": "",
+        "index": 35
+      },
+      "0768": {
+        "n": 36,
+        "label": "0768",
+        "name": "",
+        "index": 36
+      },
+      "0783": {
+        "n": 38,
+        "label": "0783",
+        "name": "",
+        "index": 37
+      },
+      "0784": {
+        "n": 38,
+        "label": "0784",
+        "name": "",
+        "index": 38
+      },
+      "0806": {
+        "n": 38,
+        "label": "0806",
+        "name": "",
+        "index": 39
+      },
+      "0851": {
+        "n": 36,
+        "label": "0851",
+        "name": "",
+        "index": 40
+      },
+      "0854": {
+        "n": 36,
+        "label": "0854",
+        "name": "",
+        "index": 41
+      },
+      "0873": {
+        "n": 35,
+        "label": "0873",
+        "name": "",
+        "index": 42
+      },
+      "0879": {
+        "n": 35,
+        "label": "0879",
+        "name": "",
+        "index": 43
+      },
+      "0884": {
+        "n": 34,
+        "label": "0884",
+        "name": "",
+        "index": 44
+      },
+      "0894": {
+        "n": 38,
+        "label": "0894",
+        "name": "",
+        "index": 45
+      },
+      "0934": {
+        "n": 38,
+        "label": "0934",
+        "name": "",
+        "index": 46
+      },
+      "0950": {
+        "n": 37,
+        "label": "0950",
+        "name": "",
+        "index": 47
+      },
+      "0975": {
+        "n": 35,
+        "label": "0975",
+        "name": "",
+        "index": 48
+      },
+      "0987": {
+        "n": 36,
+        "label": "0987",
+        "name": "",
+        "index": 49
+      },
+      "unknown": {
+        "n": 588,
+        "label": "unknown"
+      }
+    }
+  },
+  "unknown_sources": [
+    {
+      "source_id": "0604",
+      "name": "Jeep_自由侠4xe",
+      "brand": "Jeep",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0950",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0702",
+      "name": "MINI_MINI CLUBMAN",
+      "brand": "MINI",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0264",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0467",
+      "name": "丰田_格瑞维亚",
+      "brand": "丰田",
+      "category": "MPV",
+      "kind": "hard_negative",
+      "target_class_id": "0061",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0859",
+      "name": "五菱汽车_五菱佳辰",
+      "brand": "五菱汽车",
+      "category": "MPV",
+      "kind": "hard_negative",
+      "target_class_id": "0025",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0948",
+      "name": "依维柯_依维柯欧胜",
+      "brand": "依维柯",
+      "category": "轻客",
+      "kind": "hard_negative",
+      "target_class_id": "0496",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0029",
+      "name": "保时捷_Macan",
+      "brand": "保时捷",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0183",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0408",
+      "name": "凯迪拉克_IQ锐歌",
+      "brand": "凯迪拉克",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0119",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0251",
+      "name": "别克_昂科旗",
+      "brand": "别克",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0589",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0720",
+      "name": "劳斯莱斯_幻影",
+      "brand": "劳斯莱斯",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0854",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0842",
+      "name": "北汽制造_勇士皮卡",
+      "brand": "北汽制造",
+      "category": "卡车",
+      "kind": "hard_negative",
+      "target_class_id": "0894",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0808",
+      "name": "吉利汽车_缤瑞",
+      "brand": "吉利汽车",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0019",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0468",
+      "name": "哈弗_哈弗H6",
+      "brand": "哈弗",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0555",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0303",
+      "name": "大众_桑塔纳",
+      "brand": "大众",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0035",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0759",
+      "name": "奔驰_奔驰CLS",
+      "brand": "奔驰",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0432",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0545",
+      "name": "奥迪_奥迪Q2L",
+      "brand": "奥迪",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0614",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0671",
+      "name": "宝马_宝马M2",
+      "brand": "宝马",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0222",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0849",
+      "name": "小鹏汽车_小鹏P5",
+      "brand": "小鹏汽车",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0583",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0855",
+      "name": "广汽传祺_传祺GA8",
+      "brand": "广汽传祺",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0760",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0781",
+      "name": "日产_天籁",
+      "brand": "日产",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0704",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0379",
+      "name": "本田_本田UR-V",
+      "brand": "本田",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0161",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0662",
+      "name": "林肯_冒险家",
+      "brand": "林肯",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0806",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0817",
+      "name": "欧拉_欧拉芭蕾猫",
+      "brand": "欧拉",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0651",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0192",
+      "name": "比亚迪_唐DM",
+      "brand": "比亚迪",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0884",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0905",
+      "name": "法拉利_California T",
+      "brand": "法拉利",
+      "category": "跑车",
+      "kind": "hard_negative",
+      "target_class_id": "0879",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0676",
+      "name": "福特_蒙迪欧",
+      "brand": "福特",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0465",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0482",
+      "name": "红旗_红旗HS7",
+      "brand": "红旗",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0194",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0791",
+      "name": "蔚来_蔚来ES8",
+      "brand": "蔚来",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0873",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0739",
+      "name": "路虎_发现运动版PHEV",
+      "brand": "路虎",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0681",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0711",
+      "name": "金杯_新海狮S",
+      "brand": "金杯",
+      "category": "微面",
+      "kind": "hard_negative",
+      "target_class_id": "0323",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0310",
+      "name": "长安_逸动",
+      "brand": "长安",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0374",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0596",
+      "name": "雪佛兰_雪佛兰畅巡",
+      "brand": "雪佛兰",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0742",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0834",
+      "name": "雷克萨斯_雷克萨斯LS",
+      "brand": "雷克萨斯",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0291",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0899",
+      "name": "领克_领克02 Hatchback",
+      "brand": "领克",
+      "category": "轿车",
+      "kind": "hard_negative",
+      "target_class_id": "0851",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0503",
+      "name": "马自达_马自达CX-50行也",
+      "brand": "马自达",
+      "category": "SUV",
+      "kind": "hard_negative",
+      "target_class_id": "0784",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0640",
+      "name": "钧天汽车_勇猛者",
+      "brand": "钧天汽车",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0347",
+      "name": "方程豹_豹5",
+      "brand": "方程豹",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0452",
+      "name": "智己汽车_智己LS7",
+      "brand": "智己汽车",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0717",
+      "name": "名爵_MG ZS",
+      "brand": "名爵",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0287",
+      "name": "奇瑞_瑞虎3x",
+      "brand": "奇瑞",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0563",
+      "name": "东风风行_风行T5 EVO",
+      "brand": "东风风行",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0366",
+      "name": "魏牌_拿铁DHT",
+      "brand": "魏牌",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0328",
+      "name": "起亚_奕跑",
+      "brand": "起亚",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0657",
+      "name": "北京_北京BJ40",
+      "brand": "北京",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0725",
+      "name": "三菱_欧蓝德",
+      "brand": "三菱",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0658",
+      "name": "五十铃_mu-X牧游侠",
+      "brand": "五十铃",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0748",
+      "name": "标致_标致4008",
+      "brand": "标致",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0238",
+      "name": "北京汽车_魔方",
+      "brand": "北京汽车",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0707",
+      "name": "埃安_AION LX",
+      "brand": "埃安",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0334",
+      "name": "沃尔沃_沃尔沃XC90",
+      "brand": "沃尔沃",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0105",
+      "name": "捷达_捷达VS5",
+      "brand": "捷达",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0708",
+      "name": "DS_DS 7",
+      "brand": "DS",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0157",
+      "name": "星途_星途揽月",
+      "brand": "星途",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0838",
+      "name": "捷途_捷途大圣",
+      "brand": "捷途",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0645",
+      "name": "凯翼_凯翼X3",
+      "brand": "凯翼",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0810",
+      "name": "高合_高合HiPhi X",
+      "brand": "高合",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0236",
+      "name": "英菲尼迪_英菲尼迪QX60",
+      "brand": "英菲尼迪",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0680",
+      "name": "斯柯达_柯迪亚克",
+      "brand": "斯柯达",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0179",
+      "name": "众泰_众泰T300",
+      "brand": "众泰",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0491",
+      "name": "启辰_启辰大V",
+      "brand": "启辰",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0352",
+      "name": "东风风光_风光580",
+      "brand": "东风风光",
+      "category": "SUV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0675",
+      "name": "沙龙汽车_机甲龙",
+      "brand": "沙龙汽车",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0904",
+      "name": "智己汽车_智己L7",
+      "brand": "智己汽车",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0827",
+      "name": "特斯拉_Model S",
+      "brand": "特斯拉",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0608",
+      "name": "极氪_ZEEKR 001",
+      "brand": "极氪",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0134",
+      "name": "埃安_AION S",
+      "brand": "埃安",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0732",
+      "name": "捷尼赛思_捷尼赛思G80",
+      "brand": "捷尼赛思",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0421",
+      "name": "凌宝汽车_凌宝BOX",
+      "brand": "凌宝汽车",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0462",
+      "name": "凯翼_轩度",
+      "brand": "凯翼",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0521",
+      "name": "长安欧尚_奔奔E-Star",
+      "brand": "长安欧尚",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0984",
+      "name": "斯柯达_昕锐",
+      "brand": "斯柯达",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0889",
+      "name": "奇瑞新能源_小蚂蚁",
+      "brand": "奇瑞新能源",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0345",
+      "name": "华晨新日_华晨新日i03",
+      "brand": "华晨新日",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0795",
+      "name": "昊铂_昊铂GT",
+      "brand": "昊铂",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0023",
+      "name": "现代_名图",
+      "brand": "现代",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0376",
+      "name": "标致_标致508L",
+      "brand": "标致",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0123",
+      "name": "名爵_MG6",
+      "brand": "名爵",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0259",
+      "name": "宝骏_宝骏KiWi EV",
+      "brand": "宝骏",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0544",
+      "name": "DS_DS 9",
+      "brand": "DS",
+      "category": "轿车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0753",
+      "name": "东风_锐骐6",
+      "brand": "东风",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0761",
+      "name": "北京_北京F40",
+      "brand": "北京",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0635",
+      "name": "长城_金刚炮",
+      "brand": "长城",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0821",
+      "name": "福田_大将军G9",
+      "brand": "福田",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0311",
+      "name": "长安跨越_跨越王X1 EV",
+      "brand": "长安跨越",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0055",
+      "name": "江汽集团_江淮T8",
+      "brand": "江汽集团",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0324",
+      "name": "长安凯程_神骐T20",
+      "brand": "长安凯程",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0224",
+      "name": "江铃_域虎9",
+      "brand": "江铃",
+      "category": "卡车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0690",
+      "name": "道奇_挑战者",
+      "brand": "道奇",
+      "category": "跑车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0809",
+      "name": "迈凯伦_迈凯伦Artura",
+      "brand": "迈凯伦",
+      "category": "跑车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0891",
+      "name": "路特斯_Evija",
+      "brand": "路特斯",
+      "category": "跑车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0022",
+      "name": "名爵_MG Cyberster",
+      "brand": "名爵",
+      "category": "跑车",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0938",
+      "name": "奔腾_奔腾NAT",
+      "brand": "奔腾",
+      "category": "MPV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0141",
+      "name": "江淮瑞风_瑞风M3",
+      "brand": "江淮瑞风",
+      "category": "MPV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0811",
+      "name": "东风风光_风光330",
+      "brand": "东风风光",
+      "category": "MPV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0060",
+      "name": "上汽大通MAXUS_上汽大通MAXUS G50",
+      "brand": "上汽大通MAXUS",
+      "category": "MPV",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0051",
+      "name": "长安跨越_跨越星V5 EV",
+      "brand": "长安跨越",
+      "category": "微面",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0204",
+      "name": "瑞驰_瑞驰EC35",
+      "brand": "瑞驰",
+      "category": "微面",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0198",
+      "name": "江汽集团_星锐",
+      "brand": "江汽集团",
+      "category": "轻客",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    },
+    {
+      "source_id": "0078",
+      "name": "长安凯程_睿行M80",
+      "brand": "长安凯程",
+      "category": "轻客",
+      "kind": "other_brand",
+      "target_class_id": "",
+      "n_train": 20,
+      "n_val": 6
+    }
+  ],
+  "unknown_train_ratio": 0.2615
+}

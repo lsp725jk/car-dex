@@ -1,0 +1,828 @@
+id,name_from_new,brand,category,body_type,type_info,name_from_old,train,val,total
+0000,江铃_凯运,江铃,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,江铃_凯运==JMC_Kaiyun,100,33,133
+0001,远程汽车_远程星智H,远程汽车,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,远程汽车_远程星智H==Farizon Auto_Farizon Star H,67,22,89
+0002,东风风神_东风风神E70,东风风神,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,东风风神_东风风神E70==Dongfeng Fengshen_E70,108,36,144
+0003,宇通客车_宇通T7,宇通客车,轻客,Bus,轻客####轻客==Bus####Bus,宇通客车_宇通T7==Yutong_T7,94,31,125
+0005,宝马_宝马M5,宝马,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,宝马_宝马M5==BMW_M5,98,32,130
+0006,捷豹_捷豹F-PACE,捷豹,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷豹_捷豹F-PACE==Jaguar_F-PACE,114,38,152
+0007,比亚迪_海豚,比亚迪,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,比亚迪_海豚==BYD_Dolphin,103,34,137
+0008,奥迪_奥迪A7L,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪A7L==Audi_Audi A7L,111,37,148
+0009,沃尔沃_沃尔沃S90,沃尔沃,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,沃尔沃_沃尔沃S90==Volvo_Volvo S90,117,39,156
+0010,荣威_荣威RX3,荣威,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,荣威_荣威RX3==Roewe_RX3,105,35,140
+0011,捷豹_捷豹E-PACE,捷豹,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,捷豹_捷豹E-PACE==Jaguar_E-PACE,100,33,133
+0013,本田_享域,本田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,本田_享域==Honda_Envix,112,37,149
+0014,保时捷_Cayenne Coupe,保时捷,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,保时捷_Cayenne Coupe==Porsche_Cayenne Coupe,60,20,80
+0015,宝马_宝马6系GT,宝马,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,宝马_宝马6系GT==BMW_6 Series GT,108,36,144
+0016,现代_现代i20,现代,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,现代_现代i20==Hyundai_i20,82,27,109
+0017,大众_ID.4 X,大众,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,大众_ID.4 X==Volkswagen_ID.4 X,69,23,92
+0018,哪吒汽车_哪吒U,哪吒汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哪吒汽车_哪吒U==Nezha Auto_Nezha U,90,30,120
+0019,吉利汽车_星瑞,吉利汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利汽车_星瑞==Geely_Star Rui,111,37,148
+0020,宝马_宝马M4,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马M4==BMW_M4,107,35,142
+0022,名爵_MG Cyberster,名爵,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,名爵_MG Cyberster==MG_MG Cyberster,82,27,109
+0023,现代_名图,现代,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,现代_名图==Hyundai_Mistra,112,37,149
+0024,吉利几何_吉利几何C,吉利几何,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,吉利几何_吉利几何C==Geometry_C,85,28,113
+0025,五菱汽车_五菱之光,五菱汽车,微面,Van,微面####微面==Van####Van,五菱汽车_五菱之光==Wuling Motors_Wuling Sunshine,91,30,121
+0026,宝马_宝马5系PHEV,宝马,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,宝马_宝马5系PHEV==BMW_5 Series PHEV,81,27,108
+0029,保时捷_Macan,保时捷,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,保时捷_Macan==Porsche_Macan,105,35,140
+0030,丰田_丰田bZ3,丰田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,丰田_丰田bZ3==Toyota_bZ3,70,23,93
+0032,大众_大众CC,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_大众CC==Volkswagen_Volkswagen CC,112,37,149
+0034,大众_探岳GTE,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_探岳GTE==Volkswagen_Tiguan GTE,108,36,144
+0035,大众_朗逸,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_朗逸==Volkswagen_Lavida,108,36,144
+0037,AITO_问界M5,AITO,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,AITO_问界M5==AITO_Ask World M5,66,22,88
+0038,奥迪_奥迪Q5 e-tron,奥迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奥迪_奥迪Q5 e-tron==Audi_Q5 e-tron,70,23,93
+0039,丰田_赛那,丰田,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,丰田_赛那==Toyota_Sienna,84,28,112
+0041,吉利汽车_豪越L,吉利汽车,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,吉利汽车_豪越L==Geely_Haoyue L,93,31,124
+0043,起亚_焕驰,起亚,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,起亚_焕驰==Kia_Morning,109,36,145
+0044,广汽传祺_传祺GS3,广汽传祺,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,广汽传祺_传祺GS3==GAC Trumpchi_Trumpchi GS3,102,34,136
+0045,岚图_岚图梦想家 EV,岚图,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,岚图_岚图梦想家 EV==Lantu_Lantu Dreamer EV,76,25,101
+0046,长安凯程_睿行M70,长安凯程,轻客,Bus,轻客####轻客==Bus####Bus,长安凯程_睿行M70==Changan Kaicheng_Ruixing M70,71,23,94
+0047,吉利汽车_星越L,吉利汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,吉利汽车_星越L==Geely_Star Yue L,112,37,149
+0048,马自达_马自达CX-4,马自达,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,马自达_马自达CX-4==Mazda_Mazda CX-4,108,36,144
+0050,金杯_金杯快运,金杯,轻客,Bus,轻客####轻客==Bus####Bus,金杯_金杯快运==Jinbei_Fast Delivery,99,33,132
+0051,长安跨越_跨越星V5 EV,长安跨越,微面,Van,微面####微面==Van####Van,长安跨越_跨越星V5 EV==Changan Kuayue_Kuayue Star V5 EV,84,28,112
+0052,广汽传祺_传祺GS4,广汽传祺,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,广汽传祺_传祺GS4==GAC Trumpchi_Trumpchi GS4,115,38,153
+0053,阿斯顿·马丁_阿斯顿·马丁DB12,阿斯顿·马丁,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,阿斯顿·马丁_阿斯顿·马丁DB12==Aston Martin_Aston Martin DB12,87,29,116
+0055,江汽集团_江淮T8,江汽集团,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,江汽集团_江淮T8==JAC Motors_Jianghuai T8,90,30,120
+0056,玛莎拉蒂_玛莎拉蒂MC20,玛莎拉蒂,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,玛莎拉蒂_玛莎拉蒂MC20==Maserati_Maserati MC20,86,28,114
+0057,奔驰_奔驰G级,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰G级==Mercedes-Benz_Mercedes-Benz G-Class,105,35,140
+0058,比亚迪_比亚迪e9,比亚迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,比亚迪_比亚迪e9==BYD_e9,60,20,80
+0059,奔驰_奔驰GLC AMG,奔驰,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奔驰_奔驰GLC AMG==Mercedes-Benz_GLC AMG,103,34,137
+0060,上汽大通MAXUS_上汽大通MAXUS G50,上汽大通MAXUS,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,上汽大通MAXUS_上汽大通MAXUS G50==SAIC Maxus_SAIC Maxus G50,101,33,134
+0061,丰田_埃尔法,丰田,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,丰田_埃尔法==Toyota_Alphard,80,26,106
+0062,斯巴鲁_FORESTER森林人,斯巴鲁,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,斯巴鲁_FORESTER森林人==Subaru_Forester,85,28,113
+0063,宝马_宝马3系,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马3系==BMW_BMW 3 Series,105,35,140
+0064,日产_逍客,日产,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,日产_逍客==Nissan_Qashqai,89,29,118
+0065,捷尼赛思_捷尼赛思G70,捷尼赛思,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,捷尼赛思_捷尼赛思G70==Genesis_G70,95,31,126
+0067,坦克_赛博坦克300,坦克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,坦克_赛博坦克300==Tank_CyberTank 300,96,32,128
+0068,奇瑞_瑞虎8 PLUS鲲鹏e+,奇瑞,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奇瑞_瑞虎8 PLUS鲲鹏e+==Chery_Tiggo 8 PLUS Kunpeng e+,92,30,122
+0069,吉利汽车_帝豪L HiP,吉利汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利汽车_帝豪L HiP==Geely_Emgrand L HiP,79,26,105
+0070,北汽制造_王牌M7 EV,北汽制造,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,北汽制造_王牌M7 EV==BAIC Weiwang_M7 EV,70,23,93
+0071,保时捷_Panamera E-Hybrid,保时捷,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,保时捷_Panamera E-Hybrid==Porsche_Panamera E-Hybrid,109,36,145
+0072,北汽制造_卡路里,北汽制造,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,北汽制造_卡路里==BAIC Manufacturing_Calorie,69,23,92
+0073,起亚_起亚K3,起亚,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,起亚_起亚K3==Kia_K3,113,37,150
+0074,北京_北京BJ80,北京,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,北京_北京BJ80==BAIC_BJ80,106,35,141
+0075,起亚_起亚K5,起亚,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,起亚_起亚K5==Kia_K5,108,36,144
+0076,奇瑞_瑞虎7 PLUS,奇瑞,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奇瑞_瑞虎7 PLUS==Chery_Tiggo 7 PLUS,108,36,144
+0077,福特_探险者,福特,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,福特_探险者==Ford_Explorer,104,34,138
+0078,长安凯程_睿行M80,长安凯程,轻客,Bus,轻客####轻客==Bus####Bus,长安凯程_睿行M80==Changan Kaicheng_Ruixing M80,90,30,120
+0080,日产_途乐,日产,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,日产_途乐==Nissan_Patrol,115,38,153
+0081,五菱汽车_五菱之光小卡,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱之光小卡==Wuling Motors_Wuling Zhiguang Mini Truck,78,26,104
+0082,丰田_凌放HARRIER,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_凌放HARRIER==Toyota_Harrier,88,29,117
+0083,长安欧尚_长安欧尚Z6,长安欧尚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安欧尚_长安欧尚Z6==Changan Oushang_Changan Oushang Z6,78,26,104
+0084,丰田_Supra,丰田,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,丰田_Supra==Toyota_Supra,113,37,150
+0085,魏牌_蓝山DHT-PHEV,魏牌,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,魏牌_蓝山DHT-PHEV==Wei Brand_Lanshan DHT-PHEV,79,26,105
+0086,丰田_凌尚,丰田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,丰田_凌尚==Toyota_Allion,108,36,144
+0087,奔驰_奔驰EQS SUV,奔驰,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,奔驰_奔驰EQS SUV==Mercedes-Benz_EQS SUV,84,28,112
+0088,长安_逸动EV,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_逸动EV==Changan_Eado EV,103,34,137
+0089,长城_风骏7,长城,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长城_风骏7==Great Wall_Wingle 7,96,32,128
+0091,沃尔沃_沃尔沃C40 RECHARGE,沃尔沃,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,沃尔沃_沃尔沃C40 RECHARGE==Volvo_C40 Recharge,80,26,106
+0092,本田_本田S660,本田,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,本田_本田S660==Honda_S660,95,31,126
+0093,现代_现代i10,现代,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,现代_现代i10==Hyundai_i10,99,33,132
+0094,捷途_捷途旅行者,捷途,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,捷途_捷途旅行者==Jetour_Jetour Traveler,74,24,98
+0095,中兴_大领主,中兴,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,中兴_大领主==ZTE_Grand Lord,105,35,140
+0096,上汽大通MAXUS_上汽大通MAXUS G20,上汽大通MAXUS,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,上汽大通MAXUS_上汽大通MAXUS G20==SAIC Maxus_G20,89,29,118
+0097,捷途_捷途X90,捷途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷途_捷途X90==Jetour_X90,97,32,129
+0098,SERES赛力斯_赛力斯SF5,SERES赛力斯,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,SERES赛力斯_赛力斯SF5==SERES_SF5,108,36,144
+0099,丰田_Mirai,丰田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,丰田_Mirai==Toyota_Mirai,100,33,133
+0101,宝马_宝马i3,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马i3==BMW_BMW i3,88,29,117
+0102,宝马_宝马i7,宝马,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宝马_宝马i7==BMW_i7,71,23,94
+0103,大众_途观L PHEV,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_途观L PHEV==Volkswagen_Tiguan L PHEV,105,35,140
+0104,奔驰_奔驰E级AMG,奔驰,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奔驰_奔驰E级AMG==Mercedes-Benz_E-Class AMG,71,23,94
+0105,捷达_捷达VS5,捷达,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,捷达_捷达VS5==Jetta_Jetta VS5,106,35,141
+0106,五十铃_TAGA达咖,五十铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五十铃_TAGA达咖==Isuzu_TAGA Dacar,112,37,149
+0107,名爵_MG5天蝎座,名爵,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,名爵_MG5天蝎座==MG_MG5 Scorpio,101,33,134
+0108,福特_新世代全顺,福特,轻客,Bus,轻客####轻客==Bus####Bus,福特_新世代全顺==Ford_New Generation Transit,108,36,144
+0109,奔驰_威霆,奔驰,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,奔驰_威霆==Mercedes-Benz_Mercedes-Benz Vito,82,27,109
+0110,奥迪_奥迪A3,奥迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奥迪_奥迪A3==Audi_Audi A3,107,35,142
+0111,比亚迪_驱逐舰 05,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_驱逐舰 05==BYD_Destroyer 05,107,35,142
+0112,阿斯顿·马丁_阿斯顿·马丁DBX,阿斯顿·马丁,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,阿斯顿·马丁_阿斯顿·马丁DBX==Aston Martin_DBX,82,27,109
+0114,丰田_卡罗拉双擎E+,丰田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,丰田_卡罗拉双擎E+==Toyota_Corolla Twin E+,90,30,120
+0115,丰田_奕泽E进擎,丰田,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,丰田_奕泽E进擎==Toyota_C-HR,94,31,125
+0116,奇瑞_艾瑞泽5,奇瑞,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奇瑞_艾瑞泽5==Chery_Arrizo 5,93,31,124
+0117,五菱汽车_五菱荣光小卡EV,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱荣光小卡EV==Wuling Motors_Wuling Rongguang Mini Truck EV,69,23,92
+0118,特斯拉_Cybertruck,特斯拉,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,特斯拉_Cybertruck==Tesla_Cybertruck,106,35,141
+0119,凯迪拉克_凯迪拉克XT6,凯迪拉克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,凯迪拉克_凯迪拉克XT6==Cadillac_Cadillac XT6,117,39,156
+0120,宝马_宝马X5,宝马,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,宝马_宝马X5==BMW_BMW X5,111,37,148
+0121,福田_图雅诺智蓝 EV,福田,轻客,Bus,轻客####轻客==Bus####Bus,福田_图雅诺智蓝 EV==Foton_Toyano Zhilan EV,64,21,85
+0122,比亚迪_海豹,比亚迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,比亚迪_海豹==BYD_Seal,73,24,97
+0123,名爵_MG6,名爵,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,名爵_MG6==MG_MG6,110,36,146
+0124,本田_本田HR-V,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_本田HR-V==Honda_HR-V,89,29,118
+0126,捷豹_捷豹F-TYPE,捷豹,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,捷豹_捷豹F-TYPE==Jaguar_Jaguar F-TYPE,104,34,138
+0127,东风小康_东风小康K02,东风小康,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,东风小康_东风小康K02==Dongfeng Xiaokang_Dongfeng Xiaokang K02,100,33,133
+0128,思皓_花仙子,思皓,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,思皓_花仙子==Sihao_Flower Fairy,102,34,136
+0129,保时捷_保时捷911,保时捷,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,保时捷_保时捷911==Porsche_Porsche 911,88,29,117
+0130,长安跨越_跨越星V5,长安跨越,微面,Van,微面####微面==Van####Van,长安跨越_跨越星V5==Changan Kuayue_Kuayue Star V5,67,22,89
+0131,沃尔沃_沃尔沃S60 RECHARGE,沃尔沃,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,沃尔沃_沃尔沃S60 RECHARGE==Volvo_S60 Recharge,97,32,129
+0132,长安_长安UNI-K,长安,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,长安_长安UNI-K==Changan_Changan UNI-K,90,30,120
+0133,东风风神_皓极,东风风神,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风神_皓极==Dongfeng Fengshen_Aeolus Haoji,96,32,128
+0134,埃安_AION S,埃安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,埃安_AION S==GAC Aion_AION S,93,31,124
+0135,奔腾_奔腾T90,奔腾,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔腾_奔腾T90==Besturn_T90,82,27,109
+0136,别克_昂科威,别克,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,别克_昂科威==Buick_Envision,109,36,145
+0137,凯迪拉克_凯迪拉克CT6,凯迪拉克,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,凯迪拉克_凯迪拉克CT6==Cadillac_Cadillac CT6,114,38,152
+0138,荣威_荣威RX5,荣威,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,荣威_荣威RX5==Roewe_Roewe RX5,87,29,116
+0139,奔驰_奔驰A级,奔驰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奔驰_奔驰A级==Mercedes-Benz_Mercedes-Benz A-Class,103,34,137
+0140,雪佛兰_开拓者,雪佛兰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,雪佛兰_开拓者==Chevrolet_Trailblazer,114,38,152
+0141,江淮瑞风_瑞风M3,江淮瑞风,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,江淮瑞风_瑞风M3==JAC Refine_Refine M3,112,37,149
+0142,福特_全顺,福特,轻客,Bus,轻客####轻客==Bus####Bus,福特_全顺==Ford_Transit,98,32,130
+0146,奔驰_奔驰GLA AMG,奔驰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔驰_奔驰GLA AMG==Mercedes-Benz_GLA AMG,98,32,130
+0147,摩根_摩根Plus 4,摩根,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,摩根_摩根Plus 4==Morgan_Plus Four,102,34,136
+0148,哪吒汽车_哪吒AYA,哪吒汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,哪吒汽车_哪吒AYA==Nezha Auto_Nezha AYA,64,21,85
+0149,路特斯_Emira,路特斯,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,路特斯_Emira==Lotus_Emira,86,28,114
+0151,理念_广汽本田VE-1,理念,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,理念_广汽本田VE-1==Everus_VE-1,99,33,132
+0152,奔驰_奔驰EQE SUV,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰EQE SUV==Mercedes-Benz_EQE SUV,66,22,88
+0153,长安凯程_神骐T30,长安凯程,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安凯程_神骐T30==Changan Kaicheng_Shenqi T30,76,25,101
+0154,丰田_丰田86,丰田,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,丰田_丰田86==Toyota_Toyota 86,89,29,118
+0155,丰田_威兰达高性能版,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_威兰达高性能版==Toyota_Venza,84,28,112
+0157,星途_星途揽月,星途,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,星途_星途揽月==Exeed_Exeed Luny,116,38,154
+0158,北汽昌河_北汽EV5,北汽昌河,微面,Van,微面####微面==Van####Van,北汽昌河_北汽EV5==BAIC Changhe_EV5,81,27,108
+0159,奔驰_奔驰S级,奔驰,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,奔驰_奔驰S级==Mercedes-Benz_Mercedes-Benz S-Class,105,35,140
+0160,五菱汽车_五菱宏光MINIEV,五菱汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,五菱汽车_五菱宏光MINIEV==Wuling Motors_Wuling Hongguang MINIEV,94,31,125
+0161,本田_缤智,本田,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,本田_缤智==Honda_HR-V,114,38,152
+0162,东风小康_东风小康C31,东风小康,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,东风小康_东风小康C31==Dongfeng Xiaokang_Dongfeng Xiaokang C31,101,33,134
+0163,东风纳米_东风纳米EX1,东风纳米,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,东风纳米_东风纳米EX1==Dongfeng Nano_Dongfeng Nano EX1,61,20,81
+0164,奔驰_迈巴赫S级,奔驰,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,奔驰_迈巴赫S级==Mercedes-Benz_Maybach S-Class,112,37,149
+0165,东风小康_东风小康EC36,东风小康,微面,Van,微面####微面==Van####Van,东风小康_东风小康EC36==Dongfeng Xiaokang_EC36,102,34,136
+0166,魏牌_高山,魏牌,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,魏牌_高山==Wei Brand_Gaoshan,79,26,105
+0167,雪铁龙_雪铁龙C6,雪铁龙,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,雪铁龙_雪铁龙C6==Citroën_C6,111,37,148
+0168,领克_领克06,领克,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,领克_领克06==Lynk & Co_Lynk & Co 06,100,33,133
+0169,福特_EVOS,福特,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,福特_EVOS==Ford_EVOS,108,36,144
+0171,比亚迪_元Pro,比亚迪,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,比亚迪_元Pro==BYD_Yuan Pro,75,25,100
+0172,比亚迪_比亚迪e2,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_比亚迪e2==BYD_e2,109,36,145
+0173,英菲尼迪_英菲尼迪Q50L,英菲尼迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,英菲尼迪_英菲尼迪Q50L==Infiniti_Q50L,117,39,156
+0174,smart_smart EQ forfour,smart,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,smart_smart EQ forfour==smart_EQ forfour,100,33,133
+0175,奔驰_奔驰E级PHEV,奔驰,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奔驰_奔驰E级PHEV==Mercedes-Benz_E-Class PHEV,92,30,122
+0176,哈弗_哈弗酷狗,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗酷狗==Haval_Haval Cool Dog,97,32,129
+0177,东风_锐骐,东风,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,东风_锐骐==Dongfeng_Rich,70,23,93
+0178,丰田_柯斯达,丰田,轻客,Bus,轻客####轻客==Bus####Bus,丰田_柯斯达==Toyota_Coaster,103,34,137
+0179,众泰_众泰T300,众泰,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,众泰_众泰T300==Zotye_T300,91,30,121
+0181,Jeep_牧马人4xe PHEV,Jeep,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,Jeep_牧马人4xe PHEV==Jeep_Wrangler 4xe PHEV,86,28,114
+0182,奔驰_迈巴赫GLS,奔驰,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,奔驰_迈巴赫GLS==Mercedes-Benz_Maybach GLS,111,37,148
+0183,保时捷_保时捷718,保时捷,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,保时捷_保时捷718==Porsche_Porsche 718,123,41,164
+0184,小鹏汽车_小鹏G9,小鹏汽车,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,小鹏汽车_小鹏G9==Xpeng_Xpeng G9,103,34,137
+0185,红旗_红旗H5,红旗,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,红旗_红旗H5==Hongqi_Hongqi H5,109,36,145
+0186,本田_雅阁 PHEV,本田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,本田_雅阁 PHEV==Honda_Accord PHEV,62,20,82
+0188,阿斯顿·马丁_阿斯顿·马丁DB11,阿斯顿·马丁,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,阿斯顿·马丁_阿斯顿·马丁DB11==Aston Martin_Aston Martin DB11,112,37,149
+0190,奇瑞_瑞虎8 PRO,奇瑞,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奇瑞_瑞虎8 PRO==Chery_Tiggo 8 PRO,82,27,109
+0191,起亚_赛图斯,起亚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,起亚_赛图斯==Kia_Cerato,78,26,104
+0192,比亚迪_唐DM,比亚迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,比亚迪_唐DM==BYD_Tang DM,115,38,153
+0193,长安_长安CS35 PLUS,长安,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,长安_长安CS35 PLUS==Changan_Changan CS35 PLUS,113,37,150
+0194,红旗_红旗E-HS9,红旗,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,红旗_红旗E-HS9==Hongqi_Hongqi E-HS9,114,38,152
+0195,启辰_启辰D60,启辰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,启辰_启辰D60==Venucia_D60,85,28,113
+0196,五菱汽车_五菱星驰,五菱汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,五菱汽车_五菱星驰==Wuling Motors_Wuling Xingchi,105,35,140
+0198,江汽集团_星锐,江汽集团,轻客,Bus,轻客####轻客==Bus####Bus,江汽集团_星锐==JMC_Transit,107,35,142
+0200,宝马_宝马X6,宝马,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,宝马_宝马X6==BMW_X6,111,37,148
+0201,广汽传祺_传祺M8,广汽传祺,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,广汽传祺_传祺M8==GAC Trumpchi_Trumpchi M8,100,33,133
+0202,荣威_荣威iMAX8,荣威,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,荣威_荣威iMAX8==Roewe_Roewe iMAX8,116,38,154
+0203,名爵_MG7,名爵,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,名爵_MG7==MG_MG7,107,35,142
+0204,瑞驰_瑞驰EC35,瑞驰,微面,Van,微面####微面==Van####Van,瑞驰_瑞驰EC35==Riich_EC35,96,32,128
+0205,星途_星途追风 PHEV,星途,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,星途_星途追风 PHEV==Exeed_TxL PHEV,62,20,82
+0206,兰博基尼_Revuelto,兰博基尼,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,兰博基尼_Revuelto==Lamborghini_Revuelto,68,22,90
+0207,启辰_启辰D60 EV,启辰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,启辰_启辰D60 EV==Venucia_D60 EV,96,32,128
+0208,本田_皓影 PHEV,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_皓影 PHEV==Honda_HR-V PHEV,99,33,132
+0210,长安凯程_欧诺S,长安凯程,微面,Van,微面####微面==Van####Van,长安凯程_欧诺S==Changan Kaicheng_Ouno S,106,35,141
+0211,名爵_MG5,名爵,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,名爵_MG5==MG_MG5,83,27,110
+0213,丰田_雷凌,丰田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,丰田_雷凌==Toyota_Levin,89,29,118
+0214,福田_祥菱M,福田,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,福田_祥菱M==Foton_Xiangling M,90,30,120
+0218,长安_长安UNI-T,长安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安_长安UNI-T==Changan_Changan UNI-T,108,36,144
+0220,东风_御风EM26,东风,微面,Van,微面####微面==Van####Van,东风_御风EM26==Dongfeng_Yufeng EM26,70,23,93
+0221,红旗_红旗LS7,红旗,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,红旗_红旗LS7==Hongqi_Hongqi LS7,97,32,129
+0222,宝马_宝马X7,宝马,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,宝马_宝马X7==BMW_BMW X7,115,38,153
+0223,东风风行_风行游艇,东风风行,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,东风风行_风行游艇==Dongfeng Fengxing_Yacht,108,36,144
+0224,江铃_域虎9,江铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,江铃_域虎9==JMC_Yuhu 9,103,34,137
+0225,兰博基尼_Urus,兰博基尼,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,兰博基尼_Urus==Lamborghini_Urus,112,37,149
+0227,腾势_腾势N7,腾势,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,腾势_腾势N7==Denza_N7,72,24,96
+0228,领克_领克05,领克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,领克_领克05==Lynk & Co_Lynk & Co 05,112,37,149
+0230,林肯_航海家,林肯,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,林肯_航海家==Lincoln_Navigator,91,30,121
+0231,荣威_荣威i5,荣威,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,荣威_荣威i5==Roewe_Roewe i5,115,38,153
+0232,五菱汽车_五菱星辰,五菱汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,五菱汽车_五菱星辰==Wuling Motors_Wuling Xingchen,93,31,124
+0233,斯柯达_速派,斯柯达,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,斯柯达_速派==Škoda_Superb,116,38,154
+0234,蔚来_蔚来ES7,蔚来,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,蔚来_蔚来ES7==NIO_ES7,78,26,104
+0236,英菲尼迪_英菲尼迪QX60,英菲尼迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,英菲尼迪_英菲尼迪QX60==Infiniti_QX60,102,34,136
+0238,北京汽车_魔方,北京汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,北京汽车_魔方==BAIC_Magic Box,105,35,140
+0239,大众_探岳,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_探岳==Volkswagen_Teramont,104,34,138
+0240,东风_御风,东风,轻客,Bus,轻客####轻客==Bus####Bus,东风_御风==Dongfeng_Yufeng,87,29,116
+0241,五十铃_庆铃五十铃T17,五十铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五十铃_庆铃五十铃T17==Isuzu_Qingling Isuzu T17,67,22,89
+0242,丰田_RAV4荣放双擎E+,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_RAV4荣放双擎E+==Toyota_RAV4 Prime,85,28,113
+0244,特斯拉_Roadster,特斯拉,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,特斯拉_Roadster==Tesla_Roadster,103,34,137
+0245,长城_山海炮,长城,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长城_山海炮==Great Wall_Mountain and Sea Cannon,77,25,102
+0246,福特_领界,福特,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,福特_领界==Ford_Territory,102,34,136
+0247,丰田_一汽丰田bZ4X,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_一汽丰田bZ4X==Toyota_bZ4X,85,28,113
+0249,大众_威然,大众,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,大众_威然==Volkswagen_Viloran,110,36,146
+0250,中国重汽VGV_VGV U75,中国重汽VGV,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,中国重汽VGV_VGV U75==China National Heavy Duty Truck Group VGV_U75,69,23,92
+0251,别克_昂科旗,别克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,别克_昂科旗==Buick_Enclave,115,38,153
+0252,北汽制造_勇士,北汽制造,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,北汽制造_勇士==BAIC_Warrior,64,21,85
+0255,启辰_启辰T60 EV,启辰,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,启辰_启辰T60 EV==Venucia_T60 EV,87,29,116
+0256,沃尔沃_沃尔沃V60,沃尔沃,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,沃尔沃_沃尔沃V60==Volvo_V60,109,36,145
+0257,东风纳米_纳米BOX,东风纳米,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,东风纳米_纳米BOX==Dongfeng Nano_Nano BOX,72,24,96
+0259,宝骏_宝骏KiWi EV,宝骏,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,宝骏_宝骏KiWi EV==Baojun_Baojun KiWi EV,113,37,150
+0260,雷克萨斯_雷克萨斯LM,雷克萨斯,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,雷克萨斯_雷克萨斯LM==Lexus_Lexus LM,109,36,145
+0261,哈弗_哈弗H5,哈弗,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,哈弗_哈弗H5==Haval_Haval H5,112,37,149
+0262,荣威_荣威Ei5,荣威,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,荣威_荣威Ei5==Roewe_Ei5,105,35,140
+0264,MINI_MINI,MINI,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,MINI_MINI==MINI_MINI,102,34,136
+0265,五菱汽车_五菱荣光EV,五菱汽车,微面,Van,微面####微面==Van####Van,五菱汽车_五菱荣光EV==Wuling Motors_Wuling Rongguang EV,60,20,80
+0266,奥迪_奥迪Q7,奥迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奥迪_奥迪Q7==Audi_Audi Q7,112,37,149
+0267,大众_辉昂,大众,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,大众_辉昂==Volkswagen_Phauson,103,34,137
+0268,大众_ID.6 X,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_ID.6 X==Volkswagen_ID.6 X,84,28,112
+0269,东风小康_东风小康C36,东风小康,微面,Van,微面####微面==Van####Van,东风小康_东风小康C36==Dongfeng Xiaokang_C36,84,28,112
+0271,奇瑞_欧萌达,奇瑞,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奇瑞_欧萌达==Chery_Omoda,100,33,133
+0272,长安_长安CS75 PLUS,长安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安_长安CS75 PLUS==Changan_Changan CS75 PLUS,99,33,132
+0273,长安凯程_长安之星9,长安凯程,微面,Van,微面####微面==Van####Van,长安凯程_长安之星9==Changan Kaicheng_Changan Star 9,93,31,124
+0274,北京汽车_北京EX3,北京汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,北京汽车_北京EX3==BAIC_Beijing EX3,78,26,104
+0275,MINI_MINI COUNTRYMAN,MINI,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,MINI_MINI COUNTRYMAN==MINI_COUNTRYMAN,103,34,137
+0276,哈弗_哈弗M6,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗M6==Haval_Haval M6,109,36,145
+0278,大众_探岳X,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_探岳X==Volkswagen_Tayron X,111,37,148
+0279,本田_本田LIFE,本田,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,本田_本田LIFE==Honda_Honda LIFE,98,32,130
+0280,远程汽车_远程星享V,远程汽车,微面,Van,微面####微面==Van####Van,远程汽车_远程星享V==Farizon Auto_Farizon Star V,73,24,97
+0281,宝马_宝马1系,宝马,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,宝马_宝马1系==BMW_BMW 1 Series,112,37,149
+0282,奔驰_奔驰EQE,奔驰,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奔驰_奔驰EQE==Mercedes-Benz_Mercedes-Benz EQE,102,34,136
+0283,奇瑞_艾瑞泽5 PLUS,奇瑞,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奇瑞_艾瑞泽5 PLUS==Chery_Arrizo 5 PLUS,99,33,132
+0284,宝马_宝马X4 M,宝马,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,宝马_宝马X4 M==BMW_BMW X4 M,67,22,89
+0285,东风小康_东风小康K01,东风小康,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,东风小康_东风小康K01==Dongfeng Xiaokang_Dongfeng Xiaokang K01,62,20,82
+0287,奇瑞_瑞虎3x,奇瑞,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,奇瑞_瑞虎3x==Chery_Tiggo 3x,111,37,148
+0288,红旗_红旗E-HS3,红旗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,红旗_红旗E-HS3==Hongqi_E-HS3,76,25,101
+0289,丰田_威飒,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_威飒==Toyota_Venza,106,35,141
+0290,奥迪_奥迪RS 5,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪RS 5==Audi_RS 5,109,36,145
+0291,雷克萨斯_雷克萨斯ES,雷克萨斯,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,雷克萨斯_雷克萨斯ES==Lexus_Lexus ES,112,37,149
+0294,长安欧尚_长安欧尚Z6 iDD新能源,长安欧尚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安欧尚_长安欧尚Z6 iDD新能源==Changan Oushang_Changan Oushang Z6 iDD New Energy,67,22,89
+0296,捷途_捷途X70,捷途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷途_捷途X70==Jetour_Jetour X70,96,32,128
+0298,特斯拉_Model X,特斯拉,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,特斯拉_Model X==Tesla_Model X,85,28,113
+0299,本田_本田CR-V PHEV,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_本田CR-V PHEV==Honda_CR-V PHEV,80,26,106
+0300,红旗_红旗HQ9,红旗,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,红旗_红旗HQ9==Hongqi_Hongqi HQ9,88,29,117
+0302,吉利汽车_远景X6,吉利汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,吉利汽车_远景X6==Geely_Vision X6,91,30,121
+0303,大众_桑塔纳,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_桑塔纳==Volkswagen_Santana,115,38,153
+0304,宝马_宝马X4,宝马,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,宝马_宝马X4==BMW_BMW X4,107,35,142
+0305,英菲尼迪_英菲尼迪QX50,英菲尼迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,英菲尼迪_英菲尼迪QX50==Infiniti_QX50,102,34,136
+0306,大众_Arteon,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_Arteon==Volkswagen_Arteon,106,35,141
+0307,红旗_红旗H9,红旗,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,红旗_红旗H9==Hongqi_Hongqi H9,114,38,152
+0308,现代_胜达,现代,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,现代_胜达==Hyundai_Santa Fe,99,33,132
+0309,大众_途昂,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_途昂==Volkswagen_Teramont,96,32,128
+0310,长安_逸动,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_逸动==Changan_Eado,111,37,148
+0311,长安跨越_跨越王X1 EV,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_跨越王X1 EV==Changan Kuayue_Kuayue King X1 EV,97,32,129
+0312,大众_大众ID.3,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_大众ID.3==Volkswagen_Volkswagen ID.3,85,28,113
+0313,DS_DS 9 PHEV,DS,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,DS_DS 9 PHEV==DS_9 PHEV,69,23,92
+0315,大众_途安L,大众,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,大众_途安L==Volkswagen_Touran L,113,37,150
+0317,奔驰_AMG GT,奔驰,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,奔驰_AMG GT==Mercedes-Benz_AMG GT,105,35,140
+0318,特斯拉_Model Y,特斯拉,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,特斯拉_Model Y==Tesla_Model Y,87,29,116
+0319,东南_东南DX5,东南,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,东南_东南DX5==Soueast_DX5,94,31,125
+0320,凯翼_炫界,凯翼,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,凯翼_炫界==Karry_Xuanjie,87,29,116
+0321,长安_逸动DT,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_逸动DT==Changan_Eado DT,102,34,136
+0322,比亚迪_秦EV,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_秦EV==BYD_Qin EV,64,21,85
+0323,金杯_新海狮X30L,金杯,微面,Van,微面####微面==Van####Van,金杯_新海狮X30L==Jinbei_New Sealion X30L,108,36,144
+0324,长安凯程_神骐T20,长安凯程,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安凯程_神骐T20==Changan Kaicheng_Shenqi T20,88,29,117
+0325,奥迪_奥迪R8,奥迪,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,奥迪_奥迪R8==Audi_Audi R8,105,35,140
+0328,起亚_奕跑,起亚,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,起亚_奕跑==Kia_KX Cross,112,37,149
+0329,奥迪_奥迪A7,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪A7==Audi_Audi A7,113,37,150
+0331,本田_ZR-V 致在,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_ZR-V 致在==Honda_ZR-V,89,29,118
+0332,奥迪_奥迪RS e-tron GT,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪RS e-tron GT==Audi_RS e-tron GT,104,34,138
+0333,标致_标致2008,标致,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,标致_标致2008==Peugeot_Peugeot 2008,99,33,132
+0334,沃尔沃_沃尔沃XC90,沃尔沃,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,沃尔沃_沃尔沃XC90==Volvo_Volvo XC90,112,37,149
+0335,奔驰_奔驰GLB AMG,奔驰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔驰_奔驰GLB AMG==Mercedes-Benz_GLB AMG,93,31,124
+0336,奔腾_奔腾T77,奔腾,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔腾_奔腾T77==Besturn_T77,95,31,126
+0337,捷途_捷途X90 PLUS,捷途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷途_捷途X90 PLUS==Jetour_Jetour X90 PLUS,76,25,101
+0338,沃尔沃_沃尔沃V90,沃尔沃,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,沃尔沃_沃尔沃V90==Volvo_V90,94,31,125
+0340,奥迪_奥迪Q6,奥迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奥迪_奥迪Q6==Audi_Audi Q6,87,29,116
+0341,奥迪_奥迪RS 7,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪RS 7==Audi_Audi RS 7,88,29,117
+0342,长安_长安CS15,长安,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,长安_长安CS15==Changan_Changan CS15,109,36,145
+0343,东风风神_东风风神AX7,东风风神,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风神_东风风神AX7==Dongfeng Fengshen_AX7,93,31,124
+0345,华晨新日_华晨新日i03,华晨新日,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,华晨新日_华晨新日i03==Brilliance Xinday_New Day i03,91,30,121
+0346,五菱汽车_五菱荣光小卡,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱荣光小卡==Wuling Motors_Wuling Rongguang Mini Truck,97,32,129
+0347,方程豹_豹5,方程豹,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,方程豹_豹5==Equation Leopard_Leopard 5,85,28,113
+0348,名爵_MG领航,名爵,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,名爵_MG领航==MG_Pilot,92,30,122
+0349,本田_奥德赛,本田,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,本田_奥德赛==Honda_Odyssey,112,37,149
+0350,宝马_宝马2系,宝马,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,宝马_宝马2系==BMW_BMW 2 Series,105,35,140
+0351,菲亚特_菲亚特500e,菲亚特,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,菲亚特_菲亚特500e==Fiat_500e,76,25,101
+0352,东风风光_风光580,东风风光,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,东风风光_风光580==Dongfeng Fengguang_580,105,35,140
+0353,迈凯伦_迈凯伦675LT,迈凯伦,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,迈凯伦_迈凯伦675LT==McLaren_675LT,89,29,118
+0354,奔驰_奔驰CLA AMG,奔驰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奔驰_奔驰CLA AMG==Mercedes-Benz_CLA AMG,103,34,137
+0355,起亚_傲跑,起亚,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,起亚_傲跑==Kia_Seltos,101,33,134
+0356,奇瑞_瑞虎5x,奇瑞,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,奇瑞_瑞虎5x==Chery_Tiggo 5x,109,36,145
+0357,东风小康_东风小康C32,东风小康,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,东风小康_东风小康C32==Dongfeng Xiaokang_Dongfeng Xiaokang C32,102,34,136
+0358,长安_长安CS55 PLUS,长安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安_长安CS55 PLUS==Changan_Changan CS55 PLUS,97,32,129
+0360,宝马_宝马7系,宝马,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宝马_宝马7系==BMW_BMW 7 Series,97,32,129
+0362,奔驰_奔驰A级AMG,奔驰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奔驰_奔驰A级AMG==Mercedes-Benz_Mercedes-Benz A-Class AMG,111,37,148
+0363,比亚迪_宋Pro DM-i,比亚迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,比亚迪_宋Pro DM-i==BYD_Song Pro DM-i,97,32,129
+0364,名爵_MG4 EV,名爵,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,名爵_MG4 EV==MG_MG4 EV,61,20,81
+0365,开瑞_海豚EV,开瑞,微面,Van,微面####微面==Van####Van,开瑞_海豚EV==Karry_Dolphin EV,89,29,118
+0366,魏牌_拿铁DHT,魏牌,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,魏牌_拿铁DHT==Wei Brand_Latte DHT,90,30,120
+0367,本田_思域,本田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,本田_思域==Honda_Civic,81,27,108
+0368,日产_骐达TIIDA,日产,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,日产_骐达TIIDA==Nissan_Tiida,111,37,148
+0370,宝马_宝马iX3,宝马,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,宝马_宝马iX3==BMW_BMW iX3,87,29,116
+0371,五菱汽车_凯捷Victory,五菱汽车,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,五菱汽车_凯捷Victory==Wuling Motors_Kaijie Victory,95,31,126
+0372,岚图_岚图追光,岚图,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,岚图_岚图追光==Lantu_Chase Light,60,20,80
+0374,长安_长安UNI-V,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_长安UNI-V==Changan_Changan UNI-V,108,36,144
+0375,零跑汽车_零跑C01,零跑汽车,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,零跑汽车_零跑C01==Leapmotor_Leapmotor C01,101,33,134
+0376,标致_标致508L,标致,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,标致_标致508L==Peugeot_508L,108,36,144
+0377,雪铁龙_天逸 C5 AIRCROSS,雪铁龙,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,雪铁龙_天逸 C5 AIRCROSS==Citroën_C5 Aircross,112,37,149
+0378,现代_菲斯塔,现代,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,现代_菲斯塔==Hyundai_Fiesta,108,36,144
+0379,本田_本田UR-V,本田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,本田_本田UR-V==Honda_Honda UR-V,114,38,152
+0380,大众_探影,大众,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,大众_探影==Volkswagen_Taos,108,36,144
+0381,雪铁龙_凡尔赛C5 X,雪铁龙,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,雪铁龙_凡尔赛C5 X==Citroën_C5 X,106,35,141
+0382,丰田_威尔法,丰田,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,丰田_威尔法==Toyota_Alphard,84,28,112
+0383,福田_风景G5,福田,轻客,Bus,轻客####轻客==Bus####Bus,福田_风景G5==Foton_View G5,100,33,133
+0384,东风风行_风行T5,东风风行,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风行_风行T5==Dongfeng Fengxing_T5,79,26,105
+0385,五十铃_D-MAX,五十铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五十铃_D-MAX==Isuzu_D-MAX,87,29,116
+0389,比亚迪_秦PLUS DM-i,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_秦PLUS DM-i==BYD_Qin PLUS DM-i,91,30,121
+0390,沃尔沃_沃尔沃XC60,沃尔沃,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,沃尔沃_沃尔沃XC60==Volvo_Volvo XC60,111,37,148
+0391,合创汽车_合创A06,合创汽车,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,合创汽车_合创A06==Hycan_A06,96,32,128
+0392,奔驰_奔驰GLS AMG,奔驰,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,奔驰_奔驰GLS AMG==Mercedes-Benz_GLS AMG,82,27,109
+0393,大众_速腾,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_速腾==Volkswagen_Jetta,109,36,145
+0394,本田_皓影,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_皓影==Honda_HR-V,102,34,136
+0395,五菱汽车_五菱荣光新卡专用车,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱荣光新卡专用车==Wuling Motors_Wuling Rongguang New Truck Special Purpose Vehicle,84,28,112
+0396,宝马_宝马XM,宝马,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,宝马_宝马XM==BMW_XM,70,23,93
+0397,长安_长安CS95,长安,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,长安_长安CS95==Changan_CS95,97,32,129
+0398,本田_飞度,本田,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,本田_飞度==Honda_Fit,103,34,137
+0399,荣威_荣威eRX5,荣威,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,荣威_荣威eRX5==Roewe_eRX5,111,37,148
+0400,奥迪_奥迪S4,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪S4==Audi_S4,96,32,128
+0401,长安_长安UNI-K 智电iDD,长安,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,长安_长安UNI-K 智电iDD==Changan_UNI-K iDD,61,20,81
+0402,别克_微蓝6,别克,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,别克_微蓝6==Buick_Velite 6,108,36,144
+0403,钧天汽车_钧天黑武士Youth,钧天汽车,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,钧天汽车_钧天黑武士Youth==Juntian_Auto Black Warrior Youth,64,21,85
+0404,宝马_宝马X1,宝马,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,宝马_宝马X1==BMW_BMW X1,93,31,124
+0405,五菱汽车_五菱荣光新卡,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱荣光新卡==Wuling Motors_Wuling Rongguang New Truck,78,26,104
+0407,马自达_马自达CX-8,马自达,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,马自达_马自达CX-8==Mazda_CX-8,71,23,94
+0408,凯迪拉克_IQ锐歌,凯迪拉克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,凯迪拉克_IQ锐歌==Cadillac_Cadillac Lyriq,97,32,129
+0409,长安_锐程CC,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_锐程CC==Changan_Raeton CC,106,35,141
+0410,凌宝汽车_凌宝COCO,凌宝汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,凌宝汽车_凌宝COCO==Lingbao Auto_Lingbao COCO,71,23,94
+0411,本田_型格,本田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,本田_型格==Honda_Honda Envix,88,29,117
+0414,斯柯达_柯米克GT,斯柯达,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,斯柯达_柯米克GT==Škoda_Kamiq GT,99,33,132
+0415,路虎_揽胜极光,路虎,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,路虎_揽胜极光==Land Rover_Range Rover Evoque,91,30,121
+0416,大运_悦虎,大运,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,大运_悦虎==Dayun_Yuehu,79,26,105
+0417,北京_北京BJ90,北京,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,北京_北京BJ90==BAIC_BJ90,89,29,118
+0418,大众_途岳,大众,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,大众_途岳==Volkswagen_Teramont,119,39,158
+0419,奔腾_奔腾B70,奔腾,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奔腾_奔腾B70==Besturn_B70,97,32,129
+0420,大众_宝来,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_宝来==Volkswagen_Bora,109,36,145
+0421,凌宝汽车_凌宝BOX,凌宝汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,凌宝汽车_凌宝BOX==Lingbao Auto_Lingbao BOX,96,32,128
+0422,宾利_添越,宾利,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,宾利_添越==Bentley_Bentayga,78,26,104
+0423,道奇_RAM Trucks,道奇,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,道奇_RAM Trucks==Dodge_RAM Trucks,106,35,141
+0424,宝马_宝马X3 M,宝马,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,宝马_宝马X3 M==BMW_BMW X3 M,61,20,81
+0425,丰田_威兰达,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_威兰达==Toyota_Venza,111,37,148
+0426,福特_福特GT,福特,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,福特_福特GT==Ford_Ford GT,89,29,118
+0428,零跑汽车_零跑T03,零跑汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,零跑汽车_零跑T03==Leapmotor_Leapmotor T03,103,34,137
+0429,雷克萨斯_雷克萨斯LX,雷克萨斯,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,雷克萨斯_雷克萨斯LX==Lexus_Lexus LX,113,37,150
+0431,橙仕_橙仕01,橙仕,微面,Van,微面####微面==Van####Van,橙仕_橙仕01==Chengshi_Chengshi 01,67,22,89
+0432,奔驰_奔驰GLE,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰GLE==Mercedes-Benz_Mercedes-Benz GLE,118,39,157
+0433,福田_图雅诺,福田,轻客,Bus,轻客####轻客==Bus####Bus,福田_图雅诺==Foton_Tunland,100,33,133
+0434,斯柯达_柯珞克,斯柯达,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,斯柯达_柯珞克==Škoda_Karoq,69,23,92
+0436,广汽传祺_传祺M6,广汽传祺,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,广汽传祺_传祺M6==GAC Trumpchi_Trumpchi M6,103,34,137
+0437,比亚迪_比亚迪D1,比亚迪,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,比亚迪_比亚迪D1==BYD_BYD D1,98,32,130
+0438,五菱汽车_五菱荣光V,五菱汽车,微面,Van,微面####微面==Van####Van,五菱汽车_五菱荣光V==Wuling Motors_Wuling Rongguang V,97,32,129
+0439,斯巴鲁_CROSSTREK旭豹,斯巴鲁,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,斯巴鲁_CROSSTREK旭豹==Subaru_Crosstrek,72,24,96
+0440,奔驰_奔驰B级,奔驰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奔驰_奔驰B级==Mercedes-Benz_B-Class,85,28,113
+0441,宝马_宝马M3,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马M3==BMW_M3,111,37,148
+0442,蔚来_蔚来ET7,蔚来,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,蔚来_蔚来ET7==NIO_ET7,75,25,100
+0443,奔驰_奔驰EQB,奔驰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔驰_奔驰EQB==Mercedes-Benz_EQB,78,26,104
+0444,奥迪_奥迪RS Q8,奥迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奥迪_奥迪RS Q8==Audi_RS Q8,84,28,112
+0445,奔驰_奔驰CLA,奔驰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奔驰_奔驰CLA==Mercedes-Benz_Mercedes-Benz CLA,110,36,146
+0446,北京_北京BJ30,北京,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,北京_北京BJ30==BAIC_BJ30,80,26,106
+0447,哈弗_哈弗枭龙,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗枭龙==Haval_Jolion,63,21,84
+0448,凯迪拉克_凯迪拉克XT4,凯迪拉克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,凯迪拉克_凯迪拉克XT4==Cadillac_Cadillac XT4,111,37,148
+0449,奔驰_奔驰SL级AMG,奔驰,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,奔驰_奔驰SL级AMG==Mercedes-Benz_Mercedes-Benz SL-Class AMG,109,36,145
+0450,吉利汽车_星越L 增程电动版,吉利汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,吉利汽车_星越L 增程电动版==Geely_Star L ER-EV,90,30,120
+0451,奥迪_奥迪A5,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪A5==Audi_Audi A5,90,30,120
+0452,智己汽车_智己LS7,智己汽车,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,智己汽车_智己LS7==Zhiji Auto_Zhiji LS7,82,27,109
+0453,猛士_猛士917,猛士,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,猛士_猛士917==Mengshi_917,63,21,84
+0454,奇瑞_瑞虎8,奇瑞,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奇瑞_瑞虎8==Chery_Tiggo 8,72,24,96
+0456,奥迪_奥迪A8,奥迪,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,奥迪_奥迪A8==Audi_Audi A8,103,34,137
+0457,奔腾_奔腾T55,奔腾,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔腾_奔腾T55==Besturn_T55,106,35,141
+0458,别克_威朗,别克,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,别克_威朗==Buick_Verano,109,36,145
+0461,吉利汽车_吉利ICON,吉利汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,吉利汽车_吉利ICON==Geely_Geely ICON,101,33,134
+0462,凯翼_轩度,凯翼,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,凯翼_轩度==Karry_KuanDu,105,35,140
+0464,路虎_卫士,路虎,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,路虎_卫士==Land Rover_Defender,106,35,141
+0465,福特_Mustang,福特,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,福特_Mustang==Ford_Mustang,82,27,109
+0466,长安凯程_长安凯程F300,长安凯程,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长安凯程_长安凯程F300==Changan Kaicheng_Kaicheng F300,60,20,80
+0467,丰田_格瑞维亚,丰田,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,丰田_格瑞维亚==Toyota_Granvia,89,29,118
+0468,哈弗_哈弗H6,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗H6==Haval_Haval H6,112,37,149
+0469,马自达_阿特兹,马自达,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,马自达_阿特兹==Mazda_Atenza,104,34,138
+0470,宾利_飞驰PHEV,宾利,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宾利_飞驰PHEV==Bentley_Flying Spur PHEV,81,27,108
+0471,长安_长安CS85 COUPE,长安,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,长安_长安CS85 COUPE==Changan_CS85 COUPE,108,36,144
+0472,路虎_发现,路虎,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,路虎_发现==Land Rover_Discovery,91,30,121
+0473,吉利汽车_博越,吉利汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,吉利汽车_博越==Geely_Bo Yue,110,36,146
+0474,丰田_皇冠陆放,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_皇冠陆放==Toyota_Crown Kluger,109,36,145
+0475,五十铃_铃拓,五十铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五十铃_铃拓==Isuzu_Lingtuo,102,34,136
+0476,雷克萨斯_雷克萨斯RX,雷克萨斯,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,雷克萨斯_雷克萨斯RX==Lexus_Lexus RX,107,35,142
+0477,哈弗_哈弗神兽,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗神兽==Haval_Divine Beast,98,32,130
+0478,江汽集团_悍途,江汽集团,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,江汽集团_悍途==JAC Motors_Hanttu,85,28,113
+0479,本田_英仕派,本田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,本田_英仕派==Honda_Inspire,109,36,145
+0480,宝马_宝马Z4,宝马,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,宝马_宝马Z4==BMW_BMW Z4,115,38,153
+0481,本田_Freed,本田,MPV,Small MPV,MPV####小型MPV==MPV####Small MPV,本田_Freed==Honda_Freed,64,21,85
+0482,红旗_红旗HS7,红旗,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,红旗_红旗HS7==Hongqi_Hongqi HS7,109,36,145
+0483,丰田_凯美瑞,丰田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,丰田_凯美瑞==Toyota_Camry,91,30,121
+0484,马自达_马自达CX-5,马自达,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,马自达_马自达CX-5==Mazda_Mazda CX-5,94,31,125
+0485,五菱汽车_五菱Nano EV,五菱汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,五菱汽车_五菱Nano EV==Wuling Motors_Wuling Nano EV,100,33,133
+0486,广汽传祺_传祺GS8,广汽传祺,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,广汽传祺_传祺GS8==GAC Trumpchi_Trumpchi GS8,113,37,150
+0487,宝马_宝马8系,宝马,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宝马_宝马8系==BMW_BMW 8 Series,92,30,122
+0489,上汽大通MAXUS_上汽大通MAXUS T70,上汽大通MAXUS,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,上汽大通MAXUS_上汽大通MAXUS T70==SAIC Maxus_SAIC Maxus T70,112,37,149
+0490,起亚_智跑,起亚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,起亚_智跑==Kia_Sportage,94,31,125
+0491,启辰_启辰大V,启辰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,启辰_启辰大V==Venucia_D V,93,31,124
+0492,捷豹_捷豹XFL,捷豹,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,捷豹_捷豹XFL==Jaguar_Jaguar XFL,114,38,152
+0493,斯柯达_柯迪亚克GT,斯柯达,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,斯柯达_柯迪亚克GT==Škoda_Kodiaq GT,93,31,124
+0495,奔驰_奔驰GLE轿跑,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰GLE轿跑==Mercedes-Benz_GLE Coupe,64,21,85
+0496,依维柯_依维柯得意,依维柯,轻客,Bus,轻客####轻客==Bus####Bus,依维柯_依维柯得意==Iveco_Daily,109,36,145
+0497,宾利_飞驰,宾利,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宾利_飞驰==Bentley_Flying Spur,114,38,152
+0498,阿尔法·罗密欧_Tonale托纳利,阿尔法·罗密欧,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,阿尔法·罗密欧_Tonale托纳利==Alfa Romeo_Tonale,66,22,88
+0499,捷尼赛思_捷尼赛思GV80,捷尼赛思,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,捷尼赛思_捷尼赛思GV80==Genesis_GV80,75,25,100
+0500,大众_T-ROC探歌,大众,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,大众_T-ROC探歌==Volkswagen_T-ROC,113,37,150
+0501,中兴_小老虎,中兴,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,中兴_小老虎==ZTE_Little Tiger,69,23,92
+0502,大众_ID.6 CROZZ,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_ID.6 CROZZ==Volkswagen_ID.6 CROZZ,77,25,102
+0503,马自达_马自达CX-50行也,马自达,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,马自达_马自达CX-50行也==Mazda_Mazda CX-50,95,31,126
+0505,东风风光_风光MINIEV,东风风光,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,东风风光_风光MINIEV==Dongfeng Fengguang_MINIEV,78,26,104
+0507,领克_领克09 EM-P,领克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,领克_领克09 EM-P==Lynk & Co_Lynk & Co 09 EM-P,65,21,86
+0508,领克_领克02,领克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,领克_领克02==Lynk & Co_02,75,25,100
+0509,日产_途达,日产,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,日产_途达==Nissan_Terra,98,32,130
+0510,丰田_汉兰达,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_汉兰达==Toyota_Highlander,111,37,148
+0511,欧拉_欧拉好猫,欧拉,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,欧拉_欧拉好猫==Ora_Ora Good Cat,75,25,100
+0513,大众_高尔夫,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_高尔夫==Volkswagen_Golf,67,22,89
+0514,长安跨越_跨越王X1,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_跨越王X1==Changan Kuayue_Kuayue King X1,93,31,124
+0515,别克_昂科拉GX,别克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,别克_昂科拉GX==Buick_Encore GX,68,22,90
+0517,现代_悦动,现代,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,现代_悦动==Hyundai_Yuedong,94,31,125
+0518,江铃_顺达,江铃,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,江铃_顺达==JMC_Shunda,102,34,136
+0519,别克_君威,别克,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,别克_君威==Buick_Regal,95,31,126
+0520,零跑汽车_零跑C11,零跑汽车,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,零跑汽车_零跑C11==Leapmotor_Leapmotor C11,99,33,132
+0521,长安欧尚_奔奔E-Star,长安欧尚,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,长安欧尚_奔奔E-Star==Changan Oushang_BenBen E-Star,85,28,113
+0522,大众_途昂X,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_途昂X==Volkswagen_Touareg X,109,36,145
+0524,坦克_坦克300,坦克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,坦克_坦克300==Tank_Tank 300,97,32,129
+0525,魏牌_拿铁DHT-PHEV,魏牌,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,魏牌_拿铁DHT-PHEV==Wei Brand_Latte DHT-PHEV,82,27,109
+0526,路虎_发现运动版,路虎,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,路虎_发现运动版==Land Rover_Discovery Sport,110,36,146
+0527,宝骏_悦也,宝骏,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,宝骏_悦也==Baojun_Yueye,63,21,84
+0528,长安_逸达,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_逸达==Changan_Eado,73,24,97
+0532,标致_标致508L PHEV,标致,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,标致_标致508L PHEV==Peugeot_508L PHEV,105,35,140
+0533,本田_冠道,本田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,本田_冠道==Honda_Avancier,108,36,144
+0534,长安_长安UNI-V 智电iDD,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_长安UNI-V 智电iDD==Changan_Changan UNI-V iDD,67,22,89
+0535,金杯_阁瑞斯,金杯,轻客,Bus,轻客####轻客==Bus####Bus,金杯_阁瑞斯==Jinbei_Geruisi,67,22,89
+0536,林肯_林肯Z,林肯,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,林肯_林肯Z==Lincoln_Lincoln Z,115,38,153
+0537,江铃_宝典,江铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,江铃_宝典==JMC_Baodian,72,24,96
+0538,奥迪_奥迪A4 China Domestic Version,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪A4 China Domestic Version==Audi_Audi A4 China Domestic Version,67,22,89
+0539,大众_凌渡,大众,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,大众_凌渡==Volkswagen_Lamando,100,33,133
+0540,名爵_MG ONE,名爵,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,名爵_MG ONE==MG_ONE,99,33,132
+0541,马自达_马自达3 昂克赛拉,马自达,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,马自达_马自达3 昂克赛拉==Mazda_Mazda3 Axela,118,39,157
+0542,东风风神_奕炫,东风风神,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,东风风神_奕炫==Dongfeng Fengshen_Aeolus Yixuan,92,30,122
+0543,本田_本田XR-V,本田,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,本田_本田XR-V==Honda_Honda XR-V,73,24,97
+0544,DS_DS 9,DS,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,DS_DS 9==DS_9,90,30,120
+0545,奥迪_奥迪Q2L,奥迪,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,奥迪_奥迪Q2L==Audi_Audi Q2L,113,37,150
+0546,五菱汽车_五菱电卡,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱电卡==Wuling Motors_Wuling Electric Truck,62,20,82
+0548,凯翼_凯翼昆仑,凯翼,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,凯翼_凯翼昆仑==Karry_Kunlun,61,20,81
+0549,保时捷_Cayenne,保时捷,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,保时捷_Cayenne==Porsche_Cayenne,112,37,149
+0550,长安凯程_神骐T10 EV,长安凯程,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安凯程_神骐T10 EV==Changan Kaicheng_Shenqi T10 EV,67,22,89
+0551,路虎_揽胜,路虎,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,路虎_揽胜==Land Rover_Range Rover,105,35,140
+0552,金龙_凯锐浩克,金龙,轻客,Bus,轻客####轻客==Bus####Bus,金龙_凯锐浩克==King Long_Kai Rui Hulk,79,26,105
+0554,东风小康_东风小康K05S,东风小康,微面,Van,微面####微面==Van####Van,东风小康_东风小康K05S==Dongfeng Xiaokang_K05S,69,23,92
+0555,哈弗_哈弗H9,哈弗,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,哈弗_哈弗H9==Haval_Haval H9,118,39,157
+0556,江铃_福顺,江铃,轻客,Bus,轻客####轻客==Bus####Bus,江铃_福顺==Jiangling_Joyear,67,22,89
+0558,现代_现代ix35,现代,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,现代_现代ix35==Hyundai_ix35,117,39,156
+0560,捷尼赛思_捷尼赛思G90,捷尼赛思,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,捷尼赛思_捷尼赛思G90==Genesis_G90,82,27,109
+0561,斯柯达_明锐,斯柯达,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,斯柯达_明锐==Škoda_Octavia,114,38,152
+0562,奔驰_奔驰EQS,奔驰,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,奔驰_奔驰EQS==Mercedes-Benz_EQS,100,33,133
+0563,东风风行_风行T5 EVO,东风风行,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风行_风行T5 EVO==Dongfeng Fengxing_T5 EVO,100,33,133
+0564,大众_途观L,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_途观L==Volkswagen_Tiguan L,103,34,137
+0565,江铃_特顺,江铃,轻客,Bus,轻客####轻客==Bus####Bus,江铃_特顺==Jiangling_Special Transit,109,36,145
+0567,奥迪_奥迪Q8,奥迪,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奥迪_奥迪Q8==Audi_Q8,102,34,136
+0568,吉利汽车_帝豪,吉利汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利汽车_帝豪==Geely_Emgrand,98,32,130
+0569,现代_伊兰特,现代,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,现代_伊兰特==Hyundai_Elantra,102,34,136
+0570,五菱汽车_五菱荣光新卡EV,五菱汽车,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,五菱汽车_五菱荣光新卡EV==Wuling Motors_Wuling Rongguang New Truck EV,88,29,117
+0571,阿尔法·罗密欧_Stelvio斯坦维,阿尔法·罗密欧,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,阿尔法·罗密欧_Stelvio斯坦维==Alfa Romeo_Stelvio,97,32,129
+0572,玛莎拉蒂_总裁,玛莎拉蒂,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,玛莎拉蒂_总裁==Maserati_Quattroporte,111,37,148
+0574,吉利银河_银河L6,吉利银河,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利银河_银河L6==Geely Galaxy_Galaxy L6,61,20,81
+0575,长安_长安CS75,长安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安_长安CS75==Changan_Changan CS75,82,27,109
+0576,哈弗_哈弗赤兔,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗赤兔==Haval_Haval Chitu,106,35,141
+0577,奥迪_奥迪e-tron GT,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪e-tron GT==Audi_e-tron GT,89,29,118
+0578,蔚来_蔚来ET5,蔚来,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,蔚来_蔚来ET5==NIO_NIO ET5,75,25,100
+0580,奔驰_奔驰G级AMG,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰G级AMG==Mercedes-Benz_G-Class AMG,76,25,101
+0581,中国重汽VGV_VGV U75PLUS,中国重汽VGV,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,中国重汽VGV_VGV U75PLUS==China National Heavy Duty Truck Group VGV_U75PLUS,66,22,88
+0582,宝马_宝马5系,宝马,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,宝马_宝马5系==BMW_BMW 5 Series,111,37,148
+0583,小鹏汽车_小鹏P7,小鹏汽车,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,小鹏汽车_小鹏P7==Xpeng_Xpeng P7,109,36,145
+0584,五十铃_翼放ES7,五十铃,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,五十铃_翼放ES7==Isuzu_V-Max ES7,65,21,86
+0587,奔驰_奔驰GLA,奔驰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔驰_奔驰GLA==Mercedes-Benz_Mercedes-Benz GLA,110,36,146
+0588,合创汽车_合创V09,合创汽车,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,合创汽车_合创V09==Hechuang Auto_Hechuang V09,70,23,93
+0589,别克_昂科拉,别克,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,别克_昂科拉==Buick_Encore,114,38,152
+0590,五菱汽车_五菱缤果,五菱汽车,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,五菱汽车_五菱缤果==Wuling Motors_Wuling Bingo,70,23,93
+0591,现代_库斯途,现代,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,现代_库斯途==Hyundai_Custo,97,32,129
+0594,极越_极越01,极越,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,极越_极越01==Extreme K01,87,29,116
+0595,凯迪拉克_凯迪拉克XT5,凯迪拉克,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,凯迪拉克_凯迪拉克XT5==Cadillac_Cadillac XT5,117,39,156
+0596,雪佛兰_雪佛兰畅巡,雪佛兰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,雪佛兰_雪佛兰畅巡==Chevrolet_Menlo,96,32,128
+0597,沃尔沃_沃尔沃XC60 RECHARGE,沃尔沃,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,沃尔沃_沃尔沃XC60 RECHARGE==Volvo_XC60 Recharge,88,29,117
+0600,比亚迪_宋MAX DM-i,比亚迪,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,比亚迪_宋MAX DM-i==BYD_Song MAX DM-i,88,29,117
+0601,岚图_岚图FREE,岚图,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,岚图_岚图FREE==Lantu_FREE,74,24,98
+0602,仰望_仰望U8,仰望,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,仰望_仰望U8==Yongwang_Yongwang U8,68,22,90
+0604,Jeep_自由侠4xe,Jeep,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,Jeep_自由侠4xe==Jeep_Renegade 4xe,100,33,133
+0606,比亚迪_元PLUS,比亚迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,比亚迪_元PLUS==BYD_Yuan PLUS,102,34,136
+0607,红旗_红旗E-QM5,红旗,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,红旗_红旗E-QM5==Hongqi_Hongqi E-QM5,95,31,126
+0608,极氪_ZEEKR 001,极氪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,极氪_ZEEKR 001==Zeekr_Zeekr 001,98,32,130
+0609,宝马_宝马i4,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马i4==BMW_i4,106,35,141
+0610,奔驰_奔驰EQC,奔驰,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奔驰_奔驰EQC==Mercedes-Benz_EQC,92,30,122
+0611,沃尔沃_沃尔沃XC40,沃尔沃,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,沃尔沃_沃尔沃XC40==Volvo_Volvo XC40,111,37,148
+0612,保时捷_Panamera,保时捷,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,保时捷_Panamera==Porsche_Panamera,100,33,133
+0613,宝马_宝马M8,宝马,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宝马_宝马M8==BMW_M8,109,36,145
+0614,奥迪_奥迪Q5L,奥迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奥迪_奥迪Q5L==Audi_Audi Q5L,113,37,150
+0615,福特_锐际,福特,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,福特_锐际==Ford_Edge ST-Line,96,32,128
+0616,丰田_锋兰达,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_锋兰达==Toyota_Highlander,85,28,113
+0617,福特_锐界,福特,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,福特_锐界==Ford_Edge,94,31,125
+0619,福特_撼路者,福特,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,福特_撼路者==Ford_Bronco,111,37,148
+0620,深蓝汽车_深蓝S7,深蓝汽车,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,深蓝汽车_深蓝S7==Deep Blue Auto_Deep Blue S7,70,23,93
+0621,北京汽车_北京X7,北京汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,北京汽车_北京X7==BAIC_X7,99,33,132
+0622,丰田_丰田C-HR,丰田,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,丰田_丰田C-HR==Toyota_Toyota C-HR,93,31,124
+0623,比亚迪_比亚迪e3,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_比亚迪e3==BYD_e3,100,33,133
+0624,思铭_东风本田M-NV,思铭,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,思铭_东风本田M-NV==Ciimo_Dongfeng Honda M-NV,74,24,98
+0627,雪佛兰_迈锐宝XL,雪佛兰,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,雪佛兰_迈锐宝XL==Chevrolet_Malibu XL,115,38,153
+0630,中国重汽VGV_VGV VX7,中国重汽VGV,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,中国重汽VGV_VGV VX7==China National Heavy Duty Truck Group VGV_VGV VX7,67,22,89
+0631,Polestar极星_Polestar 1,Polestar极星,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,Polestar极星_Polestar 1==Polestar_Polestar 1,77,25,102
+0632,奥迪_奥迪A6 China Domestic Version,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪A6 China Domestic Version==Audi_A6 China Domestic Version,186,62,248
+0633,雪佛兰_星迈罗,雪佛兰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,雪佛兰_星迈罗==Chevrolet_Camaro,66,22,88
+0634,哈弗_哈弗H6S,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗H6S==Haval_H6S,85,28,113
+0635,长城_金刚炮,长城,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长城_金刚炮==Great Wall_King Kong Cannon,112,37,149
+0636,长安欧尚_长安欧尚X7 PLUS,长安欧尚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安欧尚_长安欧尚X7 PLUS==Changan Oushang_Changan Oushang X7 PLUS,82,27,109
+0637,广汽传祺_影酷,广汽传祺,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,广汽传祺_影酷==GAC Trumpchi_Yingku,102,34,136
+0638,日产_蓝鸟,日产,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,日产_蓝鸟==Nissan_Bluebird,119,39,158
+0639,金杯_金杯海狮,金杯,轻客,Bus,轻客####轻客==Bus####Bus,金杯_金杯海狮==Jinbei_Sealion,73,24,97
+0640,钧天汽车_勇猛者,钧天汽车,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,钧天汽车_勇猛者==Junten_Audacious,102,34,136
+0643,奥迪_奥迪S5,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪S5==Audi_S5,105,35,140
+0644,保时捷_Taycan,保时捷,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,保时捷_Taycan==Porsche_Taycan,114,38,152
+0645,凯翼_凯翼X3,凯翼,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,凯翼_凯翼X3==Karry_Karry X3,94,31,125
+0646,沃尔沃_沃尔沃XC90 RECHARGE,沃尔沃,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,沃尔沃_沃尔沃XC90 RECHARGE==Volvo_XC90 Recharge,103,34,137
+0647,五菱汽车_五菱Air ev晴空,五菱汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,五菱汽车_五菱Air ev晴空==Wuling Motors_Wuling Air ev,75,25,100
+0648,雷克萨斯_雷克萨斯NX,雷克萨斯,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,雷克萨斯_雷克萨斯NX==Lexus_Lexus NX,106,35,141
+0649,奔驰_奔驰GLC轿跑,奔驰,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奔驰_奔驰GLC轿跑==Mercedes-Benz_GLC Coupe,109,36,145
+0650,马自达_马自达CX-30 EV,马自达,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,马自达_马自达CX-30 EV==Mazda_CX-30 EV,103,34,137
+0651,欧拉_欧拉好猫GT,欧拉,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,欧拉_欧拉好猫GT==Ora_Ora Good Cat GT,112,37,149
+0652,奔驰_奔驰GLB,奔驰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奔驰_奔驰GLB==Mercedes-Benz_Mercedes-Benz GLB,96,32,128
+0653,奥迪_奥迪Q4 e-tron,奥迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奥迪_奥迪Q4 e-tron==Audi_Audi Q4 e-tron,67,22,89
+0654,上汽大通MAXUS_上汽大通MAXUS T90,上汽大通MAXUS,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,上汽大通MAXUS_上汽大通MAXUS T90==SAIC Maxus_SAIC Maxus T90,85,28,113
+0655,日产_纳瓦拉,日产,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,日产_纳瓦拉==Nissan_Navarra,77,25,102
+0656,荣威_荣威iMAX8 EV,荣威,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,荣威_荣威iMAX8 EV==Roewe_iMAX8 EV,84,28,112
+0657,北京_北京BJ40,北京,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,北京_北京BJ40==Beijing Auto_Beijing BJ40,114,38,152
+0658,五十铃_mu-X牧游侠,五十铃,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,五十铃_mu-X牧游侠==Isuzu_mu-X,106,35,141
+0659,本田_凌派,本田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,本田_凌派==Honda_Gienia,118,39,157
+0660,奇瑞_瑞虎7,奇瑞,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奇瑞_瑞虎7==Chery_Tiggo 7,81,27,108
+0662,林肯_冒险家,林肯,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,林肯_冒险家==Lincoln_Corsair,111,37,148
+0663,福特_锐际PHEV,福特,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,福特_锐际PHEV==Ford_Escape PHEV,82,27,109
+0664,东风风光_风光500,东风风光,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风光_风光500==Dongfeng Fengguang_500,81,27,108
+0665,本田_艾力绅,本田,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,本田_艾力绅==Honda_Odyssey,118,39,157
+0666,奥迪_奥迪S6,奥迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奥迪_奥迪S6==Audi_S6,102,34,136
+0667,雷克萨斯_雷克萨斯RZ,雷克萨斯,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,雷克萨斯_雷克萨斯RZ==Lexus_Lexus RZ,88,29,117
+0668,法拉利_法拉利296,法拉利,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,法拉利_法拉利296==Ferrari_Ferrari 296,65,21,86
+0670,哪吒汽车_哪吒V,哪吒汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,哪吒汽车_哪吒V==Nezha Auto_Nezha V,79,26,105
+0671,宝马_宝马M2,宝马,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,宝马_宝马M2==BMW_M2,115,38,153
+0672,大众_ID.4 CROZZ,大众,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,大众_ID.4 CROZZ==Volkswagen_ID.4 CROZZ,98,32,130
+0673,雪铁龙_雪铁龙C3-XR,雪铁龙,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,雪铁龙_雪铁龙C3-XR==Citroën_C3-XR,106,35,141
+0674,标致_标致408,标致,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,标致_标致408==Peugeot_408,106,35,141
+0675,沙龙汽车_机甲龙,沙龙汽车,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,沙龙汽车_机甲龙==Saloon_Mecha Dragon,112,37,149
+0676,福特_蒙迪欧,福特,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,福特_蒙迪欧==Ford_Mondeo,82,27,109
+0677,东风风神_奕炫MAX,东风风神,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,东风风神_奕炫MAX==Dongfeng Fengshen_Yixuan MAX,86,28,114
+0678,大众_揽境,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_揽境==Volkswagen_Tiguan,105,35,140
+0679,玛莎拉蒂_Levante,玛莎拉蒂,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,玛莎拉蒂_Levante==Maserati_Levante,109,36,145
+0680,斯柯达_柯迪亚克,斯柯达,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,斯柯达_柯迪亚克==Škoda_Kodiaq,109,36,145
+0681,路虎_揽胜星脉,路虎,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,路虎_揽胜星脉==Land Rover_Range Rover Velar,118,39,157
+0682,本田_本田CR-V,本田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,本田_本田CR-V==Honda_CR-V,91,30,121
+0683,宝马_宝马X3,宝马,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,宝马_宝马X3==BMW_BMW X3,103,34,137
+0685,东风风神_奕炫GS,东风风神,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,东风风神_奕炫GS==Dongfeng Fengshen_Aeolus GS,75,25,100
+0687,开云汽车_开云电皮卡,开云汽车,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,开云汽车_开云电皮卡==Kaiyun Motors_Kaiyun Electric Pickup,88,29,117
+0688,奔驰_奔驰C级,奔驰,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奔驰_奔驰C级==Mercedes-Benz_Mercedes-Benz C-Class,110,36,146
+0689,蔚来_蔚来ES6,蔚来,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,蔚来_蔚来ES6==NIO_NIO ES6,92,30,122
+0690,道奇_挑战者,道奇,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,道奇_挑战者==Dodge_Challenger,101,33,134
+0691,昊铂_昊铂SSR,昊铂,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,昊铂_昊铂SSR==Hao Bo_Hao Bo SSR,64,21,85
+0692,金杯_小海狮X30,金杯,微面,Van,微面####微面==Van####Van,金杯_小海狮X30==Jinbei_Minibus X30,103,34,137
+0693,宾利_欧陆,宾利,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,宾利_欧陆==Bentley_Continental,97,32,129
+0694,北汽昌河_北斗星X5,北汽昌河,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,北汽昌河_北斗星X5==BAIC Changhe_Beidouxing X5,90,30,120
+0695,奇瑞新能源_QQ冰淇淋,奇瑞新能源,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,奇瑞新能源_QQ冰淇淋==Chery New Energy_QQ Ice Cream,86,28,114
+0696,别克_别克GL8,别克,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,别克_别克GL8==Buick_GL8,114,38,152
+0697,东风风行_菱智,东风风行,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,东风风行_菱智==Dongfeng Fengxing_Lingzhi,118,39,157
+0698,丰田_亚洲龙,丰田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,丰田_亚洲龙==Toyota_Avalon,115,38,153
+0699,大众_Polo,大众,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,大众_Polo==Volkswagen_Polo,108,36,144
+0701,标致_标致5008,标致,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,标致_标致5008==Peugeot_5008,89,29,118
+0702,MINI_MINI CLUBMAN,MINI,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,MINI_MINI CLUBMAN==MINI_MINI CLUBMAN,86,28,114
+0703,比亚迪_比亚迪M3,比亚迪,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,比亚迪_比亚迪M3==BYD_M3,70,23,93
+0704,日产_日产GT-R,日产,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,日产_日产GT-R==Nissan_Nissan GT-R,89,29,118
+0707,埃安_AION LX,埃安,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,埃安_AION LX==GAC Aion_AION LX,102,34,136
+0708,DS_DS 7,DS,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,DS_DS 7==DS_7,99,33,132
+0709,奥迪_奥迪Q5L Sportback,奥迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奥迪_奥迪Q5L Sportback==Audi_Audi Q5L Sportback,96,32,128
+0711,金杯_新海狮S,金杯,微面,Van,微面####微面==Van####Van,金杯_新海狮S==Jinbei_New Sealion S,88,29,117
+0713,劳斯莱斯_古思特,劳斯莱斯,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,劳斯莱斯_古思特==Rolls-Royce_Ghost,100,33,133
+0715,大众_途观X,大众,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,大众_途观X==Volkswagen_Tiguan X,108,36,144
+0716,比亚迪_海鸥,比亚迪,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,比亚迪_海鸥==BYD_Seagull,71,23,94
+0717,名爵_MG ZS,名爵,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,名爵_MG ZS==MG_ZS,105,35,140
+0718,电动屋_YOUNG光小新,电动屋,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,电动屋_YOUNG光小新==Dongdian Motor_YOUNG Guang Xiaoxin,76,25,101
+0720,劳斯莱斯_幻影,劳斯莱斯,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,劳斯莱斯_幻影==Rolls-Royce_Phantom,106,35,141
+0721,路虎_揽胜极光PHEV,路虎,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,路虎_揽胜极光PHEV==Land Rover_Range Rover Evoque PHEV,100,33,133
+0722,本田_雅阁,本田,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,本田_雅阁==Honda_Accord,102,34,136
+0723,红旗_红旗H7,红旗,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,红旗_红旗H7==Hongqi_H7,100,33,133
+0724,丰田_威驰FS,丰田,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,丰田_威驰FS==Toyota_Vios FS,112,37,149
+0725,三菱_欧蓝德,三菱,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,三菱_欧蓝德==Mitsubishi_Outlander,93,31,124
+0726,奥迪_奥迪Q3 Sportback,奥迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奥迪_奥迪Q3 Sportback==Audi_Q3 Sportback,108,36,144
+0727,奔驰_奔驰E级,奔驰,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奔驰_奔驰E级==Mercedes-Benz_Mercedes-Benz E-Class,117,39,156
+0728,起亚_嘉华,起亚,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,起亚_嘉华==Kia_Carnival,90,30,120
+0729,中兴_威虎,中兴,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,中兴_威虎==ZTE_Tiger,108,36,144
+0732,捷尼赛思_捷尼赛思G80,捷尼赛思,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,捷尼赛思_捷尼赛思G80==Genesis_G80,102,34,136
+0734,阿斯顿·马丁_Vanquish,阿斯顿·马丁,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,阿斯顿·马丁_Vanquish==Aston Martin_Vanquish,93,31,124
+0735,福特_途睿欧,福特,MPV,Mid-size MPV,MPV####中型MPV==MPV####Mid-size MPV,福特_途睿欧==Ford_Tourneo,94,31,125
+0736,海马_海马7X,海马,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,海马_海马7X==Haima_7X,93,31,124
+0737,雷达汽车_雷达RD6,雷达汽车,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,雷达汽车_雷达RD6==Radar Auto_Radar RD6,60,20,80
+0738,捷途_捷途X70 PLUS,捷途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷途_捷途X70 PLUS==Jetour_Jetour X70 PLUS,88,29,117
+0739,路虎_发现运动版PHEV,路虎,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,路虎_发现运动版PHEV==Land Rover_Discovery Sport PHEV,111,37,148
+0740,福田_风景G7,福田,轻客,Bus,轻客####轻客==Bus####Bus,福田_风景G7==Foton_View G7,103,34,137
+0741,长城_风骏5,长城,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长城_风骏5==Great Wall_Wingle 5,94,31,125
+0742,雪佛兰_科鲁泽,雪佛兰,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,雪佛兰_科鲁泽==Chevrolet_Cruze,117,39,156
+0743,哈弗_哈弗大狗,哈弗,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,哈弗_哈弗大狗==Haval_Haval Big Dog,116,38,154
+0744,红旗_红旗HS5,红旗,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,红旗_红旗HS5==Hongqi_Hongqi HS5,111,37,148
+0745,玛莎拉蒂_Ghibli,玛莎拉蒂,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,玛莎拉蒂_Ghibli==Maserati_Ghibli,119,39,158
+0746,别克_君越,别克,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,别克_君越==Buick_LaCrosse,114,38,152
+0748,标致_标致4008,标致,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,标致_标致4008==Peugeot_4008,112,37,149
+0750,起亚_起亚EV5,起亚,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,起亚_起亚EV5==Kia_Kia EV5,63,21,84
+0751,荣威_CLEVER,荣威,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,荣威_CLEVER==Roewe_CLEVER,109,36,145
+0753,东风_锐骐6,东风,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,东风_锐骐6==Dongfeng_Rich 6,94,31,125
+0754,创维汽车_创维HT-i,创维汽车,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,创维汽车_创维HT-i==Skyworth_HT-i,89,29,118
+0755,埃安_AION V,埃安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,埃安_AION V==GAC Aion_AION V,96,32,128
+0758,起亚_狮铂拓界,起亚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,起亚_狮铂拓界==Kia_Seltos,100,33,133
+0759,奔驰_奔驰CLS,奔驰,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,奔驰_奔驰CLS==Mercedes-Benz_Mercedes-Benz CLS,116,38,154
+0760,广汽传祺_影豹,广汽传祺,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,广汽传祺_影豹==GAC Trumpchi_Shadow Leopard,108,36,144
+0761,北京_北京F40,北京,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,北京_北京F40==Beijing Auto_Beijing F40,101,33,134
+0762,奥迪_奥迪Q3,奥迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,奥迪_奥迪Q3==Audi_Audi Q3,105,35,140
+0763,雪佛兰_探界者,雪佛兰,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,雪佛兰_探界者==Chevrolet_Equinox,112,37,149
+0764,北京汽车_北京X3,北京汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,北京汽车_北京X3==BAIC_X3,104,34,138
+0765,五十铃_翼放ES5,五十铃,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,五十铃_翼放ES5==Isuzu_V-Max ES5,78,26,104
+0768,福特_福克斯,福特,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,福特_福克斯==Ford_Focus,108,36,144
+0769,长安欧尚_长安欧尚X5,长安欧尚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,长安欧尚_长安欧尚X5==Changan Oushang_Changan Oushang X5,109,36,145
+0770,宝马_宝马X6 M,宝马,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,宝马_宝马X6 M==BMW_X6 M,99,33,132
+0771,东风风行_风行M7,东风风行,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,东风风行_风行M7==Dongfeng Fengxing_M7,99,33,132
+0773,吉利汽车_嘉际,吉利汽车,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,吉利汽车_嘉际==Geely_Jiaji,105,35,140
+0774,五十铃_翼放EC5,五十铃,卡车,Light Truck,卡车####轻卡==Truck####Light Truck,五十铃_翼放EC5==Isuzu_Wing Release EC5,78,26,104
+0775,北京汽车_北京EU5,北京汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,北京汽车_北京EU5==BAIC_EU5,105,35,140
+0776,大众_迈腾GTE,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_迈腾GTE==Volkswagen_Passat GTE,113,37,150
+0778,保时捷_Cayenne E-Hybrid,保时捷,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,保时捷_Cayenne E-Hybrid==Porsche_Cayenne E-Hybrid,73,24,97
+0779,菱势汽车_菱势黄金卡,菱势汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,菱势汽车_菱势黄金卡==Ling Shi Motors_Ling Shi Gold Truck,72,24,96
+0781,日产_天籁,日产,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,日产_天籁==Nissan_Altima,114,38,152
+0782,理想汽车_理想L7,理想汽车,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,理想汽车_理想L7==Li Auto_Li L7,64,21,85
+0783,铃木_吉姆尼,铃木,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,铃木_吉姆尼==Suzuki_Jimny,114,38,152
+0784,马自达_马自达CX-30,马自达,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,马自达_马自达CX-30==Mazda_Mazda CX-30,114,38,152
+0785,宝骏_云朵,宝骏,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,宝骏_云朵==Baojun_U-Cloud,88,29,117
+0786,凯迪拉克_凯迪拉克CT5,凯迪拉克,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,凯迪拉克_凯迪拉克CT5==Cadillac_Cadillac CT5,96,32,128
+0787,长安_长安F70,长安,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长安_长安F70==Changan_Changan F70,106,35,141
+0788,玛莎拉蒂_Grecale,玛莎拉蒂,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,玛莎拉蒂_Grecale==Maserati_Grecale,99,33,132
+0789,五菱汽车_五菱宏光PLUS,五菱汽车,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,五菱汽车_五菱宏光PLUS==Wuling Motors_Wuling Hongguang PLUS,91,30,121
+0790,起亚_起亚KX5,起亚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,起亚_起亚KX5==Kia_KX5,108,36,144
+0791,蔚来_蔚来ES8,蔚来,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,蔚来_蔚来ES8==NIO_NIO ES8,103,34,137
+0793,大众_途锐,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_途锐==Volkswagen_Touareg,114,38,152
+0794,Polestar极星_Polestar 2,Polestar极星,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,Polestar极星_Polestar 2==Polestar_2,66,22,88
+0795,昊铂_昊铂GT,昊铂,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,昊铂_昊铂GT==Hoplus_GT,89,29,118
+0796,奔驰_奔驰V级,奔驰,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,奔驰_奔驰V级==Mercedes-Benz_Mercedes-Benz V-Class,78,26,104
+0797,吉利几何_吉利几何A,吉利几何,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利几何_吉利几何A==Geometry_A,97,32,129
+0798,长安凯程_长安之星9 EV,长安凯程,微面,Van,微面####微面==Van####Van,长安凯程_长安之星9 EV==Changan Kaicheng_Changan Star 9 EV,69,23,92
+0799,五菱汽车_五菱荣光小卡专用车,五菱汽车,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,五菱汽车_五菱荣光小卡专用车==Wuling Motors_Wuling Rongguang Mini Truck Special Purpose Vehicle,70,23,93
+0801,荣威_荣威i6 MAX,荣威,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,荣威_荣威i6 MAX==Roewe_i6 MAX,109,36,145
+0802,起亚_起亚EV6,起亚,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,起亚_起亚EV6==Kia_EV6,99,33,132
+0803,现代_途胜,现代,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,现代_途胜==Hyundai_Tucson,80,26,106
+0804,大众_途铠,大众,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,大众_途铠==Volkswagen_Taigun,103,34,137
+0805,比亚迪_唐EV,比亚迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,比亚迪_唐EV==BYD_Tang EV,96,32,128
+0806,林肯_领航员,林肯,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,林肯_领航员==Lincoln_Navigator,115,38,153
+0807,奥迪_奥迪SQ5,奥迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奥迪_奥迪SQ5==Audi_SQ5,93,31,124
+0808,吉利汽车_缤瑞,吉利汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,吉利汽车_缤瑞==Geely_Binrui,109,36,145
+0809,迈凯伦_迈凯伦Artura,迈凯伦,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,迈凯伦_迈凯伦Artura==McLaren_McLaren Artura,95,31,126
+0810,高合_高合HiPhi X,高合,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,高合_高合HiPhi X==HiPhi_HiPhi X,88,29,117
+0811,东风风光_风光330,东风风光,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,东风风光_风光330==Dongfeng Fengguang_Fengguang 330,106,35,141
+0812,蔚来_蔚来ET5T,蔚来,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,蔚来_蔚来ET5T==NIO_ET5T,75,25,100
+0814,领克_领克01 PHEV,领克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,领克_领克01 PHEV==Lynk & Co_01 PHEV,84,28,112
+0816,江铃_域虎7,江铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,江铃_域虎7==JMC_Yuhu 7,96,32,128
+0817,欧拉_欧拉芭蕾猫,欧拉,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,欧拉_欧拉芭蕾猫==Ora_Ballet Cat,97,32,129
+0818,飞凡汽车_飞凡R7,飞凡汽车,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,飞凡汽车_飞凡R7==Feifan Auto_Feifan R7,96,32,128
+0820,沃尔沃_沃尔沃XC40 RECHARGE,沃尔沃,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,沃尔沃_沃尔沃XC40 RECHARGE==Volvo_XC40 Recharge,103,34,137
+0821,福田_大将军G9,福田,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,福田_大将军G9==Foton_General G9,98,32,130
+0822,阿斯顿·马丁_阿斯顿·马丁DBS,阿斯顿·马丁,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,阿斯顿·马丁_阿斯顿·马丁DBS==Aston Martin_Aston Martin DBS,77,25,102
+0823,丰田_RAV4荣放,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_RAV4荣放==Toyota_RAV4,97,32,129
+0824,吉利几何_吉利几何E萤火虫,吉利几何,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,吉利几何_吉利几何E萤火虫==Geely Geometry_Geely Geometry E Firefly,65,21,86
+0825,东风_猛士M50,东风,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,东风_猛士M50==Dongfeng_Mengshi M50,60,20,80
+0826,大众_迈腾,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_迈腾==Volkswagen_Magotan,110,36,146
+0827,特斯拉_Model S,特斯拉,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,特斯拉_Model S==Tesla_Model S,97,32,129
+0828,福特_领睿,福特,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,福特_领睿==Ford_Evolve,106,35,141
+0829,丰田_广汽丰田bZ4X,丰田,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,丰田_广汽丰田bZ4X==Toyota_bZ4X,85,28,113
+0830,小米汽车_小米SU7,小米汽车,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,小米汽车_小米SU7==Xiaomi_Xiaomi SU7,60,20,80
+0831,云度_云兔,云度,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,云度_云兔==Yudo_π3,61,20,81
+0833,捷达_捷达VA3,捷达,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,捷达_捷达VA3==Jetta_VA3,102,34,136
+0834,雷克萨斯_雷克萨斯LS,雷克萨斯,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,雷克萨斯_雷克萨斯LS==Lexus_Lexus LS,100,33,133
+0835,东南_东南DX3,东南,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,东南_东南DX3==Soueast_DX3,102,34,136
+0836,广汽传祺_传祺GA6,广汽传祺,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,广汽传祺_传祺GA6==GAC Trumpchi_GA6,108,36,144
+0837,奔驰_奔驰C级AMG,奔驰,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奔驰_奔驰C级AMG==Mercedes-Benz_C-Class AMG,112,37,149
+0838,捷途_捷途大圣,捷途,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,捷途_捷途大圣==Jetour_Jetour Dasheng,99,33,132
+0839,凯迪拉克_凯迪拉克CT4,凯迪拉克,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,凯迪拉克_凯迪拉克CT4==Cadillac_Cadillac CT4,114,38,152
+0841,阿维塔_阿维塔 11,阿维塔,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,阿维塔_阿维塔 11==Avatr_Avatr 11,81,27,108
+0842,北汽制造_勇士皮卡,北汽制造,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,北汽制造_勇士皮卡==BAIC Manufacturing_Warrior Pickup,99,33,132
+0843,科尼赛克_Gemera,科尼赛克,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,科尼赛克_Gemera==Koenigsegg_Gemera,75,25,100
+0844,奇瑞_瑞虎8 PLUS,奇瑞,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奇瑞_瑞虎8 PLUS==Chery_Tiggo 8 PLUS,85,28,113
+0845,合创汽车_合创Z03,合创汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,合创汽车_合创Z03==Hycan_Z03,97,32,129
+0847,大众_蔚揽,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_蔚揽==Volkswagen_Teramont,105,35,140
+0848,阿尔法·罗密欧_Giulia朱丽叶,阿尔法·罗密欧,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,阿尔法·罗密欧_Giulia朱丽叶==Alfa Romeo_Giulia,114,38,152
+0849,小鹏汽车_小鹏P5,小鹏汽车,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,小鹏汽车_小鹏P5==Xpeng_P5,93,31,124
+0851,领克_领克09,领克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,领克_领克09==Lynk & Co_Lynk & Co 09,109,36,145
+0852,阿斯顿·马丁_Vantage,阿斯顿·马丁,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,阿斯顿·马丁_Vantage==Aston Martin_Vantage,79,26,105
+0853,小鹏汽车_小鹏G3,小鹏汽车,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,小鹏汽车_小鹏G3==Xpeng_G3,91,30,121
+0854,劳斯莱斯_库里南,劳斯莱斯,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,劳斯莱斯_库里南==Rolls-Royce_Cullinan,108,36,144
+0855,广汽传祺_传祺GA8,广汽传祺,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,广汽传祺_传祺GA8==GAC Trumpchi_GA8,93,31,124
+0856,路特斯_路特斯Eletre,路特斯,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,路特斯_路特斯Eletre==Lotus_Eletre,69,23,92
+0857,雷克萨斯_雷克萨斯UX,雷克萨斯,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,雷克萨斯_雷克萨斯UX==Lexus_UX,85,28,113
+0858,蓝电_蓝电E5,蓝电,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,蓝电_蓝电E5==Blue Electric_Blue Electric E5,74,24,98
+0859,五菱汽车_五菱佳辰,五菱汽车,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,五菱汽车_五菱佳辰==Wuling Motors_Wuling Jiachen,95,31,126
+0861,坦克_坦克500,坦克,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,坦克_坦克500==Tank_Tank 500,73,24,97
+0864,ARCFOX极狐_极狐 阿尔法S,ARCFOX极狐,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,ARCFOX极狐_极狐 阿尔法S==ARCFOX_αS,72,24,96
+0865,日产_楼兰,日产,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,日产_楼兰==Nissan_Murano,110,36,146
+0866,宝马_宝马iX,宝马,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,宝马_宝马iX==BMW_iX,88,29,117
+0867,江汽集团_江淮iEV7,江汽集团,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,江汽集团_江淮iEV7==JAC Motors_JAC iEV7,84,28,112
+0870,宝马_宝马4系,宝马,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,宝马_宝马4系==BMW_BMW 4 Series,112,37,149
+0871,埃安_AION Y,埃安,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,埃安_AION Y==GAC Aion_AION Y,102,34,136
+0872,捷途_捷途大圣i-DM,捷途,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,捷途_捷途大圣i-DM==Jetour_Daisheng i-DM,87,29,116
+0873,蔚来_蔚来EC6,蔚来,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,蔚来_蔚来EC6==NIO_EC6,105,35,140
+0874,日产_ARIYA 艾睿雅,日产,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,日产_ARIYA 艾睿雅==Nissan_ARIYA,85,28,113
+0875,长安凯程_睿行M60,长安凯程,微面,Van,微面####微面==Van####Van,长安凯程_睿行M60==Changan Kaicheng_Rui Xing M60,88,29,117
+0876,江铃集团新能源_易至EV3,江铃集团新能源,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,江铃集团新能源_易至EV3==Jiangling Motors New Energy_Easy EV3,77,25,102
+0879,法拉利_法拉利Roma,法拉利,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,法拉利_法拉利Roma==Ferrari_Ferrari Roma,106,35,141
+0880,长安跨越_新豹T3,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_新豹T3==Changan Kuayue_New Leopard T3,91,30,121
+0881,启辰_启辰大V DD-i超混动,启辰,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,启辰_启辰大V DD-i超混动==Venucia_Venucia D V DD-i Super Hybrid,73,24,97
+0882,日产_劲客,日产,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,日产_劲客==Nissan_Kicks,107,35,142
+0883,长安_锐程PLUS,长安,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,长安_锐程PLUS==Changan_Raeton PLUS,69,23,92
+0884,比亚迪_宋PLUS DM-i,比亚迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,比亚迪_宋PLUS DM-i==BYD_Song PLUS DM-i,104,34,138
+0885,比亚迪_护卫舰 07,比亚迪,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,比亚迪_护卫舰 07==BYD_Frigate 07,96,32,128
+0886,五菱汽车_五菱征程,五菱汽车,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,五菱汽车_五菱征程==Wuling_Journey,77,25,102
+0887,长安跨越_跨越者D5,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_跨越者D5==Changan Kuayue_Kuayue D5,78,26,104
+0888,魏牌_摩卡DHT-PHEV,魏牌,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,魏牌_摩卡DHT-PHEV==Wei Brand_Mocha DHT-PHEV,90,30,120
+0889,奇瑞新能源_小蚂蚁,奇瑞新能源,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,奇瑞新能源_小蚂蚁==Chery New Energy_Little Ant,101,33,134
+0890,长安_览拓者,长安,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长安_览拓者==Changan_Explorer,100,33,133
+0891,路特斯_Evija,路特斯,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,路特斯_Evija==Lotus_Evija,102,34,136
+0892,日产_Cube,日产,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,日产_Cube==Nissan_Cube,94,31,125
+0893,奇瑞新能源_无界Pro,奇瑞新能源,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,奇瑞新能源_无界Pro==Chery New Energy_Boundary Pro,94,31,125
+0894,北汽制造_212,北汽制造,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,北汽制造_212==Beiqi_Manufacturing 212,114,38,152
+0895,福特_福特F-150 Raptor,福特,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,福特_福特F-150 Raptor==Ford_Ford F-150 Raptor,72,24,96
+0896,长安启源_长安启源A07,长安启源,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,长安启源_长安启源A07==Changan Qiyuan_Changan Qiyuan A07,64,21,85
+0897,丰田_威驰,丰田,轿车,Small Sedan,轿车####小型车==Sedan####Small Sedan,丰田_威驰==Toyota_Vios,108,36,144
+0898,丰田_奕泽IZOA,丰田,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,丰田_奕泽IZOA==Toyota_C-HR IZOA,103,34,137
+0899,领克_领克02 Hatchback,领克,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,领克_领克02 Hatchback==Lynk & Co_02 Hatchback,101,33,134
+0900,荣威_荣威RX5 MAX,荣威,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,荣威_荣威RX5 MAX==Roewe_RX5 MAX,67,22,89
+0902,日产_奇骏,日产,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,日产_奇骏==Nissan_X-Trail,99,33,132
+0904,智己汽车_智己L7,智己汽车,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,智己汽车_智己L7==ZiJi_L7,106,35,141
+0905,法拉利_California T,法拉利,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,法拉利_California T==Ferrari_California T,104,34,138
+0906,宝马_宝马7系PHEV,宝马,轿车,Large Sedan,轿车####大型车==Sedan####Large Sedan,宝马_宝马7系PHEV==BMW_7 Series PHEV,82,27,109
+0909,Jeep_角斗士,Jeep,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,Jeep_角斗士==Jeep_Gladiator,80,26,106
+0910,小虎_小虎FEV,小虎,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,小虎_小虎FEV==Xiaohu_Xiaohu FEV,70,23,93
+0911,奔腾_奔腾T99,奔腾,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔腾_奔腾T99==Besturn_T99,87,29,116
+0912,五菱汽车_五菱征途,五菱汽车,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五菱汽车_五菱征途==Wuling Motors_Wuling Zhengtu,100,33,133
+0914,五菱汽车_五菱宏光S3,五菱汽车,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,五菱汽车_五菱宏光S3==Wuling Motors_Wuling Hongguang S3,108,36,144
+0915,江淮瑞风_瑞风L6 MAX,江淮瑞风,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,江淮瑞风_瑞风L6 MAX==JAC_Refine L6 MAX,92,30,122
+0916,奥迪_奥迪RS 4,奥迪,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,奥迪_奥迪RS 4==Audi_RS 4,99,33,132
+0917,丰田_卡罗拉,丰田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,丰田_卡罗拉==Toyota_Corolla,76,25,101
+0918,长安跨越_跨越王X3,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_跨越王X3==Changan Kuayue_Kuayue King X3,86,28,114
+0919,捷豹_捷豹XEL,捷豹,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,捷豹_捷豹XEL==Jaguar_Jaguar XEL,96,32,128
+0921,长安_长安Lumin,长安,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,长安_长安Lumin==Changan_Changan Lumin,82,27,109
+0922,林肯_飞行家,林肯,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,林肯_飞行家==Lincoln_Aviator,109,36,145
+0923,丰田_卡罗拉锐放,丰田,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,丰田_卡罗拉锐放==Toyota_Corolla Cross,100,33,133
+0924,名爵_MG6 PHEV,名爵,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,名爵_MG6 PHEV==MG_MG6 PHEV,109,36,145
+0925,吉利汽车_熊猫,吉利汽车,轿车,Micro Sedan,轿车####微型车==Sedan####Micro Sedan,吉利汽车_熊猫==Geely_Panda,84,28,112
+0926,福田_风景G9,福田,轻客,Bus,轻客####轻客==Bus####Bus,福田_风景G9==Foton_View G9,101,33,134
+0927,大众_揽巡,大众,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,大众_揽巡==Volkswagen_Touareg,105,35,140
+0928,路虎_揽胜运动版,路虎,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,路虎_揽胜运动版==Land Rover_Range Rover Sport,101,33,134
+0930,大众_帕萨特PHEV,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_帕萨特PHEV==Volkswagen_Passat PHEV,114,38,152
+0931,星途_星途瑶光,星途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,星途_星途瑶光==Exeed_Exeed Yaoguang,76,25,101
+0933,福特_Ranger,福特,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,福特_Ranger==Ford_Ranger,65,21,86
+0934,比亚迪_汉EV,比亚迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,比亚迪_汉EV==BYD_Han EV,114,38,152
+0935,比亚迪_宋PLUS EV,比亚迪,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,比亚迪_宋PLUS EV==BYD_Song PLUS EV,69,23,92
+0936,奔驰_奔驰GLC,奔驰,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,奔驰_奔驰GLC==Mercedes-Benz_Mercedes-Benz GLC,111,37,148
+0938,奔腾_奔腾NAT,奔腾,MPV,Compact MPV,MPV####紧凑型MPV==MPV####Compact MPV,奔腾_奔腾NAT==Besturn_Besturn NAT,98,32,130
+0939,ARCFOX极狐_极狐 阿尔法T,ARCFOX极狐,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,ARCFOX极狐_极狐 阿尔法T==ARCFOX_αT,76,25,101
+0941,启辰_启辰T60,启辰,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,启辰_启辰T60==Venucia_T60,78,26,104
+0942,五十铃_瑞迈,五十铃,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,五十铃_瑞迈==Isuzu_Ruimai,100,33,133
+0943,奇瑞_艾瑞泽8,奇瑞,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,奇瑞_艾瑞泽8==Chery_Arrizo 8,68,22,90
+0945,星途_星途追风,星途,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,星途_星途追风==Exeed_TxL,93,31,124
+0946,玛莎拉蒂_GranTurismo,玛莎拉蒂,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,玛莎拉蒂_GranTurismo==Maserati_GranTurismo,88,29,117
+0948,依维柯_依维柯欧胜,依维柯,轻客,Bus,轻客####轻客==Bus####Bus,依维柯_依维柯欧胜==Iveco_Eurocargo,101,33,134
+0949,AITO_问界M7,AITO,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,AITO_问界M7==AITO_Ask World M7,69,23,92
+0950,Jeep_牧马人,Jeep,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,Jeep_牧马人==Jeep_Wrangler,113,37,150
+0951,哈弗_哈弗枭龙MAX,哈弗,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,哈弗_哈弗枭龙MAX==Haval_Haval Jolion MAX,82,27,109
+0952,特斯拉_Model 3,特斯拉,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,特斯拉_Model 3==Tesla_Model 3,78,26,104
+0953,雷克萨斯_雷克萨斯LC,雷克萨斯,跑车,Sports Car,跑车####跑车==Sports Car####Sports Car,雷克萨斯_雷克萨斯LC==Lexus_Lexus LC,109,36,145
+0955,斯巴鲁_OUTBACK傲虎,斯巴鲁,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,斯巴鲁_OUTBACK傲虎==Subaru_Outback,105,35,140
+0956,荣威_荣威D7 DMH,荣威,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,荣威_荣威D7 DMH==Roewe_D7 DMH,64,21,85
+0957,福特_领裕,福特,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,福特_领裕==Ford_Evolve,111,37,148
+0958,奔驰_奔驰GLS,奔驰,SUV,Large SUV,SUV####大型SUV==SUV####Large SUV,奔驰_奔驰GLS==Mercedes-Benz_Mercedes-Benz GLS,111,37,148
+0959,斯柯达_柯米克,斯柯达,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,斯柯达_柯米克==Škoda_Kamiq,72,24,96
+0960,捷达_捷达VS7,捷达,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,捷达_捷达VS7==Jetta_VS7,86,28,114
+0961,沃尔沃_沃尔沃S60,沃尔沃,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,沃尔沃_沃尔沃S60==Volvo_Volvo S60,98,32,130
+0963,欧拉_欧拉闪电猫,欧拉,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,欧拉_欧拉闪电猫==Ora_Lightning Cat,105,35,140
+0964,长城_炮,长城,卡车,Pickup Truck,卡车####皮卡==Truck####Pickup Truck,长城_炮==Great Wall_Cannon,106,35,141
+0965,江铃_顺威小卡,江铃,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,江铃_顺威小卡==Jiangling_Shunwei Mini Truck,94,31,125
+0966,比亚迪_汉DM,比亚迪,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,比亚迪_汉DM==BYD_Han DM,71,23,94
+0967,长安跨越_跨越王X5,长安跨越,卡车,Micro Truck,卡车####微卡==Truck####Micro Truck,长安跨越_跨越王X5==Changan Kuayue_Kuayue King X5,70,23,93
+0968,吉利汽车_缤越,吉利汽车,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,吉利汽车_缤越==Geely_Binyue,109,36,145
+0971,沃尔沃_沃尔沃S90 RECHARGE,沃尔沃,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,沃尔沃_沃尔沃S90 RECHARGE==Volvo_S90 Recharge,84,28,112
+0974,东风小康_东风小康K07S,东风小康,微面,Van,微面####微面==Van####Van,东风小康_东风小康K07S==Dongfeng Xiaokang_Dongfeng Xiaokang K07S,79,26,105
+0975,日产_轩逸,日产,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,日产_轩逸==Nissan_Sylphy,106,35,141
+0976,星途_星途凌云,星途,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,星途_星途凌云==Exeed_Exeed Cloud,105,35,140
+0977,宝马_宝马X2,宝马,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,宝马_宝马X2==BMW_BMW X2,107,35,142
+0978,领克_领克01,领克,SUV,Compact SUV,SUV####紧凑型SUV==SUV####Compact SUV,领克_领克01==Lynk & Co_Lynk & Co 01,97,32,129
+0979,雪佛兰_创酷,雪佛兰,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,雪佛兰_创酷==Chevrolet_Trax,109,36,145
+0980,现代_帕里斯帝,现代,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,现代_帕里斯帝==Hyundai_Palisade,104,34,138
+0983,江淮瑞风_瑞风M4,江淮瑞风,MPV,Upper Mid-size MPV,MPV####中大型MPV==MPV####Upper Mid-size MPV,江淮瑞风_瑞风M4==JAC_Refine M4,99,33,132
+0984,斯柯达_昕锐,斯柯达,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,斯柯达_昕锐==Škoda_ScalA,117,39,156
+0985,飞凡汽车_飞凡F7,飞凡汽车,轿车,Upper Mid-size Sedan,轿车####中大型车==Sedan####Upper Mid-size Sedan,飞凡汽车_飞凡F7==Feifan Auto_Feifan F7,63,21,84
+0986,现代_索纳塔,现代,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,现代_索纳塔==Hyundai_Sonata,108,36,144
+0987,领克_领克03,领克,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,领克_领克03==Lynk & Co_Lynk & Co 03,108,36,144
+0989,比亚迪_秦PLUS EV,比亚迪,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,比亚迪_秦PLUS EV==BYD_Qin PLUS EV,68,22,90
+0990,奔驰_奔驰GLE AMG,奔驰,SUV,Upper Mid-size SUV,SUV####中大型SUV==SUV####Upper Mid-size SUV,奔驰_奔驰GLE AMG==Mercedes-Benz_GLE AMG,72,24,96
+0991,丰田_亚洲狮,丰田,轿车,Compact Sedan,轿车####紧凑型车==Sedan####Compact Sedan,丰田_亚洲狮==Toyota_Asian Lion,111,37,148
+0992,大众_帕萨特,大众,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,大众_帕萨特==Volkswagen_Passat,93,31,124
+0994,奥迪_奥迪Q2L e-tron,奥迪,SUV,Small SUV,SUV####小型SUV==SUV####Small SUV,奥迪_奥迪Q2L e-tron==Audi_Audi Q2L e-tron,101,33,134
+0995,深蓝汽车_深蓝SL03,深蓝汽车,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,深蓝汽车_深蓝SL03==Deep Blue Auto_Deep Blue SL03,63,21,84
+0996,红旗_红旗H6,红旗,轿车,Mid-size Sedan,轿车####中型车==Sedan####Mid-size Sedan,红旗_红旗H6==Hongqi_Hongqi H6,64,21,85
+0998,哈弗_哈弗二代大狗PHEV,哈弗,SUV,Mid-size SUV,SUV####中型SUV==SUV####Mid-size SUV,哈弗_哈弗二代大狗PHEV==Haval_Haval Big Dog 2nd Gen PHEV,67,22,89

@@ -1,0 +1,868 @@
+====================================================================================================
+【SUV】 共 372 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0418  大众_途岳                             大众          Compact SUV              119   39    158
+0432  奔驰_奔驰GLE                          奔驰          Upper Mid-size SUV       118   39    157
+0555  哈弗_哈弗H9                           哈弗          Upper Mid-size SUV       118   39    157
+0681  路虎_揽胜星脉                           路虎          Mid-size SUV             118   39    157
+0119  凯迪拉克_凯迪拉克XT6                      凯迪拉克        Upper Mid-size SUV       117   39    156
+0558  现代_现代ix35                         现代          Compact SUV              117   39    156
+0595  凯迪拉克_凯迪拉克XT5                      凯迪拉克        Mid-size SUV             117   39    156
+0157  星途_星途揽月                           星途          Upper Mid-size SUV       116   38    154
+0743  哈弗_哈弗大狗                           哈弗          Compact SUV              116   38    154
+0052  广汽传祺_传祺GS4                        广汽传祺        Compact SUV              115   38    153
+0080  日产_途乐                             日产          Large SUV                115   38    153
+0192  比亚迪_唐DM                           比亚迪         Mid-size SUV             115   38    153
+0222  宝马_宝马X7                           宝马          Large SUV                115   38    153
+0251  别克_昂科旗                            别克          Upper Mid-size SUV       115   38    153
+0806  林肯_领航员                            林肯          Large SUV                115   38    153
+0006  捷豹_捷豹F-PACE                       捷豹          Mid-size SUV             114   38    152
+0140  雪佛兰_开拓者                           雪佛兰         Upper Mid-size SUV       114   38    152
+0161  本田_缤智                             本田          Small SUV                114   38    152
+0194  红旗_红旗E-HS9                        红旗          Large SUV                114   38    152
+0379  本田_本田UR-V                         本田          Mid-size SUV             114   38    152
+0589  别克_昂科拉                            别克          Small SUV                114   38    152
+0657  北京_北京BJ40                         北京          Compact SUV              114   38    152
+0783  铃木_吉姆尼                            铃木          Small SUV                114   38    152
+0784  马自达_马自达CX-30                      马自达         Small SUV                114   38    152
+0793  大众_途锐                             大众          Upper Mid-size SUV       114   38    152
+0894  北汽制造_212                          北汽制造        Small SUV                114   38    152
+0193  长安_长安CS35 PLUS                    长安          Small SUV                113   37    150
+0429  雷克萨斯_雷克萨斯LX                       雷克萨斯        Large SUV                113   37    150
+0486  广汽传祺_传祺GS8                        广汽传祺        Mid-size SUV             113   37    150
+0500  大众_T-ROC探歌                        大众          Compact SUV              113   37    150
+0545  奥迪_奥迪Q2L                          奥迪          Small SUV                113   37    150
+0614  奥迪_奥迪Q5L                          奥迪          Mid-size SUV             113   37    150
+0950  Jeep_牧马人                          Jeep        Mid-size SUV             113   37    150
+0047  吉利汽车_星越L                          吉利汽车        Compact SUV              112   37    149
+0225  兰博基尼_Urus                         兰博基尼        Upper Mid-size SUV       112   37    149
+0228  领克_领克05                           领克          Compact SUV              112   37    149
+0261  哈弗_哈弗H5                           哈弗          Large SUV                112   37    149
+0266  奥迪_奥迪Q7                           奥迪          Upper Mid-size SUV       112   37    149
+0328  起亚_奕跑                             起亚          Small SUV                112   37    149
+0334  沃尔沃_沃尔沃XC90                       沃尔沃         Upper Mid-size SUV       112   37    149
+0377  雪铁龙_天逸 C5 AIRCROSS                雪铁龙         Compact SUV              112   37    149
+0468  哈弗_哈弗H6                           哈弗          Compact SUV              112   37    149
+0549  保时捷_Cayenne                       保时捷         Upper Mid-size SUV       112   37    149
+0748  标致_标致4008                         标致          Compact SUV              112   37    149
+0763  雪佛兰_探界者                           雪佛兰         Mid-size SUV             112   37    149
+0120  宝马_宝马X5                           宝马          Upper Mid-size SUV       111   37    148
+0182  奔驰_迈巴赫GLS                         奔驰          Large SUV                111   37    148
+0200  宝马_宝马X6                           宝马          Upper Mid-size SUV       111   37    148
+0278  大众_探岳X                            大众          Mid-size SUV             111   37    148
+0287  奇瑞_瑞虎3x                           奇瑞          Small SUV                111   37    148
+0390  沃尔沃_沃尔沃XC60                       沃尔沃         Mid-size SUV             111   37    148
+0399  荣威_荣威eRX5                         荣威          Compact SUV              111   37    148
+0425  丰田_威兰达                            丰田          Compact SUV              111   37    148
+0448  凯迪拉克_凯迪拉克XT4                      凯迪拉克        Compact SUV              111   37    148
+0510  丰田_汉兰达                            丰田          Mid-size SUV             111   37    148
+0611  沃尔沃_沃尔沃XC40                       沃尔沃         Compact SUV              111   37    148
+0619  福特_撼路者                            福特          Mid-size SUV             111   37    148
+0662  林肯_冒险家                            林肯          Compact SUV              111   37    148
+0739  路虎_发现运动版PHEV                      路虎          Mid-size SUV             111   37    148
+0744  红旗_红旗HS5                          红旗          Mid-size SUV             111   37    148
+0936  奔驰_奔驰GLC                          奔驰          Mid-size SUV             111   37    148
+0957  福特_领裕                             福特          Upper Mid-size SUV       111   37    148
+0958  奔驰_奔驰GLS                          奔驰          Large SUV                111   37    148
+0473  吉利汽车_博越                           吉利汽车        Compact SUV              110   36    146
+0526  路虎_发现运动版                          路虎          Mid-size SUV             110   36    146
+0587  奔驰_奔驰GLA                          奔驰          Compact SUV              110   36    146
+0865  日产_楼兰                             日产          Mid-size SUV             110   36    146
+0136  别克_昂科威                            别克          Mid-size SUV             109   36    145
+0276  哈弗_哈弗M6                           哈弗          Compact SUV              109   36    145
+0342  长安_长安CS15                         长安          Small SUV                109   36    145
+0356  奇瑞_瑞虎5x                           奇瑞          Small SUV                109   36    145
+0474  丰田_皇冠陆放                           丰田          Mid-size SUV             109   36    145
+0482  红旗_红旗HS7                          红旗          Upper Mid-size SUV       109   36    145
+0522  大众_途昂X                            大众          Upper Mid-size SUV       109   36    145
+0649  奔驰_奔驰GLC轿跑                        奔驰          Mid-size SUV             109   36    145
+0679  玛莎拉蒂_Levante                      玛莎拉蒂        Upper Mid-size SUV       109   36    145
+0680  斯柯达_柯迪亚克                          斯柯达         Mid-size SUV             109   36    145
+0769  长安欧尚_长安欧尚X5                       长安欧尚        Compact SUV              109   36    145
+0851  领克_领克09                           领克          Upper Mid-size SUV       109   36    145
+0922  林肯_飞行家                            林肯          Upper Mid-size SUV       109   36    145
+0968  吉利汽车_缤越                           吉利汽车        Small SUV                109   36    145
+0979  雪佛兰_创酷                            雪佛兰         Small SUV                109   36    145
+0034  大众_探岳GTE                          大众          Mid-size SUV             108   36    144
+0048  马自达_马自达CX-4                       马自达         Compact SUV              108   36    144
+0076  奇瑞_瑞虎7 PLUS                       奇瑞          Compact SUV              108   36    144
+0098  SERES赛力斯_赛力斯SF5                   SERES赛力斯    Mid-size SUV             108   36    144
+0169  福特_EVOS                           福特          Mid-size SUV             108   36    144
+0218  长安_长安UNI-T                        长安          Compact SUV              108   36    144
+0380  大众_探影                             大众          Small SUV                108   36    144
+0471  长安_长安CS85 COUPE                   长安          Mid-size SUV             108   36    144
+0533  本田_冠道                             本田          Mid-size SUV             108   36    144
+0715  大众_途观X                            大众          Mid-size SUV             108   36    144
+0726  奥迪_奥迪Q3 Sportback                 奥迪          Compact SUV              108   36    144
+0790  起亚_起亚KX5                          起亚          Compact SUV              108   36    144
+0854  劳斯莱斯_库里南                          劳斯莱斯        Large SUV                108   36    144
+0304  宝马_宝马X4                           宝马          Mid-size SUV             107   35    142
+0476  雷克萨斯_雷克萨斯RX                       雷克萨斯        Upper Mid-size SUV       107   35    142
+0882  日产_劲客                             日产          Small SUV                107   35    142
+0977  宝马_宝马X2                           宝马          Compact SUV              107   35    142
+0074  北京_北京BJ80                         北京          Upper Mid-size SUV       106   35    141
+0105  捷达_捷达VS5                          捷达          Compact SUV              106   35    141
+0289  丰田_威飒                             丰田          Mid-size SUV             106   35    141
+0457  奔腾_奔腾T55                          奔腾          Compact SUV              106   35    141
+0464  路虎_卫士                             路虎          Upper Mid-size SUV       106   35    141
+0576  哈弗_哈弗赤兔                           哈弗          Compact SUV              106   35    141
+0648  雷克萨斯_雷克萨斯NX                       雷克萨斯        Mid-size SUV             106   35    141
+0658  五十铃_mu-X牧游侠                       五十铃         Mid-size SUV             106   35    141
+0673  雪铁龙_雪铁龙C3-XR                      雪铁龙         Small SUV                106   35    141
+0828  福特_领睿                             福特          Mid-size SUV             106   35    141
+0010  荣威_荣威RX3                          荣威          Small SUV                105   35    140
+0029  保时捷_Macan                         保时捷         Mid-size SUV             105   35    140
+0057  奔驰_奔驰G级                           奔驰          Upper Mid-size SUV       105   35    140
+0103  大众_途观L PHEV                       大众          Mid-size SUV             105   35    140
+0196  五菱汽车_五菱星驰                         五菱汽车        Small SUV                105   35    140
+0238  北京汽车_魔方                           北京汽车        Compact SUV              105   35    140
+0352  东风风光_风光580                        东风风光        Mid-size SUV             105   35    140
+0551  路虎_揽胜                             路虎          Upper Mid-size SUV       105   35    140
+0678  大众_揽境                             大众          Upper Mid-size SUV       105   35    140
+0717  名爵_MG ZS                          名爵          Small SUV                105   35    140
+0762  奥迪_奥迪Q3                           奥迪          Compact SUV              105   35    140
+0873  蔚来_蔚来EC6                          蔚来          Mid-size SUV             105   35    140
+0927  大众_揽巡                             大众          Upper Mid-size SUV       105   35    140
+0955  斯巴鲁_OUTBACK傲虎                     斯巴鲁         Mid-size SUV             105   35    140
+0976  星途_星途凌云                           星途          Mid-size SUV             105   35    140
+0077  福特_探险者                            福特          Upper Mid-size SUV       104   34    138
+0239  大众_探岳                             大众          Mid-size SUV             104   34    138
+0764  北京汽车_北京X3                         北京汽车        Small SUV                104   34    138
+0884  比亚迪_宋PLUS DM-i                    比亚迪         Compact SUV              104   34    138
+0980  现代_帕里斯帝                           现代          Upper Mid-size SUV       104   34    138
+0059  奔驰_奔驰GLC AMG                      奔驰          Mid-size SUV             103   34    137
+0184  小鹏汽车_小鹏G9                         小鹏汽车        Upper Mid-size SUV       103   34    137
+0275  MINI_MINI COUNTRYMAN              MINI        Compact SUV              103   34    137
+0564  大众_途观L                            大众          Mid-size SUV             103   34    137
+0646  沃尔沃_沃尔沃XC90 RECHARGE              沃尔沃         Upper Mid-size SUV       103   34    137
+0650  马自达_马自达CX-30 EV                   马自达         Small SUV                103   34    137
+0683  宝马_宝马X3                           宝马          Mid-size SUV             103   34    137
+0791  蔚来_蔚来ES8                          蔚来          Upper Mid-size SUV       103   34    137
+0804  大众_途铠                             大众          Small SUV                103   34    137
+0820  沃尔沃_沃尔沃XC40 RECHARGE              沃尔沃         Compact SUV              103   34    137
+0898  丰田_奕泽IZOA                         丰田          Small SUV                103   34    137
+0044  广汽传祺_传祺GS3                        广汽传祺        Small SUV                102   34    136
+0236  英菲尼迪_英菲尼迪QX60                     英菲尼迪        Upper Mid-size SUV       102   34    136
+0246  福特_领界                             福特          Compact SUV              102   34    136
+0305  英菲尼迪_英菲尼迪QX50                     英菲尼迪        Mid-size SUV             102   34    136
+0394  本田_皓影                             本田          Compact SUV              102   34    136
+0567  奥迪_奥迪Q8                           奥迪          Upper Mid-size SUV       102   34    136
+0606  比亚迪_元PLUS                         比亚迪         Compact SUV              102   34    136
+0637  广汽传祺_影酷                           广汽传祺        Compact SUV              102   34    136
+0640  钧天汽车_勇猛者                          钧天汽车        Large SUV                102   34    136
+0707  埃安_AION LX                        埃安          Mid-size SUV             102   34    136
+0835  东南_东南DX3                          东南          Small SUV                102   34    136
+0871  埃安_AION Y                         埃安          Compact SUV              102   34    136
+0355  起亚_傲跑                             起亚          Small SUV                101   33    134
+0461  吉利汽车_吉利ICON                       吉利汽车        Small SUV                101   33    134
+0928  路虎_揽胜运动版                          路虎          Upper Mid-size SUV       101   33    134
+0994  奥迪_奥迪Q2L e-tron                   奥迪          Small SUV                101   33    134
+0011  捷豹_捷豹E-PACE                       捷豹          Compact SUV              100   33    133
+0168  领克_领克06                           领克          Small SUV                100   33    133
+0271  奇瑞_欧萌达                            奇瑞          Compact SUV              100   33    133
+0563  东风风行_风行T5 EVO                     东风风行        Compact SUV              100   33    133
+0604  Jeep_自由侠4xe                       Jeep        Small SUV                100   33    133
+0721  路虎_揽胜极光PHEV                       路虎          Mid-size SUV             100   33    133
+0758  起亚_狮铂拓界                           起亚          Compact SUV              100   33    133
+0923  丰田_卡罗拉锐放                          丰田          Compact SUV              100   33    133
+0151  理念_广汽本田VE-1                       理念          Small SUV                 99   33    132
+0208  本田_皓影 PHEV                        本田          Compact SUV               99   33    132
+0272  长安_长安CS75 PLUS                    长安          Compact SUV               99   33    132
+0308  现代_胜达                             现代          Mid-size SUV              99   33    132
+0333  标致_标致2008                         标致          Small SUV                 99   33    132
+0414  斯柯达_柯米克GT                         斯柯达         Small SUV                 99   33    132
+0520  零跑汽车_零跑C11                        零跑汽车        Mid-size SUV              99   33    132
+0540  名爵_MG ONE                         名爵          Compact SUV               99   33    132
+0621  北京汽车_北京X7                         北京汽车        Compact SUV               99   33    132
+0708  DS_DS 7                           DS          Compact SUV               99   33    132
+0770  宝马_宝马X6 M                         宝马          Upper Mid-size SUV        99   33    132
+0788  玛莎拉蒂_Grecale                      玛莎拉蒂        Mid-size SUV              99   33    132
+0802  起亚_起亚EV6                          起亚          Compact SUV               99   33    132
+0838  捷途_捷途大圣                           捷途          Compact SUV               99   33    132
+0902  日产_奇骏                             日产          Compact SUV               99   33    132
+0146  奔驰_奔驰GLA AMG                      奔驰          Compact SUV               98   32    130
+0477  哈弗_哈弗神兽                           哈弗          Compact SUV               98   32    130
+0509  日产_途达                             日产          Mid-size SUV              98   32    130
+0672  大众_ID.4 CROZZ                     大众          Compact SUV               98   32    130
+0097  捷途_捷途X90                          捷途          Mid-size SUV              97   32    129
+0176  哈弗_哈弗酷狗                           哈弗          Compact SUV               97   32    129
+0221  红旗_红旗LS7                          红旗          Large SUV                 97   32    129
+0358  长安_长安CS55 PLUS                    长安          Compact SUV               97   32    129
+0363  比亚迪_宋Pro DM-i                     比亚迪         Compact SUV               97   32    129
+0397  长安_长安CS95                         长安          Upper Mid-size SUV        97   32    129
+0408  凯迪拉克_IQ锐歌                         凯迪拉克        Upper Mid-size SUV        97   32    129
+0524  坦克_坦克300                          坦克          Compact SUV               97   32    129
+0571  阿尔法·罗密欧_Stelvio斯坦维                阿尔法·罗密欧     Mid-size SUV              97   32    129
+0823  丰田_RAV4荣放                         丰田          Compact SUV               97   32    129
+0845  合创汽车_合创Z03                        合创汽车        Compact SUV               97   32    129
+0978  领克_领克01                           领克          Compact SUV               97   32    129
+0067  坦克_赛博坦克300                        坦克          Compact SUV               96   32    128
+0133  东风风神_皓极                           东风风神        Compact SUV               96   32    128
+0296  捷途_捷途X70                          捷途          Mid-size SUV              96   32    128
+0309  大众_途昂                             大众          Upper Mid-size SUV        96   32    128
+0615  福特_锐际                             福特          Compact SUV               96   32    128
+0652  奔驰_奔驰GLB                          奔驰          Compact SUV               96   32    128
+0709  奥迪_奥迪Q5L Sportback                奥迪          Mid-size SUV              96   32    128
+0755  埃安_AION V                         埃安          Compact SUV               96   32    128
+0805  比亚迪_唐EV                           比亚迪         Mid-size SUV              96   32    128
+0818  飞凡汽车_飞凡R7                         飞凡汽车        Upper Mid-size SUV        96   32    128
+0885  比亚迪_护卫舰 07                        比亚迪         Mid-size SUV              96   32    128
+0336  奔腾_奔腾T77                          奔腾          Compact SUV               95   31    126
+0503  马自达_马自达CX-50行也                    马自达         Compact SUV               95   31    126
+0115  丰田_奕泽E进擎                          丰田          Small SUV                 94   31    125
+0319  东南_东南DX5                          东南          Small SUV                 94   31    125
+0484  马自达_马自达CX-5                       马自达         Compact SUV               94   31    125
+0490  起亚_智跑                             起亚          Compact SUV               94   31    125
+0617  福特_锐界                             福特          Mid-size SUV              94   31    125
+0645  凯翼_凯翼X3                           凯翼          Small SUV                 94   31    125
+0041  吉利汽车_豪越L                          吉利汽车        Mid-size SUV              93   31    124
+0232  五菱汽车_五菱星辰                         五菱汽车        Compact SUV               93   31    124
+0335  奔驰_奔驰GLB AMG                      奔驰          Compact SUV               93   31    124
+0343  东风风神_东风风神AX7                      东风风神        Compact SUV               93   31    124
+0404  宝马_宝马X1                           宝马          Compact SUV               93   31    124
+0491  启辰_启辰大V                           启辰          Compact SUV               93   31    124
+0493  斯柯达_柯迪亚克GT                        斯柯达         Mid-size SUV              93   31    124
+0622  丰田_丰田C-HR                         丰田          Small SUV                 93   31    124
+0725  三菱_欧蓝德                            三菱          Compact SUV               93   31    124
+0807  奥迪_奥迪SQ5                          奥迪          Mid-size SUV              93   31    124
+0945  星途_星途追风                           星途          Compact SUV               93   31    124
+0068  奇瑞_瑞虎8 PLUS鲲鹏e+                   奇瑞          Mid-size SUV              92   30    122
+0348  名爵_MG领航                           名爵          Compact SUV               92   30    122
+0610  奔驰_奔驰EQC                          奔驰          Mid-size SUV              92   30    122
+0689  蔚来_蔚来ES6                          蔚来          Mid-size SUV              92   30    122
+0179  众泰_众泰T300                         众泰          Small SUV                 91   30    121
+0230  林肯_航海家                            林肯          Mid-size SUV              91   30    121
+0302  吉利汽车_远景X6                         吉利汽车        Compact SUV               91   30    121
+0415  路虎_揽胜极光                           路虎          Mid-size SUV              91   30    121
+0472  路虎_发现                             路虎          Upper Mid-size SUV        91   30    121
+0682  本田_本田CR-V                         本田          Compact SUV               91   30    121
+0853  小鹏汽车_小鹏G3                         小鹏汽车        Compact SUV               91   30    121
+0018  哪吒汽车_哪吒U                          哪吒汽车        Compact SUV               90   30    120
+0132  长安_长安UNI-K                        长安          Mid-size SUV              90   30    120
+0366  魏牌_拿铁DHT                          魏牌          Compact SUV               90   30    120
+0450  吉利汽车_星越L 增程电动版                    吉利汽车        Compact SUV               90   30    120
+0888  魏牌_摩卡DHT-PHEV                     魏牌          Mid-size SUV              90   30    120
+0064  日产_逍客                             日产          Compact SUV               89   29    118
+0124  本田_本田HR-V                         本田          Compact SUV               89   29    118
+0331  本田_ZR-V 致在                        本田          Compact SUV               89   29    118
+0417  北京_北京BJ90                         北京          Large SUV                 89   29    118
+0701  标致_标致5008                         标致          Mid-size SUV              89   29    118
+0754  创维汽车_创维HT-i                       创维汽车        Mid-size SUV              89   29    118
+0082  丰田_凌放HARRIER                      丰田          Mid-size SUV              88   29    117
+0597  沃尔沃_沃尔沃XC60 RECHARGE              沃尔沃         Mid-size SUV              88   29    117
+0667  雷克萨斯_雷克萨斯RZ                       雷克萨斯        Mid-size SUV              88   29    117
+0738  捷途_捷途X70 PLUS                     捷途          Mid-size SUV              88   29    117
+0810  高合_高合HiPhi X                      高合          Upper Mid-size SUV        88   29    117
+0866  宝马_宝马iX                           宝马          Upper Mid-size SUV        88   29    117
+0138  荣威_荣威RX5                          荣威          Compact SUV               87   29    116
+0255  启辰_启辰T60 EV                       启辰          Small SUV                 87   29    116
+0318  特斯拉_Model Y                       特斯拉         Mid-size SUV              87   29    116
+0320  凯翼_炫界                             凯翼          Compact SUV               87   29    116
+0340  奥迪_奥迪Q6                           奥迪          Upper Mid-size SUV        87   29    116
+0370  宝马_宝马iX3                          宝马          Mid-size SUV              87   29    116
+0594  极越_极越01                           极越          Upper Mid-size SUV        87   29    116
+0872  捷途_捷途大圣i-DM                       捷途          Compact SUV               87   29    116
+0911  奔腾_奔腾T99                          奔腾          Upper Mid-size SUV        87   29    116
+0181  Jeep_牧马人4xe PHEV                  Jeep        Mid-size SUV              86   28    114
+0960  捷达_捷达VS7                          捷达          Mid-size SUV              86   28    114
+0024  吉利几何_吉利几何C                        吉利几何        Compact SUV               85   28    113
+0062  斯巴鲁_FORESTER森林人                   斯巴鲁         Compact SUV               85   28    113
+0242  丰田_RAV4荣放双擎E+                     丰田          Compact SUV               85   28    113
+0247  丰田_一汽丰田bZ4X                       丰田          Mid-size SUV              85   28    113
+0298  特斯拉_Model X                       特斯拉         Upper Mid-size SUV        85   28    113
+0347  方程豹_豹5                            方程豹         Mid-size SUV              85   28    113
+0616  丰田_锋兰达                            丰田          Compact SUV               85   28    113
+0634  哈弗_哈弗H6S                          哈弗          Compact SUV               85   28    113
+0829  丰田_广汽丰田bZ4X                       丰田          Mid-size SUV              85   28    113
+0844  奇瑞_瑞虎8 PLUS                       奇瑞          Mid-size SUV              85   28    113
+0857  雷克萨斯_雷克萨斯UX                       雷克萨斯        Compact SUV               85   28    113
+0874  日产_ARIYA 艾睿雅                      日产          Compact SUV               85   28    113
+0087  奔驰_奔驰EQS SUV                      奔驰          Large SUV                 84   28    112
+0155  丰田_威兰达高性能版                        丰田          Compact SUV               84   28    112
+0268  大众_ID.6 X                         大众          Upper Mid-size SUV        84   28    112
+0444  奥迪_奥迪RS Q8                        奥迪          Upper Mid-size SUV        84   28    112
+0814  领克_领克01 PHEV                      领克          Compact SUV               84   28    112
+0112  阿斯顿·马丁_阿斯顿·马丁DBX                  阿斯顿·马丁      Upper Mid-size SUV        82   27    109
+0135  奔腾_奔腾T90                          奔腾          Compact SUV               82   27    109
+0190  奇瑞_瑞虎8 PRO                        奇瑞          Mid-size SUV              82   27    109
+0392  奔驰_奔驰GLS AMG                      奔驰          Large SUV                 82   27    109
+0452  智己汽车_智己LS7                        智己汽车        Upper Mid-size SUV        82   27    109
+0525  魏牌_拿铁DHT-PHEV                     魏牌          Compact SUV               82   27    109
+0575  长安_长安CS75                         长安          Compact SUV               82   27    109
+0636  长安欧尚_长安欧尚X7 PLUS                  长安欧尚        Compact SUV               82   27    109
+0663  福特_锐际PHEV                         福特          Compact SUV               82   27    109
+0951  哈弗_哈弗枭龙MAX                        哈弗          Mid-size SUV              82   27    109
+0660  奇瑞_瑞虎7                            奇瑞          Compact SUV               81   27    108
+0664  东风风光_风光500                        东风风光        Compact SUV               81   27    108
+0841  阿维塔_阿维塔 11                        阿维塔         Upper Mid-size SUV        81   27    108
+0091  沃尔沃_沃尔沃C40 RECHARGE               沃尔沃         Compact SUV               80   26    106
+0299  本田_本田CR-V PHEV                    本田          Compact SUV               80   26    106
+0446  北京_北京BJ30                         北京          Compact SUV               80   26    106
+0803  现代_途胜                             现代          Compact SUV               80   26    106
+0085  魏牌_蓝山DHT-PHEV                     魏牌          Upper Mid-size SUV        79   26    105
+0384  东风风行_风行T5                         东风风行        Compact SUV               79   26    105
+0416  大运_悦虎                             大运          Small SUV                 79   26    105
+0670  哪吒汽车_哪吒V                          哪吒汽车        Small SUV                 79   26    105
+0083  长安欧尚_长安欧尚Z6                       长安欧尚        Compact SUV               78   26    104
+0191  起亚_赛图斯                            起亚          Compact SUV               78   26    104
+0234  蔚来_蔚来ES7                          蔚来          Upper Mid-size SUV        78   26    104
+0274  北京汽车_北京EX3                        北京汽车        Small SUV                 78   26    104
+0422  宾利_添越                             宾利          Upper Mid-size SUV        78   26    104
+0443  奔驰_奔驰EQB                          奔驰          Compact SUV               78   26    104
+0941  启辰_启辰T60                          启辰          Small SUV                 78   26    104
+0502  大众_ID.6 CROZZ                     大众          Upper Mid-size SUV        77   25    102
+0288  红旗_红旗E-HS3                        红旗          Compact SUV               76   25    101
+0337  捷途_捷途X90 PLUS                     捷途          Mid-size SUV              76   25    101
+0580  奔驰_奔驰G级AMG                        奔驰          Upper Mid-size SUV        76   25    101
+0931  星途_星途瑶光                           星途          Mid-size SUV              76   25    101
+0939  ARCFOX极狐_极狐 阿尔法T                  ARCFOX极狐    Mid-size SUV              76   25    101
+0171  比亚迪_元Pro                          比亚迪         Small SUV                 75   25    100
+0499  捷尼赛思_捷尼赛思GV80                     捷尼赛思        Upper Mid-size SUV        75   25    100
+0508  领克_领克02                           领克          Compact SUV               75   25    100
+0685  东风风神_奕炫GS                         东风风神        Compact SUV               75   25    100
+0094  捷途_捷途旅行者                          捷途          Compact SUV               74   24     98
+0601  岚图_岚图FREE                         岚图          Upper Mid-size SUV        74   24     98
+0624  思铭_东风本田M-NV                       思铭          Small SUV                 74   24     98
+0858  蓝电_蓝电E5                           蓝电          Mid-size SUV              74   24     98
+0543  本田_本田XR-V                         本田          Small SUV                 73   24     97
+0778  保时捷_Cayenne E-Hybrid              保时捷         Upper Mid-size SUV        73   24     97
+0861  坦克_坦克500                          坦克          Upper Mid-size SUV        73   24     97
+0881  启辰_启辰大V DD-i超混动                   启辰          Compact SUV               73   24     97
+0227  腾势_腾势N7                           腾势          Mid-size SUV              72   24     96
+0257  东风纳米_纳米BOX                        东风纳米        Small SUV                 72   24     96
+0439  斯巴鲁_CROSSTREK旭豹                   斯巴鲁         Compact SUV               72   24     96
+0454  奇瑞_瑞虎8                            奇瑞          Mid-size SUV              72   24     96
+0959  斯柯达_柯米克                           斯柯达         Small SUV                 72   24     96
+0990  奔驰_奔驰GLE AMG                      奔驰          Upper Mid-size SUV        72   24     96
+0407  马自达_马自达CX-8                       马自达         Upper Mid-size SUV        71   23     94
+0038  奥迪_奥迪Q5 e-tron                    奥迪          Upper Mid-size SUV        70   23     93
+0396  宝马_宝马XM                           宝马          Large SUV                 70   23     93
+0620  深蓝汽车_深蓝S7                         深蓝汽车        Mid-size SUV              70   23     93
+0017  大众_ID.4 X                         大众          Compact SUV               69   23     92
+0250  中国重汽VGV_VGV U75                   中国重汽VGV     Mid-size SUV              69   23     92
+0434  斯柯达_柯珞克                           斯柯达         Compact SUV               69   23     92
+0856  路特斯_路特斯Eletre                     路特斯         Upper Mid-size SUV        69   23     92
+0935  比亚迪_宋PLUS EV                      比亚迪         Compact SUV               69   23     92
+0949  AITO_问界M7                         AITO        Upper Mid-size SUV        69   23     92
+0515  别克_昂科拉GX                          别克          Compact SUV               68   22     90
+0602  仰望_仰望U8                           仰望          Large SUV                 68   22     90
+0284  宝马_宝马X4 M                         宝马          Mid-size SUV              67   22     89
+0294  长安欧尚_长安欧尚Z6 iDD新能源                长安欧尚        Compact SUV               67   22     89
+0653  奥迪_奥迪Q4 e-tron                    奥迪          Compact SUV               67   22     89
+0900  荣威_荣威RX5 MAX                      荣威          Compact SUV               67   22     89
+0998  哈弗_哈弗二代大狗PHEV                     哈弗          Mid-size SUV              67   22     89
+0037  AITO_问界M5                         AITO        Mid-size SUV              66   22     88
+0152  奔驰_奔驰EQE SUV                      奔驰          Upper Mid-size SUV        66   22     88
+0498  阿尔法·罗密欧_Tonale托纳利                 阿尔法·罗密欧     Compact SUV               66   22     88
+0581  中国重汽VGV_VGV U75PLUS               中国重汽VGV     Mid-size SUV              66   22     88
+0633  雪佛兰_星迈罗                           雪佛兰         Compact SUV               66   22     88
+0507  领克_领克09 EM-P                      领克          Upper Mid-size SUV        65   21     86
+0824  吉利几何_吉利几何E萤火虫                     吉利几何        Small SUV                 65   21     86
+0148  哪吒汽车_哪吒AYA                        哪吒汽车        Small SUV                 64   21     85
+0252  北汽制造_勇士                           北汽制造        Compact SUV               64   21     85
+0495  奔驰_奔驰GLE轿跑                        奔驰          Upper Mid-size SUV        64   21     85
+0782  理想汽车_理想L7                         理想汽车        Upper Mid-size SUV        64   21     85
+0447  哈弗_哈弗枭龙                           哈弗          Compact SUV               63   21     84
+0453  猛士_猛士917                          猛士          Upper Mid-size SUV        63   21     84
+0527  宝骏_悦也                             宝骏          Small SUV                 63   21     84
+0750  起亚_起亚EV5                          起亚          Mid-size SUV              63   21     84
+0205  星途_星途追风 PHEV                      星途          Compact SUV               62   20     82
+0163  东风纳米_东风纳米EX1                      东风纳米        Small SUV                 61   20     81
+0401  长安_长安UNI-K 智电iDD                  长安          Mid-size SUV              61   20     81
+0424  宝马_宝马X3 M                         宝马          Mid-size SUV              61   20     81
+0548  凯翼_凯翼昆仑                           凯翼          Mid-size SUV              61   20     81
+0831  云度_云兔                             云度          Small SUV                 61   20     81
+0014  保时捷_Cayenne Coupe                 保时捷         Upper Mid-size SUV        60   20     80
+
+====================================================================================================
+【轿车】 共 259 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0632  奥迪_奥迪A6 China Domestic Version    奥迪          Upper Mid-size Sedan     186   62    248
+0638  日产_蓝鸟                             日产          Compact Sedan            119   39    158
+0745  玛莎拉蒂_Ghibli                       玛莎拉蒂        Upper Mid-size Sedan     119   39    158
+0541  马自达_马自达3 昂克赛拉                     马自达         Compact Sedan            118   39    157
+0659  本田_凌派                             本田          Compact Sedan            118   39    157
+0009  沃尔沃_沃尔沃S90                        沃尔沃         Upper Mid-size Sedan     117   39    156
+0173  英菲尼迪_英菲尼迪Q50L                     英菲尼迪        Mid-size Sedan           117   39    156
+0727  奔驰_奔驰E级                           奔驰          Upper Mid-size Sedan     117   39    156
+0742  雪佛兰_科鲁泽                           雪佛兰         Compact Sedan            117   39    156
+0984  斯柯达_昕锐                            斯柯达         Compact Sedan            117   39    156
+0233  斯柯达_速派                            斯柯达         Mid-size Sedan           116   38    154
+0759  奔驰_奔驰CLS                          奔驰          Upper Mid-size Sedan     116   38    154
+0231  荣威_荣威i5                           荣威          Compact Sedan            115   38    153
+0303  大众_桑塔纳                            大众          Compact Sedan            115   38    153
+0536  林肯_林肯Z                            林肯          Mid-size Sedan           115   38    153
+0627  雪佛兰_迈锐宝XL                         雪佛兰         Mid-size Sedan           115   38    153
+0671  宝马_宝马M2                           宝马          Compact Sedan            115   38    153
+0698  丰田_亚洲龙                            丰田          Mid-size Sedan           115   38    153
+0137  凯迪拉克_凯迪拉克CT6                      凯迪拉克        Upper Mid-size Sedan     114   38    152
+0307  红旗_红旗H9                           红旗          Upper Mid-size Sedan     114   38    152
+0492  捷豹_捷豹XFL                          捷豹          Upper Mid-size Sedan     114   38    152
+0497  宾利_飞驰                             宾利          Large Sedan              114   38    152
+0561  斯柯达_明锐                            斯柯达         Compact Sedan            114   38    152
+0644  保时捷_Taycan                        保时捷         Upper Mid-size Sedan     114   38    152
+0746  别克_君越                             别克          Mid-size Sedan           114   38    152
+0781  日产_天籁                             日产          Mid-size Sedan           114   38    152
+0839  凯迪拉克_凯迪拉克CT4                      凯迪拉克        Mid-size Sedan           114   38    152
+0848  阿尔法·罗密欧_Giulia朱丽叶                 阿尔法·罗密欧     Mid-size Sedan           114   38    152
+0930  大众_帕萨特PHEV                        大众          Mid-size Sedan           114   38    152
+0934  比亚迪_汉EV                           比亚迪         Upper Mid-size Sedan     114   38    152
+0073  起亚_起亚K3                           起亚          Compact Sedan            113   37    150
+0259  宝骏_宝骏KiWi EV                      宝骏          Micro Sedan              113   37    150
+0329  奥迪_奥迪A7                           奥迪          Upper Mid-size Sedan     113   37    150
+0776  大众_迈腾GTE                          大众          Mid-size Sedan           113   37    150
+0013  本田_享域                             本田          Compact Sedan            112   37    149
+0023  现代_名图                             现代          Mid-size Sedan           112   37    149
+0032  大众_大众CC                           大众          Mid-size Sedan           112   37    149
+0164  奔驰_迈巴赫S级                          奔驰          Large Sedan              112   37    149
+0281  宝马_宝马1系                           宝马          Compact Sedan            112   37    149
+0291  雷克萨斯_雷克萨斯ES                       雷克萨斯        Upper Mid-size Sedan     112   37    149
+0651  欧拉_欧拉好猫GT                         欧拉          Small Sedan              112   37    149
+0675  沙龙汽车_机甲龙                          沙龙汽车        Large Sedan              112   37    149
+0724  丰田_威驰FS                           丰田          Small Sedan              112   37    149
+0837  奔驰_奔驰C级AMG                        奔驰          Mid-size Sedan           112   37    149
+0870  宝马_宝马4系                           宝马          Mid-size Sedan           112   37    149
+0008  奥迪_奥迪A7L                          奥迪          Upper Mid-size Sedan     111   37    148
+0019  吉利汽车_星瑞                           吉利汽车        Compact Sedan            111   37    148
+0167  雪铁龙_雪铁龙C6                         雪铁龙         Mid-size Sedan           111   37    148
+0310  长安_逸动                             长安          Compact Sedan            111   37    148
+0362  奔驰_奔驰A级AMG                        奔驰          Compact Sedan            111   37    148
+0368  日产_骐达TIIDA                        日产          Compact Sedan            111   37    148
+0441  宝马_宝马M3                           宝马          Mid-size Sedan           111   37    148
+0572  玛莎拉蒂_总裁                           玛莎拉蒂        Large Sedan              111   37    148
+0582  宝马_宝马5系                           宝马          Upper Mid-size Sedan     111   37    148
+0991  丰田_亚洲狮                            丰田          Compact Sedan            111   37    148
+0123  名爵_MG6                            名爵          Compact Sedan            110   36    146
+0445  奔驰_奔驰CLA                          奔驰          Compact Sedan            110   36    146
+0688  奔驰_奔驰C级                           奔驰          Mid-size Sedan           110   36    146
+0826  大众_迈腾                             大众          Mid-size Sedan           110   36    146
+0043  起亚_焕驰                             起亚          Small Sedan              109   36    145
+0071  保时捷_Panamera E-Hybrid             保时捷         Large Sedan              109   36    145
+0172  比亚迪_比亚迪e2                         比亚迪         Compact Sedan            109   36    145
+0185  红旗_红旗H5                           红旗          Mid-size Sedan           109   36    145
+0256  沃尔沃_沃尔沃V60                        沃尔沃         Mid-size Sedan           109   36    145
+0290  奥迪_奥迪RS 5                         奥迪          Mid-size Sedan           109   36    145
+0393  大众_速腾                             大众          Compact Sedan            109   36    145
+0420  大众_宝来                             大众          Compact Sedan            109   36    145
+0458  别克_威朗                             别克          Compact Sedan            109   36    145
+0479  本田_英仕派                            本田          Mid-size Sedan           109   36    145
+0583  小鹏汽车_小鹏P7                         小鹏汽车        Mid-size Sedan           109   36    145
+0613  宝马_宝马M8                           宝马          Large Sedan              109   36    145
+0751  荣威_CLEVER                         荣威          Micro Sedan              109   36    145
+0801  荣威_荣威i6 MAX                       荣威          Compact Sedan            109   36    145
+0808  吉利汽车_缤瑞                           吉利汽车        Compact Sedan            109   36    145
+0924  名爵_MG6 PHEV                       名爵          Compact Sedan            109   36    145
+0002  东风风神_东风风神E70                      东风风神        Compact Sedan            108   36    144
+0015  宝马_宝马6系GT                         宝马          Upper Mid-size Sedan     108   36    144
+0035  大众_朗逸                             大众          Compact Sedan            108   36    144
+0075  起亚_起亚K5                           起亚          Mid-size Sedan           108   36    144
+0086  丰田_凌尚                             丰田          Compact Sedan            108   36    144
+0374  长安_长安UNI-V                        长安          Compact Sedan            108   36    144
+0376  标致_标致508L                         标致          Mid-size Sedan           108   36    144
+0378  现代_菲斯塔                            现代          Compact Sedan            108   36    144
+0402  别克_微蓝6                            别克          Compact Sedan            108   36    144
+0699  大众_Polo                           大众          Small Sedan              108   36    144
+0760  广汽传祺_影豹                           广汽传祺        Compact Sedan            108   36    144
+0768  福特_福克斯                            福特          Compact Sedan            108   36    144
+0836  广汽传祺_传祺GA6                        广汽传祺        Mid-size Sedan           108   36    144
+0897  丰田_威驰                             丰田          Small Sedan              108   36    144
+0986  现代_索纳塔                            现代          Mid-size Sedan           108   36    144
+0987  领克_领克03                           领克          Compact Sedan            108   36    144
+0020  宝马_宝马M4                           宝马          Mid-size Sedan           107   35    142
+0110  奥迪_奥迪A3                           奥迪          Compact Sedan            107   35    142
+0111  比亚迪_驱逐舰 05                        比亚迪         Compact Sedan            107   35    142
+0203  名爵_MG7                            名爵          Mid-size Sedan           107   35    142
+0306  大众_Arteon                         大众          Mid-size Sedan           106   35    141
+0381  雪铁龙_凡尔赛C5 X                       雪铁龙         Mid-size Sedan           106   35    141
+0409  长安_锐程CC                           长安          Compact Sedan            106   35    141
+0609  宝马_宝马i4                           宝马          Mid-size Sedan           106   35    141
+0674  标致_标致408                          标致          Compact Sedan            106   35    141
+0720  劳斯莱斯_幻影                           劳斯莱斯        Large Sedan              106   35    141
+0904  智己汽车_智己L7                         智己汽车        Upper Mid-size Sedan     106   35    141
+0975  日产_轩逸                             日产          Compact Sedan            106   35    141
+0063  宝马_宝马3系                           宝马          Mid-size Sedan           105   35    140
+0159  奔驰_奔驰S级                           奔驰          Large Sedan              105   35    140
+0262  荣威_荣威Ei5                          荣威          Compact Sedan            105   35    140
+0350  宝马_宝马2系                           宝马          Compact Sedan            105   35    140
+0462  凯翼_轩度                             凯翼          Compact Sedan            105   35    140
+0532  标致_标致508L PHEV                    标致          Mid-size Sedan           105   35    140
+0643  奥迪_奥迪S5                           奥迪          Mid-size Sedan           105   35    140
+0775  北京汽车_北京EU5                        北京汽车        Compact Sedan            105   35    140
+0847  大众_蔚揽                             大众          Mid-size Sedan           105   35    140
+0963  欧拉_欧拉闪电猫                          欧拉          Mid-size Sedan           105   35    140
+0332  奥迪_奥迪RS e-tron GT                 奥迪          Upper Mid-size Sedan     104   34    138
+0469  马自达_阿特兹                           马自达         Mid-size Sedan           104   34    138
+0007  比亚迪_海豚                            比亚迪         Small Sedan              103   34    137
+0088  长安_逸动EV                           长安          Compact Sedan            103   34    137
+0139  奔驰_奔驰A级                           奔驰          Compact Sedan            103   34    137
+0267  大众_辉昂                             大众          Upper Mid-size Sedan     103   34    137
+0354  奔驰_奔驰CLA AMG                      奔驰          Compact Sedan            103   34    137
+0398  本田_飞度                             本田          Small Sedan              103   34    137
+0428  零跑汽车_零跑T03                        零跑汽车        Micro Sedan              103   34    137
+0456  奥迪_奥迪A8                           奥迪          Large Sedan              103   34    137
+0128  思皓_花仙子                            思皓          Micro Sedan              102   34    136
+0264  MINI_MINI                         MINI        Small Sedan              102   34    136
+0282  奔驰_奔驰EQE                          奔驰          Upper Mid-size Sedan     102   34    136
+0321  长安_逸动DT                           长安          Compact Sedan            102   34    136
+0569  现代_伊兰特                            现代          Compact Sedan            102   34    136
+0666  奥迪_奥迪S6                           奥迪          Upper Mid-size Sedan     102   34    136
+0722  本田_雅阁                             本田          Mid-size Sedan           102   34    136
+0732  捷尼赛思_捷尼赛思G80                      捷尼赛思        Upper Mid-size Sedan     102   34    136
+0833  捷达_捷达VA3                          捷达          Compact Sedan            102   34    136
+0107  名爵_MG5天蝎座                         名爵          Compact Sedan            101   33    134
+0375  零跑汽车_零跑C01                        零跑汽车        Upper Mid-size Sedan     101   33    134
+0889  奇瑞新能源_小蚂蚁                         奇瑞新能源       Micro Sedan              101   33    134
+0899  领克_领克02 Hatchback                 领克          Compact Sedan            101   33    134
+0099  丰田_Mirai                          丰田          Mid-size Sedan           100   33    133
+0174  smart_smart EQ forfour            smart       Micro Sedan              100   33    133
+0485  五菱汽车_五菱Nano EV                    五菱汽车        Micro Sedan              100   33    133
+0539  大众_凌渡                             大众          Compact Sedan            100   33    133
+0562  奔驰_奔驰EQS                          奔驰          Large Sedan              100   33    133
+0612  保时捷_Panamera                      保时捷         Large Sedan              100   33    133
+0623  比亚迪_比亚迪e3                         比亚迪         Compact Sedan            100   33    133
+0713  劳斯莱斯_古思特                          劳斯莱斯        Large Sedan              100   33    133
+0723  红旗_红旗H7                           红旗          Upper Mid-size Sedan     100   33    133
+0834  雷克萨斯_雷克萨斯LS                       雷克萨斯        Large Sedan              100   33    133
+0093  现代_现代i10                          现代          Micro Sedan               99   33    132
+0283  奇瑞_艾瑞泽5 PLUS                      奇瑞          Compact Sedan             99   33    132
+0916  奥迪_奥迪RS 4                         奥迪          Mid-size Sedan            99   33    132
+0005  宝马_宝马M5                           宝马          Upper Mid-size Sedan      98   32    130
+0279  本田_本田LIFE                         本田          Small Sedan               98   32    130
+0568  吉利汽车_帝豪                           吉利汽车        Compact Sedan             98   32    130
+0608  极氪_ZEEKR 001                      极氪          Upper Mid-size Sedan      98   32    130
+0961  沃尔沃_沃尔沃S60                        沃尔沃         Mid-size Sedan            98   32    130
+0131  沃尔沃_沃尔沃S60 RECHARGE               沃尔沃         Mid-size Sedan            97   32    129
+0360  宝马_宝马7系                           宝马          Large Sedan               97   32    129
+0419  奔腾_奔腾B70                          奔腾          Mid-size Sedan            97   32    129
+0797  吉利几何_吉利几何A                        吉利几何        Compact Sedan             97   32    129
+0817  欧拉_欧拉芭蕾猫                          欧拉          Compact Sedan             97   32    129
+0827  特斯拉_Model S                       特斯拉         Upper Mid-size Sedan      97   32    129
+0207  启辰_启辰D60 EV                       启辰          Compact Sedan             96   32    128
+0391  合创汽车_合创A06                        合创汽车        Mid-size Sedan            96   32    128
+0400  奥迪_奥迪S4                           奥迪          Mid-size Sedan            96   32    128
+0421  凌宝汽车_凌宝BOX                        凌宝汽车        Micro Sedan               96   32    128
+0596  雪佛兰_雪佛兰畅巡                         雪佛兰         Compact Sedan             96   32    128
+0786  凯迪拉克_凯迪拉克CT5                      凯迪拉克        Mid-size Sedan            96   32    128
+0919  捷豹_捷豹XEL                          捷豹          Mid-size Sedan            96   32    128
+0065  捷尼赛思_捷尼赛思G70                      捷尼赛思        Mid-size Sedan            95   31    126
+0519  别克_君威                             别克          Mid-size Sedan            95   31    126
+0607  红旗_红旗E-QM5                        红旗          Mid-size Sedan            95   31    126
+0160  五菱汽车_五菱宏光MINIEV                   五菱汽车        Micro Sedan               94   31    125
+0338  沃尔沃_沃尔沃V90                        沃尔沃         Upper Mid-size Sedan      94   31    125
+0517  现代_悦动                             现代          Compact Sedan             94   31    125
+0892  日产_Cube                           日产          Small Sedan               94   31    125
+0893  奇瑞新能源_无界Pro                       奇瑞新能源       Micro Sedan               94   31    125
+0116  奇瑞_艾瑞泽5                           奇瑞          Compact Sedan             93   31    124
+0134  埃安_AION S                         埃安          Compact Sedan             93   31    124
+0849  小鹏汽车_小鹏P5                         小鹏汽车        Compact Sedan             93   31    124
+0855  广汽传祺_传祺GA8                        广汽传祺        Upper Mid-size Sedan      93   31    124
+0992  大众_帕萨特                            大众          Mid-size Sedan            93   31    124
+0175  奔驰_奔驰E级PHEV                       奔驰          Upper Mid-size Sedan      92   30    122
+0487  宝马_宝马8系                           宝马          Large Sedan               92   30    122
+0542  东风风神_奕炫                           东风风神        Compact Sedan             92   30    122
+0345  华晨新日_华晨新日i03                      华晨新日        Micro Sedan               91   30    121
+0389  比亚迪_秦PLUS DM-i                    比亚迪         Compact Sedan             91   30    121
+0483  丰田_凯美瑞                            丰田          Mid-size Sedan            91   30    121
+0114  丰田_卡罗拉双擎E+                        丰田          Compact Sedan             90   30    120
+0451  奥迪_奥迪A5                           奥迪          Mid-size Sedan            90   30    120
+0544  DS_DS 9                           DS          Mid-size Sedan            90   30    120
+0694  北汽昌河_北斗星X5                        北汽昌河        Micro Sedan               90   30    120
+0213  丰田_雷凌                             丰田          Compact Sedan             89   29    118
+0577  奥迪_奥迪e-tron GT                    奥迪          Upper Mid-size Sedan      89   29    118
+0795  昊铂_昊铂GT                           昊铂          Upper Mid-size Sedan      89   29    118
+0101  宝马_宝马i3                           宝马          Mid-size Sedan            88   29    117
+0341  奥迪_奥迪RS 7                         奥迪          Upper Mid-size Sedan      88   29    117
+0411  本田_型格                             本田          Compact Sedan             88   29    117
+0785  宝骏_云朵                             宝骏          Compact Sedan             88   29    117
+0677  东风风神_奕炫MAX                        东风风神        Compact Sedan             86   28    114
+0695  奇瑞新能源_QQ冰淇淋                       奇瑞新能源       Micro Sedan               86   28    114
+0702  MINI_MINI CLUBMAN                 MINI        Small Sedan               86   28    114
+0195  启辰_启辰D60                          启辰          Compact Sedan             85   28    113
+0312  大众_大众ID.3                         大众          Compact Sedan             85   28    113
+0440  奔驰_奔驰B级                           奔驰          Compact Sedan             85   28    113
+0521  长安欧尚_奔奔E-Star                     长安欧尚        Small Sedan               85   28    113
+0867  江汽集团_江淮iEV7                       江汽集团        Small Sedan               84   28    112
+0925  吉利汽车_熊猫                           吉利汽车        Micro Sedan               84   28    112
+0971  沃尔沃_沃尔沃S90 RECHARGE               沃尔沃         Upper Mid-size Sedan      84   28    112
+0211  名爵_MG5                            名爵          Compact Sedan             83   27    110
+0016  现代_现代i20                          现代          Small Sedan               82   27    109
+0560  捷尼赛思_捷尼赛思G90                      捷尼赛思        Large Sedan               82   27    109
+0676  福特_蒙迪欧                            福特          Mid-size Sedan            82   27    109
+0906  宝马_宝马7系PHEV                       宝马          Large Sedan               82   27    109
+0921  长安_长安Lumin                        长安          Micro Sedan               82   27    109
+0026  宝马_宝马5系PHEV                       宝马          Upper Mid-size Sedan      81   27    108
+0367  本田_思域                             本田          Compact Sedan             81   27    108
+0470  宾利_飞驰PHEV                         宾利          Large Sedan               81   27    108
+0069  吉利汽车_帝豪L HiP                      吉利汽车        Compact Sedan             79   26    105
+0505  东风风光_风光MINIEV                     东风风光        Micro Sedan               78   26    104
+0952  特斯拉_Model 3                       特斯拉         Mid-size Sedan            78   26    104
+0876  江铃集团新能源_易至EV3                     江铃集团新能源     Micro Sedan               77   25    102
+0351  菲亚特_菲亚特500e                       菲亚特         Micro Sedan               76   25    101
+0718  电动屋_YOUNG光小新                      电动屋         Micro Sedan               76   25    101
+0917  丰田_卡罗拉                            丰田          Compact Sedan             76   25    101
+0442  蔚来_蔚来ET7                          蔚来          Upper Mid-size Sedan      75   25    100
+0511  欧拉_欧拉好猫                           欧拉          Small Sedan               75   25    100
+0578  蔚来_蔚来ET5                          蔚来          Mid-size Sedan            75   25    100
+0647  五菱汽车_五菱Air ev晴空                   五菱汽车        Micro Sedan               75   25    100
+0812  蔚来_蔚来ET5T                         蔚来          Mid-size Sedan            75   25    100
+0122  比亚迪_海豹                            比亚迪         Mid-size Sedan            73   24     97
+0528  长安_逸达                             长安          Compact Sedan             73   24     97
+0864  ARCFOX极狐_极狐 阿尔法S                  ARCFOX极狐    Upper Mid-size Sedan      72   24     96
+0102  宝马_宝马i7                           宝马          Large Sedan               71   23     94
+0104  奔驰_奔驰E级AMG                        奔驰          Upper Mid-size Sedan      71   23     94
+0410  凌宝汽车_凌宝COCO                       凌宝汽车        Micro Sedan               71   23     94
+0716  比亚迪_海鸥                            比亚迪         Small Sedan               71   23     94
+0966  比亚迪_汉DM                           比亚迪         Upper Mid-size Sedan      71   23     94
+0030  丰田_丰田bZ3                          丰田          Mid-size Sedan            70   23     93
+0590  五菱汽车_五菱缤果                         五菱汽车        Small Sedan               70   23     93
+0910  小虎_小虎FEV                          小虎          Micro Sedan               70   23     93
+0313  DS_DS 9 PHEV                      DS          Mid-size Sedan            69   23     92
+0883  长安_锐程PLUS                         长安          Compact Sedan             69   23     92
+0943  奇瑞_艾瑞泽8                           奇瑞          Compact Sedan             68   22     90
+0989  比亚迪_秦PLUS EV                      比亚迪         Compact Sedan             68   22     90
+0513  大众_高尔夫                            大众          Compact Sedan             67   22     89
+0534  长安_长安UNI-V 智电iDD                  长安          Compact Sedan             67   22     89
+0538  奥迪_奥迪A4 China Domestic Version    奥迪          Mid-size Sedan            67   22     89
+0794  Polestar极星_Polestar 2             Polestar极星  Compact Sedan             66   22     88
+0322  比亚迪_秦EV                           比亚迪         Compact Sedan             64   21     85
+0896  长安启源_长安启源A07                      长安启源        Upper Mid-size Sedan      64   21     85
+0956  荣威_荣威D7 DMH                       荣威          Mid-size Sedan            64   21     85
+0996  红旗_红旗H6                           红旗          Mid-size Sedan            64   21     85
+0985  飞凡汽车_飞凡F7                         飞凡汽车        Upper Mid-size Sedan      63   21     84
+0995  深蓝汽车_深蓝SL03                       深蓝汽车        Mid-size Sedan            63   21     84
+0186  本田_雅阁 PHEV                        本田          Mid-size Sedan            62   20     82
+0364  名爵_MG4 EV                         名爵          Compact Sedan             61   20     81
+0574  吉利银河_银河L6                         吉利银河        Compact Sedan             61   20     81
+0058  比亚迪_比亚迪e9                         比亚迪         Upper Mid-size Sedan      60   20     80
+0372  岚图_岚图追光                           岚图          Upper Mid-size Sedan      60   20     80
+0830  小米汽车_小米SU7                        小米汽车        Upper Mid-size Sedan      60   20     80
+
+====================================================================================================
+【卡车】 共 70 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0106  五十铃_TAGA达咖                        五十铃         Pickup Truck             112   37    149
+0489  上汽大通MAXUS_上汽大通MAXUS T70           上汽大通MAXUS   Pickup Truck             112   37    149
+0635  长城_金刚炮                            长城          Pickup Truck             112   37    149
+0729  中兴_威虎                             中兴          Pickup Truck             108   36    144
+0118  特斯拉_Cybertruck                    特斯拉         Pickup Truck             106   35    141
+0423  道奇_RAM Trucks                     道奇          Pickup Truck             106   35    141
+0787  长安_长安F70                          长安          Pickup Truck             106   35    141
+0964  长城_炮                              长城          Pickup Truck             106   35    141
+0095  中兴_大领主                            中兴          Pickup Truck             105   35    140
+0224  江铃_域虎9                            江铃          Pickup Truck             103   34    137
+0357  东风小康_东风小康C32                      东风小康        Micro Truck              102   34    136
+0475  五十铃_铃拓                            五十铃         Pickup Truck             102   34    136
+0518  江铃_顺达                             江铃          Light Truck              102   34    136
+0162  东风小康_东风小康C31                      东风小康        Micro Truck              101   33    134
+0761  北京_北京F40                          北京          Pickup Truck             101   33    134
+0000  江铃_凯运                             江铃          Light Truck              100   33    133
+0127  东风小康_东风小康K02                      东风小康        Micro Truck              100   33    133
+0890  长安_览拓者                            长安          Pickup Truck             100   33    133
+0912  五菱汽车_五菱征途                         五菱汽车        Pickup Truck             100   33    133
+0942  五十铃_瑞迈                            五十铃         Pickup Truck             100   33    133
+0842  北汽制造_勇士皮卡                         北汽制造        Pickup Truck              99   33    132
+0821  福田_大将军G9                          福田          Pickup Truck              98   32    130
+0311  长安跨越_跨越王X1 EV                     长安跨越        Micro Truck               97   32    129
+0346  五菱汽车_五菱荣光小卡                       五菱汽车        Micro Truck               97   32    129
+0089  长城_风骏7                            长城          Pickup Truck              96   32    128
+0816  江铃_域虎7                            江铃          Pickup Truck              96   32    128
+0741  长城_风骏5                            长城          Pickup Truck              94   31    125
+0753  东风_锐骐6                            东风          Pickup Truck              94   31    125
+0965  江铃_顺威小卡                           江铃          Micro Truck               94   31    125
+0514  长安跨越_跨越王X1                        长安跨越        Micro Truck               93   31    124
+0880  长安跨越_新豹T3                         长安跨越        Micro Truck               91   30    121
+0055  江汽集团_江淮T8                         江汽集团        Pickup Truck              90   30    120
+0214  福田_祥菱M                            福田          Micro Truck               90   30    120
+0324  长安凯程_神骐T20                        长安凯程        Micro Truck               88   29    117
+0570  五菱汽车_五菱荣光新卡EV                     五菱汽车        Light Truck               88   29    117
+0687  开云汽车_开云电皮卡                        开云汽车        Pickup Truck              88   29    117
+0385  五十铃_D-MAX                         五十铃         Pickup Truck              87   29    116
+0918  长安跨越_跨越王X3                        长安跨越        Micro Truck               86   28    114
+0478  江汽集团_悍途                           江汽集团        Pickup Truck              85   28    113
+0654  上汽大通MAXUS_上汽大通MAXUS T90           上汽大通MAXUS   Pickup Truck              85   28    113
+0395  五菱汽车_五菱荣光新卡专用车                    五菱汽车        Micro Truck               84   28    112
+0909  Jeep_角斗士                          Jeep        Pickup Truck              80   26    106
+0081  五菱汽车_五菱之光小卡                       五菱汽车        Micro Truck               78   26    104
+0405  五菱汽车_五菱荣光新卡                       五菱汽车        Micro Truck               78   26    104
+0765  五十铃_翼放ES5                         五十铃         Light Truck               78   26    104
+0774  五十铃_翼放EC5                         五十铃         Light Truck               78   26    104
+0887  长安跨越_跨越者D5                        长安跨越        Micro Truck               78   26    104
+0245  长城_山海炮                            长城          Pickup Truck              77   25    102
+0655  日产_纳瓦拉                            日产          Pickup Truck              77   25    102
+0153  长安凯程_神骐T30                        长安凯程        Micro Truck               76   25    101
+0537  江铃_宝典                             江铃          Pickup Truck              72   24     96
+0779  菱势汽车_菱势黄金卡                        菱势汽车        Micro Truck               72   24     96
+0895  福特_福特F-150 Raptor                 福特          Pickup Truck              72   24     96
+0177  东风_锐骐                             东风          Pickup Truck              70   23     93
+0799  五菱汽车_五菱荣光小卡专用车                    五菱汽车        Micro Truck               70   23     93
+0967  长安跨越_跨越王X5                        长安跨越        Micro Truck               70   23     93
+0072  北汽制造_卡路里                          北汽制造        Pickup Truck              69   23     92
+0117  五菱汽车_五菱荣光小卡EV                     五菱汽车        Micro Truck               69   23     92
+0501  中兴_小老虎                            中兴          Pickup Truck              69   23     92
+0001  远程汽车_远程星智H                        远程汽车        Light Truck               67   22     89
+0241  五十铃_庆铃五十铃T17                      五十铃         Pickup Truck              67   22     89
+0550  长安凯程_神骐T10 EV                     长安凯程        Micro Truck               67   22     89
+0630  中国重汽VGV_VGV VX7                   中国重汽VGV     Pickup Truck              67   22     89
+0584  五十铃_翼放ES7                         五十铃         Light Truck               65   21     86
+0933  福特_Ranger                         福特          Pickup Truck              65   21     86
+0285  东风小康_东风小康K01                      东风小康        Micro Truck               62   20     82
+0546  五菱汽车_五菱电卡                         五菱汽车        Micro Truck               62   20     82
+0466  长安凯程_长安凯程F300                     长安凯程        Pickup Truck              60   20     80
+0737  雷达汽车_雷达RD6                        雷达汽车        Pickup Truck              60   20     80
+0825  东风_猛士M50                          东风          Pickup Truck              60   20     80
+
+====================================================================================================
+【MPV】 共 46 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0665  本田_艾力绅                            本田          Mid-size MPV             118   39    157
+0697  东风风行_菱智                           东风风行        Mid-size MPV             118   39    157
+0202  荣威_荣威iMAX8                        荣威          Upper Mid-size MPV       116   38    154
+0696  别克_别克GL8                          别克          Upper Mid-size MPV       114   38    152
+0315  大众_途安L                            大众          Compact MPV              113   37    150
+0141  江淮瑞风_瑞风M3                         江淮瑞风        Compact MPV              112   37    149
+0349  本田_奥德赛                            本田          Mid-size MPV             112   37    149
+0249  大众_威然                             大众          Upper Mid-size MPV       110   36    146
+0260  雷克萨斯_雷克萨斯LM                       雷克萨斯        Upper Mid-size MPV       109   36    145
+0223  东风风行_风行游艇                         东风风行        Mid-size MPV             108   36    144
+0914  五菱汽车_五菱宏光S3                       五菱汽车        Compact MPV              108   36    144
+0811  东风风光_风光330                        东风风光        Compact MPV              106   35    141
+0773  吉利汽车_嘉际                           吉利汽车        Compact MPV              105   35    140
+0436  广汽传祺_传祺M6                         广汽传祺        Compact MPV              103   34    137
+0060  上汽大通MAXUS_上汽大通MAXUS G50           上汽大通MAXUS   Compact MPV              101   33    134
+0201  广汽传祺_传祺M8                         广汽传祺        Upper Mid-size MPV       100   33    133
+0771  东风风行_风行M7                         东风风行        Upper Mid-size MPV        99   33    132
+0983  江淮瑞风_瑞风M4                         江淮瑞风        Upper Mid-size MPV        99   33    132
+0437  比亚迪_比亚迪D1                         比亚迪         Compact MPV               98   32    130
+0938  奔腾_奔腾NAT                          奔腾          Compact MPV               98   32    130
+0591  现代_库斯途                            现代          Upper Mid-size MPV        97   32    129
+0371  五菱汽车_凯捷Victory                    五菱汽车        Compact MPV               95   31    126
+0859  五菱汽车_五菱佳辰                         五菱汽车        Compact MPV               95   31    126
+0735  福特_途睿欧                            福特          Mid-size MPV              94   31    125
+0736  海马_海马7X                           海马          Compact MPV               93   31    124
+0915  江淮瑞风_瑞风L6 MAX                     江淮瑞风        Upper Mid-size MPV        92   30    122
+0789  五菱汽车_五菱宏光PLUS                     五菱汽车        Compact MPV               91   30    121
+0728  起亚_嘉华                             起亚          Upper Mid-size MPV        90   30    120
+0096  上汽大通MAXUS_上汽大通MAXUS G20           上汽大通MAXUS   Upper Mid-size MPV        89   29    118
+0467  丰田_格瑞维亚                           丰田          Upper Mid-size MPV        89   29    118
+0300  红旗_红旗HQ9                          红旗          Upper Mid-size MPV        88   29    117
+0600  比亚迪_宋MAX DM-i                     比亚迪         Compact MPV               88   29    117
+0039  丰田_赛那                             丰田          Upper Mid-size MPV        84   28    112
+0382  丰田_威尔法                            丰田          Upper Mid-size MPV        84   28    112
+0656  荣威_荣威iMAX8 EV                     荣威          Upper Mid-size MPV        84   28    112
+0109  奔驰_威霆                             奔驰          Upper Mid-size MPV        82   27    109
+0061  丰田_埃尔法                            丰田          Upper Mid-size MPV        80   26    106
+0166  魏牌_高山                             魏牌          Upper Mid-size MPV        79   26    105
+0796  奔驰_奔驰V级                           奔驰          Upper Mid-size MPV        78   26    104
+0886  五菱汽车_五菱征程                         五菱汽车        Upper Mid-size MPV        77   25    102
+0045  岚图_岚图梦想家 EV                       岚图          Upper Mid-size MPV        76   25    101
+0070  北汽制造_王牌M7 EV                      北汽制造        Upper Mid-size MPV        70   23     93
+0588  合创汽车_合创V09                        合创汽车        Upper Mid-size MPV        70   23     93
+0703  比亚迪_比亚迪M3                         比亚迪         Compact MPV               70   23     93
+0403  钧天汽车_钧天黑武士Youth                   钧天汽车        Mid-size MPV              64   21     85
+0481  本田_Freed                          本田          Small MPV                 64   21     85
+
+====================================================================================================
+【跑车】 共 37 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0183  保时捷_保时捷718                        保时捷         Sports Car               123   41    164
+0480  宝马_宝马Z4                           宝马          Sports Car               115   38    153
+0084  丰田_Supra                          丰田          Sports Car               113   37    150
+0188  阿斯顿·马丁_阿斯顿·马丁DB11                 阿斯顿·马丁      Sports Car               112   37    149
+0449  奔驰_奔驰SL级AMG                       奔驰          Sports Car               109   36    145
+0953  雷克萨斯_雷克萨斯LC                       雷克萨斯        Sports Car               109   36    145
+0879  法拉利_法拉利Roma                       法拉利         Sports Car               106   35    141
+0317  奔驰_AMG GT                         奔驰          Sports Car               105   35    140
+0325  奥迪_奥迪R8                           奥迪          Sports Car               105   35    140
+0126  捷豹_捷豹F-TYPE                       捷豹          Sports Car               104   34    138
+0905  法拉利_California T                  法拉利         Sports Car               104   34    138
+0244  特斯拉_Roadster                      特斯拉         Sports Car               103   34    137
+0147  摩根_摩根Plus 4                       摩根          Sports Car               102   34    136
+0891  路特斯_Evija                         路特斯         Sports Car               102   34    136
+0690  道奇_挑战者                            道奇          Sports Car               101   33    134
+0693  宾利_欧陆                             宾利          Sports Car                97   32    129
+0092  本田_本田S660                         本田          Sports Car                95   31    126
+0809  迈凯伦_迈凯伦Artura                     迈凯伦         Sports Car                95   31    126
+0734  阿斯顿·马丁_Vanquish                   阿斯顿·马丁      Sports Car                93   31    124
+0154  丰田_丰田86                           丰田          Sports Car                89   29    118
+0353  迈凯伦_迈凯伦675LT                      迈凯伦         Sports Car                89   29    118
+0426  福特_福特GT                           福特          Sports Car                89   29    118
+0704  日产_日产GT-R                         日产          Sports Car                89   29    118
+0129  保时捷_保时捷911                        保时捷         Sports Car                88   29    117
+0946  玛莎拉蒂_GranTurismo                  玛莎拉蒂        Sports Car                88   29    117
+0053  阿斯顿·马丁_阿斯顿·马丁DB12                 阿斯顿·马丁      Sports Car                87   29    116
+0056  玛莎拉蒂_玛莎拉蒂MC20                     玛莎拉蒂        Sports Car                86   28    114
+0149  路特斯_Emira                         路特斯         Sports Car                86   28    114
+0022  名爵_MG Cyberster                   名爵          Sports Car                82   27    109
+0465  福特_Mustang                        福特          Sports Car                82   27    109
+0852  阿斯顿·马丁_Vantage                    阿斯顿·马丁      Sports Car                79   26    105
+0631  Polestar极星_Polestar 1             Polestar极星  Sports Car                77   25    102
+0822  阿斯顿·马丁_阿斯顿·马丁DBS                  阿斯顿·马丁      Sports Car                77   25    102
+0843  科尼赛克_Gemera                       科尼赛克        Sports Car                75   25    100
+0206  兰博基尼_Revuelto                     兰博基尼        Sports Car                68   22     90
+0668  法拉利_法拉利296                        法拉利         Sports Car                65   21     86
+0691  昊铂_昊铂SSR                          昊铂          Sports Car                64   21     85
+
+====================================================================================================
+【微面】 共 22 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0323  金杯_新海狮X30L                        金杯          Van                      108   36    144
+0210  长安凯程_欧诺S                          长安凯程        Van                      106   35    141
+0692  金杯_小海狮X30                         金杯          Van                      103   34    137
+0165  东风小康_东风小康EC36                     东风小康        Van                      102   34    136
+0438  五菱汽车_五菱荣光V                        五菱汽车        Van                       97   32    129
+0204  瑞驰_瑞驰EC35                         瑞驰          Van                       96   32    128
+0273  长安凯程_长安之星9                        长安凯程        Van                       93   31    124
+0025  五菱汽车_五菱之光                         五菱汽车        Van                       91   30    121
+0365  开瑞_海豚EV                           开瑞          Van                       89   29    118
+0711  金杯_新海狮S                           金杯          Van                       88   29    117
+0875  长安凯程_睿行M60                        长安凯程        Van                       88   29    117
+0051  长安跨越_跨越星V5 EV                     长安跨越        Van                       84   28    112
+0269  东风小康_东风小康C36                      东风小康        Van                       84   28    112
+0158  北汽昌河_北汽EV5                        北汽昌河        Van                       81   27    108
+0974  东风小康_东风小康K07S                     东风小康        Van                       79   26    105
+0280  远程汽车_远程星享V                        远程汽车        Van                       73   24     97
+0220  东风_御风EM26                         东风          Van                       70   23     93
+0554  东风小康_东风小康K05S                     东风小康        Van                       69   23     92
+0798  长安凯程_长安之星9 EV                     长安凯程        Van                       69   23     92
+0130  长安跨越_跨越星V5                        长安跨越        Van                       67   22     89
+0431  橙仕_橙仕01                           橙仕          Van                       67   22     89
+0265  五菱汽车_五菱荣光EV                       五菱汽车        Van                       60   20     80
+
+====================================================================================================
+【轻客】 共 21 类
+====================================================================================================
+ID    车型名称                              品牌          车身                     train  val  total
+----------------------------------------------------------------------------------------------------
+0496  依维柯_依维柯得意                         依维柯         Bus                      109   36    145
+0565  江铃_特顺                             江铃          Bus                      109   36    145
+0108  福特_新世代全顺                          福特          Bus                      108   36    144
+0198  江汽集团_星锐                           江汽集团        Bus                      107   35    142
+0178  丰田_柯斯达                            丰田          Bus                      103   34    137
+0740  福田_风景G7                           福田          Bus                      103   34    137
+0926  福田_风景G9                           福田          Bus                      101   33    134
+0948  依维柯_依维柯欧胜                         依维柯         Bus                      101   33    134
+0383  福田_风景G5                           福田          Bus                      100   33    133
+0433  福田_图雅诺                            福田          Bus                      100   33    133
+0050  金杯_金杯快运                           金杯          Bus                       99   33    132
+0142  福特_全顺                             福特          Bus                       98   32    130
+0003  宇通客车_宇通T7                         宇通客车        Bus                       94   31    125
+0078  长安凯程_睿行M80                        长安凯程        Bus                       90   30    120
+0240  东风_御风                             东风          Bus                       87   29    116
+0552  金龙_凯锐浩克                           金龙          Bus                       79   26    105
+0639  金杯_金杯海狮                           金杯          Bus                       73   24     97
+0046  长安凯程_睿行M70                        长安凯程        Bus                       71   23     94
+0535  金杯_阁瑞斯                            金杯          Bus                       67   22     89
+0556  江铃_福顺                             江铃          Bus                       67   22     89
+0121  福田_图雅诺智蓝 EV                       福田          Bus                       64   21     85

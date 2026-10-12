@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "backend": "native",
+  "rasterEngine": "libreoffice",
+  "source": "saved",
+  "inputPath": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\识车档案CarDex_实训报告.docx",
+  "sourceSha256": "58ed314c62d1d159c848e0d71ffa9f550404ef72bc7222094d561efb32a35a21",
+  "dpi": 110,
+  "pageCount": 39,
+  "images": [
+    {
+      "index": 1,
+      "page": 6,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-v2\\page-0001.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 76277
+    },
+    {
+      "index": 2,
+      "page": 7,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-v2\\page-0002.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 78283
+    },
+    {
+      "index": 3,
+      "page": 21,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-v2\\page-0003.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 246222
+    },
+    {
+      "index": 4,
+      "page": 22,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-v2\\page-0004.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 117913
+    }
+  ],
+  "missingFonts": [
+    "楷体_GB2312",
+    "仿宋_GB2312",
+    "Liberation Serif",
+    "Linux Libertine G",
+    "Noto Sans",
+    "Liberation Sans"
+  ]
+}

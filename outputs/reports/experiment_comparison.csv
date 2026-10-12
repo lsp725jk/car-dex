@@ -1,0 +1,5 @@
+实验,骨干,输入,epochs,增强,类别权重,EMA,MixUp/CutMix,TTA,最佳epoch,未标定Macro-F1,最优τ,拒识阈值t,标定后Macro-F1,Accuracy,unknown检出率,已知类误拒率,训练集,验证集,用时(min)
+baseline_resnet18_160,resnet18,160,12,baseline_train,none,0,0,False,10,0.8475,0.0,0.4,0.85118,0.8287,0.8197,0.1031,7494,2422,28.3
+improved_resnet18_224,resnet18,224,18,strong_train,none,0.999,0.35,True,18,0.9482,0.1,0.2,0.95097,0.9377,0.9184,0.0398,7494,2422,86.6
+improved_resnet50_224,resnet50,224,14,strong_train,none,0.999,0.35,True,14,0.955,-0.2,0.2,0.95922,0.9447,0.8963,0.024,7494,2422,175.2
+weighted_resnet18_160,resnet18,160,12,baseline_train,inverse,0,0,False,12,0.8428,-0.4,0.5,0.85973,0.8105,0.5901,0.0474,7494,2422,32.2

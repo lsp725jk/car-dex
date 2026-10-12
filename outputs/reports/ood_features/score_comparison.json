@@ -1,0 +1,97 @@
+{
+  "target_ur": 0.98,
+  "rows": [
+    {
+      "score": "unknown_head + knn1_cos",
+      "auc": 0.97457536,
+      "kr": 0.244,
+      "ur": 0.98,
+      "known_accuracy": 0.756
+    },
+    {
+      "score": "unknown_head + proto_cos",
+      "auc": 0.9720992,
+      "kr": 0.2624,
+      "ur": 0.98,
+      "known_accuracy": 0.7376
+    },
+    {
+      "score": "三者之和",
+      "auc": 0.97413696,
+      "kr": 0.2752,
+      "ur": 0.98,
+      "known_accuracy": 0.7248
+    },
+    {
+      "score": "四者之和",
+      "auc": 0.97249024,
+      "kr": 0.28,
+      "ur": 0.98,
+      "known_accuracy": 0.72
+    },
+    {
+      "score": "unknown_head（现用）",
+      "auc": 0.97437632,
+      "kr": 0.3048,
+      "ur": 0.98,
+      "known_accuracy": 0.6952
+    },
+    {
+      "score": "energy + proto_cos",
+      "auc": 0.9719776,
+      "kr": 0.308,
+      "ur": 0.98,
+      "known_accuracy": 0.692
+    },
+    {
+      "score": "unknown_head + mahalanobis",
+      "auc": 0.970704,
+      "kr": 0.312,
+      "ur": 0.98,
+      "known_accuracy": 0.688
+    },
+    {
+      "score": "unknown_head + energy",
+      "auc": 0.97478592,
+      "kr": 0.3152,
+      "ur": 0.98,
+      "known_accuracy": 0.6848000000000001
+    },
+    {
+      "score": "knn1_cos（最近样本余弦）",
+      "auc": 0.96908608,
+      "kr": 0.3328,
+      "ur": 0.98,
+      "known_accuracy": 0.6672
+    },
+    {
+      "score": "msp（最大已知类 softmax）",
+      "auc": 0.9715072,
+      "kr": 0.3624,
+      "ur": 0.98,
+      "known_accuracy": 0.6376
+    },
+    {
+      "score": "energy（logsumexp 已知50类）",
+      "auc": 0.97222144,
+      "kr": 0.3776,
+      "ur": 0.98,
+      "known_accuracy": 0.6224000000000001
+    },
+    {
+      "score": "proto_cos（类原型余弦）",
+      "auc": 0.96171648,
+      "kr": 0.38,
+      "ur": 0.98,
+      "known_accuracy": 0.62
+    },
+    {
+      "score": "mahalanobis（收缩协方差）",
+      "auc": 0.95217792,
+      "kr": 0.4488,
+      "ur": 0.98,
+      "known_accuracy": 0.5512
+    }
+  ],
+  "significant_winners": []
+}

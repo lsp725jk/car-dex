@@ -1,0 +1,10 @@
+{
+  "predictions": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\predictions.csv",
+  "split": "val",
+  "n_records": 2422,
+  "n_matched": 2422,
+  "macro_f1": 0.9604,
+  "accuracy": 0.9496,
+  "unknown_detection_rate": 0.9286,
+  "known_false_reject_rate": 0.0344
+}

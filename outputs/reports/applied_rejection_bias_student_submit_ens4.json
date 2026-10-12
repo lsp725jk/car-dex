@@ -1,0 +1,11 @@
+{
+  "dir": "student_submit_ens4",
+  "theta": -2.5,
+  "prev_theta": 0.0,
+  "delta_applied": -2.5,
+  "pred_unknown_before": 0.883857315598549,
+  "pred_unknown_after": 0.9266021765417171,
+  "true_unknown_ratio": 0.939540507859734,
+  "known_claimed": 1214,
+  "true_known": 1000
+}

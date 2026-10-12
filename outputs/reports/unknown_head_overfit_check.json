@@ -1,0 +1,13 @@
+{
+  "auc_known_vs_seen_sources": 0.9965929705215419,
+  "auc_known_vs_unseen_classes": 0.9772722222222222,
+  "gap": 0.019320748299319734,
+  "n_leak": 588,
+  "n_honest": 600,
+  "n_known": 600,
+  "margin_means": {
+    "known": -6.885643482208252,
+    "leak": 3.323448657989502,
+    "honest": 1.3252391815185547
+  }
+}

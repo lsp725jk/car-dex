@@ -1,0 +1,10 @@
+{
+  "theta": -4.8,
+  "prev_theta": -5.6,
+  "delta_applied": 0.7999999999999998,
+  "pred_unknown_before": 0.9393591293833132,
+  "pred_unknown_after": 0.9249697702539299,
+  "true_unknown_ratio": 0.939540507859734,
+  "known_claimed": 1241,
+  "true_known": 1000
+}

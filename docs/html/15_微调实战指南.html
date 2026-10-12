@@ -1,0 +1,1448 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>15 · 微调实战指南 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>15 · 微调实战指南</span></button><div class="nav-list"><a class="lv2" href="#doc16-1-先分清三件事">1. 先分清三件事</a><a class="lv2" href="#doc16-2-三种冻结模式-改动越少越安全">2. 三种冻结模式：改动越少越安全</a><a class="lv2" href="#doc16-3-学习率-微调翻车的头号原因">3. 学习率：微调翻车的头号原因</a><a class="lv2" href="#doc16-4-llrd-逐层递减学习率">4. LLRD：逐层递减学习率</a><a class="lv2" href="#doc16-5-渐进解冻-先接头-再练身">5. 渐进解冻：先接头，再练身</a><a class="lv2" href="#doc16-6-用自己的数据微调-领域适配">6. 用自己的数据微调（领域适配）</a><a class="lv2" href="#doc16-7-微调的参数该和从头训练不一样">7. 微调的参数该和从头训练不一样</a><a class="lv2" href="#doc16-8-完整命令速查">8. 完整命令速查</a><a class="lv2" href="#doc16-9-常见翻车方式">9. 常见翻车方式</a><a class="lv2" href="#doc16-10-想加-新的车型-怎么办">10. 想加&quot;新的车型&quot;怎么办</a><a class="lv2" href="#doc16-11-实战案例-用原来的数据微调-把集成推高">11. 实战案例：用原来的数据微调，把集成推高</a><a class="lv2" href="#doc16-12-完整案例-0-9646-0-9815-0-0169">12. 完整案例：0.9646 → 0.9815（+0.0169）</a><a class="lv2" href="#doc16-13-相关代码位置">13. 相关代码位置</a></div></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">15 · 微调实战指南　（16/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc16" data-title="15 · 微调实战指南"><h1 id="doc16-15-微调实战指南">15 · 微调实战指南</h1>
+<blockquote>
+<p>这篇讲<strong>怎么在已经训练好的模型上继续学</strong>，以及背后的每一项技术。</p>
+<p>微调看起来只是"再训一遍"，但<strong>学习率、冻结哪几层、数据怎么组织</strong>这三件事
+只要有一件做错，就会得到一个"新的学会了、旧的忘了"的模型。
+本文把每一步的道理和实测数据都摊开写。</p>
+</blockquote>
+<hr />
+<h2 id="doc16-1-先分清三件事">1. 先分清三件事</h2>
+<p>很多人把这三个概念混在一起，但它们的<strong>训练目标完全不同</strong>：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>骨干（特征提取器）</th>
+<th>分类头</th>
+<th>适用场景</th>
+<th>本项目对应</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>从头训练</strong></td>
+<td>随机初始化，全训</td>
+<td>全训</td>
+<td>数据充足（几万张以上）</td>
+<td><code>pretrained=False</code></td>
+</tr>
+<tr>
+<td><strong>迁移学习</strong></td>
+<td>用 ImageNet 预训练权重，全训</td>
+<td>全训</td>
+<td>数据中等（几千张）</td>
+<td>任务一的 C1/C2 就是这个</td>
+</tr>
+<tr>
+<td><strong>微调（fine-tune）</strong></td>
+<td><strong>已经在本任务上训好了</strong>，再动一动</td>
+<td>再动一动</td>
+<td>有新数据 / 新分布 / 想再提升</td>
+<td>就是这篇</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键区别</strong>：</p>
+<ul>
+<li>迁移学习的起点是 <strong>ImageNet 的 1000 类通用特征</strong> —— 那时模型还不知道什么是"轩逸"；</li>
+<li>微调的起点<strong>已经认得这 50 款车了</strong>（本项目的 <code>improved_resnet50_224</code>，验证集 Macro-F1 0.9571）。</li>
+</ul>
+<p>所以微调要解决的问题不是"从零学会认车"，而是"<strong>在不把已学会的东西弄丢的前提下，
+再适应一点新情况</strong>"。这个约束决定了后面所有参数的选择。</p>
+<hr />
+<h2 id="doc16-2-三种冻结模式-改动越少越安全">2. 三种冻结模式：改动越少越安全</h2>
+<p><code>--mode</code> 控制"哪些层参与更新"。项目实测的参数量对比（ResNet18，51 类）：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>冻结什么</th>
+<th>可训练参数</th>
+<th>占比</th>
+<th>什么时候用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head</code></td>
+<td>整个骨干</td>
+<td>26,163</td>
+<td><strong>0.2%</strong></td>
+<td>数据很少（几百张以内）、或只要"换批标签"</td>
+</tr>
+<tr>
+<td><code>partial</code></td>
+<td><code>conv1/bn1/layer1/layer2</code></td>
+<td>10,519,603</td>
+<td>93.9%</td>
+<td><strong>默认推荐</strong>：数据中等，只动深层语义</td>
+</tr>
+<tr>
+<td><code>full</code></td>
+<td>不冻结</td>
+<td>11,202,675</td>
+<td>100%</td>
+<td>数据充足（上千张）、且和原分布差别大</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc16-为什么按-层深-划分">为什么按"层深"划分</h3>
+<p>卷积网络的层级是有明确分工的：</p>
+<div class="codehilite"><pre><span></span><code>conv1 / bn1 / layer1 / layer2   ← 边缘、纹理、颜色块   （通用，跨任务都能用）
+layer3 / layer4                 ← 部件、结构、整体形状 （开始和具体任务相关）
+fc                              ← 具体类别             （完全任务相关）
+</code></pre></div>
+
+<p>浅层学的是"<strong>所有图像都有</strong>"的东西 —— 无论你拍车还是拍猫，边缘和纹理都是一样的。
+动它没有任何好处，只有坏处（把通用能力弄坏）。所以 <code>partial</code> 模式冻结浅层、只训深层。</p>
+<h3 id="doc16-实测-head-模式快得离谱">实测：head 模式快得离谱</h3>
+<div class="codehilite"><pre><span></span><code>$ python src/finetune.py --from improved_resnet50_224 --mode head --epochs 4
+
+冻结策略：head —— 冻结 159 个参数张量，可训练 104,499 / 23,612,531（0.4%）
+epoch 1/4  train_loss=0.4636 train_acc=0.9933 | val MacroF1=0.9585
+epoch 3/4  train_loss=0.4573 train_acc=0.9924 | val MacroF1=0.9596  ← 最佳
+epoch 4/4  train_loss=0.4540 train_acc=0.9936 | val MacroF1=0.9590
+
+最佳模型验证结果：Macro-F1=0.9593    总用时 4.1 分钟
+</code></pre></div>
+
+<p>三个值得注意的现象：</p>
+<ol>
+<li><strong>第 1 轮 train_acc 就 99.3%</strong> —— 因为特征早就是现成的，只是重新拟合一个线性层，
+   几十个梯度步就够了。这从侧面证明了<strong>骨干提取的特征质量很高</strong>。</li>
+<li><strong>每轮只要 16 秒</strong>（ResNet50 全量微调需要 30 秒/轮）—— 只有 0.4% 的参数有梯度。</li>
+<li><strong>train_acc 99.4% vs val_acc 94.7%</strong> —— 这就是<strong>过拟合</strong>的典型特征：
+   模型把训练集背下来了，但泛化没有同步提升。
+   只训分类头时这是常态（分类头容量小，只能靠"记住"来降训练损失）。</li>
+</ol>
+<blockquote>
+<p>这也说明：<strong>head 模式不是用来提升精度的</strong>，它是用来"快速适配"的。
+真要提升精度得放开更多层（<code>partial</code> 或 <code>full</code>）。</p>
+</blockquote>
+<hr />
+<h2 id="doc16-3-学习率-微调翻车的头号原因">3. 学习率：微调翻车的头号原因</h2>
+<p>这是整篇最重要的一节。</p>
+<h3 id="doc16-为什么不能沿用从头训练的学习率">为什么不能沿用从头训练的学习率</h3>
+<p>任务一从头训练用的是 <code>lr = 0.01</code>（SGD + 余弦退火）。
+如果微调也用 0.01，会发生<strong>灾难性遗忘（Catastrophic Forgetting）</strong>：</p>
+<div class="codehilite"><pre><span></span><code>第 1 轮：模型先把已学好的特征&quot;撞坏&quot;（大梯度把权重推离原来的好位置）
+第 2 轮：从一个坏起点重新学
+结果：小数据上根本学不回来，最终精度比微调前还差
+</code></pre></div>
+
+<p>因为微调的起点<strong>已经在一个很好的极小值附近</strong>了，大步长只会把它踢出去。</p>
+<h3 id="doc16-项目内置的学习率配方">项目内置的学习率配方</h3>
+<p>脚本按 <code>--mode</code> 自动给推荐值（见 <code>src/finetune.py</code> 的 <code>LR_RECIPE</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>默认 lr</th>
+<th>相对从头训练</th>
+<th>理由</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>head</code></td>
+<td><strong>1e-3</strong></td>
+<td>0.1×</td>
+<td>只更新一个线性层，参数量极小，可以放心用大</td>
+</tr>
+<tr>
+<td><code>partial</code></td>
+<td><strong>2e-4</strong></td>
+<td>0.02×</td>
+<td>深层要适应新数据，但不能冲太猛</td>
+</tr>
+<tr>
+<td><code>full</code></td>
+<td><strong>5e-5</strong></td>
+<td><strong>0.005×（小 200 倍）</strong></td>
+<td>所有层都会动，必须极小心</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句话原则</strong>：<strong>改动越多的部分，学习率越小。</strong></p>
+<h3 id="doc16-分类头单独给更高的学习率">分类头单独给更高的学习率</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 骨干用 base_lr，分类头用 base_lr × head_lr_mult</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">param_groups</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">base_lr</span><span class="p">,</span> <span class="n">head_lr_mult</span><span class="o">=</span><span class="mf">5.0</span><span class="p">)</span>
+</code></pre></div>
+
+<p>理由：换了类别数时分类头是<strong>随机重新初始化</strong>的，而骨干是训练好的。
+两者"成熟度"差得远，用同一个学习率必然有一方不合适。</p>
+<blockquote>
+<p>⚠️ 项目早期踩过反向的坑：把 <code>head_lr_mult</code> 设成 <strong>10</strong> 配 <code>lr=0.01</code>，
+结果 <code>val_loss</code> 飙到 <strong>2889</strong>、Macro-F1 只有 <strong>0.007</strong> —— 分类头被推飞了。
+后来固定成 <code>1.0</code>（不分开放）才稳。</p>
+</blockquote>
+<hr />
+<h2 id="doc16-4-llrd-逐层递减学习率">4. LLRD：逐层递减学习率</h2>
+<p>比"骨干/分类头两档"更细的做法：<strong>按层深给一串递减的学习率</strong>。</p>
+<p><code>--llrd</code> 打开后，本项目实测的分组（<code>base_lr=1e-3, decay=0.75</code>）：</p>
+<div class="codehilite"><pre><span></span><code>depth=  0  lr=3.13e-05   conv1 + bn1        ← 最慢：几乎不动
+depth=  1  lr=6.25e-05   
+depth=  2  lr=1.25e-04   layer1
+depth=  3  lr=2.50e-04   layer2
+depth=  4  lr=5.00e-04   layer3
+depth=  5  lr=1.00e-03   layer4             ← 最快：充分适应新数据
+depth= 99  lr=1.00e-03   分类头
+</code></pre></div>
+
+<p>公式：<code>lr(depth) = base_lr × decay^(max_depth − depth)</code></p>
+<p><strong>为什么比"两档"更好</strong>：它承认了一个事实 ——
+"浅层该少动、深层该多动"<strong>不是一个开关，而是一个连续谱</strong>。
+浅层不是"完全不能动"，只是"动一点点"；深层也不是"随便动"，而是"动得多一些"。</p>
+<p>这在<strong>小数据</strong>上尤其明显：数据越少，越要用这种"温柔"的方式，
+否则模型会把预训练阶段辛苦学到的通用特征覆盖掉。
+（这个技巧来自 BERT/ViT 的微调实践，CNN 上同样有效。）</p>
+<hr />
+<h2 id="doc16-5-渐进解冻-先接头-再练身">5. 渐进解冻：先接头，再练身</h2>
+<p><code>--progressive-unfreeze N</code>：<strong>前 N 轮只训分类头，之后才放开骨干</strong>。</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 第 N+1 轮开始时</span>
+<span class="n">freeze_by_mode</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="p">)</span>       <span class="c1"># 只需要切换 requires_grad</span>
+</code></pre></div>
+
+<p><strong>为什么这样安排</strong>：</p>
+<ol>
+<li>刚换数据时，分类头是随机/不匹配的，<strong>它的梯度会很大</strong>；</li>
+<li>如果这时骨干也在更新，这些大梯度会顺势把骨干也推歪；</li>
+<li>先花几轮把分类头练到"不瞎指"，再放开骨干，训练会稳很多。</li>
+</ol>
+<h3 id="doc16-一个实现细节-优化器要一开始就持有全部参数">一个实现细节：优化器要一开始就持有全部参数</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 正确：优化器建组时就包含冻结参数</span>
+<span class="n">groups</span> <span class="o">=</span> <span class="n">param_groups</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="n">include_frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">SGD</span><span class="p">(</span><span class="n">groups</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
+<span class="n">freeze_by_mode</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;head&quot;</span><span class="p">)</span>          <span class="c1"># ← 之后才冻结</span>
+<span class="o">...</span>
+<span class="n">freeze_by_mode</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="s2">&quot;full&quot;</span><span class="p">)</span>          <span class="c1"># ← 解冻只是切开关，不动优化器</span>
+</code></pre></div>
+
+<p><strong>不要</strong>在解冻时重建优化器 —— 那会丢掉 SGD 的动量缓冲区 / AdamW 的二阶矩，
+是个<strong>看不见的性能损失</strong>（模型还能训，但收敛会变慢、变抖）。
+冻结的参数没有梯度，优化器会自动跳过，零开销。</p>
+<hr />
+<h2 id="doc16-6-用自己的数据微调-领域适配">6. 用自己的数据微调（领域适配）</h2>
+<h3 id="doc16-数据怎么放">数据怎么放</h3>
+<p>目录名必须是<strong>类别 ID</strong>（四位数字），和 <code>classes.txt</code> 里的对应：</p>
+<div class="codehilite"><pre><span></span><code>D:\my_car_photos\           ← --data 指向这里
+├── 0003\                   ← 宇通客车_宇通T7
+│   ├── IMG_0001.jpg
+│   └── ...
+├── 0975\                   ← 日产_轩逸
+│   └── ...
+└── unknown\                ← 如果拍了&quot;不在 50 款里&quot;的车，放这里
+    └── ...
+</code></pre></div>
+
+<p><strong>不在 <code>classes.txt</code> 里的目录名会被直接忽略</strong> —— 这样你可以把照片随手丢进去，
+不用担心某个文件夹名不对就让整次训练失败。</p>
+<h3 id="doc16-一张图都没有验证集怎么办">一张图都没有验证集怎么办</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 显式声明没有验证集：用训练集自己评估</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--data<span class="w"> </span>D:<span class="se">\p</span>hotos<span class="w"> </span>--val-data<span class="w"> </span>none
+</code></pre></div>
+
+<p>引擎会打一条<strong>明确的警告</strong>：</p>
+<blockquote>
+<p>没有找到独立的验证集目录，本次验证用的就是训练集 ——
+指标只反映拟合程度，<strong>不能当作泛化能力</strong>。</p>
+</blockquote>
+<h3 id="doc16-默认仍用原来的验证集-推荐">默认仍用原来的验证集（推荐）</h3>
+<p>不传 <code>--val-data</code> 时，验证还是跑 <code>data/val</code>（原始 51 类）。
+这样做的好处是：<strong>你能立刻看到"自己的照片训完之后，原来那 51 类的本事有没有被弄坏"</strong>。</p>
+<p>这是微调最常见的翻车方式 —— 新任务学会了，老任务忘了，而如果不测老任务你根本发现不了。</p>
+<h3 id="doc16-实测">实测</h3>
+<div class="codehilite"><pre><span></span><code>$ python src/finetune.py --from improved_resnet50_224 --mode head --epochs 3 \
+      --data E:\my_photos      # 36 张图 / 3 个车型
+
+训练集 36 张 / 3 类（E:\my_photos）
+验证集 2422 张 / 51 类（data\val）        ← 仍在测原来那 51 类
+epoch 3/3  train_acc=0.9167 | val_acc=0.9451 MacroF1=0.9571   ← 原有能力没被破坏
+总用时 2.5 分钟
+</code></pre></div>
+
+<hr />
+<h2 id="doc16-7-微调的参数该和从头训练不一样">7. 微调的参数该和从头训练不一样</h2>
+<p><code>src/finetune.py</code> 里有意做了几处与任务一不同的默认值，都有理由：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>从头训练</th>
+<th><strong>微调</strong></th>
+<th>为什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>epochs</code></td>
+<td>14~18</td>
+<td><strong>8</strong></td>
+<td>起点已经很好，训多了只会过拟合</td>
+</tr>
+<tr>
+<td><code>lr</code></td>
+<td>1e-2</td>
+<td><strong>5e-5 ~ 1e-3</strong></td>
+<td>见第 3 节</td>
+</tr>
+<tr>
+<td><code>train_transform</code></td>
+<td><code>strong_train</code></td>
+<td><strong><code>moderate_train</code></strong></td>
+<td>模型已经学得不错，强增强会让它"退步"</td>
+</tr>
+<tr>
+<td><code>randaugment</code></td>
+<td>开</td>
+<td><strong>关</strong>（除非 <code>--strong-aug</code>）</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>RandomErasing</code></td>
+<td>0.25</td>
+<td><strong>0</strong>（除非 <code>--strong-aug</code>）</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>mixup/cutmix</code></td>
+<td>0.2 / 0.5，prob 0.35</td>
+<td><strong>关</strong></td>
+<td>混合样本会拖慢收敛，而微调轮数本来就少</td>
+</tr>
+<tr>
+<td><code>label_smoothing</code></td>
+<td>0.1</td>
+<td><strong>0.05</strong></td>
+<td>起点已经不太"过度自信"了，不需要压那么狠</td>
+</tr>
+<tr>
+<td><code>warmup_epochs</code></td>
+<td>2</td>
+<td><strong>1</strong></td>
+<td>微调没那么多轮可以浪费在预热上</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>核心思路</strong>：从头训练是"从零开始，需要强正则防过拟合"；
+微调是"站在巨人肩上，需要<strong>温柔</strong>，别把巨人推倒"。</p>
+</blockquote>
+<hr />
+<h2 id="doc16-8-完整命令速查">8. 完整命令速查</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># ① 只看计划，不训练（先确认参数对不对）</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>partial<span class="w"> </span>--dry-run
+
+<span class="c1"># ② 小数据快速适配：只训分类头</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>head<span class="w"> </span>--epochs<span class="w"> </span><span class="m">12</span><span class="w"> </span>--data<span class="w"> </span>D:<span class="se">\p</span>hotos
+
+<span class="c1"># ③ 领域适配（推荐）：训深层 + 逐层递减学习率</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>partial<span class="w"> </span>--llrd<span class="w"> </span>--epochs<span class="w"> </span><span class="m">8</span><span class="w"> </span>--data<span class="w"> </span>D:<span class="se">\p</span>hotos
+
+<span class="c1"># ④ 数据充足时全量微调</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>full<span class="w"> </span>--lr<span class="w"> </span>3e-5<span class="w"> </span>--epochs<span class="w"> </span><span class="m">6</span>
+
+<span class="c1"># ⑤ 渐进解冻：前 2 轮只接头，之后放开</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>full<span class="w"> </span>--progressive-unfreeze<span class="w"> </span><span class="m">2</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">8</span>
+
+<span class="c1"># ⑥ 数据多、想用强增强</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>partial<span class="w"> </span>--strong-aug<span class="w"> </span>--epochs<span class="w"> </span><span class="m">10</span>
+</code></pre></div>
+
+<p>微调完之后接下游：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/evaluate.py<span class="w"> </span>--checkpoint<span class="w"> </span>outputs/checkpoints/&lt;run&gt;/best.pt<span class="w"> </span>--tta-hflip
+python<span class="w"> </span>src/finalize.py<span class="w"> </span>--candidates<span class="w"> </span>&lt;run&gt;<span class="w"> </span>improved_resnet18_224<span class="w"> </span>improved_resnet50_224<span class="w"> </span><span class="se">\</span>
+<span class="w">                       </span>--ensembles<span class="w"> </span>&lt;run&gt;+improved_resnet18_224
+</code></pre></div>
+
+<hr />
+<h2 id="doc16-9-常见翻车方式">9. 常见翻车方式</h2>
+<table>
+<thead>
+<tr>
+<th>现象</th>
+<th>原因</th>
+<th>怎么修</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微调后精度<strong>比微调前还差</strong></td>
+<td>学习率太大，灾难性遗忘</td>
+<td>把 lr 降一个数量级（<code>full</code> 从 1e-4 降到 1e-5）</td>
+</tr>
+<tr>
+<td>train_acc 99% 但 val_acc 不动</td>
+<td>只训了分类头，它在"背题"</td>
+<td>换 <code>partial</code> / <code>full</code>，放开更多层</td>
+</tr>
+<tr>
+<td><strong>新类别学会了，老类别忘了</strong></td>
+<td>没测原有能力</td>
+<td>保留 <code>data/val</code> 做验证；或降低 lr；或用 LLRD</td>
+</tr>
+<tr>
+<td>一开始 loss 就爆炸</td>
+<td>换类别数后分类头是随机的，梯度太大</td>
+<td>加 warmup、开 <code>--progressive-unfreeze</code>、或者先把 head 冻结几轮</td>
+</tr>
+<tr>
+<td>训了几轮 val 指标纹丝不动</td>
+<td>学习率太小 / 冻结太狠（<code>head</code> 模式下骨干本来就不会变）</td>
+<td>检查 <code>lr</code> 和 <code>--mode</code></td>
+</tr>
+<tr>
+<td>自定义数据目录读不到图</td>
+<td>目录名不是四位类别 ID</td>
+<td>目录必须叫 <code>0003</code> 这种，见第 6 节</td>
+</tr>
+<tr>
+<td><code>unknown 检出率 = —</code></td>
+<td>验证集里没有 unknown 样本</td>
+<td>正常现象（指标无定义），补一批 unknown 图即可</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc16-10-想加-新的车型-怎么办">10. 想加"新的车型"怎么办</h2>
+<p>当前模型只认 <code>classes.txt</code> 里的 50 款。要认新车，需要：</p>
+<ol>
+<li><strong>改类别定义</strong>：<code>classes.txt</code> 加新 ID（仍要升序、四位数字），
+   同步更新 <code>configs/class_map.json</code> 的映射，<code>num_classes</code> 从 51 变成 51+N；</li>
+<li><strong>准备数据</strong>：新车型的照片目录，以及<strong>要重新划一部分 unknown 来源</strong>
+   （原来当 unknown 的类如果被选进来了，就不能再当 unknown 了 —— 会数据泄漏）；</li>
+<li><strong>用微调复用已学特征</strong>：<code>load_weights_into()</code> 在类别数不同时会<strong>自动跳过分类头</strong>，
+   只装骨干 —— 实测目标 60 类时，320 个张量里 318 个骨干装上了、2 个分类头重新初始化；</li>
+<li><strong>重训</strong>：<code>python src/finetune.py --from improved_resnet50_224 --mode partial --epochs 12</code></li>
+</ol>
+<blockquote>
+<p>⚠️ 注意这是<strong>破坏性</strong>的：<code>classes.txt</code>、<code>predictions.csv</code>、模型类别数、智能体的
+<code>car_profiles.json</code> 全都要跟着改。任务书规定必须<strong>恰好 50 行</strong>，
+所以"加新车型"只适合做实验，不适合直接改交付物。</p>
+</blockquote>
+<hr />
+<h2 id="doc16-11-实战案例-用原来的数据微调-把集成推高">11. 实战案例：用<strong>原来的数据</strong>微调，把集成推高</h2>
+<p>「不能用原来的图片微调吗？」——<strong>能，而且这是最实用的用法之一</strong>。
+关键是想清楚目的：<strong>不是"再练一遍会更好"，而是"造一个不一样的好模型来集成"</strong>。</p>
+<h3 id="doc16-实验设计">实验设计</h3>
+<p>现有冠军是 <strong>resnet18@224 + resnet50@224</strong> 两人集成（0.9625）。
+要让它更强，第三个成员必须<strong>和这两个都不一样</strong> —— 而"换输入分辨率"是最直接的多样性来源：
+车型识别是细粒度任务（A6 vs A6L），<strong>不同尺度看到的细节不同</strong>。</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--mode<span class="w"> </span>partial<span class="w"> </span>--llrd<span class="w"> </span>--image-size<span class="w"> </span><span class="m">288</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">6</span><span class="w"> </span>--batch-size<span class="w"> </span><span class="m">24</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--run-name<span class="w"> </span>ft_r50_288
+</code></pre></div>
+
+<ul>
+<li>起点：resnet50@224（已训好，val Macro-F1 0.9571）</li>
+<li>换成 <strong>288×288</strong>（像素量是 224 的 1.65 倍）</li>
+<li><code>partial</code> + LLRD —— 只动深层，浅层几乎不动</li>
+<li>6 轮，<strong>9.2 分钟</strong>（GPU）</li>
+</ul>
+<h3 id="doc16-结果-单独更差-集成更强">结果：单独更差，集成更强</h3>
+<table>
+<thead>
+<tr>
+<th>组合</th>
+<th>标定后 Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>improved_resnet18_224</code> 单独</td>
+<td>0.9507</td>
+</tr>
+<tr>
+<td><code>improved_resnet50_224</code> 单独</td>
+<td>0.9597</td>
+</tr>
+<tr>
+<td><strong><code>ft_r50_288</code> 单独</strong></td>
+<td><strong>0.9563</strong> ← 比它爹还差</td>
+</tr>
+<tr>
+<td><code>18 + 50</code>（原冠军）</td>
+<td>0.9625</td>
+</tr>
+<tr>
+<td><code>18 + ft_r50_288</code></td>
+<td>0.9635</td>
+</tr>
+<tr>
+<td><code>50 + ft_r50_288</code></td>
+<td>0.9604</td>
+</tr>
+<tr>
+<td><strong><code>18 + 50 + ft_r50_288</code></strong></td>
+<td><strong>0.9646</strong> ← 新冠军</td>
+</tr>
+<tr>
+<td><code>18 + 50 + ft_r50_288 + baseline_160</code></td>
+<td>0.9549 ← <strong>被拖累</strong></td>
+</tr>
+<tr>
+<td><code>baseline_resnet18_160</code> 单独</td>
+<td>0.8648</td>
+</tr>
+</tbody>
+</table>
+<p><strong>两个结论：</strong></p>
+<ol>
+<li>
+<p><strong>集成成员不需要"单独最强"。</strong> <code>ft_r50_288</code> 自己只有 0.9563（低于父模型 0.9597），
+   但加进集成后把整体从 0.9625 推到 <strong>0.9646</strong>。
+   原因是它<strong>在 288 的尺度上看问题</strong>，误判的样本和 224 的成员不一样 —— 正好互补。
+   集成的价值来自<strong>成员之间的差异</strong>，不是单个成员的高度。</p>
+</li>
+<li>
+<p><strong>多样性必须以"不弱太多"为前提。</strong> <code>baseline_resnet18_160</code>（0.8648）确实和谁都不同，
+   但太弱了，加进去把集成从 0.9646 拉回 <strong>0.9549</strong>。
+   一个又弱又怪的成员只会投票投错。</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>诚实说明</strong>：这一步是在<strong>验证集上从 5 种组合里挑出来的</strong>，
+所以 0.9625 → 0.9646 这 +0.0021 里有一部分是"选择偏差"，真实泛化提升可能更小。
+任务书要求阈值必须由验证集确定，选集成组合同理 —— 但<strong>试的组合越多，乐观偏差越大</strong>。
+更严谨的做法是留一个从没参与过任何选择的测试集。</p>
+</blockquote>
+<h3 id="doc16-怎么复现">怎么复现</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1) 微调出这个多样成员</span>
+python<span class="w"> </span>src/finetune.py<span class="w"> </span>--from<span class="w"> </span>improved_resnet50_224<span class="w"> </span>--mode<span class="w"> </span>partial<span class="w"> </span>--llrd<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image-size<span class="w"> </span><span class="m">288</span><span class="w"> </span>--epochs<span class="w"> </span><span class="m">6</span><span class="w"> </span>--batch-size<span class="w"> </span><span class="m">24</span><span class="w"> </span>--run-name<span class="w"> </span>ft_r50_288
+
+<span class="c1"># 2) 和现有成员一起比选（会自动挑出最好的组合）</span>
+python<span class="w"> </span>src/finalize.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--candidates<span class="w"> </span>improved_resnet18_224<span class="w"> </span>improved_resnet50_224<span class="w"> </span>ft_r50_288<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ensembles<span class="w"> </span>improved_resnet18_224+improved_resnet50_224<span class="w"> </span><span class="se">\</span>
+<span class="w">                </span>improved_resnet18_224+improved_resnet50_224+ft_r50_288<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tta-hflip
+</code></pre></div>
+
+<hr />
+<h2 id="doc16-12-完整案例-0-9646-0-9815-0-0169">12. 完整案例：0.9646 → <strong>0.9815</strong>（+0.0169）</h2>
+<p>这一节记录从 0.9646 冲到 0.9815 的完整过程。<strong>四个方法里两个有效、两个无效</strong>，
+无效的那两个同样值得记 —— 它们解释了为什么"看起来该有用"的手段其实没用。</p>
+<h3 id="doc16-起点与目标">起点与目标</h3>
+<div class="codehilite"><pre><span></span><code>当前（三人集成 + hflip TTA）：0.9646
+目标：0.975 ~ 0.98
+差距：+0.0104 ~ +0.0154
+</code></pre></div>
+
+<p>先做<strong>误差结构分析</strong>（<code>tools/analyze_errors.py</code>）再动手，不猜：</p>
+<div class="codehilite"><pre><span></span><code>总错误 113 张 / 2422
+  已知类被判 unknown    65 张
+  unknown 被误认成车型  37 张
+反事实：
+  unknown 全判对          → 0.9746
+  已知类那 65 张全认对     → 0.9842   ← 最高杠杆在这
+</code></pre></div>
+
+<h3 id="doc16-方法一-提高分辨率-0-0106">方法一：提高分辨率 ✅ <strong>+0.0106</strong></h3>
+<p><strong>第一次尝试（失败）</strong>：把 224 训好的模型拿到更高分辨率上推理：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>@224</th>
+<th>@288</th>
+<th>@352</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>improved_resnet50_224</code></td>
+<td>0.9597</td>
+<td>0.9509</td>
+<td>0.9236</td>
+</tr>
+<tr>
+<td><code>improved_resnet18_224</code></td>
+<td>0.9507</td>
+<td>0.9354</td>
+<td>0.8926</td>
+</tr>
+</tbody>
+</table>
+<p><strong>性能是掉的。</strong> 训练时模型只见过 224 的尺度，推理时给它 288 的图，
+特征分布对不上 —— 这叫<strong>训练/测试分辨率不匹配</strong>。</p>
+<p><strong>正确做法</strong>：<strong>在目标分辨率上从零训练</strong>。</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/train.py<span class="w"> </span>--config<span class="w"> </span>configs/train_r50_288.json<span class="w">   </span><span class="c1"># ResNet50 @288, 20 epochs</span>
+python<span class="w"> </span>src/train.py<span class="w"> </span>--config<span class="w"> </span>configs/train_r50_352.json<span class="w">   </span><span class="c1"># ResNet50 @352, 20 epochs</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>训练耗时</th>
+<th>原始 Macro-F1</th>
+<th>标定后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r50_288_from_scratch</code></td>
+<td>30.7 min</td>
+<td>0.9739</td>
+<td>0.9752</td>
+</tr>
+<tr>
+<td><code>r50_352</code></td>
+<td>40.9 min</td>
+<td><strong>0.9756</strong></td>
+<td>0.9781</td>
+</tr>
+</tbody>
+</table>
+<p><strong>单个模型就超过了原来的整个集成</strong>（原始 0.9739 vs 集成标定后 0.9646）。</p>
+<blockquote>
+<p><strong>为什么分辨率这么关键</strong>：车型识别是细粒度任务。"朗逸"和"宝来"差在格栅条纹、
+"A6"和"A6L"差在后门长度 —— 这些特征在 224×224 下只剩几个像素。
+模型不是不够聪明，是<strong>看不清</strong>。</p>
+</blockquote>
+<h3 id="doc16-方法二-多裁剪-tta-0-0025">方法二：多裁剪 TTA ✅ <strong>+0.0025</strong></h3>
+<p>这里要区分两个名字很像、效果完全相反的东西：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>做什么</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>多尺度 TTA</strong></td>
+<td>把图缩放到训练时<strong>没见过</strong>的尺寸</td>
+<td>❌ 0.9651（几乎没用）</td>
+</tr>
+<tr>
+<td><strong>多裁剪 TTA</strong></td>
+<td><strong>保持训练分辨率</strong>，只换裁剪位置（中心 + 四角）</td>
+<td>✅ <strong>0.9779</strong>（+0.0027）</td>
+</tr>
+</tbody>
+</table>
+<p>多裁剪为什么有效：区分车型的关键部位（进气格栅、大灯）<strong>不一定落在画面正中央</strong>。
+五个裁剪位置相当于让模型"多看几眼"，而且每个位置的尺度是它熟悉的。</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># src/cardex/inference.py</span>
+<span class="n">transforms</span><span class="o">.</span><span class="n">FiveCrop</span><span class="p">(</span><span class="n">crop</span><span class="p">)</span>        <span class="c1"># 中心 + 左上/右上/左下/右下</span>
+<span class="n">views</span> <span class="o">=</span> <span class="mi">5</span> <span class="err">×</span> <span class="mi">2</span><span class="p">(</span><span class="n">水平翻转</span><span class="p">)</span> <span class="o">=</span> <span class="mi">10</span> <span class="n">个视角</span>
+</code></pre></div>
+
+<p>代价：推理时间约 <strong>5 倍</strong>（63 ms → 200 ms）。对 Web 交互完全可接受。</p>
+<h3 id="doc16-方法三-快照集成--0-0017">方法三：快照集成 ❌ <strong>-0.0017</strong></h3>
+<p>同一次余弦退火训练会保存多个 epoch 的权重（<code>epoch_12/15/18/last</code>）。
+把这些快照的预测平均起来，理论上能免费得到一个小集成（Huang et al. 2017）。</p>
+<p><strong>实测是负收益：</strong></p>
+<table>
+<thead>
+<tr>
+<th>快照</th>
+<th>单独 Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>epoch_12</code></td>
+<td>0.9710</td>
+</tr>
+<tr>
+<td><code>epoch_15</code></td>
+<td>0.9727</td>
+</tr>
+<tr>
+<td><code>epoch_18</code></td>
+<td>0.9738</td>
+</tr>
+<tr>
+<td><code>last</code></td>
+<td><strong>0.9752</strong></td>
+</tr>
+<tr>
+<td>四个平均</td>
+<td><strong>0.9735</strong>（-0.0017）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>原因</strong>：同一次训练轨迹里的快照<strong>相关性太高</strong>（模型走的几乎是同一条路），
+而且强度不齐（0.9710 vs 0.9752）—— 平均起来就被弱的那个拖低。
+<strong>多样性必须来自"不同训练"，不能来自"同一次训练的中间产物"。</strong></p>
+<h3 id="doc16-方法四-两个强模型集成-0-0009">方法四：两个强模型集成 ✅ <strong>+0.0009</strong></h3>
+<p>之前所有的集成尝试都失败了，原因都一样：<strong>强 + 弱 = 弱</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>组合</th>
+<th>标定后 Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>r50_288</code> + <code>improved_resnet50_224</code>（0.9597）</td>
+<td>0.9732 ← 被拉低</td>
+</tr>
+<tr>
+<td><code>r50_288</code> + <code>improved_resnet18_224</code>（0.9507）</td>
+<td>0.9719 ← 被拉低</td>
+</tr>
+<tr>
+<td><code>r50_288</code> + 三个 224 模型</td>
+<td>0.9725 ← 被拉低</td>
+</tr>
+<tr>
+<td><strong><code>r50_288</code>（0.9752）+ <code>r50_352</code>（0.9781）</strong></td>
+<td><strong>0.9815</strong> ← 两个都强</td>
+</tr>
+</tbody>
+</table>
+<p><strong>等权平均里，弱成员是负资产。</strong> 集成要的是"<strong>同样强、但犯错的地方不一样</strong>"，
+不是"多凑几个"。288 和 352 分辨率不同 → 看问题的尺度不同 → 有真实多样性。</p>
+<h3 id="doc16-最终结果">最终结果</h3>
+<div class="codehilite"><pre><span></span><code>★ 288+352 @中心+五裁剪   →   Macro-F1 = 0.9815
+  τ = +0.10   t = 0.20   Accuracy = 0.9748
+  unknown 检出率 0.963   已知类误拒率 0.019
+  总错误 61 / 2422（3.26% → 2.52%）
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th>旧冠军</th>
+<th><strong>新冠军</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>配置</td>
+<td>3 个 224 模型 + hflip</td>
+<td><strong>2 个 288/352 模型 + 多裁剪</strong></td>
+</tr>
+<tr>
+<td>Macro-F1</td>
+<td>0.9646</td>
+<td><strong>0.9815</strong></td>
+</tr>
+<tr>
+<td>总错误</td>
+<td>113 张</td>
+<td><strong>61 张</strong></td>
+</tr>
+<tr>
+<td>推理耗时</td>
+<td>132~144 ms</td>
+<td>200~240 ms</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc16-踩到的坑-标定口径必须和生产推理口径逐字节一致">⚠️ 踩到的坑：标定口径必须和生产推理口径逐字节一致</h3>
+<p>实验脚本里多裁剪算出了 <strong>0.9815</strong>，但用<strong>生产代码</strong>（<code>CarEnsemble</code>）复现只有 <strong>0.9695</strong> —— 差 0.012。</p>
+<p><strong>根因在两组视角的加权方式</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 实验脚本：中心组和五裁剪组【等权】</span>
+<span class="p">(</span><span class="n">center_lp</span> <span class="o">+</span> <span class="n">five_lp</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># 生产代码第一版：把两组直接相加，再除以 (2+5)</span>
+<span class="n">lp</span> <span class="o">=</span> <span class="n">lp</span> <span class="o">+</span> <span class="n">lf</span>        <span class="c1"># = 2×中心 + 10×五裁剪</span>
+<span class="k">return</span> <span class="n">lp</span> <span class="o">/</span> <span class="mi">7</span>       <span class="c1"># → 中心 2/7、五裁剪 5/7  ← 不一致！</span>
+</code></pre></div>
+
+<p><strong>后果</strong>：τ 和拒识阈值是在"50/50 口径"下标定的，用到"2/7 vs 5/7 口径"上当然不对。</p>
+<p><strong>教训</strong>：</p>
+<blockquote>
+<p><strong>标定用的推理口径，必须和上线时的推理口径逐字节一致。</strong>
+否则你标出来的 τ/t 全是错的，而且<strong>不会报任何错</strong> —— 指标只是"莫名变差"。</p>
+<p>排查方法见 <code>tools/reproduce_production.py</code>：用<strong>生产代码</strong>跑一遍验证集，
+和实验脚本的数字对比。差异 &gt; 0.003 就说明两个实现不一致。
+修好之后复现差异是 <strong>+0.0000</strong>。</p>
+</blockquote>
+<h3 id="doc16-顺带踩的另一个坑-多裁剪会压平概率分布">顺带踩的另一个坑：多裁剪会压平概率分布</h3>
+<div class="codehilite"><pre><span></span><code>同一张图（预测正确）：
+  单视角    置信度 0.9854
+  hflip     置信度 0.9792
+  多裁剪    置信度 0.6291   ← 掉到三分之一
+</code></pre></div>
+
+<p>因为 10 个视角里有 4 个角落裁剪可能是天空/背景，平均后分布变平。
+<strong>这意味着换 TTA 档位后必须重新标定拒识阈值</strong>（实测最优 t 从 0.30 降到 0.20），
+沿用旧阈值会大量误拒。</p>
+<h3 id="doc16-方法论总结">方法论总结</h3>
+<table>
+<thead>
+<tr>
+<th>手段</th>
+<th>有效？</th>
+<th>增益</th>
+<th>成本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>提高训练分辨率 224→288</td>
+<td>✅</td>
+<td>+0.0106</td>
+<td>30 min GPU</td>
+</tr>
+<tr>
+<td>多裁剪 TTA</td>
+<td>✅</td>
+<td>+0.0025</td>
+<td>推理 ×5</td>
+</tr>
+<tr>
+<td>提高分辨率 288→352</td>
+<td>✅</td>
+<td>+0.0029</td>
+<td>41 min GPU</td>
+</tr>
+<tr>
+<td>两个强模型集成</td>
+<td>✅</td>
+<td>+0.0009</td>
+<td>推理 ×2</td>
+</tr>
+<tr>
+<td>多尺度 TTA</td>
+<td>❌</td>
+<td>+0.0005</td>
+<td>推理 ×3</td>
+</tr>
+<tr>
+<td>快照集成</td>
+<td>❌</td>
+<td>-0.0017</td>
+<td>免费</td>
+</tr>
+<tr>
+<td>调拒识阈值</td>
+<td>❌</td>
+<td>-0.0011</td>
+<td>免费</td>
+</tr>
+<tr>
+<td>弱模型加入集成</td>
+<td>❌</td>
+<td>-0.003 ~ -0.01</td>
+<td>推理 ×N</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句话</strong>：<strong>先让模型"看得更清"（分辨率），再让它"多看几眼"（多裁剪），
+最后用"同样强但不一样"的伙伴互相补位（集成）。</strong>
+调阈值、凑成员、变尺度这些"看起来聪明"的招，在模型本身不够强时都没有意义。</p>
+<hr />
+<h2 id="doc16-13-相关代码位置">13. 相关代码位置</h2>
+<table>
+<thead>
+<tr>
+<th>功能</th>
+<th>文件</th>
+<th>关键函数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>微调入口（CLI）</td>
+<td><code>src/finetune.py</code></td>
+<td><code>main()</code> / <code>build_config()</code> / <code>LR_RECIPE</code></td>
+</tr>
+<tr>
+<td>装载已有权重</td>
+<td><code>src/cardex/models.py</code></td>
+<td><code>load_weights_into()</code></td>
+</tr>
+<tr>
+<td>冻结策略</td>
+<td><code>src/cardex/models.py</code></td>
+<td><code>freeze_by_mode()</code></td>
+</tr>
+<tr>
+<td>逐层递减学习率</td>
+<td><code>src/cardex/models.py</code></td>
+<td><code>param_groups_llrd()</code></td>
+</tr>
+<tr>
+<td>训练循环里的渐进解冻</td>
+<td><code>src/cardex/engine.py</code></td>
+<td><code>train_model()</code> 的 epoch 循环开头</td>
+</tr>
+<tr>
+<td>自定义数据目录</td>
+<td><code>src/cardex/engine.py</code></td>
+<td><code>cfg["train_dir"] / cfg["val_dir"]</code></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>相关文档</strong>：<a href="./14_GPU加速实战.html">14 · GPU 加速实战</a>（微调跑在 GPU 上才现实）·
+<a href="./13_技术栈全解.html">13 · 技术栈全解</a>（PyTorch 训练技巧逐项讲解）·
+<a href="./07_实验记录与结果分析.html">07 · 实验记录与结果分析</a>（任务一 5 组实验完整数据）</p><div class="docnav"><a class="prev" href="./14_GPU加速实战.html"><span class="dir">← 上一篇</span><span class="ttl">14 · GPU 加速实战</span></a><a class="next" href="./16_实训报告.html"><span class="dir">下一篇 →</span><span class="ttl">★ · 实训报告（8.1 要求）</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

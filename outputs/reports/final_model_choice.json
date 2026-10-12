@@ -1,0 +1,273 @@
+{
+  "split": "val",
+  "tta_hflip": true,
+  "n_val": 2422,
+  "candidates": [
+    {
+      "tag": "r50_416+r50_288_supcon+wide_r50_2_288",
+      "members": [
+        "r50_416",
+        "r50_288_supcon",
+        "wide_r50_2_288"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.98299,
+        "accuracy": 0.97688,
+        "unknown_detection_rate": 0.96769,
+        "known_false_reject_rate": 0.01799
+      },
+      "best": {
+        "tau": 0.2,
+        "threshold": 0.0,
+        "macro_f1": 0.98452,
+        "accuracy": 0.97894,
+        "unknown_detection_rate": 0.95748,
+        "known_false_reject_rate": 0.012
+      },
+      "seconds": 1.1
+    },
+    {
+      "tag": "r50_416+r50_352+r50_288_supcon+wide_r50_2_288",
+      "members": [
+        "r50_416",
+        "r50_352",
+        "r50_288_supcon",
+        "wide_r50_2_288"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.98247,
+        "accuracy": 0.97647,
+        "unknown_detection_rate": 0.96599,
+        "known_false_reject_rate": 0.01745
+      },
+      "best": {
+        "tau": 0.05,
+        "threshold": 0.2,
+        "macro_f1": 0.98339,
+        "accuracy": 0.97729,
+        "unknown_detection_rate": 0.96429,
+        "known_false_reject_rate": 0.0169
+      },
+      "seconds": 1.1
+    },
+    {
+      "tag": "r50_416+r50_352+wide_r50_2_288",
+      "members": [
+        "r50_416",
+        "r50_352",
+        "wide_r50_2_288"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.98249,
+        "accuracy": 0.97647,
+        "unknown_detection_rate": 0.96429,
+        "known_false_reject_rate": 0.0169
+      },
+      "best": {
+        "tau": 0.1,
+        "threshold": 0.2,
+        "macro_f1": 0.98326,
+        "accuracy": 0.97729,
+        "unknown_detection_rate": 0.95918,
+        "known_false_reject_rate": 0.01472
+      },
+      "seconds": 1.2
+    },
+    {
+      "tag": "r50_416+r50_352+r50_288_supcon",
+      "members": [
+        "r50_416",
+        "r50_352",
+        "r50_288_supcon"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.97976,
+        "accuracy": 0.97275,
+        "unknown_detection_rate": 0.95918,
+        "known_false_reject_rate": 0.02017
+      },
+      "best": {
+        "tau": 0.4,
+        "threshold": 0.25,
+        "macro_f1": 0.9831,
+        "accuracy": 0.97647,
+        "unknown_detection_rate": 0.94388,
+        "known_false_reject_rate": 0.01145
+      },
+      "seconds": 1.2
+    },
+    {
+      "tag": "r50_416+wide_r50_2_288",
+      "members": [
+        "r50_416",
+        "wide_r50_2_288"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.9824,
+        "accuracy": 0.97647,
+        "unknown_detection_rate": 0.96769,
+        "known_false_reject_rate": 0.01799
+      },
+      "best": {
+        "tau": 0.1,
+        "threshold": 0.2,
+        "macro_f1": 0.98301,
+        "accuracy": 0.97729,
+        "unknown_detection_rate": 0.96259,
+        "known_false_reject_rate": 0.01527
+      },
+      "seconds": 1.0
+    },
+    {
+      "tag": "r50_416",
+      "members": [
+        "r50_416"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.98097,
+        "accuracy": 0.9744,
+        "unknown_detection_rate": 0.95918,
+        "known_false_reject_rate": 0.01799
+      },
+      "best": {
+        "tau": 0.1,
+        "threshold": 0.3,
+        "macro_f1": 0.98149,
+        "accuracy": 0.97481,
+        "unknown_detection_rate": 0.95918,
+        "known_false_reject_rate": 0.01799
+      },
+      "seconds": 1.1
+    },
+    {
+      "tag": "r50_352",
+      "members": [
+        "r50_352"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.97893,
+        "accuracy": 0.97151,
+        "unknown_detection_rate": 0.95578,
+        "known_false_reject_rate": 0.02072
+      },
+      "best": {
+        "tau": -0.1,
+        "threshold": 0.2,
+        "macro_f1": 0.98062,
+        "accuracy": 0.97275,
+        "unknown_detection_rate": 0.96599,
+        "known_false_reject_rate": 0.02399
+      },
+      "seconds": 1.0
+    },
+    {
+      "tag": "wide_r50_2_288",
+      "members": [
+        "wide_r50_2_288"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.97787,
+        "accuracy": 0.97151,
+        "unknown_detection_rate": 0.95068,
+        "known_false_reject_rate": 0.0169
+      },
+      "best": {
+        "tau": -0.2,
+        "threshold": 0.0,
+        "macro_f1": 0.97982,
+        "accuracy": 0.97316,
+        "unknown_detection_rate": 0.96599,
+        "known_false_reject_rate": 0.02181
+      },
+      "seconds": 299.2
+    },
+    {
+      "tag": "r50_288_supcon",
+      "members": [
+        "r50_288_supcon"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.97645,
+        "accuracy": 0.96986,
+        "unknown_detection_rate": 0.95578,
+        "known_false_reject_rate": 0.02017
+      },
+      "best": {
+        "tau": 0.1,
+        "threshold": 0.2,
+        "macro_f1": 0.97806,
+        "accuracy": 0.97151,
+        "unknown_detection_rate": 0.95578,
+        "known_false_reject_rate": 0.01854
+      },
+      "seconds": 0.9
+    },
+    {
+      "tag": "r50_288_from_scratch",
+      "members": [
+        "r50_288_from_scratch"
+      ],
+      "raw": {
+        "tau": 0.0,
+        "threshold": 0.0,
+        "macro_f1": 0.97631,
+        "accuracy": 0.96945,
+        "unknown_detection_rate": 0.96088,
+        "known_false_reject_rate": 0.0229
+      },
+      "best": {
+        "tau": 0.2,
+        "threshold": 0.2,
+        "macro_f1": 0.97791,
+        "accuracy": 0.97151,
+        "unknown_detection_rate": 0.95578,
+        "known_false_reject_rate": 0.01854
+      },
+      "seconds": 1.2
+    }
+  ],
+  "champion": {
+    "tag": "r50_416+r50_288_supcon+wide_r50_2_288",
+    "members": [
+      "r50_416",
+      "r50_288_supcon",
+      "wide_r50_2_288"
+    ],
+    "raw": {
+      "tau": 0.0,
+      "threshold": 0.0,
+      "macro_f1": 0.98299,
+      "accuracy": 0.97688,
+      "unknown_detection_rate": 0.96769,
+      "known_false_reject_rate": 0.01799
+    },
+    "best": {
+      "tau": 0.2,
+      "threshold": 0.0,
+      "macro_f1": 0.98452,
+      "accuracy": 0.97894,
+      "unknown_detection_rate": 0.95748,
+      "known_false_reject_rate": 0.012
+    },
+    "seconds": 1.1
+  },
+  "note": "冠军配置由验证集 Macro-F1 选出，未使用任何测试图片。"
+}

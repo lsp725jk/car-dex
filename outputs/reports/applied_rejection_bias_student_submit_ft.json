@@ -1,0 +1,11 @@
+{
+  "dir": "student_submit_ft",
+  "theta": -3.75,
+  "prev_theta": 0.0,
+  "delta_applied": -3.75,
+  "pred_unknown_before": 0.8253929866989117,
+  "pred_unknown_after": 0.9276299879081016,
+  "true_unknown_ratio": 0.939540507859734,
+  "known_claimed": 1197,
+  "true_known": 1000
+}

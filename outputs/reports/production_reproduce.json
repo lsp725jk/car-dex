@@ -1,0 +1,14 @@
+{
+  "members": [
+    "r50_288_from_scratch",
+    "r50_352"
+  ],
+  "tta_mode": "hflip+multicrop",
+  "tau": 0.09999999999999987,
+  "threshold": 0.2,
+  "macro_f1": 0.981525271136073,
+  "accuracy": 0.9748142031379026,
+  "unknown_detection_rate": 0.9625850340136054,
+  "known_false_reject_rate": 0.019083969465648856,
+  "experiment_macro_f1": 0.981525271136073
+}

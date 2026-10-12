@@ -1,0 +1,1431 @@
+{
+  "meta": {
+    "count": 50,
+    "generated_by": "tools/build_car_profiles.py",
+    "note": "私人车型资料库的初始条目。仅使用教师提供与本组人工撰写的真实数据，不含编造参数。"
+  },
+  "profiles": {
+    "0003": {
+      "car_id": "0003",
+      "index": 0,
+      "name": "宇通客车_宇通T7",
+      "brand": "宇通客车",
+      "body_group": "轻客",
+      "body_detail": "轻型客车",
+      "body_detail_en": "Bus",
+      "type_category": "轻客",
+      "intro": "宇通客车_宇通T7 是 宇通客车 旗下的一款轻型客车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 94 张、验证集 31 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主高端商务客车",
+        "大尺寸车窗 + 客车造型",
+        "与厢式轻客形态差异明显"
+      ],
+      "selection_reason": "自主高端商务客车，大尺寸车窗 + 客车造型，与厢式轻客形态差异明显",
+      "train_samples": 94,
+      "val_samples": 31,
+      "aliases": [
+        "宇通T7",
+        "宇通客车 宇通T7",
+        "宇通客车_宇通T7"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0019": {
+      "car_id": "0019",
+      "index": 1,
+      "name": "吉利汽车_星瑞",
+      "brand": "吉利汽车",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "吉利汽车_星瑞 是 吉利汽车 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 111 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主品牌紧凑轿车",
+        "直瀑格栅 + 稳重大气",
+        "销量代表"
+      ],
+      "selection_reason": "自主品牌紧凑轿车，直瀑格栅 + 稳重大气，销量代表",
+      "train_samples": 111,
+      "val_samples": 37,
+      "aliases": [
+        "吉利汽车_星瑞",
+        "星瑞",
+        "吉利汽车 星瑞"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0025": {
+      "car_id": "0025",
+      "index": 2,
+      "name": "五菱汽车_五菱之光",
+      "brand": "五菱汽车",
+      "body_group": "微面",
+      "body_detail": "厢式微客",
+      "body_detail_en": "Van",
+      "type_category": "微面",
+      "intro": "五菱汽车_五菱之光 是 五菱汽车 旗下的一款厢式微客。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 91 张、验证集 30 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "国民微面",
+        "方盒子车身 + 侧滑门",
+        "个体经营与家用两用场景高频"
+      ],
+      "selection_reason": "国民微面，方盒子车身 + 侧滑门，个体经营与家用两用场景高频",
+      "train_samples": 91,
+      "val_samples": 30,
+      "aliases": [
+        "五菱汽车 五菱之光",
+        "五菱之光",
+        "五菱汽车_五菱之光"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0035": {
+      "car_id": "0035",
+      "index": 3,
+      "name": "大众_朗逸",
+      "brand": "大众",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "大众_朗逸 是 大众 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系紧凑轿车销量标杆",
+        "与轩逸构成日/德家用车对照"
+      ],
+      "selection_reason": "德系紧凑轿车销量标杆，与轩逸构成日/德家用车对照",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "大众_朗逸",
+        "大众 朗逸",
+        "朗逸"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0061": {
+      "car_id": "0061",
+      "index": 4,
+      "name": "丰田_埃尔法",
+      "brand": "丰田",
+      "body_group": "MPV",
+      "body_detail": "中大型 MPV",
+      "body_detail_en": "Upper Mid-size MPV",
+      "type_category": "MPV",
+      "intro": "丰田_埃尔法 是 丰田 旗下的一款中大型 MPV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 80 张、验证集 26 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "豪华 MPV 标杆",
+        "方正车身 + 大尺寸镀铬格栅",
+        "辨识度顶级"
+      ],
+      "selection_reason": "豪华 MPV 标杆，方正车身 + 大尺寸镀铬格栅，辨识度顶级",
+      "train_samples": 80,
+      "val_samples": 26,
+      "aliases": [
+        "丰田_埃尔法",
+        "埃尔法",
+        "丰田 埃尔法"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0119": {
+      "car_id": "0119",
+      "index": 5,
+      "name": "凯迪拉克_凯迪拉克XT6",
+      "brand": "凯迪拉克",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "凯迪拉克_凯迪拉克XT6 是 凯迪拉克 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 117 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美系豪华中大型 SUV",
+        "泪眼日行灯 + 盾形格栅",
+        "家族特征鲜明"
+      ],
+      "selection_reason": "美系豪华中大型 SUV，泪眼日行灯 + 盾形格栅，家族特征鲜明",
+      "train_samples": 117,
+      "val_samples": 39,
+      "aliases": [
+        "凯迪拉克XT6",
+        "凯迪拉克_凯迪拉克XT6",
+        "凯迪拉克 凯迪拉克XT6"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0161": {
+      "car_id": "0161",
+      "index": 6,
+      "name": "本田_缤智",
+      "brand": "本田",
+      "body_group": "SUV",
+      "body_detail": "小型 SUV",
+      "body_detail_en": "Small SUV",
+      "type_category": "SUV",
+      "intro": "本田_缤智 是 本田 旗下的一款小型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系小型 SUV 销量标杆",
+        "与同品牌奥德赛构成跨形态对照"
+      ],
+      "selection_reason": "日系小型 SUV 销量标杆，与同品牌奥德赛构成跨形态对照",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "缤智",
+        "本田_缤智",
+        "本田 缤智"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0183": {
+      "car_id": "0183",
+      "index": 7,
+      "name": "保时捷_保时捷718",
+      "brand": "保时捷",
+      "body_group": "跑车",
+      "body_detail": "跑车",
+      "body_detail_en": "Sports Car",
+      "type_category": "跑车",
+      "intro": "保时捷_保时捷718 是 保时捷 旗下的一款跑车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 123 张、验证集 41 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系中置引擎跑车",
+        "与同品牌 Cayenne 构成跨形态对照",
+        "造型紧凑独特"
+      ],
+      "selection_reason": "德系中置引擎跑车，与同品牌 Cayenne 构成跨形态对照，造型紧凑独特",
+      "train_samples": 123,
+      "val_samples": 41,
+      "aliases": [
+        "保时捷718",
+        "保时捷 保时捷718",
+        "保时捷_保时捷718"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0194": {
+      "car_id": "0194",
+      "index": 8,
+      "name": "红旗_红旗E-HS9",
+      "brand": "红旗",
+      "body_group": "SUV",
+      "body_detail": "大型 SUV",
+      "body_detail_en": "Large SUV",
+      "type_category": "SUV",
+      "intro": "红旗_红旗E-HS9 是 红旗 旗下的一款大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主大型纯电豪华 SUV",
+        "直瀑格栅 + 方正车头",
+        "红旗双车型之一"
+      ],
+      "selection_reason": "自主大型纯电豪华 SUV，直瀑格栅 + 方正车头，红旗双车型之一",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "红旗 红旗E-HS9",
+        "红旗E-HS9",
+        "红旗_红旗E-HS9"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0222": {
+      "car_id": "0222",
+      "index": 9,
+      "name": "宝马_宝马X7",
+      "brand": "宝马",
+      "body_group": "SUV",
+      "body_detail": "大型 SUV",
+      "body_detail_en": "Large SUV",
+      "type_category": "SUV",
+      "intro": "宝马_宝马X7 是 宝马 旗下的一款大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 115 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系大型豪华 SUV",
+        "超大双肾格栅",
+        "尺寸特征明显"
+      ],
+      "selection_reason": "德系大型豪华 SUV，超大双肾格栅，尺寸特征明显",
+      "train_samples": 115,
+      "val_samples": 38,
+      "aliases": [
+        "宝马_宝马X7",
+        "宝马X7",
+        "宝马 宝马X7"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0225": {
+      "car_id": "0225",
+      "index": 10,
+      "name": "兰博基尼_Urus",
+      "brand": "兰博基尼",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "兰博基尼_Urus 是 兰博基尼 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 112 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "意式超跑 SUV",
+        "楔形车身 + 夸张线条",
+        "豪华运动代表"
+      ],
+      "selection_reason": "意式超跑 SUV，楔形车身 + 夸张线条，豪华运动代表",
+      "train_samples": 112,
+      "val_samples": 37,
+      "aliases": [
+        "Urus",
+        "兰博基尼_Urus",
+        "兰博基尼 Urus"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0264": {
+      "car_id": "0264",
+      "index": 11,
+      "name": "MINI_MINI",
+      "brand": "MINI",
+      "body_group": "轿车",
+      "body_detail": "小型轿车",
+      "body_detail_en": "Small Sedan",
+      "type_category": "轿车",
+      "intro": "MINI_MINI 是 MINI 旗下的一款小型轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 102 张、验证集 34 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "经典英伦小车",
+        "圆润造型 + 悬浮车顶",
+        "全球知名车型"
+      ],
+      "selection_reason": "经典英伦小车，圆润造型 + 悬浮车顶，全球知名车型",
+      "train_samples": 102,
+      "val_samples": 34,
+      "aliases": [
+        "MINI_MINI",
+        "MINI",
+        "MINI MINI"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0291": {
+      "car_id": "0291",
+      "index": 12,
+      "name": "雷克萨斯_雷克萨斯ES",
+      "brand": "雷克萨斯",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "雷克萨斯_雷克萨斯ES 是 雷克萨斯 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 112 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系豪华轿车",
+        "纺锤形格栅辨识度极高",
+        "与德系三强形成对照"
+      ],
+      "selection_reason": "日系豪华轿车，纺锤形格栅辨识度极高，与德系三强形成对照",
+      "train_samples": 112,
+      "val_samples": 37,
+      "aliases": [
+        "雷克萨斯 雷克萨斯ES",
+        "雷克萨斯_雷克萨斯ES",
+        "雷克萨斯ES"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0307": {
+      "car_id": "0307",
+      "index": 13,
+      "name": "红旗_红旗H9",
+      "brand": "红旗",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "红旗_红旗H9 是 红旗 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "中国品牌旗舰轿车",
+        "直瀑式格栅 + 贯穿式尾灯",
+        "自主豪华代表"
+      ],
+      "selection_reason": "中国品牌旗舰轿车，直瀑式格栅 + 贯穿式尾灯，自主豪华代表",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "红旗_红旗H9",
+        "红旗 红旗H9",
+        "红旗H9"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0323": {
+      "car_id": "0323",
+      "index": 14,
+      "name": "金杯_新海狮X30L",
+      "brand": "金杯",
+      "body_group": "微面",
+      "body_detail": "厢式微客",
+      "body_detail_en": "Van",
+      "type_category": "微面",
+      "intro": "金杯_新海狮X30L 是 金杯 旗下的一款厢式微客。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系血统微客",
+        "与五菱之光形成同类对照"
+      ],
+      "selection_reason": "日系血统微客，与五菱之光形成同类对照",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "金杯 新海狮X30L",
+        "金杯_新海狮X30L",
+        "新海狮X30L"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0349": {
+      "car_id": "0349",
+      "index": 15,
+      "name": "本田_奥德赛",
+      "brand": "本田",
+      "body_group": "MPV",
+      "body_detail": "中型 MPV",
+      "body_detail_en": "Mid-size MPV",
+      "type_category": "MPV",
+      "intro": "本田_奥德赛 是 本田 旗下的一款中型 MPV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 112 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系家用 MPV 标杆",
+        "低地台 + 侧滑门",
+        "与同品牌缤智构成跨形态对照"
+      ],
+      "selection_reason": "日系家用 MPV 标杆，低地台 + 侧滑门，与同品牌缤智构成跨形态对照",
+      "train_samples": 112,
+      "val_samples": 37,
+      "aliases": [
+        "本田 奥德赛",
+        "本田_奥德赛",
+        "奥德赛"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0371": {
+      "car_id": "0371",
+      "index": 16,
+      "name": "五菱汽车_凯捷Victory",
+      "brand": "五菱汽车",
+      "body_group": "MPV",
+      "body_detail": "紧凑型 MPV",
+      "body_detail_en": "Compact MPV",
+      "type_category": "MPV",
+      "intro": "五菱汽车_凯捷Victory 是 五菱汽车 旗下的一款紧凑型 MPV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 95 张、验证集 31 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主紧凑家用 MPV",
+        "与同品牌五菱之光构成跨形态对照"
+      ],
+      "selection_reason": "自主紧凑家用 MPV，与同品牌五菱之光构成跨形态对照",
+      "train_samples": 95,
+      "val_samples": 31,
+      "aliases": [
+        "凯捷Victory",
+        "五菱汽车 凯捷Victory",
+        "五菱汽车_凯捷Victory"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0374": {
+      "car_id": "0374",
+      "index": 17,
+      "name": "长安_长安UNI-V",
+      "brand": "长安",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "长安_长安UNI-V 是 长安 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主运动紧凑轿车",
+        "无边界格栅造型独特"
+      ],
+      "selection_reason": "自主运动紧凑轿车，无边界格栅造型独特",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "长安 长安UNI-V",
+        "长安UNI-V",
+        "长安_长安UNI-V"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0418": {
+      "car_id": "0418",
+      "index": 18,
+      "name": "大众_途岳",
+      "brand": "大众",
+      "body_group": "SUV",
+      "body_detail": "紧凑型 SUV",
+      "body_detail_en": "Compact SUV",
+      "type_category": "SUV",
+      "intro": "大众_途岳 是 大众 旗下的一款紧凑型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 119 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系紧凑 SUV",
+        "与同品牌朗逸构成跨形态对照"
+      ],
+      "selection_reason": "德系紧凑 SUV，与同品牌朗逸构成跨形态对照",
+      "train_samples": 119,
+      "val_samples": 39,
+      "aliases": [
+        "大众_途岳",
+        "途岳",
+        "大众 途岳"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0432": {
+      "car_id": "0432",
+      "index": 19,
+      "name": "奔驰_奔驰GLE",
+      "brand": "奔驰",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "奔驰_奔驰GLE 是 奔驰 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 118 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系豪华中大型 SUV",
+        "与同品牌 E 级轿车构成品牌内跨形态对照"
+      ],
+      "selection_reason": "德系豪华中大型 SUV，与同品牌 E 级轿车构成品牌内跨形态对照",
+      "train_samples": 118,
+      "val_samples": 39,
+      "aliases": [
+        "奔驰 奔驰GLE",
+        "奔驰_奔驰GLE",
+        "奔驰GLE"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0465": {
+      "car_id": "0465",
+      "index": 20,
+      "name": "福特_Mustang",
+      "brand": "福特",
+      "body_group": "跑车",
+      "body_detail": "跑车",
+      "body_detail_en": "Sports Car",
+      "type_category": "跑车",
+      "intro": "福特_Mustang 是 福特 旗下的一款跑车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 82 张、验证集 27 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美式肌肉跑车代表",
+        "长引擎盖 + 三柱尾灯",
+        "与同品牌福克斯形成形态差"
+      ],
+      "selection_reason": "美式肌肉跑车代表，长引擎盖 + 三柱尾灯，与同品牌福克斯形成形态差",
+      "train_samples": 82,
+      "val_samples": 27,
+      "aliases": [
+        "福特_Mustang",
+        "福特 Mustang",
+        "Mustang"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0496": {
+      "car_id": "0496",
+      "index": 21,
+      "name": "依维柯_依维柯得意",
+      "brand": "依维柯",
+      "body_group": "轻客",
+      "body_detail": "轻型客车",
+      "body_detail_en": "Bus",
+      "type_category": "轻客",
+      "intro": "依维柯_依维柯得意 是 依维柯 旗下的一款轻型客车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 109 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "欧系轻客代表",
+        "宽体高顶厢式车身",
+        "房车改装底盘热门"
+      ],
+      "selection_reason": "欧系轻客代表，宽体高顶厢式车身，房车改装底盘热门",
+      "train_samples": 109,
+      "val_samples": 36,
+      "aliases": [
+        "依维柯 依维柯得意",
+        "依维柯_依维柯得意",
+        "依维柯得意"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0549": {
+      "car_id": "0549",
+      "index": 22,
+      "name": "保时捷_Cayenne",
+      "brand": "保时捷",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "保时捷_Cayenne 是 保时捷 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 112 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系运动豪华 SUV",
+        "与同品牌 718 跑车构成跨形态对照"
+      ],
+      "selection_reason": "德系运动豪华 SUV，与同品牌 718 跑车构成跨形态对照",
+      "train_samples": 112,
+      "val_samples": 37,
+      "aliases": [
+        "保时捷 Cayenne",
+        "Cayenne",
+        "保时捷_Cayenne"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0555": {
+      "car_id": "0555",
+      "index": 23,
+      "name": "哈弗_哈弗H9",
+      "brand": "哈弗",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "哈弗_哈弗H9 是 哈弗 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 118 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主硬派越野 SUV",
+        "非承载车身 + 外挂备胎",
+        "越野玩家关注车型"
+      ],
+      "selection_reason": "自主硬派越野 SUV，非承载车身 + 外挂备胎，越野玩家关注车型",
+      "train_samples": 118,
+      "val_samples": 39,
+      "aliases": [
+        "哈弗_哈弗H9",
+        "哈弗H9",
+        "哈弗 哈弗H9"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0582": {
+      "car_id": "0582",
+      "index": 24,
+      "name": "宝马_宝马5系",
+      "brand": "宝马",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "宝马_宝马5系 是 宝马 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 111 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系豪华中大型轿车",
+        "双肾格栅特征稳定",
+        "属私人看车高频车型"
+      ],
+      "selection_reason": "德系豪华中大型轿车，双肾格栅特征稳定，属私人看车高频车型",
+      "train_samples": 111,
+      "val_samples": 37,
+      "aliases": [
+        "宝马_宝马5系",
+        "宝马5系",
+        "宝马 宝马5系"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0583": {
+      "car_id": "0583",
+      "index": 25,
+      "name": "小鹏汽车_小鹏P7",
+      "brand": "小鹏汽车",
+      "body_group": "轿车",
+      "body_detail": "中型三厢轿车",
+      "body_detail_en": "Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "小鹏汽车_小鹏P7 是 小鹏汽车 旗下的一款中型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 109 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "新势力纯电轿跑代表",
+        "溜背 + 贯穿灯带",
+        "属近年热门看车对象"
+      ],
+      "selection_reason": "新势力纯电轿跑代表，溜背 + 贯穿灯带，属近年热门看车对象",
+      "train_samples": 109,
+      "val_samples": 36,
+      "aliases": [
+        "小鹏汽车 小鹏P7",
+        "小鹏P7",
+        "小鹏汽车_小鹏P7"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0589": {
+      "car_id": "0589",
+      "index": 26,
+      "name": "别克_昂科拉",
+      "brand": "别克",
+      "body_group": "SUV",
+      "body_detail": "小型 SUV",
+      "body_detail_en": "Small SUV",
+      "type_category": "SUV",
+      "intro": "别克_昂科拉 是 别克 旗下的一款小型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美系小型 SUV",
+        "与同品牌 GL8 构成跨形态对照"
+      ],
+      "selection_reason": "美系小型 SUV，与同品牌 GL8 构成跨形态对照",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "别克 昂科拉",
+        "昂科拉",
+        "别克_昂科拉"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0614": {
+      "car_id": "0614",
+      "index": 27,
+      "name": "奥迪_奥迪Q5L",
+      "brand": "奥迪",
+      "body_group": "SUV",
+      "body_detail": "中型 SUV",
+      "body_detail_en": "Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "奥迪_奥迪Q5L 是 奥迪 旗下的一款中型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 113 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系中型豪华 SUV 销量标杆",
+        "私人换车看车高频条目"
+      ],
+      "selection_reason": "德系中型豪华 SUV 销量标杆，私人换车看车高频条目",
+      "train_samples": 113,
+      "val_samples": 37,
+      "aliases": [
+        "奥迪_奥迪Q5L",
+        "奥迪 奥迪Q5L",
+        "奥迪Q5L"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0632": {
+      "car_id": "0632",
+      "index": 28,
+      "name": "奥迪_奥迪A6 China Domestic Version",
+      "brand": "奥迪",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "奥迪_奥迪A6 China Domestic Version 是 奥迪 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 186 张、验证集 62 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系豪华中大型轿车标杆",
+        "样本量全库最大（train 186）",
+        "六边形大嘴格栅辨识度高"
+      ],
+      "selection_reason": "德系豪华中大型轿车标杆，样本量全库最大（train 186），六边形大嘴格栅辨识度高",
+      "train_samples": 186,
+      "val_samples": 62,
+      "aliases": [
+        "奥迪 奥迪A6 China Domestic Version",
+        "奥迪_奥迪A6 China Domestic Version",
+        "奥迪A6 China Domestic Version"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0651": {
+      "car_id": "0651",
+      "index": 29,
+      "name": "欧拉_欧拉好猫GT",
+      "brand": "欧拉",
+      "body_group": "轿车",
+      "body_detail": "小型轿车",
+      "body_detail_en": "Small Sedan",
+      "type_category": "轿车",
+      "intro": "欧拉_欧拉好猫GT 是 欧拉 旗下的一款小型轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 112 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "微型纯电小车",
+        "复古圆灯造型极具辨识度",
+        "女性用户看车高频"
+      ],
+      "selection_reason": "微型纯电小车，复古圆灯造型极具辨识度，女性用户看车高频",
+      "train_samples": 112,
+      "val_samples": 37,
+      "aliases": [
+        "欧拉_欧拉好猫GT",
+        "欧拉好猫GT",
+        "欧拉 欧拉好猫GT"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0681": {
+      "car_id": "0681",
+      "index": 30,
+      "name": "路虎_揽胜星脉",
+      "brand": "路虎",
+      "body_group": "SUV",
+      "body_detail": "中型 SUV",
+      "body_detail_en": "Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "路虎_揽胜星脉 是 路虎 旗下的一款中型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 118 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "英伦豪华 SUV",
+        "极简流线设计",
+        "与揽胜系列形成品牌特征"
+      ],
+      "selection_reason": "英伦豪华 SUV，极简流线设计，与揽胜系列形成品牌特征",
+      "train_samples": 118,
+      "val_samples": 39,
+      "aliases": [
+        "路虎 揽胜星脉",
+        "揽胜星脉",
+        "路虎_揽胜星脉"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0696": {
+      "car_id": "0696",
+      "index": 31,
+      "name": "别克_别克GL8",
+      "brand": "别克",
+      "body_group": "MPV",
+      "body_detail": "中大型 MPV",
+      "body_detail_en": "Upper Mid-size MPV",
+      "type_category": "MPV",
+      "intro": "别克_别克GL8 是 别克 旗下的一款中大型 MPV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "国内商务 MPV 绝对标杆",
+        "私人商务/家用两用",
+        "资料库必备"
+      ],
+      "selection_reason": "国内商务 MPV 绝对标杆，私人商务/家用两用，资料库必备",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "别克_别克GL8",
+        "别克GL8",
+        "别克 别克GL8"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0704": {
+      "car_id": "0704",
+      "index": 32,
+      "name": "日产_日产GT-R",
+      "brand": "日产",
+      "body_group": "跑车",
+      "body_detail": "跑车",
+      "body_detail_en": "Sports Car",
+      "type_category": "跑车",
+      "intro": "日产_日产GT-R 是 日产 旗下的一款跑车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 89 张、验证集 29 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系性能跑车图腾",
+        "四圆尾灯辨识度顶级",
+        "与同品牌轩逸形成极端形态差"
+      ],
+      "selection_reason": "日系性能跑车图腾，四圆尾灯辨识度顶级，与同品牌轩逸形成极端形态差",
+      "train_samples": 89,
+      "val_samples": 29,
+      "aliases": [
+        "日产GT-R",
+        "日产 日产GT-R",
+        "日产_日产GT-R"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0727": {
+      "car_id": "0727",
+      "index": 33,
+      "name": "奔驰_奔驰E级",
+      "brand": "奔驰",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "奔驰_奔驰E级 是 奔驰 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 117 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "德系豪华中大型轿车另一代表",
+        "与奥迪形成跨品牌对照"
+      ],
+      "selection_reason": "德系豪华中大型轿车另一代表，与奥迪形成跨品牌对照",
+      "train_samples": 117,
+      "val_samples": 39,
+      "aliases": [
+        "奔驰E级",
+        "奔驰 奔驰E级",
+        "奔驰_奔驰E级"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0742": {
+      "car_id": "0742",
+      "index": 34,
+      "name": "雪佛兰_科鲁泽",
+      "brand": "雪佛兰",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "雪佛兰_科鲁泽 是 雪佛兰 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 117 张、验证集 39 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美系紧凑轿车",
+        "双格栅前脸",
+        "价格亲民属入门看车对象"
+      ],
+      "selection_reason": "美系紧凑轿车，双格栅前脸，价格亲民属入门看车对象",
+      "train_samples": 117,
+      "val_samples": 39,
+      "aliases": [
+        "科鲁泽",
+        "雪佛兰 科鲁泽",
+        "雪佛兰_科鲁泽"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0760": {
+      "car_id": "0760",
+      "index": 35,
+      "name": "广汽传祺_影豹",
+      "brand": "广汽传祺",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "广汽传祺_影豹 是 广汽传祺 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主运动轿车",
+        "战机式前脸 + 溜背",
+        "造型语言独特"
+      ],
+      "selection_reason": "自主运动轿车，战机式前脸 + 溜背，造型语言独特",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "影豹",
+        "广汽传祺 影豹",
+        "广汽传祺_影豹"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0768": {
+      "car_id": "0768",
+      "index": 36,
+      "name": "福特_福克斯",
+      "brand": "福特",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "福特_福克斯 是 福特 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美系紧凑轿车常青款",
+        "两厢/三厢形态辨识清晰"
+      ],
+      "selection_reason": "美系紧凑轿车常青款，两厢/三厢形态辨识清晰",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "福特_福克斯",
+        "福克斯",
+        "福特 福克斯"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0783": {
+      "car_id": "0783",
+      "index": 37,
+      "name": "铃木_吉姆尼",
+      "brand": "铃木",
+      "body_group": "SUV",
+      "body_detail": "小型 SUV",
+      "body_detail_en": "Small SUV",
+      "type_category": "SUV",
+      "intro": "铃木_吉姆尼 是 铃木 旗下的一款小型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系小型硬派越野",
+        "方盒子造型极难与其他车型混淆"
+      ],
+      "selection_reason": "日系小型硬派越野，方盒子造型极难与其他车型混淆",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "吉姆尼",
+        "铃木_吉姆尼",
+        "铃木 吉姆尼"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0784": {
+      "car_id": "0784",
+      "index": 38,
+      "name": "马自达_马自达CX-30",
+      "brand": "马自达",
+      "body_group": "SUV",
+      "body_detail": "小型 SUV",
+      "body_detail_en": "Small SUV",
+      "type_category": "SUV",
+      "intro": "马自达_马自达CX-30 是 马自达 旗下的一款小型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系紧凑跨界 SUV",
+        "魂动设计语言辨识度高"
+      ],
+      "selection_reason": "日系紧凑跨界 SUV，魂动设计语言辨识度高",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "马自达CX-30",
+        "马自达_马自达CX-30",
+        "马自达 马自达CX-30"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0806": {
+      "car_id": "0806",
+      "index": 39,
+      "name": "林肯_领航员",
+      "brand": "林肯",
+      "body_group": "SUV",
+      "body_detail": "大型 SUV",
+      "body_detail_en": "Large SUV",
+      "type_category": "SUV",
+      "intro": "林肯_领航员 是 林肯 旗下的一款大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 115 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美式全尺寸豪华 SUV",
+        "贯穿式灯带 + 大体量",
+        "商务接待场景高频"
+      ],
+      "selection_reason": "美式全尺寸豪华 SUV，贯穿式灯带 + 大体量，商务接待场景高频",
+      "train_samples": 115,
+      "val_samples": 38,
+      "aliases": [
+        "领航员",
+        "林肯_领航员",
+        "林肯 领航员"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0851": {
+      "car_id": "0851",
+      "index": 40,
+      "name": "领克_领克09",
+      "brand": "领克",
+      "body_group": "SUV",
+      "body_detail": "中大型 SUV",
+      "body_detail_en": "Upper Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "领克_领克09 是 领克 旗下的一款中大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 109 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主中大型 SUV",
+        "与同品牌领克 03 构成跨形态对照"
+      ],
+      "selection_reason": "自主中大型 SUV，与同品牌领克 03 构成跨形态对照",
+      "train_samples": 109,
+      "val_samples": 36,
+      "aliases": [
+        "领克_领克09",
+        "领克 领克09",
+        "领克09"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0854": {
+      "car_id": "0854",
+      "index": 41,
+      "name": "劳斯莱斯_库里南",
+      "brand": "劳斯莱斯",
+      "body_group": "SUV",
+      "body_detail": "大型 SUV",
+      "body_detail_en": "Large SUV",
+      "type_category": "SUV",
+      "intro": "劳斯莱斯_库里南 是 劳斯莱斯 旗下的一款大型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "顶级豪华 SUV",
+        "帕特农神庙格栅 + 对开式车门",
+        "超豪华代表"
+      ],
+      "selection_reason": "顶级豪华 SUV，帕特农神庙格栅 + 对开式车门，超豪华代表",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "劳斯莱斯 库里南",
+        "劳斯莱斯_库里南",
+        "库里南"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0873": {
+      "car_id": "0873",
+      "index": 42,
+      "name": "蔚来_蔚来EC6",
+      "brand": "蔚来",
+      "body_group": "SUV",
+      "body_detail": "中型 SUV",
+      "body_detail_en": "Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "蔚来_蔚来EC6 是 蔚来 旗下的一款中型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 105 张、验证集 35 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "新势力纯电轿跑 SUV",
+        "溜背造型 + 换电标签",
+        "看车热门"
+      ],
+      "selection_reason": "新势力纯电轿跑 SUV，溜背造型 + 换电标签，看车热门",
+      "train_samples": 105,
+      "val_samples": 35,
+      "aliases": [
+        "蔚来 蔚来EC6",
+        "蔚来_蔚来EC6",
+        "蔚来EC6"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0879": {
+      "car_id": "0879",
+      "index": 43,
+      "name": "法拉利_法拉利Roma",
+      "brand": "法拉利",
+      "body_group": "跑车",
+      "body_detail": "跑车",
+      "body_detail_en": "Sports Car",
+      "type_category": "跑车",
+      "intro": "法拉利_法拉利Roma 是 法拉利 旗下的一款跑车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 106 张、验证集 35 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "意式 GT 跑车",
+        "优雅流线车身",
+        "超跑品牌入门车型"
+      ],
+      "selection_reason": "意式 GT 跑车，优雅流线车身，超跑品牌入门车型",
+      "train_samples": 106,
+      "val_samples": 35,
+      "aliases": [
+        "法拉利 法拉利Roma",
+        "法拉利Roma",
+        "法拉利_法拉利Roma"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0884": {
+      "car_id": "0884",
+      "index": 44,
+      "name": "比亚迪_宋PLUS DM-i",
+      "brand": "比亚迪",
+      "body_group": "SUV",
+      "body_detail": "紧凑型 SUV",
+      "body_detail_en": "Compact SUV",
+      "type_category": "SUV",
+      "intro": "比亚迪_宋PLUS DM-i 是 比亚迪 旗下的一款紧凑型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 104 张、验证集 34 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主插混紧凑 SUV 销量标杆",
+        "与同品牌汉 EV 构成跨动力对照"
+      ],
+      "selection_reason": "自主插混紧凑 SUV 销量标杆，与同品牌汉 EV 构成跨动力对照",
+      "train_samples": 104,
+      "val_samples": 34,
+      "aliases": [
+        "比亚迪_宋PLUS DM-i",
+        "比亚迪 宋PLUS DM-i",
+        "宋PLUS DM-i"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0894": {
+      "car_id": "0894",
+      "index": 45,
+      "name": "北汽制造_212",
+      "brand": "北汽制造",
+      "body_group": "SUV",
+      "body_detail": "小型 SUV",
+      "body_detail_en": "Small SUV",
+      "type_category": "SUV",
+      "intro": "北汽制造_212 是 北汽制造 旗下的一款小型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "中国经典复古越野车",
+        "军绿色方盒子造型独一无二"
+      ],
+      "selection_reason": "中国经典复古越野车，军绿色方盒子造型独一无二",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "北汽制造 212",
+        "北汽制造_212",
+        "212"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0934": {
+      "car_id": "0934",
+      "index": 46,
+      "name": "比亚迪_汉EV",
+      "brand": "比亚迪",
+      "body_group": "轿车",
+      "body_detail": "中大型三厢轿车",
+      "body_detail_en": "Upper Mid-size Sedan",
+      "type_category": "轿车",
+      "intro": "比亚迪_汉EV 是 比亚迪 旗下的一款中大型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 114 张、验证集 38 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主新能源轿车代表（纯电）",
+        "封闭式前脸与龙颜设计",
+        "资料库必备"
+      ],
+      "selection_reason": "自主新能源轿车代表（纯电），封闭式前脸与龙颜设计，资料库必备",
+      "train_samples": 114,
+      "val_samples": 38,
+      "aliases": [
+        "汉EV",
+        "比亚迪_汉EV",
+        "比亚迪 汉EV"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0950": {
+      "car_id": "0950",
+      "index": 47,
+      "name": "Jeep_牧马人",
+      "brand": "Jeep",
+      "body_group": "SUV",
+      "body_detail": "中型 SUV",
+      "body_detail_en": "Mid-size SUV",
+      "type_category": "SUV",
+      "intro": "Jeep_牧马人 是 Jeep 旗下的一款中型 SUV。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 113 张、验证集 37 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "美系硬派越野图腾",
+        "七孔格栅 + 方正车身",
+        "辨识度顶级"
+      ],
+      "selection_reason": "美系硬派越野图腾，七孔格栅 + 方正车身，辨识度顶级",
+      "train_samples": 113,
+      "val_samples": 37,
+      "aliases": [
+        "牧马人",
+        "Jeep_牧马人",
+        "Jeep 牧马人"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0975": {
+      "car_id": "0975",
+      "index": 48,
+      "name": "日产_轩逸",
+      "brand": "日产",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "日产_轩逸 是 日产 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 106 张、验证集 35 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "日系紧凑轿车销量标杆",
+        "家用车资料库核心条目"
+      ],
+      "selection_reason": "日系紧凑轿车销量标杆，家用车资料库核心条目",
+      "train_samples": 106,
+      "val_samples": 35,
+      "aliases": [
+        "日产 轩逸",
+        "日产_轩逸",
+        "轩逸"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    },
+    "0987": {
+      "car_id": "0987",
+      "index": 49,
+      "name": "领克_领克03",
+      "brand": "领克",
+      "body_group": "轿车",
+      "body_detail": "紧凑型三厢轿车",
+      "body_detail_en": "Compact Sedan",
+      "type_category": "轿车",
+      "intro": "领克_领克03 是 领克 旗下的一款紧凑型三厢轿车。本项目把它选入「识车档案」私人资料库的 50 款目标车型之一。训练集 108 张、验证集 36 张，模型输出类别索引见 class_map.json。",
+      "highlights": [
+        "自主运动轿车",
+        "分体式日行灯设计独特",
+        "年轻用户看车高频"
+      ],
+      "selection_reason": "自主运动轿车，分体式日行灯设计独特，年轻用户看车高频",
+      "train_samples": 108,
+      "val_samples": 36,
+      "aliases": [
+        "领克03",
+        "领克 领克03",
+        "领克_领克03"
+      ],
+      "data_source": "车型 ID 与名称来自教师 class_info.json 的 id / name_from_new 字段；车身类型来自 type_info；看点来自本组 configs/selection.json 的选类理由；样本量来自 configs/data_stats.json。本档案不含排量、功率、价格、尺寸等参数——教师数据集未提供这些信息，故未编造。"
+    }
+  },
+  "by_brand": {
+    "宇通客车": [
+      "0003"
+    ],
+    "吉利汽车": [
+      "0019"
+    ],
+    "五菱汽车": [
+      "0025",
+      "0371"
+    ],
+    "大众": [
+      "0035",
+      "0418"
+    ],
+    "丰田": [
+      "0061"
+    ],
+    "凯迪拉克": [
+      "0119"
+    ],
+    "本田": [
+      "0161",
+      "0349"
+    ],
+    "保时捷": [
+      "0183",
+      "0549"
+    ],
+    "红旗": [
+      "0194",
+      "0307"
+    ],
+    "宝马": [
+      "0222",
+      "0582"
+    ],
+    "兰博基尼": [
+      "0225"
+    ],
+    "MINI": [
+      "0264"
+    ],
+    "雷克萨斯": [
+      "0291"
+    ],
+    "金杯": [
+      "0323"
+    ],
+    "长安": [
+      "0374"
+    ],
+    "奔驰": [
+      "0432",
+      "0727"
+    ],
+    "福特": [
+      "0465",
+      "0768"
+    ],
+    "依维柯": [
+      "0496"
+    ],
+    "哈弗": [
+      "0555"
+    ],
+    "小鹏汽车": [
+      "0583"
+    ],
+    "别克": [
+      "0589",
+      "0696"
+    ],
+    "奥迪": [
+      "0614",
+      "0632"
+    ],
+    "欧拉": [
+      "0651"
+    ],
+    "路虎": [
+      "0681"
+    ],
+    "日产": [
+      "0704",
+      "0975"
+    ],
+    "雪佛兰": [
+      "0742"
+    ],
+    "广汽传祺": [
+      "0760"
+    ],
+    "铃木": [
+      "0783"
+    ],
+    "马自达": [
+      "0784"
+    ],
+    "林肯": [
+      "0806"
+    ],
+    "领克": [
+      "0851",
+      "0987"
+    ],
+    "劳斯莱斯": [
+      "0854"
+    ],
+    "蔚来": [
+      "0873"
+    ],
+    "法拉利": [
+      "0879"
+    ],
+    "比亚迪": [
+      "0884",
+      "0934"
+    ],
+    "北汽制造": [
+      "0894"
+    ],
+    "Jeep": [
+      "0950"
+    ]
+  },
+  "by_group": {
+    "轻客": [
+      "0003",
+      "0496"
+    ],
+    "轿车": [
+      "0019",
+      "0035",
+      "0264",
+      "0291",
+      "0307",
+      "0374",
+      "0582",
+      "0583",
+      "0632",
+      "0651",
+      "0727",
+      "0742",
+      "0760",
+      "0768",
+      "0934",
+      "0975",
+      "0987"
+    ],
+    "微面": [
+      "0025",
+      "0323"
+    ],
+    "MPV": [
+      "0061",
+      "0349",
+      "0371",
+      "0696"
+    ],
+    "SUV": [
+      "0119",
+      "0161",
+      "0194",
+      "0222",
+      "0225",
+      "0418",
+      "0432",
+      "0549",
+      "0555",
+      "0589",
+      "0614",
+      "0681",
+      "0783",
+      "0784",
+      "0806",
+      "0851",
+      "0854",
+      "0873",
+      "0884",
+      "0894",
+      "0950"
+    ],
+    "跑车": [
+      "0183",
+      "0465",
+      "0704",
+      "0879"
+    ]
+  }
+}

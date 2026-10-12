@@ -1,0 +1,110 @@
+{
+  "format": "docx",
+  "verdict": "pass",
+  "checks": [
+    {
+      "id": "package",
+      "status": "pass"
+    }
+  ],
+  "summary": {
+    "paragraphs": 1184,
+    "tables": [
+      {
+        "rows": 2,
+        "columns": 2
+      },
+      {
+        "rows": 5,
+        "columns": 3
+      },
+      {
+        "rows": 52,
+        "columns": 5
+      },
+      {
+        "rows": 100,
+        "columns": 4
+      },
+      {
+        "rows": 7,
+        "columns": 2
+      },
+      {
+        "rows": 12,
+        "columns": 5
+      },
+      {
+        "rows": 11,
+        "columns": 4
+      },
+      {
+        "rows": 13,
+        "columns": 4
+      },
+      {
+        "rows": 5,
+        "columns": 3
+      },
+      {
+        "rows": 9,
+        "columns": 4
+      },
+      {
+        "rows": 10,
+        "columns": 4
+      },
+      {
+        "rows": 3,
+        "columns": 4
+      }
+    ],
+    "sections": [
+      {
+        "page_twips": {
+          "w": "11906",
+          "h": "16838"
+        },
+        "margins_twips": {
+          "top": "1134",
+          "right": "1134",
+          "bottom": "1134",
+          "left": "1417",
+          "header": "851",
+          "footer": "992",
+          "gutter": "0"
+        }
+      },
+      {
+        "page_twips": {
+          "w": "11906",
+          "h": "16838"
+        },
+        "margins_twips": {
+          "top": "1134",
+          "right": "1134",
+          "bottom": "1134",
+          "left": "1417",
+          "header": "397",
+          "footer": "510",
+          "gutter": "0"
+        }
+      },
+      {
+        "page_twips": {
+          "w": "11906",
+          "h": "16838"
+        },
+        "margins_twips": {
+          "top": "1134",
+          "right": "1134",
+          "bottom": "1134",
+          "left": "1417",
+          "header": "0",
+          "footer": "992",
+          "gutter": "0"
+        }
+      }
+    ]
+  }
+}

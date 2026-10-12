@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>04 数据格式与文件约定 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>04 · 数据格式与文件约定</span></button><div class="nav-list"><a class="lv2" href="#doc05-0-文件关系图">0. 文件关系图</a><a class="lv2" href="#doc05-1-classes-txt">1. classes.txt ★</a><a class="lv2" href="#doc05-2-predictions-csv">2. predictions.csv ★</a><a class="lv2" href="#doc05-3-configs-class_map-json-标签映射-最关键">3. configs/class_map.json — 标签映射（最关键）</a><a class="lv2" href="#doc05-4-configs-class_info-json-教师提供的类别说明">4. configs/class_info.json — 教师提供的类别说明</a><a class="lv2" href="#doc05-5-configs-selection-json-选类方案-人工策划">5. configs/selection.json — 选类方案（人工策划）</a><a class="lv2" href="#doc05-6-configs-unknown_sources-json-unknown-来源清单">6. configs/unknown_sources.json — unknown 来源清单</a><a class="lv2" href="#doc05-7-configs-data_stats-json-抽取后的数据统计">7. configs/data_stats.json — 抽取后的数据统计</a><a class="lv2" href="#doc05-8-outputs-checkpoints-run-best-pt-模型文件">8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件</a><a class="lv2" href="#doc05-9-outputs-runs-run-summary-json-实验记录-机器可读">9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读）</a><a class="lv2" href="#doc05-10-outputs-runs-run-val_report-json-与-eval_report-json">10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json</a><a class="lv2" href="#doc05-11-outputs-runs-run-calibration-json-决策标定结果">11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果</a><a class="lv2" href="#doc05-12-outputs-reports-final_model_choice-json-最终模型比选">12. outputs/reports/final_model_choice.json — 最终模型比选</a><a class="lv2" href="#doc05-13-outputs-runs-run-eval_confusion_matrix-csv">13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv</a><a class="lv2" href="#doc05-14-outputs-runs-run-error_samples-csv">14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv</a><a class="lv2" href="#doc05-15-outputs-runs-run-top_confusions-csv">15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv</a><a class="lv2" href="#doc05-16-outputs-reports-data_manifest-csv">16. outputs/reports/data_manifest.csv</a><a class="lv2" href="#doc05-17-data-目录约定">17. data/ 目录约定</a><a class="lv2" href="#doc05-18-格式自查速查表">18. 格式自查速查表</a></div></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">04 · 数据格式与文件约定　（5/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc05" data-title="04 数据格式与文件约定"><h1 id="doc05-04-数据格式与文件约定">04 数据格式与文件约定</h1>
+<p>本文档给出项目中<strong>所有数据文件的精确格式</strong>：字段名、类型、取值范围、示例、谁生产、谁消费。
+目的是让任何人（包括未来的自己、队友、教师）都能不读代码就读懂数据。</p>
+<hr />
+<h2 id="doc05-0-文件关系图">0. 文件关系图</h2>
+<div class="codehilite"><pre><span></span><code>教师提供                          本项目生成
+─────────                        ──────────
+class_info.json ──┐
+                  ├─► select_classes.py ─► classes.txt ★
+selection.json ───┘                     ├─► class_map.json
+                                        ├─► unknown_sources.json
+                                        └─► selection_report.txt
+
+classes.txt ──────┐
+unknown_sources.json ─┴─► prepare_data.py ─► data/train|val/&lt;类别&gt;/…
+                                          ├─► data_stats.json
+                                          └─► data_manifest.csv
+
+data/ + train_*.json ─► train.py ─► checkpoints/&lt;run&gt;/best.pt
+                                 ├─► runs/&lt;run&gt;/train.log
+                                 ├─► runs/&lt;run&gt;/summary.json
+                                 └─► runs/&lt;run&gt;/val_report.json
+
+best.pt ─► calibrate.py ─► runs/&lt;run&gt;/calibration.json
+best.pt ─► evaluate.py  ─► runs/&lt;run&gt;/eval_report.json + 混淆矩阵/错误样本
+
+多个 best.pt ─► finalize.py ─► predictions.csv ★
+                            ├─► predictions.meta.json
+                            └─► reports/final_model_choice.json
+</code></pre></div>
+
+<p>标 ★ 的是任务书要求的提交物。</p>
+<hr />
+<h2 id="doc05-1-classes-txt">1. <code>classes.txt</code> ★</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>规定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>文件名</td>
+<td>固定为 <code>classes.txt</code>，放在<strong>项目根目录</strong></td>
+</tr>
+<tr>
+<td>编码</td>
+<td>UTF-8，<strong>不带 BOM</strong></td>
+</tr>
+<tr>
+<td>行数</td>
+<td><strong>恰好 50 行</strong>（每行一个类别 ID，最后有一个换行符）</td>
+</tr>
+<tr>
+<td>ID 格式</td>
+<td>恰好 4 位数字，<strong>保留前导零</strong>，如 <code>0000</code>、<code>0987</code></td>
+</tr>
+<tr>
+<td>唯一性</td>
+<td>50 个 ID 不得重复</td>
+</tr>
+<tr>
+<td>顺序</td>
+<td>按类别 ID <strong>升序</strong></td>
+</tr>
+<tr>
+<td>取值范围</td>
+<td>必须属于教师提供的 <strong>827 类</strong></td>
+</tr>
+<tr>
+<td>unknown</td>
+<td><strong>不写入本文件</strong>。unknown 是模型的第 51 类</td>
+</tr>
+<tr>
+<td>大小</td>
+<td>250 字节</td>
+</tr>
+</tbody>
+</table>
+<p>实际内容（前 10 行）：</p>
+<div class="codehilite"><pre><span></span><code>0003
+0019
+0025
+0035
+0061
+0119
+0161
+0183
+0194
+0222
+</code></pre></div>
+
+<p><strong>唯一生产者</strong>：<code>src/select_classes.py</code>
+<strong>消费者</strong>：<code>src/prepare_data.py</code>、<code>src/predict_batch.py</code>（校验标签合法性）、
+<code>src/verify_submission.py</code>、教师侧</p>
+<p><strong>自检</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;raw=open(&#39;classes.txt&#39;,&#39;rb&#39;).read(); s=raw.decode(&#39;utf-8&#39;); ids=s.split(); \</span>
+<span class="s2">print(&#39;行数&#39;,len(ids),&#39;| 四位数字&#39;,all(len(x)==4 and x.isdigit() for x in ids), \</span>
+<span class="s2">&#39;| 升序&#39;,ids==sorted(ids),&#39;| 无BOM&#39;,not raw.startswith(b&#39;\xef\xbb\xbf&#39;))&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc05-2-predictions-csv">2. <code>predictions.csv</code> ★</h2>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>规定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>编码</td>
+<td>UTF-8，无 BOM</td>
+</tr>
+<tr>
+<td>表头</td>
+<td><strong>固定为</strong> <code>image_id,predicted_label,confidence</code>（顺序、拼写都不能变）</td>
+</tr>
+<tr>
+<td><code>image_id</code></td>
+<td>包含扩展名的图片文件名，例如 <code>0003_0009.jpg</code>；<strong>每张图片恰好一条记录</strong>，不得重复、不得遗漏、不得添加教师指定之外的图片</td>
+</tr>
+<tr>
+<td><code>predicted_label</code></td>
+<td><code>classes.txt</code> 中的四位车型 ID（保留前导零）<strong>或</strong>小写 <code>unknown</code></td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>0~1 的有效数值（本项目保留 6 位小数）</td>
+</tr>
+</tbody>
+</table>
+<p>实际内容：</p>
+<div class="codehilite"><pre><span></span><code>image_id,predicted_label,confidence
+0003_0009.jpg,0003,0.962251
+0003_0016.jpg,0003,0.933231
+0003_0017.jpg,0003,0.956696
+...
+0984_0471.jpg,unknown,0.823122
+</code></pre></div>
+
+<p><strong>当前状态</strong>：2,422 条记录，预测为 unknown 的有 609 条（25.1%），
+confidence 分布 min 0.11 / mean 0.81 / max 0.999。</p>
+<p><strong>生产者</strong>：<code>src/predict_batch.py</code>（单模型）或 <code>src/finalize.py</code>（集成，本项目用的这条）
+<strong>消费者</strong>：教师（用于计算最终测试 Macro-F1）、<code>src/score_predictions.py</code>、<code>src/verify_submission.py</code></p>
+<p><strong>⚠️ 最重要的约束</strong>：<code>image_id</code> 必须与教师指定的测试图片<strong>逐张对应</strong>。
+多一条、少一条、重名都会被判为不合格。</p>
+<p><strong>自检</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/verify_submission.py<span class="w">    </span><span class="c1"># 第 [5] 组检查会逐项验证</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc05-3-configs-class_map-json-标签映射-最关键">3. <code>configs/class_map.json</code> — 标签映射（最关键）</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;索引 0~49 按 classes.txt 行顺序对应 50 个目标车型；索引 50 对应 unknown。训练/保存/Web 推理/批量推理共用本映射。&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;index_to_id&quot;</span><span class="p">:</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0003&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0019&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;49&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0987&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;index_to_name&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;宇通客车_宇通T7&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;吉利汽车_星瑞&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;49&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;领克_领克03&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;index_to_group&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轻客&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轿车&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;49&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轿车&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;id_to_index&quot;</span><span class="p">:</span><span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;0003&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;0019&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;0987&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">49</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;unknown_index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;num_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">51</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>类型</th>
+<th>键</th>
+<th>值</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>index_to_id</code></td>
+<td>object</td>
+<td>字符串形式的索引 <code>"0"</code>~<code>"49"</code></td>
+<td>四位车型 ID</td>
+<td><code>"0" → "0003"</code></td>
+</tr>
+<tr>
+<td><code>index_to_name</code></td>
+<td>object</td>
+<td>索引字符串</td>
+<td>车型中文名（取自 <code>name_from_new</code>）</td>
+<td><code>"0" → "宇通客车_宇通T7"</code></td>
+</tr>
+<tr>
+<td><code>index_to_group</code></td>
+<td>object</td>
+<td>索引字符串</td>
+<td>车身大类</td>
+<td><code>"0" → "轻客"</code></td>
+</tr>
+<tr>
+<td><code>id_to_index</code></td>
+<td>object</td>
+<td>四位车型 ID</td>
+<td>整数索引</td>
+<td><code>"0003" → 0</code></td>
+</tr>
+<tr>
+<td><code>unknown_index</code></td>
+<td>int</td>
+<td>—</td>
+<td>固定 <code>50</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>unknown_label</code></td>
+<td>str</td>
+<td>—</td>
+<td>固定 <code>"unknown"</code>（小写）</td>
+<td></td>
+</tr>
+<tr>
+<td><code>num_classes</code></td>
+<td>int</td>
+<td>—</td>
+<td>固定 <code>51</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>三条不可违背的约定</strong>：</p>
+<ol>
+<li><strong>索引 0~49 的顺序 = <code>classes.txt</code> 的行顺序</strong>。
+   <code>verify_submission.py</code> 会逐项比对，不一致直接报 FAIL。</li>
+<li><strong>索引 50 永远是 unknown</strong>，无论 <code>classes.txt</code> 怎么变。</li>
+<li><strong>这份映射随 checkpoint 一起保存</strong>（<code>ckpt["class_map"]</code>），
+   所以加载旧模型不会因为 <code>classes.txt</code> 改动而错位。</li>
+</ol>
+<p><strong>生产者</strong>：<code>src/select_classes.py</code>
+<strong>消费者</strong>：<code>src/cardex/paths.py::load_class_map()</code> → 被 <code>data.py</code> / <code>inference.py</code> / 所有脚本间接使用</p>
+<hr />
+<h2 id="doc05-4-configs-class_info-json-教师提供的类别说明">4. <code>configs/class_info.json</code> — 教师提供的类别说明</h2>
+<p>827 条记录的数组：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">[</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0000&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_from_new&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;江铃_凯运&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_from_old&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;江铃_凯运==JMC_Kaiyun&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;卡车####轻卡==Truck####Light Truck&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0001&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_from_new&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;远程汽车_远程星享H&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_from_old&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;远程汽车_远程星享H==Farizon Auto_Farizon Star H&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type_info&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;卡车####轻卡==Truck####Light Truck&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">]</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td>四位数字字符串</td>
+<td><strong>类别 ID 的唯一权威来源</strong>（<code>classes.txt</code> / <code>predictions.csv</code> 用它）</td>
+</tr>
+<tr>
+<td><code>name_from_new</code></td>
+<td><code>品牌_车型</code></td>
+<td><strong>标签名的唯一权威来源</strong>（展示、查询、报告中一律用它）</td>
+</tr>
+<tr>
+<td><code>name_from_old</code></td>
+<td><code>中文==English</code></td>
+<td>旧版命名，仅作参考</td>
+</tr>
+<tr>
+<td><code>type_info</code></td>
+<td><code>中文大类####中文细分==英文大类####英文细分</code></td>
+<td>类型信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong><code>type_info</code> 的解析方式</strong>（<code>src/inventory.py</code>）：</p>
+<ul>
+<li>中文大类 = <code>type_info.split("==")[0].split("####")[0]</code> → 如 <code>卡车</code></li>
+<li>车身类型 = <code>type_info.split("==")[-1].split("####")[-1]</code> → 如 <code>Light Truck</code></li>
+</ul>
+<p>827 类的中文大类分布：SUV 372 / 轿车 259 / 卡车 70 / MPV 46 / 跑车 37 / 微面 22 / 轻客 21。</p>
+<hr />
+<h2 id="doc05-5-configs-selection-json-选类方案-人工策划">5. <code>configs/selection.json</code> — 选类方案（人工策划）</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;project&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;识车档案 CarDex&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name_en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CarDex - Personal Car Model Archive&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;theme&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;个人知识库（私人车型资料库 / 汽车知识检索 / 对话式看车档案）&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;goal&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;面向私人用户的车型资料库与看车档案：...&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;selection_principles&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;P1 主题契合：只选私人用户真正会&quot;</span><span class="err">看、比、记</span><span class="s2">&quot;的乘用车与轻型商用车型，不选重卡/牵引车等工程车辆，符合&quot;</span><span class="err">私人车型资料库</span><span class="s2">&quot;定位。&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;P2 车身类型覆盖：轿车、SUV、MPV、跑车、微面、轻客六类均有代表，保证资料库的横向检索能力。&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;P3 品牌多样性：50 类覆盖 37 个品牌（24 个品牌取 1 类、13 个品牌取 2 类），...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;P4 单车系单一代表：同一车系的不同配置/衍生版（如探岳 / 探岳X / 探岳GTE）只取一个，...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;P5 样本充足：所选类别训练样本均 ≥ 80 张，验证样本均 ≥ 26 张，...&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="s2">&quot;P6 造型辨识度：优先选择设计语言差异大的车型（方盒子越野、超跑、微型电动车、豪华旗舰等），提升类间可分性。&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0632&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轿车&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;德系豪华中大型轿车标杆，样本量全库最大（train 186），六边形大嘴格栅辨识度高&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0003&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;group&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轻客&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;自主高端商务客车，大尺寸车窗 + 客车造型，与厢式轻客形态差异明显&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;unknown_plan&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;hard_negative_per_brand&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;other_brand_classes&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;min_train_images&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">80</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;train_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;val_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hard_negative（同品牌兄弟车型）用于抑制&quot;</span><span class="err">只认品牌不认车型</span><span class="s2">&quot;的捷径；...&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>project.*</code></td>
+<td>项目元信息，会写进选类报告</td>
+</tr>
+<tr>
+<td><code>selection_principles[]</code></td>
+<td>6 条选类原则，报告第 2.2 节直接引用</td>
+</tr>
+<tr>
+<td><code>classes[]</code></td>
+<td>恰好 50 条；<code>id</code> 车型 ID、<code>group</code> 车身大类、<code>reason</code> <strong>选择理由</strong></td>
+</tr>
+<tr>
+<td><code>unknown_plan.hard_negative_per_brand</code></td>
+<td>每品牌取几个兄弟车型作为 unknown 硬负样本（1）</td>
+</tr>
+<tr>
+<td><code>unknown_plan.other_brand_classes</code></td>
+<td>其他品牌取多少类（64）</td>
+</tr>
+<tr>
+<td><code>unknown_plan.min_train_images</code></td>
+<td>来源类别的样本量门槛（80）</td>
+</tr>
+<tr>
+<td><code>unknown_plan.train_per_source</code></td>
+<td>每来源类别抽多少训练图（20）</td>
+</tr>
+<tr>
+<td><code>unknown_plan.val_per_source</code></td>
+<td>每来源类别抽多少验证图（6）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这是唯一需要"人工编辑"的配置文件。</strong> 改选类就改它，然后：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/select_classes.py<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>python<span class="w"> </span>src/prepare_data.py<span class="w"> </span>--force
+</code></pre></div>
+
+<hr />
+<h2 id="doc05-6-configs-unknown_sources-json-unknown-来源清单">6. <code>configs/unknown_sources.json</code> — unknown 来源清单</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown 样本来源。train/unknown 取这些类别的训练图片，val/unknown 取这些类别的验证图片，训练与验证样本不重复，且完全不使用测试图片。&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;val_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20250914</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hard_negative_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;other_brand_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;source_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0976&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;星途_星途凌云&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;brand&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;星途&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SUV&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;body_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mid-size SUV&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;train&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">116</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">37</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source_kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hard_negative&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_class_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0418&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0847&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;大众_蔚揽&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;brand&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;大众&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;轿车&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;body_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Mid-size Sedan&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;train&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">105</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">35</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;source_kind&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;other_brand&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;target_class_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>train_per_source</code> / <code>val_per_source</code></td>
+<td>每来源类别的采样上限</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>抽样随机种子（固定，保证可复现）</td>
+</tr>
+<tr>
+<td><code>hard_negative_count</code></td>
+<td>同品牌兄弟车型类数（34）</td>
+</tr>
+<tr>
+<td><code>other_brand_count</code></td>
+<td>其他品牌类数（64）</td>
+</tr>
+<tr>
+<td><code>source_count</code></td>
+<td>总数（98）</td>
+</tr>
+<tr>
+<td><code>sources[].source_kind</code></td>
+<td><code>hard_negative</code> / <code>other_brand</code></td>
+</tr>
+<tr>
+<td><code>sources[].target_class_id</code></td>
+<td><strong>仅 hard_negative 有值</strong>：它对应本组哪个品牌的哪一类（如 <code>0418</code> 是大众_途岳）</td>
+</tr>
+<tr>
+<td><code>sources[].train</code> / <code>.val</code></td>
+<td>该来源类别<strong>在教师数据集中</strong>的样本量（不是实际抽取量）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>统计结果</strong>：98 个来源类别，覆盖 <strong>85 个品牌</strong>、<strong>7 个中文大类</strong>
+（SUV 39 / 轿车 33 / 卡车 9 / MPV 6 / 跑车 5 / 轻客 3 / 微面 3）。</p>
+<p><strong>为什么要 <code>hard_negative</code></strong>：如果 unknown 全部来自"完全陌生的品牌"，
+模型只要学会"这个品牌我没见过 → unknown"就能拿高分；
+但教师测试集里更可能出现的是<strong>同品牌的其他车型</strong>（用户拍了大众途观，而我们只选了大众朗逸）。
+加入硬负样本后，模型被迫学习<strong>车型级别</strong>的差异，而不是品牌级别的粗判。</p>
+<hr />
+<h2 id="doc05-7-configs-data_stats-json-抽取后的数据统计">7. <code>configs/data_stats.json</code> — 抽取后的数据统计</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;source_zip&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;C:\\Users\\y\\Downloads\\数据集.zip&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;seed&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20250914</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_train_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_val_per_source&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_source_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">98</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_hard_negative_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">34</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_other_brand_count&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">64</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7494</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;val_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2422</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_known_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">5534</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_unknown_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1960</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;val_known_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1834</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;val_unknown_total&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">588</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;unknown_train_ratio&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2615</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;per_class&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;train&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;0003&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">94</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0003&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;宇通客车_宇通T7&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;unknown&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1960</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;val&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;0003&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">31</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0003&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;宇通客车_宇通T7&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;index&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;unknown&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;n&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">588</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;unknown_sources&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">与</span><span class="w"> </span><span class="err">u</span><span class="kc">n</span><span class="err">k</span><span class="kc">n</span><span class="err">ow</span><span class="kc">n</span><span class="err">_sources.jso</span><span class="kc">n</span><span class="w"> </span><span class="err">的</span><span class="w"> </span><span class="err">sources</span><span class="w"> </span><span class="err">同构</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>数值</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>train_total</code></td>
+<td>7,494</td>
+<td>训练集总数</td>
+</tr>
+<tr>
+<td><code>train_known_total</code></td>
+<td>5,534</td>
+<td>其中 50 个目标车型</td>
+</tr>
+<tr>
+<td><code>train_unknown_total</code></td>
+<td>1,960</td>
+<td>其中 unknown</td>
+</tr>
+<tr>
+<td><code>val_total</code></td>
+<td>2,422</td>
+<td>验证集总数</td>
+</tr>
+<tr>
+<td><code>val_known_total</code></td>
+<td>1,834</td>
+<td>其中 50 个目标车型</td>
+</tr>
+<tr>
+<td><code>val_unknown_total</code></td>
+<td>588</td>
+<td>其中 unknown</td>
+</tr>
+<tr>
+<td><code>unknown_train_ratio</code></td>
+<td>0.2615</td>
+<td>unknown 占训练集 26.2%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⚠️ 关键依赖</strong>：<code>per_class.train.*.n</code> 被用来计算<strong>训练集类别先验</strong> π：</p>
+<div class="codehilite"><pre><span></span><code>π_c = n_c / N        （N = 7494）
+π_unknown = 1960/7494 = 0.2615
+π_目标车型 ≈ 110/7494 = 0.0147
+</code></pre></div>
+
+<p>先验校正公式 <code>z'_c = z_c − τ·log(π_c)</code> 就依赖它。
+<strong>这个文件删了，τ 就无法生效</strong>（<code>inference.py</code> 会退化成 τ=0 并打警告）。</p>
+<hr />
+<h2 id="doc05-8-outputs-checkpoints-run-best-pt-模型文件">8. <code>outputs/checkpoints/&lt;run&gt;/best.pt</code> — 模型文件</h2>
+<p><code>torch.load(path, map_location="cpu", weights_only=False)</code> 之后是一个 dict：</p>
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>类型</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>model_state</code></td>
+<td>OrderedDict</td>
+<td>模型权重。<strong>若启用 EMA，这里是 EMA 平滑后的权重</strong></td>
+</tr>
+<tr>
+<td><code>arch</code></td>
+<td>str</td>
+<td>骨干名，如 <code>"resnet18"</code> / <code>"resnet50"</code></td>
+</tr>
+<tr>
+<td><code>num_classes</code></td>
+<td>int</td>
+<td>51</td>
+</tr>
+<tr>
+<td><code>image_size</code></td>
+<td>int</td>
+<td>输入分辨率，如 224</td>
+</tr>
+<tr>
+<td><code>class_map</code></td>
+<td>dict</td>
+<td><strong>完整的类别映射</strong>（与 <code>configs/class_map.json</code> 同构）</td>
+</tr>
+<tr>
+<td><code>label_names</code></td>
+<td>list[str]</td>
+<td>长度 51，最后一个是 <code>"unknown"</code></td>
+</tr>
+<tr>
+<td><code>preprocess</code></td>
+<td>dict</td>
+<td>预处理参数（见下）</td>
+</tr>
+<tr>
+<td><code>train_config</code></td>
+<td>dict</td>
+<td><strong>完整的训练配置</strong>（相当于把对应的 <code>configs/train_*.json</code> 存了一份）</td>
+</tr>
+<tr>
+<td><code>epoch</code></td>
+<td>int</td>
+<td>该 checkpoint 对应的轮次</td>
+</tr>
+<tr>
+<td><code>val_macro_f1</code></td>
+<td>float</td>
+<td>该轮次验证集 Macro-F1</td>
+</tr>
+<tr>
+<td><code>ema</code></td>
+<td>bool</td>
+<td>权重是否经过 EMA</td>
+</tr>
+</tbody>
+</table>
+<p><code>preprocess</code> 的字段：</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;mean&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.485</span><span class="p">,</span><span class="w"> </span><span class="mf">0.456</span><span class="p">,</span><span class="w"> </span><span class="mf">0.406</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;std&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="mf">0.229</span><span class="p">,</span><span class="w"> </span><span class="mf">0.224</span><span class="p">,</span><span class="w"> </span><span class="mf">0.225</span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;eval_resize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">256</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;eval_crop&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">224</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;interpolation&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;bilinear&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>mean</code> / <code>std</code></td>
+<td>ImageNet 归一化参数</td>
+</tr>
+<tr>
+<td><code>eval_resize</code></td>
+<td>推理时短边缩放到多少像素（224 输入 → 256；160 输入 → 183）</td>
+</tr>
+<tr>
+<td><code>eval_crop</code></td>
+<td>之后中心裁剪到多少像素（= <code>image_size</code>）</td>
+</tr>
+<tr>
+<td><code>interpolation</code></td>
+<td>缩放插值方式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>因为 dict 是自包含的，重新加载时不需要任何外部文件。</strong>
+这正是 <code>src/verify_reload.py</code> 能跨进程复现 240/240 条预测的原因。</p>
+<p><strong>文件大小</strong>：resnet18 约 43 MB，resnet50 约 95 MB。</p>
+<p><strong>加载示例</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">cardex.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_model_from_checkpoint</span>
+<span class="n">model</span><span class="p">,</span> <span class="n">ckpt</span> <span class="o">=</span> <span class="n">load_model_from_checkpoint</span><span class="p">(</span><span class="s2">&quot;outputs/checkpoints/improved_resnet50_224/best.pt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;arch&quot;</span><span class="p">],</span> <span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;image_size&quot;</span><span class="p">],</span> <span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;val_macro_f1&quot;</span><span class="p">])</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc05-9-outputs-runs-run-summary-json-实验记录-机器可读">9. <code>outputs/runs/&lt;run&gt;/summary.json</code> — 实验记录（机器可读）</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;run_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;improved_resnet50_224&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;config&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">完整的训练配置，</span><span class="mi">31</span><span class="w"> </span><span class="err">个键</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;history&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;epoch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;train_loss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.6641</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;train_acc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2099</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;val_loss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">3.9102</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;val_acc&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0821</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;val_macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0268</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;unknown_detection_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4123</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;known_false_reject_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.5312</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;lr&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0013</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;elapsed_s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">812.4</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="err">...</span><span class="w"> </span><span class="err">共</span><span class="w"> </span><span class="err">epochs</span><span class="w"> </span><span class="err">条</span><span class="w"> </span><span class="err">...</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;best&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95505</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;epoch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;final&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;epoch&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">14</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;train_loss&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">1.08023</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;val_macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95505</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;total_time_s&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">10510.4</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;train_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">7494</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;val_size&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2422</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;num_threads&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">12</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;checkpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E:\\...\\outputs\\checkpoints\\improved_resnet50_224&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>config</code></td>
+<td>训练用的完整配置（可直接复现）</td>
+</tr>
+<tr>
+<td><code>history[]</code></td>
+<td><strong>逐轮记录</strong>，每轮 10 个字段</td>
+</tr>
+<tr>
+<td><code>best</code></td>
+<td>验证集 Macro-F1 最高的一轮</td>
+</tr>
+<tr>
+<td><code>final</code></td>
+<td>最后一轮（用于判断是否还在提升）</td>
+</tr>
+<tr>
+<td><code>total_time_s</code></td>
+<td>总训练耗时（秒）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>注意</strong>：<code>summary.json</code> 里<strong>没有</strong> <code>best_val_macro_f1</code> 字段
+（它是在写完 summary 之后才计算的，只写进了 <code>val_report.json</code>）。
+想取"最佳验证分数"用 <code>best.macro_f1</code> 或读 <code>val_report.json</code>。</p>
+</blockquote>
+<p><code>history[]</code> 每轮的字段含义：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>train_loss</code></td>
+<td>训练集平均损失（含数据增强，所以比验证损失高是正常的）</td>
+</tr>
+<tr>
+<td><code>train_acc</code></td>
+<td>训练集准确率。<strong>强增强下这个值不反映真实水平</strong>（C1 只有 0.80，但验证 0.94）</td>
+</tr>
+<tr>
+<td><code>val_loss</code></td>
+<td>验证集平均损失</td>
+</tr>
+<tr>
+<td><code>val_acc</code></td>
+<td>验证集准确率</td>
+</tr>
+<tr>
+<td><code>val_macro_f1</code></td>
+<td><strong>验证集 51 类 Macro-F1 —— 选模型的唯一依据</strong></td>
+</tr>
+<tr>
+<td><code>unknown_detection_rate</code></td>
+<td>真实 unknown 中被正确识别的比例</td>
+</tr>
+<tr>
+<td><code>known_false_reject_rate</code></td>
+<td>真实已知车型中被误判为 unknown 的比例</td>
+</tr>
+<tr>
+<td><code>lr</code></td>
+<td>该轮结束时的骨干学习率</td>
+</tr>
+<tr>
+<td><code>elapsed_s</code></td>
+<td>从训练开始到该轮结束的累计秒数</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc05-10-outputs-runs-run-val_report-json-与-eval_report-json">10. <code>outputs/runs/&lt;run&gt;/val_report.json</code> 与 <code>eval_report.json</code></h2>
+<p>两者都是验证结果，字段高度重叠：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th><code>val_report.json</code></th>
+<th><code>eval_report.json</code></th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>macro_f1</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>51 类等权 Macro-F1</td>
+</tr>
+<tr>
+<td><code>accuracy</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>整体准确率</td>
+</tr>
+<tr>
+<td><code>unknown_detection_rate</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>unknown 检出率</td>
+</tr>
+<tr>
+<td><code>known_false_reject_rate</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>已知类误拒率</td>
+</tr>
+<tr>
+<td><code>n_samples</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>评估样本数</td>
+</tr>
+<tr>
+<td><code>loss</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>验证损失</td>
+</tr>
+<tr>
+<td><code>per_class</code></td>
+<td>✅</td>
+<td>✅</td>
+<td>长度 51 的数组，每项 <code>{index, label, precision, recall, f1, support}</code></td>
+</tr>
+<tr>
+<td><code>confusion_matrix</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>51×51 二维数组</td>
+</tr>
+<tr>
+<td><code>report_text</code></td>
+<td>✅</td>
+<td>❌</td>
+<td>sklearn 格式的文本报告</td>
+</tr>
+<tr>
+<td><code>split</code></td>
+<td>❌</td>
+<td>✅</td>
+<td><code>"val"</code></td>
+</tr>
+<tr>
+<td><code>checkpoint</code></td>
+<td>❌</td>
+<td>✅</td>
+<td>checkpoint 路径</td>
+</tr>
+<tr>
+<td><code>tta_hflip</code></td>
+<td>❌</td>
+<td>✅</td>
+<td>是否启用 TTA</td>
+</tr>
+<tr>
+<td><code>amp</code></td>
+<td>❌</td>
+<td>✅</td>
+<td>推理精度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>生产时机</strong>：<code>val_report.json</code> 由 <code>train.py</code> 在训练结束时自动生成；
+<code>eval_report.json</code> 由 <code>src/evaluate.py</code> 手动运行生成（额外产出混淆矩阵 CSV、错误样本等）。</p>
+<hr />
+<h2 id="doc05-11-outputs-runs-run-calibration-json-决策标定结果">11. <code>outputs/runs/&lt;run&gt;/calibration.json</code> — 决策标定结果</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;run&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;improved_resnet50_224&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;checkpoint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;E:\\...\\best.pt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;split&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tta_hflip&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;n_samples&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2422</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;no_calibration&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95505</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;accuracy&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.94467</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unknown_detection_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.89626</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;known_false_reject_rate&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.02399</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;best_tau_only&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w">  </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95922</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;best_joint&quot;</span><span class="p">:</span><span class="w">     </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span><span class="w">  </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95922</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;recommended&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;prior_adjust_tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">-0.2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;unknown_threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.2</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;由验证集 Macro-F1 选出，供 Web 推理与批量推理使用&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;sweep&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="mi">204</span><span class="w"> </span><span class="err">条</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kc">tau</span><span class="p">,</span><span class="w"> </span><span class="kc">t</span><span class="err">hreshold</span><span class="p">,</span><span class="w"> </span><span class="err">macro_</span><span class="kc">f</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="err">accuracy</span><span class="p">,</span><span class="w"> </span><span class="err">u</span><span class="kc">n</span><span class="err">k</span><span class="kc">n</span><span class="err">ow</span><span class="kc">n</span><span class="err">_de</span><span class="kc">te</span><span class="err">c</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="err">_ra</span><span class="kc">te</span><span class="p">,</span><span class="w"> </span><span class="err">k</span><span class="kc">n</span><span class="err">ow</span><span class="kc">n</span><span class="err">_</span><span class="kc">false</span><span class="err">_rejec</span><span class="kc">t</span><span class="err">_ra</span><span class="kc">te</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>no_calibration</code></td>
+<td>不做任何标定（τ=0, t=0）的基线结果</td>
+</tr>
+<tr>
+<td><code>best_tau_only</code></td>
+<td>只用先验校正（t=0）时的最优</td>
+</tr>
+<tr>
+<td><code>best_joint</code></td>
+<td><strong>τ 与 t 联合最优</strong> —— 这是最终采用的</td>
+</tr>
+<tr>
+<td><code>recommended</code></td>
+<td>供推理代码直接读取的两个值</td>
+</tr>
+<tr>
+<td><code>sweep</code></td>
+<td>17 个 τ × 12 个 t = <strong>204 组</strong>的完整扫描结果</td>
+</tr>
+</tbody>
+</table>
+<p><strong>消费者</strong>：<code>src/cardex/inference.py</code> 不会自动读它（它读的是显式传入的参数），
+但 <code>src/predict_batch.py</code> <strong>会自动读同 run 的 calibration.json</strong> 作为默认标定参数。</p>
+<hr />
+<h2 id="doc05-12-outputs-reports-final_model_choice-json-最终模型比选">12. <code>outputs/reports/final_model_choice.json</code> — 最终模型比选</h2>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;split&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;val&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;tta_hflip&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;n_val&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2422</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;candidates&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;improved_resnet18_224+improved_resnet50_224&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;members&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;improved_resnet18_224&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;improved_resnet50_224&quot;</span><span class="p">],</span>
+<span class="w">      </span><span class="nt">&quot;raw&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95870</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;best&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tau&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.05</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;threshold&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.25</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.96038</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;seconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.0</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;improved_resnet50_224&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="nt">&quot;best&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95922</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;tag&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;improved_resnet18_224&quot;</span><span class="p">,</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="nt">&quot;best&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;macro_f1&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.95097</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;champion&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="err">与</span><span class="w"> </span><span class="err">ca</span><span class="kc">n</span><span class="err">dida</span><span class="kc">tes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="err">同构</span><span class="w"> </span><span class="err">...</span><span class="w"> </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;note&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;冠军配置由验证集 Macro-F1 选出，未使用任何测试图片。&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>键</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>candidates[]</code></td>
+<td>全部候选（单模型 + 集成），已按标定后 Macro-F1 降序排列</td>
+</tr>
+<tr>
+<td><code>candidates[].raw</code></td>
+<td>未标定结果</td>
+</tr>
+<tr>
+<td><code>candidates[].best</code></td>
+<td>该候选的最优 (τ, t) 与对应指标</td>
+</tr>
+<tr>
+<td><code>champion</code></td>
+<td>冠军（= <code>candidates[0]</code>）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>消费者</strong>：<code>src/finalize.py</code>（生产者）、<code>src/predict_batch.py</code> 的说明、报告引用。</p>
+<hr />
+<h2 id="doc05-13-outputs-runs-run-eval_confusion_matrix-csv">13. <code>outputs/runs/&lt;run&gt;/eval_confusion_matrix.csv</code></h2>
+<p>51×51 的 CSV，第一行第一列是占位表头：</p>
+<div class="codehilite"><pre><span></span><code>true\pred,宇通客车_宇通T7,吉利汽车_星瑞,...,unknown
+宇通客车_宇通T7,29,0,...,2
+吉利汽车_星瑞,0,35,...,1
+...
+unknown,0,1,...,546
+</code></pre></div>
+
+<ul>
+<li><strong>行 = 真实类别</strong>，<strong>列 = 预测类别</strong>（顺序 = <code>label_names()</code>，即索引 0~50）</li>
+<li><code>M[i][j]</code> = 真实是第 i 类、被预测成第 j 类的张数</li>
+<li>对角线是正确预测数，非对角线是错误</li>
+</ul>
+<p><strong>用它快速定位问题</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span><span class="o">,</span><span class="w"> </span><span class="nn">csv</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;outputs/runs/improved_resnet18_224/eval_confusion_matrix.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)))</span>
+<span class="n">labels</span> <span class="o">=</span> <span class="n">rows</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">:]</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="nb">int</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">:]]</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">rows</span><span class="p">[</span><span class="mi">1</span><span class="p">:]])</span>
+<span class="n">i</span><span class="p">,</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">50</span>                       <span class="c1"># 日产_轩逸 被判为 unknown</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">labels</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;→&#39;</span><span class="p">,</span> <span class="n">labels</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">M</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">],</span> <span class="s1">&#39;次&#39;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc05-14-outputs-runs-run-error_samples-csv">14. <code>outputs/runs/&lt;run&gt;/error_samples.csv</code></h2>
+<div class="codehilite"><pre><span></span><code>image_id,image_path,true_label,true_id,pred_label,pred_id,confidence
+0975_0007.jpg,E:\...\data\val\0975\0975_0007.jpg,日产_轩逸,0975,unknown,unknown,0.991119
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>image_id</code></td>
+<td>文件名</td>
+</tr>
+<tr>
+<td><code>image_path</code></td>
+<td>完整路径（可直接用于 <code>visualize_errors.py</code> 或手动查看）</td>
+</tr>
+<tr>
+<td><code>true_label</code> / <code>true_id</code></td>
+<td>真实车型名 / 四位 ID</td>
+</tr>
+<tr>
+<td><code>pred_label</code> / <code>pred_id</code></td>
+<td>预测车型名 / ID（可能是 <code>unknown</code>）</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td>预测置信度</td>
+</tr>
+</tbody>
+</table>
+<p>按置信度<strong>降序</strong>排列（最"自信地犯错"的排在最前面）。默认最多 200 条。</p>
+<hr />
+<h2 id="doc05-15-outputs-runs-run-top_confusions-csv">15. <code>outputs/runs/&lt;run&gt;/top_confusions.csv</code></h2>
+<div class="codehilite"><pre><span></span><code>true,pred,count,true_total,rate
+日产_轩逸,unknown,7,35,0.2
+大众_朗逸,unknown,7,36,0.19444444444444445
+福特_福克斯,unknown,6,36,0.16666666666666666
+unknown,MINI_MINI,5,588,0.008503401360544218
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>true</code></td>
+<td>真实类别名</td>
+</tr>
+<tr>
+<td><code>pred</code></td>
+<td>被预测成的类别名</td>
+</tr>
+<tr>
+<td><code>count</code></td>
+<td>混淆次数</td>
+</tr>
+<tr>
+<td><code>true_total</code></td>
+<td>该类在验证集的样本总数</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>count / true_total</code> —— <strong>占该类的比例</strong>，比绝对次数更能说明严重程度</td>
+</tr>
+</tbody>
+</table>
+<p>按 <code>count</code> 降序、<code>rate</code> 降序排列，默认取前 30 对。</p>
+<blockquote>
+<p>注意 <code>unknown → MINI_MINI</code> 的 <code>rate</code> 只有 0.0085，看起来很小，
+但那是因为 unknown 有 588 张；对 unknown 类来说 5 次误判在 51 类等权下依然要计入。</p>
+</blockquote>
+<hr />
+<h2 id="doc05-16-outputs-reports-data_manifest-csv">16. <code>outputs/reports/data_manifest.csv</code></h2>
+<p>抽取清单，每张图一行（共 9,916 行）：</p>
+<div class="codehilite"><pre><span></span><code>split,class_id,source_class_id,file_name,bytes
+train,0003,0003,0003_0009.jpg,65432
+train,unknown,0976,0976_0012.jpg,71234
+val,unknown,0976,0976_0007.jpg,68111
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>列</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>split</code></td>
+<td><code>train</code> 或 <code>val</code></td>
+</tr>
+<tr>
+<td><code>class_id</code></td>
+<td><strong>目标目录名</strong>（50 个车型 ID 之一，或 <code>unknown</code>）</td>
+</tr>
+<tr>
+<td><code>source_class_id</code></td>
+<td><strong>来源类别 ID</strong>：对目标车型等于 <code>class_id</code>；对 unknown 是它的来源类别</td>
+</tr>
+<tr>
+<td><code>file_name</code></td>
+<td>文件名</td>
+</tr>
+<tr>
+<td><code>bytes</code></td>
+<td>文件大小</td>
+</tr>
+</tbody>
+</table>
+<p><strong>用途</strong>：回答"unknown 里这张图到底来自哪一类"，也是可复现性校验的对象之一。</p>
+<hr />
+<h2 id="doc05-17-data-目录约定">17. <code>data/</code> 目录约定</h2>
+<div class="codehilite"><pre><span></span><code>data/&lt;split&gt;/&lt;class_dir&gt;/&lt;file&gt;.jpg
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>层级</th>
+<th>取值</th>
+<th><code>CarDataset</code> 如何处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;split&gt;</code></td>
+<td><code>train</code> / <code>val</code></td>
+<td>由调用方指定（<code>--split</code>）</td>
+</tr>
+<tr>
+<td><code>&lt;class_dir&gt;</code></td>
+<td>四位车型 ID（如 <code>0003</code>）</td>
+<td>查 <code>class_map.json</code> 的 <code>id_to_index</code> → 索引 0~49</td>
+</tr>
+<tr>
+<td><code>&lt;class_dir&gt;</code></td>
+<td><code>unknown</code></td>
+<td>固定映射到索引 <strong>50</strong></td>
+</tr>
+<tr>
+<td><code>&lt;class_dir&gt;</code></td>
+<td>其他</td>
+<td><strong>忽略</strong>（该目录被跳过）</td>
+</tr>
+<tr>
+<td><code>&lt;file&gt;</code></td>
+<td><code>*.jpg</code> / <code>*.jpeg</code> / <code>*.png</code> / <code>*.bmp</code> / <code>*.webp</code></td>
+<td>读入 → RGB → 变换</td>
+</tr>
+</tbody>
+</table>
+<p><strong>样本顺序</strong>（重要，曾引发一个真实 bug）：
+<code>CarDataset</code> 遍历顺序是 <strong>先按 <code>class_dir</code> 名称排序，再按目录内文件名排序</strong>。
+<code>unknown</code> 因为字符串比较大于 <code>"0987"</code>，所以排在<strong>最后</strong>。</p>
+<blockquote>
+<p>⚠️ <strong>踩坑记录</strong>：<code>finalize.py</code> 与 <code>ensemble.py</code> 最初为了对齐标签，对<strong>全部文件名做全局排序</strong>。
+但 <code>unknown/</code> 下的文件名沿用的是<strong>来源类别 ID</strong>（如 <code>0022_0022.jpg</code>），
+全局排序会把它插到 0022 类中间，而 <code>CarDataset</code> 把 unknown 排在最后——
+两者错位导致 Macro-F1 算出 0.0648（而不是 0.95）。
+现在两个脚本都直接取 <code>CarDataset.samples</code> 的顺序，不再自己排序。</p>
+</blockquote>
+<hr />
+<h2 id="doc05-18-格式自查速查表">18. 格式自查速查表</h2>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>一行命令自查</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>classes.txt</code></td>
+<td><code>python src/verify_submission.py</code>（第 [1] 组）</td>
+</tr>
+<tr>
+<td><code>class_map.json</code></td>
+<td>同上（第 [2] 组）</td>
+</tr>
+<tr>
+<td><code>data/</code> 结构</td>
+<td>同上（第 [3] 组）</td>
+</tr>
+<tr>
+<td><code>unknown_sources.json</code></td>
+<td>同上（第 [4] 组）</td>
+</tr>
+<tr>
+<td><code>predictions.csv</code></td>
+<td>同上（第 [5] 组）</td>
+</tr>
+<tr>
+<td><code>best.pt</code></td>
+<td>同上（第 [6] 组）</td>
+</tr>
+<tr>
+<td>全部</td>
+<td><code>python src/final_check.py</code></td>
+</tr>
+</tbody>
+</table><div class="docnav"><a class="prev" href="./03_配置参数详解.html"><span class="dir">← 上一篇</span><span class="ttl">03 · 配置参数详解</span></a><a class="next" href="./05_脚本与命令手册.html"><span class="dir">下一篇 →</span><span class="ttl">05 · 脚本与命令手册</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

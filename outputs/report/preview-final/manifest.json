@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "backend": "native",
+  "rasterEngine": "libreoffice",
+  "source": "saved",
+  "inputPath": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\识车档案CarDex_实训报告.docx",
+  "sourceSha256": "1327903226e6c062e4187813a811ab4b523acb422fa13544a9367e04cf59086d",
+  "dpi": 100,
+  "pageCount": 39,
+  "images": [
+    {
+      "index": 1,
+      "page": 1,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-final\\page-0001.png",
+      "width": 827,
+      "height": 1170,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 69524
+    },
+    {
+      "index": 2,
+      "page": 30,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-final\\page-0002.png",
+      "width": 827,
+      "height": 1170,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 52436
+    }
+  ],
+  "missingFonts": [
+    "楷体_GB2312",
+    "仿宋_GB2312",
+    "Liberation Serif",
+    "Linux Libertine G",
+    "Noto Sans",
+    "Liberation Sans"
+  ]
+}

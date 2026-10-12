@@ -1,0 +1,47 @@
+{
+  "rows": [
+    {
+      "mode": "hflip",
+      "batch": 8,
+      "workers": 6,
+      "ips": 23.88957878345484,
+      "full_min": 11.539201639569493
+    },
+    {
+      "mode": "hflip",
+      "batch": 8,
+      "workers": 12,
+      "ips": 23.075487237976382,
+      "full_min": 11.946298850539089
+    },
+    {
+      "mode": "hflip",
+      "batch": 16,
+      "workers": 6,
+      "ips": 24.1400311911943,
+      "full_min": 11.419482621349024
+    },
+    {
+      "mode": "hflip",
+      "batch": 16,
+      "workers": 12,
+      "ips": 25.71769135660236,
+      "full_min": 10.71895073489543
+    },
+    {
+      "mode": "hflip",
+      "batch": 24,
+      "workers": 6,
+      "ips": 24.58080651121145,
+      "full_min": 11.214712037252866
+    },
+    {
+      "mode": "hflip",
+      "batch": 24,
+      "workers": 12,
+      "ips": 24.997796092751344,
+      "full_min": 11.027638822392115
+    }
+  ],
+  "n_images": 128
+}

@@ -1,0 +1,63 @@
+# ---- 密钥与本地配置（绝不提交）----
+agent/.env.local
+.env
+*.key
+secrets.*
+
+# ---- 模型权重（任务书要求不随作业提交）----
+outputs/checkpoints/
+*.pt
+*.pth
+*.onnx
+
+# ---- 数据与运行时产物 ----
+# 原始/处理后的图片数据集：单目录可达 20 万+ 文件、数 GB，入库会让 clone 不可用。
+# 需要数据请按 README 的数据准备脚本自行生成。
+数据集/
+data_ood/
+# 评测集原始图片（16540 张 jpg，约 1 GB）：体积大且可由 README 的脚本重新准备
+data/test_images/
+data/uploads/
+data/train/
+data/val/
+data/test/
+data/raw/
+data/interim/
+data/processed/
+# 数据目录里可能残留的临时脚本产物
+data/*.py
+data/*.log
+agent/data/garage.db
+agent/data/sessions/
+agent/data/sessions_archive/
+agent/data/tool_calls.jsonl
+agent/data/sessions_index.json
+# 界面上改过的运行参数：属于本机个人设置，不随作业提交
+# （里面**不含密钥**——密钥只进 agent/.env.local——但也不该覆盖别人的默认值）
+agent/data/runtime_config.json
+outputs/runs/
+outputs/reports/_*.png
+# 训练中间产物（评估图、导出中间件）；预测结果交付文件保留
+outputs/**/tmp/
+outputs/*.onnx
+outputs/*.pt
+# 特征缓存与中间产物（体积大、可重算）
+outputs/**/*.npz
+outputs/**/*.zip
+outputs/**/*.pt
+student_submit*/result.npz
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+.venv/
+venv/
+
+# ---- 编辑器 / 系统 ----
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+torchinductor_*/

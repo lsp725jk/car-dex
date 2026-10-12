@@ -1,0 +1,1371 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>08 常见问题与排错 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>08 · 常见问题与排错</span></button><div class="nav-list"><a class="lv2" href="#doc09-坑-1-分类头学习率过大导致训练发散-最严重">⚠️ 坑 1：分类头学习率过大导致训练发散（最严重）</a><a class="lv2" href="#doc09-坑-2-resnet50-预训练权重用错版本-触发联网下载">⚠️ 坑 2：ResNet50 预训练权重用错版本，触发联网下载</a><a class="lv2" href="#doc09-坑-3-dataloader-num_workers-0-被沙箱禁止">⚠️ 坑 3：DataLoader(num_workers&amp;gt;0) 被沙箱禁止</a><a class="lv2" href="#doc09-坑-4-unknown-目录排序错位-指标算出-0-06-最隐蔽">⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽）</a><a class="lv2" href="#doc09-坑-5-bf16-与-fp32-推理不一致-指标漂移-0-0005">⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005</a><a class="lv2" href="#doc09-坑-6-evaluate-py-的输出目录算错">⚠️ 坑 6：evaluate.py 的输出目录算错</a><a class="lv2" href="#doc09-坑-7-carclassifier-初始化顺序导致-attributeerror">⚠️ 坑 7：CarClassifier 初始化顺序导致 AttributeError</a><a class="lv2" href="#doc09-坑-8-powershell-的-convertto-json-把配置文件格式改丑">⚠️ 坑 8：PowerShell 的 ConvertTo-Json 把配置文件格式改丑</a><a class="lv2" href="#doc09-坑-9-传入-logger-后训练日志不再写入文件">⚠️ 坑 9：传入 logger 后训练日志不再写入文件</a><a class="lv2" href="#doc09-坑-10-finalize-py-的-meta-文件名与-predict_batch-py-不一致">⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致</a><a class="lv2" href="#doc09-坑-11-dataloader-在-windows-下的中文路径-编码问题">⚠️ 坑 11：DataLoader 在 Windows 下的中文路径 / 编码问题</a><a class="lv2" href="#doc09-坑-12-cpu-线程开满反而更慢">⚠️ 坑 12：CPU 线程开满反而更慢</a><a class="lv2" href="#doc09-坑-13-pip-安装超时-网络不可用">⚠️ 坑 13：pip 安装超时 / 网络不可用</a><a class="lv2" href="#doc09-坑-14-配置文件在-powershell-里被-set-content-写成带-bom">⚠️ 坑 14：配置文件在 PowerShell 里被 Set-Content 写成带 BOM</a><a class="lv2" href="#doc09-坑-15-报告里的数字写错-品牌数-36-vs-37">⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37）</a><a class="lv2" href="#doc09-坑-16-positional-参数缺失导致新手困惑">⚠️ 坑 16：positional 参数缺失导致新手困惑</a><a class="lv2" href="#doc09-q1-predictions-csv-的分数和我算出来的不一样">Q1：predictions.csv 的分数和我算出来的不一样？</a><a class="lv2" href="#doc09-q2-训练中断了怎么办">Q2：训练中断了怎么办？</a><a class="lv2" href="#doc09-q3-data-被误删了怎么办">Q3：data/ 被误删了怎么办？</a><a class="lv2" href="#doc09-q4-outputs-被误删了怎么办">Q4：outputs/ 被误删了怎么办？</a><a class="lv2" href="#doc09-q5-显存-内存不够">Q5：显存/内存不够？</a><a class="lv2" href="#doc09-q6-训练太快结束了-精度上不去">Q6：训练太快结束了 / 精度上不去？</a><a class="lv2" href="#doc09-q7-怎么知道我的改动是不是变好了">Q7：怎么知道我的改动是不是变好了？</a><a class="lv2" href="#doc09-q8-verify_submission-py-报了-fail-怎么办">Q8：verify_submission.py 报了 FAIL 怎么办？</a><a class="lv2" href="#doc09-q9-为什么-make_reports-py-里看不到某个实验">Q9：为什么 make_reports.py 里看不到某个实验？</a><a class="lv2" href="#doc09-q10-ensemble-py---limit-的分数为什么完全不对">Q10：ensemble.py --limit 的分数为什么完全不对？</a><a class="lv2" href="#doc09-q11---tta-hflip-到底该不该开">Q11：--tta-hflip 到底该不该开？</a><a class="lv2" href="#doc09-q12-我想换一批类别重做-要注意什么">Q12：我想换一批类别重做，要注意什么？</a><a class="lv2" href="#doc09-q13-classes-txt-里的-id-和-class_info-json-对不上">Q13：classes.txt 里的 ID 和 class_info.json 对不上？</a><a class="lv2" href="#doc09-q14-报告中-验证集-macro-f1-该用哪个数">Q14：报告中&quot;验证集 Macro-F1&quot;该用哪个数？</a><a class="lv2" href="#doc09-q15-怎么确认-模型保存和重新加载-是好的">Q15：怎么确认&quot;模型保存和重新加载&quot;是好的？</a><a class="lv2" href="#doc09-q16-怎么验证整条数据流程是可复现的">Q16：怎么验证整条数据流程是可复现的？</a><a class="lv2" href="#doc09-q17-idea-vs-code-里中文乱码">Q17：IDEA / VS Code 里中文乱码？</a><a class="lv2" href="#doc09-q18-requirements-txt-里为什么没有-markdown-pygments">Q18：requirements.txt 里为什么没有 markdown / pygments？</a><a class="lv2" href="#doc09-q19-怎么把一个实验的结果发给别人">Q19：怎么把一个实验的结果发给别人？</a><a class="lv2" href="#doc09-q20-任务二-三要用这个模型-怎么做">Q20：任务二/三要用这个模型，怎么做？</a><a class="lv2" href="#doc09-坑-17-start-ps1-报一堆语法错误-中文全是乱码">坑 17：start.ps1 报一堆语法错误，中文全是乱码</a><a class="lv2" href="#doc09-坑-18-启动脚本被-python-的一条警告打断">坑 18：启动脚本被 Python 的一条警告打断</a><a class="lv2" href="#doc09-坑-19-python--c-里的双引号被-powershell-吃掉">坑 19：python -c &#x27;...&#x27; 里的双引号被 PowerShell 吃掉</a><a class="lv2" href="#doc09-坑-20-getaddrinfo-failed-max-retries-exceeded-域名解析失败">坑 20：getaddrinfo failed / Max retries exceeded —— 域名解析失败</a><a class="lv2" href="#doc09-q22-某一轮对话突然失败-回复是-0-字-报-internal_error">Q22：某一轮对话突然失败、回复是 0 字，报 INTERNAL_ERROR？</a><a class="lv2" href="#doc09-q21-接了真实-api-key-之后-verify_agent-py-反而不全过了">Q21：接了真实 API Key 之后，verify_agent.py 反而不全过了？</a><a class="lv2" href="#doc09-排错流程速查">排错流程速查</a></div></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><a class="nav-head" href="./任务一_数据分析与视觉模型训练.html"><span>★ · 实训报告正文（任务一）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">08 · 常见问题与排错　（9/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc09" data-title="08 常见问题与排错"><h1 id="doc09-08-常见问题与排错">08 常见问题与排错</h1>
+<p>本文档分两部分：
+<strong>第一部分</strong>是我在开发过程中<strong>实际踩过的坑</strong>（16 个，都有具体的错误信息和修复方式）；
+<strong>第二部分</strong>是通用 FAQ 与排查流程。</p>
+<hr />
+<h1 id="doc09-第一部分-实际踩过的坑">第一部分：实际踩过的坑</h1>
+<h2 id="doc09-坑-1-分类头学习率过大导致训练发散-最严重">⚠️ 坑 1：分类头学习率过大导致训练发散（最严重）</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>epoch  1/2  train_loss=4.8655  acc=0.0539
+epoch  1/2  train_loss=4.8655 | val_loss=41.2589 val_acc=0.0229 MacroF1=0.0038
+epoch  2/2  train_loss=14.4426 acc=0.0654
+epoch  2/2  train_loss=14.4426 | val_loss=2889.5282 val_acc=0.0294 MacroF1=0.0068
+</code></pre></div>
+
+<p>验证损失 <strong>2889</strong>（正常应该是 <code>log(51) ≈ 3.9</code> 附近），Macro-F1 卡在 0.007。</p>
+<p><strong>原因</strong>：配置里写了 <code>"head_lr_mult": 10.0</code>，而 <code>lr=0.01</code>，
+于是分类头的实际学习率是 <strong>0.1</strong>。分类头是随机初始化的，
+0.1 的 SGD 学习率会直接把权重推到发散。</p>
+<p><strong>修复</strong>：把 <code>head_lr_mult</code> 改成 <code>1.0</code>（分类头与骨干同学习率）。</p>
+<p><strong>如何自查</strong>：看训练日志里的 <code>lr=</code> 值，以及 <code>val_loss</code> 是否远大于 4。
+<strong>经验法则</strong>：微调预训练模型时，如果要用差分学习率，
+<code>head_lr_mult</code> 从 2 开始试，同时把 <code>lr</code> 降到 0.005 左右。</p>
+<hr />
+<h2 id="doc09-坑-2-resnet50-预训练权重用错版本-触发联网下载">⚠️ 坑 2：ResNet50 预训练权重用错版本，触发联网下载</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>Downloading: &quot;https://download.pytorch.org/models/resnet50-11ad3fa6.pth&quot;
+  to C:\Users\y/.cache\torch/hub/checkpoints/resnet50-11ad3fa6.pth
+RuntimeError: 加载 resnet50 预训练权重失败（[Errno 13] Permission denied: ...）
+</code></pre></div>
+
+<p><strong>原因</strong>：本地缓存的是 <code>resnet50-0676ba61.pth</code>，它对应
+<code>ResNet50_Weights.IMAGENET1K_**V1**</code>；
+而代码里写的是 <code>IMAGENET1K_**V2**</code>，对应另一个文件名 <code>resnet50-11ad3fa6.pth</code>，
+本地没有 → torchvision 尝试下载 → 无网环境失败。</p>
+<p><strong>修复</strong>：<code>src/cardex/models.py</code> 里固定使用 V1，并加了注释：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">SUPPORTED</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="c1"># 权重枚举必须与本地已缓存的权重文件名一致，否则会尝试联网下载：</span>
+    <span class="c1">#   resnet18-f37072fd.pth         &lt;= ResNet18_Weights.IMAGENET1K_V1</span>
+    <span class="c1">#   resnet50-0676ba61.pth         &lt;= ResNet50_Weights.IMAGENET1K_V1   (注意不是 V2)</span>
+    <span class="c1">#   wide_resnet50_2-9ba9bcbe.pth  &lt;= Wide_ResNet50_2_Weights.IMAGENET1K_V2</span>
+    <span class="s2">&quot;resnet18&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">ResNet18_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V1</span><span class="p">),</span>
+    <span class="s2">&quot;resnet50&quot;</span><span class="p">:</span> <span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">resnet50</span><span class="p">,</span> <span class="n">models</span><span class="o">.</span><span class="n">ResNet50_Weights</span><span class="o">.</span><span class="n">IMAGENET1K_V1</span><span class="p">),</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p><strong>如何自查</strong>：运行下面这行，能成功加载就说明权重没问题：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from torchvision import models; models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V1); print(&#39;OK&#39;)&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-坑-3-dataloader-num_workers-0-被沙箱禁止">⚠️ 坑 3：<code>DataLoader(num_workers&gt;0)</code> 被沙箱禁止</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>File &quot;C:\ProgramData\anaconda3\Lib\multiprocessing\connection.py&quot;, line 575, in Pipe
+    h2 = _winapi.CreateFile(...)
+PermissionError: [WinError 5] 拒绝访问。
+</code></pre></div>
+
+<p><strong>原因</strong>：运行环境的文件沙箱<strong>禁止创建命名管道</strong>，
+而 PyTorch 的 DataLoader 多进程模式依赖 multiprocessing 的 Pipe。</p>
+<p><strong>修复</strong>：所有配置里都设 <code>"num_workers": 0</code>。</p>
+<p><strong>代价</strong>：数据加载与计算串行，实测约损失 30% 吞吐
+（数据加载单独 188 img/s，计算单独约 70 img/s，串行合成约 50 img/s）。</p>
+<p><strong>在不受限制的环境下</strong>：改成 <code>4</code> 并配 <code>persistent_workers=True</code> 即可提速。</p>
+<hr />
+<h2 id="doc09-坑-4-unknown-目录排序错位-指标算出-0-06-最隐蔽">⚠️ 坑 4：<code>unknown</code> 目录排序错位，指标算出 0.06（最隐蔽）</h2>
+<p><strong>现象</strong>：<code>finalize.py</code> 首次运行输出</p>
+<div class="codehilite"><pre><span></span><code>排名 improved_resnet18_224   标定后 0.0648   未标定 0.0634
+</code></pre></div>
+
+<p>Macro-F1 = 0.0648，而单模型评估明明是 0.9482。</p>
+<p><strong>原因</strong>：脚本为了对齐"图片顺序 ↔ 标签顺序"，对<strong>全部文件名做了全局排序</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">names_sorted</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">truth</span><span class="p">)</span>     <span class="c1"># ❌ 全局排序</span>
+</code></pre></div>
+
+<p>但 <code>unknown/</code> 目录下的文件名沿用的是<strong>来源类别 ID</strong>
+（例如 <code>0022_0022.jpg</code> 实际是 unknown，来源类别是 0022）。
+全局排序会把它们插到 <strong>0022 类中间</strong>；
+而 <code>CarDataset</code> 的遍历顺序是"先按类别目录名排序"，
+<code>"unknown"</code> 字符串大于 <code>"0987"</code>，所以 unknown 排在<strong>最后</strong>。</p>
+<p>两者错位 → 预测与标签完全对不上。</p>
+<p><strong>修复</strong>：直接取 <code>CarDataset.samples</code> 的顺序，不再自己排序：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">ref_ds</span> <span class="o">=</span> <span class="n">CarDataset</span><span class="p">(</span><span class="n">paths</span><span class="o">.</span><span class="n">DATA_DIR</span> <span class="o">/</span> <span class="n">split</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">build_transform</span><span class="p">(</span><span class="s2">&quot;eval&quot;</span><span class="p">,</span> <span class="mi">224</span><span class="p">,</span> <span class="p">{}))</span>
+<span class="n">names</span>  <span class="o">=</span> <span class="p">[</span><span class="n">Path</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">p</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">ref_ds</span><span class="o">.</span><span class="n">samples</span><span class="p">]</span>
+<span class="n">y_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">lab</span> <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">lab</span> <span class="ow">in</span> <span class="n">ref_ds</span><span class="o">.</span><span class="n">samples</span><span class="p">])</span>
+</code></pre></div>
+
+<p><strong>影响范围</strong>：<code>src/finalize.py</code> 与 <code>src/ensemble.py</code>（两个都已修复）。</p>
+<p><strong>如何自查</strong>：任何"评估脚本算出来的分数与 <code>evaluate.py</code> 差很多"的情况，
+第一件事就是检查样本顺序是否一致。</p>
+<hr />
+<h2 id="doc09-坑-5-bf16-与-fp32-推理不一致-指标漂移-0-0005">⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005</h2>
+<p><strong>现象</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>基线 Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>训练日志（bf16）</td>
+<td>0.847508</td>
+</tr>
+<tr>
+<td><code>evaluate.py</code>（fp32）</td>
+<td>0.847011</td>
+</tr>
+</tbody>
+</table>
+<p>差 0.0005。</p>
+<p><strong>原因</strong>：训练时启用了 <code>amp=true</code>（bf16 autocast），
+训练结束时的最终评估也是 bf16；
+而 <code>evaluate.py</code> 默认用 fp32。极小的数值差异让个别样本的 argmax 翻转。</p>
+<p><strong>修复</strong>：<code>evaluate.py</code> 改为<strong>默认读取 checkpoint 里记录的 <code>amp</code> 设置</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">amp</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="n">ckpt</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;train_config&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;amp&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">))</span> <span class="k">if</span> <span class="n">args</span><span class="o">.</span><span class="n">amp</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">args</span><span class="o">.</span><span class="n">amp</span>
+</code></pre></div>
+
+<p>修复后两侧完全一致：基线 0.847508 / 类别平衡 0.842818 / 改进 0.948215。</p>
+<p><strong>如何自查</strong>：任何时候"重算的指标和记录的指标对不上"，先查推理精度是否一致。</p>
+<hr />
+<h2 id="doc09-坑-6-evaluate-py-的输出目录算错">⚠️ 坑 6：<code>evaluate.py</code> 的输出目录算错</h2>
+<p><strong>现象</strong>：<code>evaluate.py</code> 把结果写到了 <code>outputs/checkpoints/runs/&lt;run&gt;/</code> 而不是 <code>outputs/runs/&lt;run&gt;/</code>。</p>
+<p><strong>原因</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">out_dir</span> <span class="o">=</span> <span class="n">ckpt_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">parent</span> <span class="o">/</span> <span class="s2">&quot;runs&quot;</span> <span class="o">/</span> <span class="n">ckpt_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>   <span class="c1"># ❌</span>
+</code></pre></div>
+
+<p><code>best.pt</code> 的 <code>parent</code> 是 <code>outputs/checkpoints/&lt;run&gt;</code>，
+再 <code>.parent</code> 是 <code>outputs/checkpoints</code>（不是 <code>outputs</code>）。</p>
+<p><strong>修复</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">out_dir</span> <span class="o">=</span> <span class="n">paths</span><span class="o">.</span><span class="n">RUN_DIR</span> <span class="o">/</span> <span class="n">ckpt_path</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">name</span>     <span class="c1"># ✅</span>
+</code></pre></div>
+
+<p><strong>同类问题还出现在 <code>predict_batch.py</code> 的标定文件查找</strong>（同一个错误模式），已一并修复。</p>
+<p><strong>教训</strong>：多层 <code>.parent</code> 很容易数错，<strong>优先用 <code>paths.py</code> 里的常量</strong>。</p>
+<hr />
+<h2 id="doc09-坑-7-carclassifier-初始化顺序导致-attributeerror">⚠️ 坑 7：<code>CarClassifier</code> 初始化顺序导致 AttributeError</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>File &quot;cardex/inference.py&quot;, line 81, in _training_log_prior
+    n_c = [1] * len(self.label_names)
+AttributeError: &#39;CarClassifier&#39; object has no attribute &#39;label_names&#39;
+</code></pre></div>
+
+<p><strong>原因</strong>：<code>__init__</code> 里先算 <code>self.log_prior = self._training_log_prior()</code>，
+但 <code>self.label_names</code> 是在后面几行才赋值的。</p>
+<p><strong>修复</strong>：把 <code>log_prior</code> 的计算移到 <code>label_names</code> 赋值之后：</p>
+<div class="codehilite"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">log_prior</span> <span class="o">=</span> <span class="kc">None</span>            <span class="c1"># 先占位</span>
+<span class="o">...</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">label_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;label_names&quot;</span><span class="p">])</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">prior_adjust_tau</span><span class="p">:</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">log_prior</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_training_log_prior</span><span class="p">()</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-坑-8-powershell-的-convertto-json-把配置文件格式改丑">⚠️ 坑 8：PowerShell 的 <code>ConvertTo-Json</code> 把配置文件格式改丑</h2>
+<p><strong>现象</strong>：用 PowerShell 批量改配置后，JSON 变成了</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;run_name&quot;</span><span class="p">:</span><span class="w">  </span><span class="s2">&quot;baseline_resnet18_160&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;aug&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;crop_scale&quot;</span><span class="p">:</span><span class="w">  </span><span class="p">[</span>
+<span class="w">                                   </span><span class="mf">0.70</span><span class="p">,</span>
+<span class="w">                                   </span><span class="mf">1.0</span>
+<span class="w">                               </span><span class="p">],</span>
+</code></pre></div>
+
+<p>（值前面多两个空格、数组被拆成多行）</p>
+<p><strong>原因</strong>：<code>ConvertTo-Json</code> 的默认格式化风格与 Python 的不同。</p>
+<p><strong>修复</strong>：用文本工具（<code>edit</code> 工具或 <code>write</code> 工具）手工重写，
+或统一用 Python 脚本改配置：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import json,pathlib; p=pathlib.Path(&#39;configs/x.json&#39;); d=json.loads(p.read_text(encoding=&#39;utf-8&#39;)); d[&#39;threads&#39;]=12; p.write_text(json.dumps(d,ensure_ascii=False,indent=2),encoding=&#39;utf-8&#39;)&quot;</span>
+</code></pre></div>
+
+<p><strong>功能上没影响</strong>（JSON 依然合法），但可读性差，且报告里引用的配置字符串会很难看。</p>
+<hr />
+<h2 id="doc09-坑-9-传入-logger-后训练日志不再写入文件">⚠️ 坑 9：传入 logger 后训练日志不再写入文件</h2>
+<p><strong>现象</strong>：训练跑起来了，控制台有输出，但 <code>outputs/runs/&lt;run&gt;/train.log</code> <strong>不存在</strong>。</p>
+<p><strong>原因</strong>：<code>train.py</code> 先调了 <code>get_logger("train", None)</code>（无文件 handler），
+再把它传给 <code>engine.train_model(cfg, logger=logger)</code>；
+而 <code>train_model</code> 里写的是</p>
+<div class="codehilite"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">get_logger</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;train.</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">run_dir</span> <span class="o">/</span> <span class="s2">&quot;train.log&quot;</span><span class="p">)</span>   <span class="c1"># ❌</span>
+</code></pre></div>
+
+<p><code>logger</code> 已经非空，所以右边的 <code>get_logger(...)</code> <strong>根本不会执行</strong>，文件 handler 从未被创建。</p>
+<p><strong>修复</strong>：改成无论是否传入 logger，都确保挂上文件 handler：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">logger</span> <span class="o">=</span> <span class="n">logger</span> <span class="ow">or</span> <span class="n">get_logger</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;train.</span><span class="si">{</span><span class="n">run_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="n">logger</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">run_dir</span> <span class="o">/</span> <span class="s2">&quot;train.log&quot;</span><span class="p">)</span>     <span class="c1"># ✅ 幂等地追加文件 handler</span>
+</code></pre></div>
+
+<p>同时把 <code>get_logger</code> 改成"流 handler 与文件 handler 分别幂等添加"。</p>
+<hr />
+<h2 id="doc09-坑-10-finalize-py-的-meta-文件名与-predict_batch-py-不一致">⚠️ 坑 10：<code>finalize.py</code> 的 meta 文件名与 <code>predict_batch.py</code> 不一致</h2>
+<p><strong>现象</strong>：根目录同时存在 <code>predictions.meta.json</code> 与 <code>predictions.csv.meta.json</code>，
+其中 <code>predictions.meta.json</code> 是<strong>旧的</strong>（记录的是 C1 单模型），
+容易误判当前 <code>predictions.csv</code> 是用什么生成的。</p>
+<p><strong>原因</strong>：<code>predict_batch.py</code> 写 <code>out.with_suffix(".meta.json")</code> → <code>predictions.meta.json</code>；
+<code>finalize.py</code> 写 <code>Path(str(out) + ".meta.json")</code> → <code>predictions.csv.meta.json</code>。</p>
+<p><strong>修复</strong>：统一成 <code>out.with_suffix(".meta.json")</code>，并删掉旧文件。</p>
+<hr />
+<h2 id="doc09-坑-11-dataloader-在-windows-下的中文路径-编码问题">⚠️ 坑 11：<code>DataLoader</code> 在 Windows 下的中文路径 / 编码问题</h2>
+<p><strong>现象</strong>：PowerShell 里跑 Python 脚本，中文输出显示为乱码（如 <code>棰勬祴</code>）。</p>
+<p><strong>原因</strong>：这是<strong>控制台显示编码</strong>问题，不是文件编码问题。
+Python 的 stdout 编码与 PowerShell 的控制台编码不一致。</p>
+<p><strong>处理方式</strong>：
+- 加环境变量 <code>$env:PYTHONIOENCODING="utf-8"</code>（本项目所有命令都加了）；
+- 或者直接<strong>读文件</strong>（<code>train.log</code>、<code>report.json</code> 本身是 UTF-8，内容完全正确）；
+- 或者把结果重定向到文件再查看。</p>
+<p><strong>重要</strong>：这只影响"在终端里看"，<strong>不影响任何文件的正确性</strong>。</p>
+<hr />
+<h2 id="doc09-坑-12-cpu-线程开满反而更慢">⚠️ 坑 12：CPU 线程开满反而更慢</h2>
+<p><strong>现象</strong>：<code>torch.set_num_threads(16)</code>（等于逻辑核数）时吞吐 38.2 img/s，
+改成 12 后变成 46.2 img/s。</p>
+<p><strong>原因</strong>：<strong>超订阅</strong>——16 个计算线程 + 主线程的数据加载互相抢占，
+上下文切换开销超过了并行收益。</p>
+<p><strong>修复</strong>：配置里统一 <code>"threads": 12</code>。</p>
+<p><strong>实测数据</strong>（resnet18@160 完整训练步）：</p>
+<table>
+<thead>
+<tr>
+<th>线程</th>
+<th>吞吐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>36.5 img/s</td>
+</tr>
+<tr>
+<td>8</td>
+<td>39.8 img/s</td>
+</tr>
+<tr>
+<td>10</td>
+<td>42.8 img/s</td>
+</tr>
+<tr>
+<td><strong>12</strong></td>
+<td><strong>46.2 img/s</strong></td>
+</tr>
+<tr>
+<td>16</td>
+<td>38.2 img/s</td>
+</tr>
+</tbody>
+</table>
+<p><strong>换机器时建议重新测一遍</strong>，不要照搬 12。</p>
+<hr />
+<h2 id="doc09-坑-13-pip-安装超时-网络不可用">⚠️ 坑 13：pip 安装超时 / 网络不可用</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python -m pip install pymupdf     # 卡住，5 分钟后超时
+</code></pre></div>
+
+<p><strong>处理方式</strong>：本项目最终<strong>没有依赖任何需要联网安装的包</strong>——
+用的是 Anaconda 自带的 torch/torchvision/numpy/scikit-learn/Pillow/matplotlib。
+PDF 文本提取改用 Git for Windows 自带的 <code>pdftotext.exe</code>。</p>
+<p><strong>如果你需要装包</strong>：
+- 先试国内镜像：<code>pip install &lt;pkg&gt; -i https://pypi.tuna.tsinghua.edu.cn/simple</code>；
+- 或者用 conda：<code>conda install &lt;pkg&gt;</code>；
+- 或者找离线 wheel。</p>
+<hr />
+<h2 id="doc09-坑-14-配置文件在-powershell-里被-set-content-写成带-bom">⚠️ 坑 14：配置文件在 PowerShell 里被 <code>Set-Content</code> 写成带 BOM</h2>
+<p><strong>现象</strong>：用 <code>Set-Content -Encoding UTF8</code> 写的 JSON，在 Python 里读会报
+<code>json.decoder.JSONDecodeError: Expecting value: line 1 column 1</code>。</p>
+<p><strong>原因</strong>：Windows PowerShell 5.1 的 <code>-Encoding UTF8</code> 会写入 <strong>BOM</strong>。
+（PowerShell 7 的 <code>utf8</code> 默认无 BOM。）</p>
+<p><strong>修复</strong>：用 Python 写文件（<code>pathlib.Path.write_text(..., encoding="utf-8")</code> 不加 BOM），
+或用 <code>-Encoding utf8NoBOM</code>（PS7）。</p>
+<p><strong>注意</strong>：<code>classes.txt</code> <strong>明确要求无 BOM</strong>，所以这个坑对它尤其致命。
+<code>select_classes.py</code> 里有一行断言专门防御：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">assert</span> <span class="ow">not</span> <span class="n">raw</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xef\xbb\xbf</span><span class="s2">&quot;</span><span class="p">),</span> <span class="s2">&quot;classes.txt 不能带 BOM&quot;</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-坑-15-报告里的数字写错-品牌数-36-vs-37">⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37）</h2>
+<p><strong>现象</strong>：<code>configs/selection.json</code> 的原则 P3 里写"50 类覆盖 <strong>36</strong> 个品牌"，
+报告里也照抄了。实际统计是 <strong>37</strong> 个品牌。</p>
+<p><strong>原因</strong>：早期手写原则时凭印象估的，没有用脚本核。</p>
+<p><strong>修复</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import json,collections; cm=json.load(open(&#39;configs/class_map.json&#39;,encoding=&#39;utf-8&#39;)); \</span>
+<span class="s2">ci={r[&#39;id&#39;]:r for r in json.load(open(&#39;configs/class_info.json&#39;,encoding=&#39;utf-8&#39;))}; \</span>
+<span class="s2">ids=[cm[&#39;index_to_id&#39;][str(i)] for i in range(50)]; \</span>
+<span class="s2">b=collections.Counter(ci[i][&#39;name_from_new&#39;].split(&#39;_&#39;)[0] for i in ids); \</span>
+<span class="s2">print(&#39;brands:&#39;,len(b),&#39;| 2类:&#39;,sum(1 for v in b.values() if v==2),&#39;| 1类:&#39;,sum(1 for v in b.values() if v==1))&quot;</span>
+<span class="c1"># brands: 37 | 2类: 13 | 1类: 24</span>
+</code></pre></div>
+
+<p><strong>教训</strong>：<strong>报告里所有数字都应该来自脚本输出，不要凭记忆写。</strong></p>
+<hr />
+<h2 id="doc09-坑-16-positional-参数缺失导致新手困惑">⚠️ 坑 16：<code>positional</code> 参数缺失导致新手困惑</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python src/train.py --config configs/train_baseline.json --log-interval 999
+train.py: error: unrecognized arguments: --log-interval 999
+</code></pre></div>
+
+<p><strong>原因</strong>：<code>log_interval</code> 不是独立命令行参数，它只能通过 <code>--set</code> 覆盖。</p>
+<p><strong>修复</strong>：</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/train.py<span class="w"> </span>--config<span class="w"> </span>configs/train_baseline.json<span class="w"> </span>--set<span class="w"> </span><span class="nv">log_interval</span><span class="o">=</span><span class="m">999</span>
+</code></pre></div>
+
+<p><strong>通用规则</strong>：<code>train.py</code> 只把常用的几个参数（<code>--epochs</code> / <code>--lr</code> / <code>--arch</code> 等）
+做成了独立选项；<strong>其余任何配置项都用 <code>--set KEY=VALUE</code></strong>。</p>
+<hr />
+<h1 id="doc09-第二部分-通用-faq">第二部分：通用 FAQ</h1>
+<h2 id="doc09-q1-predictions-csv-的分数和我算出来的不一样">Q1：<code>predictions.csv</code> 的分数和我算出来的不一样？</h2>
+<p><strong>排查顺序</strong>：</p>
+<ol>
+<li>看 <code>predictions.meta.json</code>，确认它是<strong>哪个模型</strong>、<strong>哪组 τ/t</strong>、<strong>是否开了 TTA</strong> 生成的；</li>
+<li><code>python src/score_predictions.py</code> —— 它会用本地真值独立核算并打印；</li>
+<li>确认比较的是<strong>同一个划分</strong>（<code>--split val</code> 还是 <code>train</code>）；</li>
+<li>若 <code>predictions.csv</code> 是对<strong>外部目录</strong>生成的，本地没有真值，核算会失败（正常）。</li>
+</ol>
+<hr />
+<h2 id="doc09-q2-训练中断了怎么办">Q2：训练中断了怎么办？</h2>
+<p><strong>现状</strong>：<code>train.py</code> <strong>不支持自动续训</strong>。</p>
+<p><strong>手动恢复的思路</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cardex.engine</span><span class="w"> </span><span class="kn">import</span> <span class="n">build_model</span>   <span class="c1"># 注意：实际在 cardex.models</span>
+<span class="n">ckpt</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;outputs/checkpoints/&lt;run&gt;/last.pt&quot;</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">,</span> <span class="n">weights_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">build_model</span><span class="p">(</span><span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;arch&quot;</span><span class="p">],</span> <span class="n">num_classes</span><span class="o">=</span><span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;num_classes&quot;</span><span class="p">],</span> <span class="n">pretrained</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">load_state_dict</span><span class="p">(</span><span class="n">ckpt</span><span class="p">[</span><span class="s2">&quot;model_state&quot;</span><span class="p">])</span>
+<span class="c1"># 然后自己写训练循环，从 ckpt[&quot;epoch&quot;]+1 继续</span>
+</code></pre></div>
+
+<p><strong>更简单的做法</strong>：重新训练（本项目 A/B 只要半小时，是可行的）。
+长训练（C2 约 3 小时）建议先跑冒烟测试确认配置无误再启动。</p>
+<hr />
+<h2 id="doc09-q3-data-被误删了怎么办">Q3：<code>data/</code> 被误删了怎么办？</h2>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/prepare_data.py
+</code></pre></div>
+
+<p>约 10 秒即可恢复（前提：<code>C:\Users\y\Downloads\数据集.zip</code> 还在）。</p>
+<hr />
+<h2 id="doc09-q4-outputs-被误删了怎么办">Q4：<code>outputs/</code> 被误删了怎么办？</h2>
+<ul>
+<li><code>outputs/checkpoints/</code> 删了 → <strong>必须重新训练</strong>（模型文件不可再生）；</li>
+<li><code>outputs/runs/</code> 删了 → 日志丢了，但模型还在，可以用 <code>evaluate.py</code> / <code>calibrate.py</code> 重新生成大部分指标；</li>
+<li><code>outputs/reports/</code> 删了 → 大部分可以重新生成：
+  <code>bash
+  python src/select_classes.py      # 选类报告
+  python src/data_analysis.py       # 数据分析
+  python src/make_reports.py        # 实验对比与图表
+  python src/finalize.py ...        # 最终模型比选</code></li>
+</ul>
+<hr />
+<h2 id="doc09-q5-显存-内存不够">Q5：显存/内存不够？</h2>
+<p><strong>本项目用的是 CPU</strong>，不存在显存问题。内存峰值约 900 MB。</p>
+<p>如果换到 GPU 后 OOM：</p>
+<ul>
+<li>降 <code>batch_size</code>（32 → 16 → 8）；</li>
+<li>降 <code>image_size</code>；</li>
+<li>关掉 <code>amp</code>（有时 AMP 会额外占用）；</li>
+<li>换更小的 <code>arch</code>。</li>
+</ul>
+<p><strong>注意</strong>：降 <code>batch_size</code> 后应该按比例降 <code>lr</code>。</p>
+<hr />
+<h2 id="doc09-q6-训练太快结束了-精度上不去">Q6：训练太快结束了 / 精度上不去？</h2>
+<table>
+<thead>
+<tr>
+<th>症状</th>
+<th>可能原因</th>
+<th>处理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>几百秒就"训练完成"</td>
+<td>用了 <code>--limit-train-per-class</code>（冒烟模式）</td>
+<td>去掉该参数</td>
+</tr>
+<tr>
+<td>精度一直卡在很低</td>
+<td>学习率过大（看 <code>val_loss</code> 是否 &gt;10）</td>
+<td>检查 <code>lr</code> 与 <code>head_lr_mult</code></td>
+</tr>
+<tr>
+<td>精度一直卡在很低</td>
+<td>预训练权重没加载成功</td>
+<td>检查 <code>models.py</code> 的权重枚举</td>
+</tr>
+<tr>
+<td>精度提升到一半就不动了</td>
+<td><code>epochs</code> 太少</td>
+<td>强增强配方需要更多轮</td>
+</tr>
+<tr>
+<td>训练集 100%、验证集很低</td>
+<td>过拟合</td>
+<td>加强增强、开 EMA、开标签平滑</td>
+</tr>
+<tr>
+<td>验证集比训练集还高</td>
+<td>正常现象（强增强）</td>
+<td>不用担心，看 Macro-F1 即可</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc09-q7-怎么知道我的改动是不是变好了">Q7：怎么知道我的改动是不是变好了？</h2>
+<p><strong>原则</strong>：永远用<strong>验证集 51 类 Macro-F1</strong> 判断，不要看训练准确率或损失。</p>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/train.py<span class="w"> </span>--config<span class="w"> </span>&lt;你的配置&gt;<span class="w"> </span>--run-name<span class="w"> </span>my_test
+<span class="c1"># 然后对比</span>
+python<span class="w"> </span>src/make_reports.py<span class="w"> </span>--runs<span class="w"> </span>&lt;基线run&gt;<span class="w"> </span>my_test
+</code></pre></div>
+
+<p><strong>注意</strong>：单次运行的差异小于 <strong>0.005</strong> 时，不能确定是真实改进还是随机波动
+（本项目没有跑多种子重复实验）。</p>
+<hr />
+<h2 id="doc09-q8-verify_submission-py-报了-fail-怎么办">Q8：<code>verify_submission.py</code> 报了 FAIL 怎么办？</h2>
+<p>每一项 FAIL 都写明了具体原因。常见几类：</p>
+<table>
+<thead>
+<tr>
+<th>FAIL 内容</th>
+<th>原因</th>
+<th>修复</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>classes.txt</code> 行数不是 50</td>
+<td>手工改过</td>
+<td><code>python src/select_classes.py</code> 重新生成</td>
+</tr>
+<tr>
+<td>索引 0~49 顺序与 <code>classes.txt</code> 不一致</td>
+<td><code>class_map.json</code> 与 <code>classes.txt</code> 不同步</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>train/</code> 下缺少某个车型目录</td>
+<td><code>data/</code> 不完整</td>
+<td><code>python src/prepare_data.py --force</code></td>
+</tr>
+<tr>
+<td>train / val 文件名有重叠</td>
+<td>数据抽取异常</td>
+<td>同上</td>
+</tr>
+<tr>
+<td><code>predicted_label</code> 有非法值</td>
+<td><code>predictions.csv</code> 用了不在 50 类里的 ID</td>
+<td>检查模型与 <code>class_map.json</code> 是否匹配</td>
+</tr>
+<tr>
+<td>checkpoint 内的类别映射与 <code>classes.txt</code> 不一致</td>
+<td><strong>换了选类但用了旧模型</strong></td>
+<td>必须重新训练</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc09-q9-为什么-make_reports-py-里看不到某个实验">Q9：为什么 <code>make_reports.py</code> 里看不到某个实验？</h2>
+<p>因为 <code>--skip-smoke</code> 默认开启，会跳过 run 名以 <code>smoke</code> / <code>probe</code> 开头的实验。
+要么改 run 名，要么显式指定 <code>--runs smoke_xxx</code>。</p>
+<hr />
+<h2 id="doc09-q10-ensemble-py---limit-的分数为什么完全不对">Q10：<code>ensemble.py --limit</code> 的分数为什么完全不对？</h2>
+<p><code>--limit</code> 是<strong>按路径排序后截断</strong>，只会取到开头几个类别的图片，
+其余类别的验证样本数为 0 → 那些类的 F1 记为 0 → Macro-F1 严重偏低。</p>
+<p><strong><code>--limit</code> 只用于冒烟测试代码路径，不要用它评估指标。</strong></p>
+<hr />
+<h2 id="doc09-q11---tta-hflip-到底该不该开">Q11：<code>--tta-hflip</code> 到底该不该开？</h2>
+<p><strong>评估时</strong>：应该开，且必须与你训练配置里的 <code>tta_hflip</code> 保持一致，
+否则"评估出来的分数"与"训练日志里的分数"会不一致。</p>
+<p><strong>推理时</strong>：应该开（约 +1% 精度），除非推理时间是不可接受的瓶颈。</p>
+<hr />
+<h2 id="doc09-q12-我想换一批类别重做-要注意什么">Q12：我想换一批类别重做，要注意什么？</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 1) 编辑 configs/selection.json（classes 数组必须恰好 50 条，ID 必须在 827 类内）</span>
+<span class="c1"># 2) 重新生成配置</span>
+python<span class="w"> </span>src/select_classes.py
+<span class="c1"># 3) 重新抽数据</span>
+python<span class="w"> </span>src/prepare_data.py<span class="w"> </span>--force
+<span class="c1"># 4) 重新训练（务必换新 run_name，否则会覆盖旧实验）</span>
+python<span class="w"> </span>src/train.py<span class="w"> </span>--config<span class="w"> </span>configs/train_improved.json<span class="w"> </span>--run-name<span class="w"> </span>improved_v2
+<span class="c1"># 5) 重新标定与定版</span>
+python<span class="w"> </span>src/calibrate.py<span class="w"> </span>--run<span class="w"> </span>improved_v2<span class="w"> </span>--tta-hflip
+python<span class="w"> </span>src/finalize.py<span class="w"> </span>--candidates<span class="w"> </span>improved_v2
+</code></pre></div>
+
+<p><strong>关键提醒</strong>：换类别后<strong>所有旧 checkpoint 全部作废</strong>——
+虽然类别数还是 51，但每一类的含义变了，拿旧模型推理会得到完全错误的结果
+（<code>verify_submission.py</code> 的第 [6] 组会检测出这个不一致）。</p>
+<hr />
+<h2 id="doc09-q13-classes-txt-里的-id-和-class_info-json-对不上">Q13：<code>classes.txt</code> 里的 ID 和 <code>class_info.json</code> 对不上？</h2>
+<p><code>classes.txt</code> 里必须是 <code>class_info.json</code> 的 <strong><code>id</code> 字段</strong>（四位数字），
+不是 <code>name_from_old</code> 里 <code>==</code> 后面的英文名，也不是数组下标。</p>
+<p><code>select_classes.py</code> 会校验：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="n">cid</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+    <span class="n">errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;ID </span><span class="si">{</span><span class="n">cid</span><span class="si">}</span><span class="s2"> 不在教师提供的 827 类中&quot;</span><span class="p">)</span>
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-q14-报告中-验证集-macro-f1-该用哪个数">Q14：报告中"验证集 Macro-F1"该用哪个数？</h2>
+<p><strong>统一用 <code>calibrate.py</code> / <code>finalize.py</code> 输出的"标定后"数值</strong>，
+因为那才是真正提交的推理流程会产生的结果。</p>
+<p>对本项目：</p>
+<table>
+<thead>
+<tr>
+<th>用途</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>报告里写"最终验证集 Macro-F1"</td>
+<td><strong>0.9604</strong></td>
+</tr>
+<tr>
+<td>报告里写"未标定 Macro-F1"</td>
+<td>0.9587</td>
+</tr>
+<tr>
+<td><code>predictions.csv</code> 独立核算值</td>
+<td><strong>0.9604</strong>（一致）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc09-q15-怎么确认-模型保存和重新加载-是好的">Q15：怎么确认"模型保存和重新加载"是好的？</h2>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/verify_reload.py<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;pt&gt;<span class="w"> </span>--n<span class="w"> </span><span class="m">240</span><span class="w"> </span>--tta-hflip<span class="w"> </span>--out<span class="w"> </span>a.json
+python<span class="w"> </span>src/verify_reload.py<span class="w"> </span>--checkpoint<span class="w"> </span>&lt;pt&gt;<span class="w"> </span>--n<span class="w"> </span><span class="m">240</span><span class="w"> </span>--tta-hflip<span class="w"> </span>--out<span class="w"> </span>b.json
+python<span class="w"> </span>src/verify_reload.py<span class="w"> </span>--compare<span class="w"> </span>a.json<span class="w"> </span>b.json
+</code></pre></div>
+
+<p>期望输出：</p>
+<div class="codehilite"><pre><span></span><code>完全一致的记录：240/240
+[OK] 两次独立进程重新加载 checkpoint 后的推理结果逐条一致 —— 模型保存与重新加载正确、且可复现。
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-q16-怎么验证整条数据流程是可复现的">Q16：怎么验证整条数据流程是可复现的？</h2>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 记录哈希</span>
+Get-FileHash<span class="w"> </span>classes.txt,configs<span class="se">\c</span>lass_map.json,configs<span class="se">\u</span>nknown_sources.json,outputs<span class="se">\r</span>eports<span class="se">\d</span>ata_manifest.csv<span class="w"> </span>-Algorithm<span class="w"> </span>SHA256
+<span class="c1"># 重跑</span>
+python<span class="w"> </span>src/select_classes.py
+python<span class="w"> </span>src/prepare_data.py
+<span class="c1"># 再记录哈希，应完全一致</span>
+</code></pre></div>
+
+<p>本项目实测：4 个产物哈希完全一致。</p>
+<hr />
+<h2 id="doc09-q17-idea-vs-code-里中文乱码">Q17：IDEA / VS Code 里中文乱码？</h2>
+<p>把文件编码设为 UTF-8（无 BOM）。
+项目里所有 <code>.py</code> 文件第一行都有 <code># -*- coding: utf-8 -*-</code>，
+所有文本输出都用 <code>encoding="utf-8"</code> 显式指定。</p>
+<hr />
+<h2 id="doc09-q18-requirements-txt-里为什么没有-markdown-pygments">Q18：<code>requirements.txt</code> 里为什么没有 markdown / pygments？</h2>
+<p>因为它们<strong>只用于生成 HTML 说明文档</strong>（<code>tools/build_docs_html.py</code>），
+训练、评估、推理完全不需要。
+要生成文档时单独装：</p>
+<div class="codehilite"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>markdown<span class="w"> </span>pygments
+</code></pre></div>
+
+<hr />
+<h2 id="doc09-q19-怎么把一个实验的结果发给别人">Q19：怎么把一个实验的结果发给别人？</h2>
+<p>对方<strong>不需要</strong>模型文件（几十 MB）就能看到结果：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 打包报告与图表（不含模型）</span>
+outputs/reports/**<span class="w">        </span><span class="c1"># 全部图表与报告</span>
+outputs/runs/&lt;run&gt;/*.json<span class="w"> </span><span class="c1"># 指标</span>
+outputs/runs/&lt;run&gt;/*.csv<span class="w">  </span><span class="c1"># 混淆矩阵、错误样本、标定结果</span>
+outputs/runs/&lt;run&gt;/train.log
+</code></pre></div>
+
+<p>要复现完整结果则需要 <code>configs/</code> + <code>src/</code> + 模型权重。</p>
+<hr />
+<h2 id="doc09-q20-任务二-三要用这个模型-怎么做">Q20：任务二/三要用这个模型，怎么做？</h2>
+<p>见 <a href="./09_任务二三交接说明.html">09_任务二三交接说明</a>。最简版本：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">cardex.inference</span><span class="w"> </span><span class="kn">import</span> <span class="n">CarEnsemble</span>            <span class="c1"># 或 CarClassifier</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">CarEnsemble</span><span class="p">([</span><span class="o">...</span><span class="p">],</span> <span class="n">tta_hflip</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">prior_adjust_tau</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">unknown_threshold</span><span class="o">=</span><span class="mf">0.25</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict_path</span><span class="p">(</span><span class="s2">&quot;用户上传的图.jpg&quot;</span><span class="p">,</span> <span class="n">top_k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="c1"># r[&quot;label_id&quot;] / r[&quot;label_name&quot;] / r[&quot;confidence&quot;] / r[&quot;is_unknown&quot;] / r[&quot;top_k&quot;]</span>
+</code></pre></div>
+
+<blockquote>
+<p><strong>注意 <code>top_k</code> 的坑</strong>：<code>CarEnsemble.predict_batch()</code> 的 <code>top_k</code> 参数是<strong>可选的</strong>，
+不传就没有 <code>r["top_k"]</code>。早期版本里 <code>predict_path(top_k=5)</code> 收下参数却没往下传，
+导致集成路径下 <code>top_candidates</code> 恒为空（见
+<a href="./10_真实API与端到端测试报告.html">10 · 真实 API 与端到端测试报告</a> BUG-1）。
+现在 <code>predict_path</code> 会把 <code>top_k</code> 透传下去，直接用即可。</p>
+</blockquote>
+<hr />
+<h2 id="doc09-坑-17-start-ps1-报一堆语法错误-中文全是乱码">坑 17：<code>start.ps1</code> 报一堆语法错误，中文全是乱码</h2>
+<p><strong>现象</strong>：运行 <code>start.ps1</code> 时 PowerShell 报
+<code>Missing closing '}' in statement block</code>，且报错信息里的中文显示成 <code>鐪熷疄</code> 这样的乱码。</p>
+<p><strong>原因</strong>：Windows PowerShell <strong>5.1</strong> 对<strong>没有 BOM</strong> 的 <code>.ps1</code> 文件按系统 ANSI 代码页
+（中文机器上是 GBK）解码。文件本身是 UTF-8，于是中文字符串全部变成乱码，
+连引号配对都被破坏，解析器就报语法错。</p>
+<p><strong>解决</strong>：把 <code>start.ps1</code> 另存为 <strong>UTF-8 with BOM</strong>。</p>
+<div class="codehilite"><pre><span></span><code><span class="c"># 一行修好（PowerShell 里执行）</span>
+<span class="nv">$p</span> <span class="p">=</span> <span class="s2">&quot;start.ps1&quot;</span>
+<span class="nv">$t</span> <span class="p">=</span> <span class="no">[System.IO.File]</span><span class="p">::</span><span class="n">ReadAllText</span><span class="p">(</span><span class="nv">$p</span><span class="p">,</span> <span class="no">[System.Text.UTF8Encoding]</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="nv">$false</span><span class="p">))</span>
+<span class="no">[System.IO.File]</span><span class="p">::</span><span class="n">WriteAllText</span><span class="p">(</span><span class="nv">$p</span><span class="p">,</span> <span class="nv">$t</span><span class="p">,</span> <span class="no">[System.Text.UTF8Encoding]</span><span class="p">::</span><span class="n">new</span><span class="p">(</span><span class="nv">$true</span><span class="p">))</span>
+</code></pre></div>
+
+<blockquote>
+<p>PowerShell <strong>7</strong> 默认按 UTF-8 读脚本，不受影响；问题只出在 5.1。
+本机未安装 pwsh 7，所以脚本按 5.1 兼容编写。</p>
+</blockquote>
+<hr />
+<h2 id="doc09-坑-18-启动脚本被-python-的一条警告打断">坑 18：启动脚本被 Python 的一条警告打断</h2>
+<p><strong>现象</strong>：<code>start.ps1</code> 在调用 <code>python ...</code> 之后直接退出，没有继续往下走。</p>
+<p><strong>原因</strong>：PowerShell 5.1 会把外部程序写到 <strong>stderr</strong> 的每一行包装成 <code>NativeCommandError</code> 错误记录；
+如果脚本开头设了 <code>$ErrorActionPreference = 'Stop'</code>，这条普通警告就会被当成终止性错误。</p>
+<p><strong>解决</strong>：启动脚本统一用 <code>$ErrorActionPreference = 'Continue'</code>，
+关键步骤改成显式判断 <code>$LASTEXITCODE</code>，需要抛错的地方单独写 <code>-ErrorAction Stop</code>。
+<strong>不要</strong>"顺手"把它改回 <code>Stop</code>。</p>
+<hr />
+<h2 id="doc09-坑-19-python--c-里的双引号被-powershell-吃掉">坑 19：<code>python -c '...'</code> 里的双引号被 PowerShell 吃掉</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">python</span> <span class="n">-c</span> <span class="s1">&#39;import sys;print(&quot;%d.%d.%d&quot;%sys.version_info[:3])&#39;</span>
+<span class="c"># Python 报：SyntaxError: invalid syntax</span>
+<span class="c">#   实际收到的是：print(%d.%d.%d%sys.version_info[:3])</span>
+</code></pre></div>
+
+<p><strong>原因</strong>：PowerShell 5.1 在给外部程序拼装命令行时会重新加引号，
+<strong>PowerShell 单引号串内部的 <code>"</code> 会被吞掉</strong>。</p>
+<p><strong>解决</strong>：传给外部程序的 Python 代码，一律写成「<strong>PowerShell 双引号 + Python 单引号</strong>」：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">python</span> <span class="n">-c</span> <span class="s2">&quot;import sys;print(&#39;%d.%d.%d&#39;%sys.version_info[:3])&quot;</span>
+</code></pre></div>
+
+<p>或者干脆写成 <code>.py</code> 文件再执行（<code>tools/selfcheck.py</code> 就是这么来的）。</p>
+<hr />
+<h2 id="doc09-坑-20-getaddrinfo-failed-max-retries-exceeded-域名解析失败">坑 20：<code>getaddrinfo failed</code> / <code>Max retries exceeded</code> —— 域名解析失败</h2>
+<p><strong>现象</strong>：</p>
+<div class="codehilite"><pre><span></span><code>API_REQUEST_FAILED：调用 DeepSeek 接口失败：ConnectionError: HTTPSConnectionPool(
+host=&#39;api.deepseek.com&#39;, port=443): Max retries exceeded with url: /chat/completions
+(Caused by NameResolutionError(...: Failed to resolve &#39;api.deepseek.com&#39;
+([Errno 11001] getaddrinfo failed)))
+</code></pre></div>
+
+<p><strong>这是什么</strong>：<code>[Errno 11001] getaddrinfo failed</code> 是 Windows 的<strong>域名解析不出来</strong>。
+跟你的代码、API Key、模型都没关系 —— 本机没能把 <code>api.deepseek.com</code> 变成 IP。
+典型诱因：网络刚切换（Wi-Fi↔有线）、VPN 断开、运营商 DNS 抖动。<strong>通常一两秒自愈。</strong></p>
+<p><strong>现在的处理</strong>：项目已内置<strong>分层错误识别 + 自动重试</strong>（<code>agent/llm.py</code>）：</p>
+<ul>
+<li>这类失败被识别为 <code>NETWORK_DNS_FAILED</code>，标记为<strong>可重试</strong>；</li>
+<li>自动做指数退避重试（默认 3 次，约 0.8s / 1.6s / 3.2s，带抖动）；</li>
+<li>Web 界面会实时提示「网络波动（NETWORK_DNS_FAILED），正在自动重试 2/4，1.6s 后重发…」；</li>
+<li>如果重试仍失败，你刚才打的那句话会<strong>自动回到输入框</strong>，直接再点一次发送即可；</li>
+<li>参数类错误（400 / 401 / 402 / 403）<strong>不会重试</strong>，立刻失败并说明原因——重试它们没有意义。</li>
+</ul>
+<p><strong>还是不行怎么办</strong>：先跑诊断，它会直接告诉你坏在哪一层：</p>
+<div class="codehilite"><pre><span></span><code><span class="n">python</span> <span class="n">tools</span><span class="p">/</span><span class="n">selfcheck</span><span class="p">.</span><span class="n">py</span> <span class="p">-</span><span class="n">-net</span>
+</code></pre></div>
+
+<p>输出形如：</p>
+<div class="codehilite"><pre><span></span><code>【网络分层诊断】
+  [OK]   ① DNS 解析      api.deepseek.com → 112.49.40.58, 183.253.56.58 · 10 ms
+  [WARN] ② TCP 443：1/3 个 IP 不可达   ← CDN 某个边缘节点不通，不影响使用
+  [OK]   ③ TLS 握手      TLSv1.3 · 55 ms
+  [OK]   ④ HTTPS 可达     GET https://api.deepseek.com → HTTP 401（未带 Key，属正常）
+</code></pre></div>
+
+<p>坏在第 ① 层（DNS）时的处理顺序：</p>
+<ol>
+<li>换网络 / 重连 Wi-Fi（最常见，立刻见效）</li>
+<li>关掉或切换 VPN / 代理</li>
+<li>刷新 DNS 缓存：<code>ipconfig /flushdns</code></li>
+<li>手动改 DNS：<code>223.5.5.5</code>（阿里）或 <code>119.29.29.29</code>（腾讯）</li>
+<li>检查 <code>C:\Windows\System32\drivers\etc\hosts</code> 是否被人写过 <code>api.deepseek.com</code> 的静态映射</li>
+</ol>
+<p><strong>错误码速查</strong>（新分层）：</p>
+<table>
+<thead>
+<tr>
+<th>错误码</th>
+<th>含义</th>
+<th>自动重试</th>
+<th>该怎么办</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>NETWORK_DNS_FAILED</code></td>
+<td>域名解析失败</td>
+<td>✅</td>
+<td>见上面 1~5</td>
+</tr>
+<tr>
+<td><code>NETWORK_UNREACHABLE</code></td>
+<td>TCP 连不上 / 代理拦截</td>
+<td>✅</td>
+<td>查防火墙、代理设置</td>
+</tr>
+<tr>
+<td><code>NETWORK_TLS_FAILED</code></td>
+<td>证书 / TLS 握手失败</td>
+<td>❌</td>
+<td>查系统时间、杀毒软件的自签名证书</td>
+</tr>
+<tr>
+<td><code>API_TIMEOUT</code></td>
+<td>连接或读取超时</td>
+<td>✅</td>
+<td>调大 <code>read_timeout</code> / <code>connect_timeout</code></td>
+</tr>
+<tr>
+<td><code>API_RATE_LIMITED</code></td>
+<td>HTTP 429 被限流</td>
+<td>✅</td>
+<td>降低调用频率，等待即可</td>
+</tr>
+<tr>
+<td><code>API_SERVER_ERROR</code></td>
+<td>HTTP 5xx</td>
+<td>✅</td>
+<td>服务端问题，等一会儿</td>
+</tr>
+<tr>
+<td><code>API_REQUEST_FAILED</code></td>
+<td>HTTP 400/401/402/403</td>
+<td>❌</td>
+<td>看 <code>hint</code>：模型名 / Key / 余额 / 权限</td>
+</tr>
+<tr>
+<td><code>API_KEY_MISSING</code></td>
+<td>没配 Key</td>
+<td>❌</td>
+<td>配 <code>agent/.env.local</code></td>
+</tr>
+</tbody>
+</table>
+<p>重试次数与退避可以在 <code>agent/config.py</code> 调：<code>max_retries</code>、<code>retry_backoff</code>。</p>
+<hr />
+<h2 id="doc09-q22-某一轮对话突然失败-回复是-0-字-报-internal_error">Q22：某一轮对话突然失败、回复是 0 字，报 <code>INTERNAL_ERROR</code>？</h2>
+<p><strong>先看错误码</strong>。<code>INTERNAL_ERROR</code> 表示"框架内部出了没预料到的异常"，
+它的 message 里带着异常类型和说明，例如：</p>
+<div class="codehilite"><pre><span></span><code>INTERNAL_ERROR: JSONDecodeError: Invalid control character at: line 1 column 3001 (char 3000)
+</code></pre></div>
+
+<p><strong>已经修过的那一个</strong>：工具结果超过 <code>MAX_TOOL_RESULT_CHARS = 6000</code> 字符时，
+老的 <code>truncate()</code> 按纯文本从中间切一刀，切出来的不是合法 JSON，
+<code>session.add_tool_result()</code> 再 <code>json.loads</code> 就抛异常，整轮直接失败、回复 0 字。
+典型触发场景就是"档案记录攒得比较多了，让模型汇总一下"。</p>
+<p>现在 <code>loop.truncate_tool_result()</code> 做<strong>结构化裁剪</strong>（解析 → 逐级瘦身 → 重新序列化），
+保证回填给模型的永远是合法 JSON；<code>session._parse_for_log()</code> 作为第二道防线，
+解析失败只降级存字符串，绝不外抛。详见
+<a href="./10_真实API与端到端测试报告.html">10 · 真实 API 与端到端测试报告</a> 的 BUG-9。</p>
+<p><strong>再遇到同类问题怎么查</strong>：<code>run_turn</code> 会把所有异常兜底成 <code>INTERNAL_ERROR</code>，
+拿不到堆栈。要定位就绕开兜底，直接调 <code>_run_steps</code>：</p>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span><span class="p">;</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;.&quot;</span><span class="p">);</span> <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;src&quot;</span><span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.loop</span><span class="w"> </span><span class="kn">import</span> <span class="n">Agent</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">agent.session</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionStore</span>
+
+<span class="n">ag</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">load_config</span><span class="p">(),</span> <span class="n">store</span><span class="o">=</span><span class="n">SessionStore</span><span class="p">(</span><span class="n">load_config</span><span class="p">()))</span>
+<span class="n">s</span> <span class="o">=</span> <span class="n">ag</span><span class="o">.</span><span class="n">store</span><span class="o">.</span><span class="n">create</span><span class="p">();</span> <span class="n">s</span><span class="o">.</span><span class="n">add_user</span><span class="p">(</span><span class="s2">&quot;你的问题&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">);</span> <span class="n">s</span><span class="o">.</span><span class="n">turns</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">ag</span><span class="o">.</span><span class="n">_run_steps</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&quot;t-probe&quot;</span><span class="p">,</span> <span class="p">[],</span> <span class="k">lambda</span> <span class="o">*</span><span class="n">a</span><span class="p">,</span> <span class="o">**</span><span class="n">k</span><span class="p">:</span> <span class="kc">None</span><span class="p">)</span>   <span class="c1"># 异常会带完整 traceback 抛出</span>
+</code></pre></div>
+
+<p><strong>顺带</strong>：这类"框架内部异常"在 Web 界面上会连同 <code>hint</code> 一起显示；
+如果 <code>info</code> 里有 <code>retryable=True</code>，说明是网络类故障，系统已经自动重试过了。</p>
+<hr />
+<h2 id="doc09-q21-接了真实-api-key-之后-verify_agent-py-反而不全过了">Q21：接了真实 API Key 之后，<code>verify_agent.py</code> 反而不全过了？</h2>
+<p><strong>原因</strong>：该脚本调用 <code>load_config()</code>，而 <code>load_config</code> 在"有 Key"时会自动选真实模型客户端。
+于是这套<strong>本该可复现的骨架自查</strong>悄悄变成了"真实模型行为测试"，
+两条依赖具体措辞或固定工具序列的断言就会随模型的自由发挥而失败。</p>
+<p><strong>现状</strong>：已修复。<code>verify_agent.py</code> <strong>默认强制 <code>cfg.offline = True</code></strong>（并在输出里标明当前模式），
+要跑真实模型请显式加 <code>--live</code>。</p>
+<p><strong>分工</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>脚本</th>
+<th>管什么</th>
+<th>可复现</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tools/verify_agent.py</code></td>
+<td>智能体<strong>骨架</strong>：工具注册、门禁、错误码、会话、Web 路由</td>
+<td>是（离线替身）</td>
+</tr>
+<tr>
+<td><code>tools/e2e_test.py</code></td>
+<td><strong>真实模型</strong>行为：工具链、多轮会话、拒识话术</td>
+<td>否（有随机性，但实测 13 轮全部符合预期）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="doc09-排错流程速查">排错流程速查</h2>
+<div class="codehilite"><pre><span></span><code>问题 → 先看什么？
+─────────────────────────────────────────────
+指标不对      → ① 推理精度(amp) ② TTA 设置 ③ 样本顺序 ④ 划分(train/val)
+精度太低      → ① val_loss 是否 &gt;10（学习率）② 预训练权重是否加载 ③ epochs 够不够
+跑不起来      → ① 文件/模型路径 ② 配置 JSON 是否合法 ③ 权重是否本地存在
+结果不稳定    → ① 是否开了 EMA ② 是否只跑了一次（&lt;0.005 的差异可能是噪声）
+提交被拒      → 跑 python src/verify_submission.py，按 FAIL 逐条修
+启动脚本乱码  → .ps1 必须 UTF-8 with BOM（坑 17）
+启动脚本中断  → 不要用 $ErrorActionPreference=&#39;Stop&#39;（坑 18）
+getaddrinfo failed → 瞬时 DNS 故障，系统会自动重试；持续失败跑 python tools/selfcheck.py --net（坑 20）
+模型不调工具  → ① 工具 description 是否说清&quot;何时调用&quot; ② 参数 Schema 是否严格 ③ 看 event log
+拒识不生效    → ① t 是否由验证集扫出来 ② 工具结果的 decision.action 是否被模型采纳
+</code></pre></div>
+
+<hr />
+<p><strong>相关</strong>：<a href="./10_真实API与端到端测试报告.html">10 · 真实 API 与端到端测试报告</a> 记录了接入真实 Key 后
+发现并修复的全部 7 个缺陷（含 3 个真实代码 BUG 与 4 个工程环境坑）。</p><div class="docnav"><a class="prev" href="./07_实验记录与结果分析.html"><span class="dir">← 上一篇</span><span class="ttl">07 · 实验记录与结果分析</span></a><a class="next" href="./09_任务二三交接说明.html"><span class="dir">下一篇 →</span><span class="ttl">09 · 任务二三交接说明</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

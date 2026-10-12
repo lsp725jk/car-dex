@@ -1,0 +1,34 @@
+# 识车档案 CarDex — 依赖清单
+#
+# 实测环境：Python 3.13.5 (Anaconda) + Windows 11 + AMD Ryzen 9 7940H
+#           全部训练与推理在 **CPU** 上完成（torch 为 CPU-only 构建，未使用 GPU）
+#
+# ⚠️ 本项目只使用 torchvision 官方 ImageNet 预训练权重，
+#    不依赖任何现成汽车分类模型，也不调用第三方在线图片识别服务。
+
+# ---------- 任务一：数据处理、训练与推理 ----------
+torch==2.13.0
+torchvision==0.28.0
+numpy>=2.0
+scikit-learn>=1.5
+Pillow>=10.0
+matplotlib>=3.8
+tqdm>=4.66
+
+# ---------- 任务二：智能体与工具 ----------
+# HTTP 客户端，调用 DeepSeek /chat/completions
+requests>=2.31
+# SQLite 是 Python 标准库，无需安装
+#
+# 【可选】真实浏览器抓取 browse_page 用（CDP over WebSocket）。
+# 不装也能跑：抓取会自动降级为普通 HTTP 请求（拿不到前端渲染的内容）。
+# Anaconda 环境通常已自带 websocket-client。
+websocket-client>=1.6
+
+# ---------- 任务三：Web 系统 ----------
+Flask>=3.0
+
+# ---------- 可选：生成 HTML 版说明文档 ----------
+# 训练与推理不需要，只在重新生成 docs/*.html 时需要
+markdown>=3.5
+pygments>=2.16

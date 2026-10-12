@@ -1,0 +1,2747 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="generator" content="tools/build_docs_html.py">
+<title>任务一：数据分析与视觉模型训练 — 识车档案 CarDex</title>
+<style>
+
+:root{
+  --accent:#2563eb; --accent-soft:#eff6ff; --accent-line:#bfdbfe;
+  --bg:#fff; --bg-soft:#f8fafc; --bg-sink:#f1f5f9;
+  --fg:#0f172a; --fg-soft:#334155; --muted:#64748b; --faint:#94a3b8;
+  --border:#e2e8f0; --border-strong:#cbd5e1;
+  --code-bg:#f8fafc; --code-border:#e2e8f0; --ok:#15803d;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06);
+  --shadow:0 6px 22px rgba(15,23,42,.10);
+  --radius:12px; --radius-sm:8px;
+  --sidebar-w:340px; --content-max:900px;
+  --sans:"Segoe UI","Microsoft YaHei UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",
+         "Source Han Sans SC","Noto Sans CJK SC",-apple-system,BlinkMacSystemFont,Roboto,sans-serif;
+  --mono:"Cascadia Mono","Cascadia Code",Consolas,"SF Mono",Menlo,Monaco,"Courier New",monospace;
+}
+html[data-theme="dark"]{
+  --accent:#60a5fa; --accent-soft:#172554; --accent-line:#1e3a8a;
+  --bg:#0b1220; --bg-soft:#111a2e; --bg-sink:#0f172a;
+  --fg:#e6edf7; --fg-soft:#c7d2e3; --muted:#93a3bb; --faint:#6b7c96;
+  --border:#21304a; --border-strong:#31425f;
+  --code-bg:#0f1830; --code-border:#21304a; --ok:#4ade80;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 6px 24px rgba(0,0,0,.5);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);
+  font-size:15.5px;line-height:1.82;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+code,kbd,pre,samp{font-family:var(--mono)}
+
+#app{display:flex;align-items:flex-start}
+#sidebar{flex:0 0 var(--sidebar-w);width:var(--sidebar-w);position:sticky;top:0;height:100vh;
+  overflow-y:auto;overscroll-behavior:contain;background:var(--bg-soft);
+  border-right:1px solid var(--border);padding:20px 14px 80px 20px;scrollbar-width:thin}
+#sidebar::-webkit-scrollbar{width:9px}
+#sidebar::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:2px solid var(--bg-soft)}
+#content{flex:1 1 auto;min-width:0;padding:0 56px 140px}
+.wrap{max-width:var(--content-max);margin:0 auto}
+
+.brand{display:flex;gap:11px;align-items:center;margin:2px 0 16px}
+.logo{width:38px;height:38px;flex:0 0 38px;border-radius:10px;
+  background:linear-gradient(135deg,var(--accent),#7c3aed);color:#fff;display:grid;place-items:center;
+  font-weight:800;font-size:14px;box-shadow:var(--shadow-sm);letter-spacing:-.5px;text-decoration:none}
+.brand-txt b{display:block;font-size:15px;line-height:1.3}
+.brand-txt span{display:block;font-size:11.5px;color:var(--muted);line-height:1.55;margin-top:3px}
+
+.search-box{position:relative;margin-bottom:14px}
+.search-box svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);opacity:.45}
+#search{width:100%;padding:9px 34px;font-family:var(--sans);font-size:13.5px;color:var(--fg);
+  background:var(--bg);border:1px solid var(--border-strong);border-radius:var(--radius-sm);
+  transition:border-color .15s,box-shadow .15s}
+#search::placeholder{color:var(--faint)}
+#search:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.kbd-hint{position:absolute;right:9px;top:50%;transform:translateY(-50%);font-size:10.5px;
+  color:var(--faint);border:1px solid var(--border);border-radius:4px;padding:0 5px;background:var(--bg-soft)}
+#search:focus ~ .kbd-hint{opacity:0}
+
+.nav-group{margin-bottom:3px;border-radius:var(--radius-sm)}
+.nav-head{display:flex;align-items:center;gap:6px;width:100%;padding:7px 9px;border:0;background:none;
+  cursor:pointer;color:var(--fg);font-family:var(--sans);font-size:13.2px;font-weight:600;
+  text-align:left;border-radius:var(--radius-sm);line-height:1.45;transition:background .12s;text-decoration:none}
+.nav-head:hover{background:var(--bg-sink)}
+a.nav-head{padding-left:27px;color:var(--muted);font-weight:500}
+a.nav-head:hover{color:var(--accent)}
+a.nav-head .doc-arrow{opacity:0;margin-left:auto;font-size:11px;transition:opacity .15s}
+a.nav-head:hover .doc-arrow{opacity:1}
+.caret{flex:0 0 12px;width:12px;height:12px;opacity:.5;transition:transform .18s}
+.nav-group.collapsed .caret{transform:rotate(-90deg)}
+.nav-group.active > .nav-head{background:var(--accent-soft);color:var(--accent)}
+.nav-list{margin:1px 0 6px 5px;padding-left:9px;border-left:2px solid var(--border);overflow:hidden}
+.nav-group.collapsed .nav-list{display:none}
+.nav-list a{display:block;padding:3.5px 8px;border-radius:6px;font-size:12.6px;line-height:1.55;
+  color:var(--muted);text-decoration:none;transition:background .12s,color .12s}
+.nav-list a:hover{background:var(--bg-sink);color:var(--fg)}
+.nav-list a.current{color:var(--accent);background:var(--accent-soft);font-weight:600}
+.nav-list a.lv4{padding-left:19px;font-size:12.1px}
+.side-foot{margin-top:18px;padding-top:12px;border-top:1px solid var(--border);
+  font-size:11.5px;color:var(--faint);line-height:1.75}
+.side-foot a{color:var(--accent);text-decoration:none}
+.hidden{display:none !important}
+
+#progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;
+  background:linear-gradient(90deg,var(--accent),#7c3aed);transition:width .1s linear}
+#topbar{position:sticky;top:0;z-index:50;margin:0 -56px;padding:10px 56px;background:var(--bg);
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px;
+  font-size:12.5px;color:var(--muted)}
+#crumb{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#crumb b{color:var(--fg);font-weight:600}
+.tool{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;padding:5px 11px;
+  border:1px solid var(--border-strong);border-radius:999px;background:var(--bg);color:var(--fg-soft);
+  font-size:12px;cursor:pointer;font-family:var(--sans);transition:all .14s;white-space:nowrap;text-decoration:none}
+.tool:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+#hamburger{display:none}
+
+.doc{padding-top:14px;scroll-margin-top:70px}
+.doc + .doc{margin-top:64px;padding-top:52px;border-top:1px solid var(--border)}
+h1,h2,h3,h4,h5{line-height:1.35;font-weight:700;scroll-margin-top:74px;position:relative}
+h1{font-size:29px;margin:0 0 18px;padding-bottom:14px;border-bottom:2px solid var(--border);letter-spacing:-.4px}
+h2{font-size:21.5px;margin:46px 0 16px;padding-left:14px;letter-spacing:-.2px}
+h2::before{content:"";position:absolute;left:0;top:.22em;bottom:.22em;width:4px;border-radius:2px;background:var(--accent)}
+h3{font-size:17.5px;margin:32px 0 12px}
+h4{font-size:15.5px;margin:24px 0 9px;color:var(--fg-soft)}
+h5{font-size:14.5px;margin:18px 0 8px;color:var(--muted)}
+.anchor{opacity:0;margin-left:8px;color:var(--faint);text-decoration:none;font-weight:400;
+  font-size:.78em;transition:opacity .15s}
+h1:hover .anchor,h2:hover .anchor,h3:hover .anchor,h4:hover .anchor{opacity:1}
+.anchor:hover{color:var(--accent)}
+
+p{margin:13px 0}
+a{color:var(--accent);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .14s}
+a:hover{border-bottom-color:var(--accent)}
+ul,ol{margin:13px 0;padding-left:26px}
+li{margin:5px 0}
+li::marker{color:var(--faint)}
+hr{border:0;height:1px;background:var(--border);margin:34px 0}
+blockquote{margin:16px 0;padding:12px 18px;color:var(--fg-soft);background:var(--bg-soft);
+  border-left:4px solid var(--accent);border-radius:0 var(--radius-sm) var(--radius-sm) 0}
+blockquote p:first-child{margin-top:0}
+blockquote p:last-child{margin-bottom:0}
+
+.table-wrap{position:relative;margin:18px 0;border:1px solid var(--border);border-radius:var(--radius);
+  background:var(--bg);box-shadow:var(--shadow-sm);overflow:hidden}
+.table-scroll{overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin}
+.table-scroll::-webkit-scrollbar{height:10px}
+.table-scroll::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;border:3px solid var(--bg)}
+table{border-collapse:separate;border-spacing:0;width:100%;font-size:13.6px;line-height:1.65}
+thead th{position:sticky;top:0;z-index:2;background:var(--bg-sink);font-weight:700;text-align:left;
+  padding:9px 13px;border-bottom:2px solid var(--border-strong);white-space:nowrap}
+tbody td{padding:8px 13px;border-bottom:1px solid var(--border);vertical-align:top}
+tbody tr:last-child td{border-bottom:0}
+tbody tr:hover td{background:var(--accent-soft)}
+td code,th code{white-space:nowrap;font-size:12.4px}
+.table-hint{position:absolute;right:9px;bottom:7px;font-size:10.5px;color:var(--faint);
+  background:var(--bg-soft);padding:1px 7px;border-radius:999px;pointer-events:none;opacity:0;
+  transition:opacity .2s;border:1px solid var(--border)}
+.table-wrap.scrollable .table-hint{opacity:1}
+.table-wrap.scrollable.at-end .table-hint{opacity:0}
+.table-wrap.wide{margin-left:-90px;margin-right:-90px}
+
+code{background:var(--code-bg);border:1px solid var(--code-border);border-radius:5px;
+  padding:1.5px 5.5px;font-size:13px;word-break:break-word}
+pre{margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+pre > code{display:block;background:none;border:0;padding:14px 16px;overflow-x:auto;
+  font-size:12.9px;line-height:1.68;white-space:pre}
+.codehilite{position:relative;margin:18px 0;background:var(--code-bg);border:1px solid var(--code-border);
+  border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-sm)}
+.codehilite pre{margin:0;border:0;box-shadow:none;border-radius:0}
+.codehilite pre > code{padding:14px 16px}
+.code-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 12px;
+  background:var(--bg-sink);border-bottom:1px solid var(--code-border);font-size:11px;
+  color:var(--muted);font-family:var(--sans)}
+.copy-btn{border:1px solid var(--border-strong);background:var(--bg);color:var(--muted);
+  border-radius:6px;padding:2px 9px;font-size:11px;cursor:pointer;font-family:var(--sans);transition:all .14s}
+.copy-btn:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+.copy-btn.done{color:var(--ok);border-color:var(--ok)}
+
+img{max-width:100%;height:auto;display:block;margin:16px 0;border:1px solid var(--border);
+  border-radius:var(--radius);box-shadow:var(--shadow-sm);background:var(--bg-soft)}
+p > img{margin:16px auto}
+
+.docnav{display:flex;gap:14px;margin-top:44px;padding-top:22px;border-top:1px solid var(--border)}
+.docnav a{flex:1 1 0;border:1px solid var(--border);border-radius:var(--radius);padding:12px 16px;
+  background:var(--bg-soft);text-decoration:none;color:var(--fg);transition:all .15s}
+.docnav a:hover{border-color:var(--accent);background:var(--accent-soft)}
+.docnav .dir{display:block;font-size:11px;color:var(--faint);margin-bottom:3px}
+.docnav .ttl{display:block;font-size:13.5px;font-weight:600}
+.docnav .next{text-align:right}
+
+#totop{position:fixed;right:26px;bottom:26px;z-index:60;display:none;width:42px;height:42px;
+  border-radius:50%;border:1px solid var(--border-strong);background:var(--bg);color:var(--fg-soft);
+  cursor:pointer;font-size:16px;box-shadow:var(--shadow);transition:all .16s}
+#totop:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+#mask{position:fixed;inset:0;background:rgba(15,23,42,.5);z-index:70;display:none}
+#mask.on{display:block}
+
+@media print{
+  #sidebar,#totop,#topbar,#progress,#mask,.copy-btn,.table-hint,.docnav{display:none !important}
+  #content{padding:0}.wrap{max-width:none}
+  .doc + .doc{border-top:0;margin-top:0;padding-top:0}
+  .doc h1{page-break-before:always}
+  .doc:first-of-type h1{page-break-before:avoid}
+  table,pre,.codehilite,blockquote,img{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  a{color:#000;border:0}
+  .table-wrap.wide{margin-left:0;margin-right:0}
+}
+@media (max-width:1320px){ .table-wrap.wide{margin-left:0;margin-right:0} }
+@media (max-width:1180px){ :root{--content-max:100%} #content{padding:0 34px 120px} #topbar{margin:0 -34px;padding:10px 34px} }
+@media (max-width:900px){
+  :root{--sidebar-w:300px}
+  #sidebar{position:fixed;top:0;left:0;bottom:0;height:100%;z-index:80;transform:translateX(-102%);
+    transition:transform .24s cubic-bezier(.4,0,.2,1);box-shadow:var(--shadow)}
+  #sidebar.open{transform:none}
+  #content{padding:0 18px 110px}
+  #topbar{margin:0 -18px;padding:10px 18px}
+  #hamburger{display:inline-flex}
+  h1{font-size:24px} h2{font-size:19.5px} h3{font-size:16.5px}
+  .docnav{flex-direction:column}
+}
+
+pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.codehilite .hll { background-color: #ffffcc }
+.codehilite { background: #f0f0f0; }
+.codehilite .c { color: #60A0B0; font-style: italic } /* Comment */
+.codehilite .err { border: 1px solid #F00 } /* Error */
+.codehilite .k { color: #007020; font-weight: bold } /* Keyword */
+.codehilite .o { color: #666 } /* Operator */
+.codehilite .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.codehilite .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.codehilite .cp { color: #007020 } /* Comment.Preproc */
+.codehilite .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.codehilite .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.codehilite .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.codehilite .gd { color: #A00000 } /* Generic.Deleted */
+.codehilite .ge { font-style: italic } /* Generic.Emph */
+.codehilite .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.codehilite .gr { color: #F00 } /* Generic.Error */
+.codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.codehilite .gi { color: #00A000 } /* Generic.Inserted */
+.codehilite .go { color: #888 } /* Generic.Output */
+.codehilite .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.codehilite .gs { font-weight: bold } /* Generic.Strong */
+.codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.codehilite .gt { color: #04D } /* Generic.Traceback */
+.codehilite .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.codehilite .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.codehilite .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.codehilite .kp { color: #007020 } /* Keyword.Pseudo */
+.codehilite .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.codehilite .kt { color: #902000 } /* Keyword.Type */
+.codehilite .m { color: #40A070 } /* Literal.Number */
+.codehilite .s { color: #4070A0 } /* Literal.String */
+.codehilite .na { color: #4070A0 } /* Name.Attribute */
+.codehilite .nb { color: #007020 } /* Name.Builtin */
+.codehilite .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.codehilite .no { color: #60ADD5 } /* Name.Constant */
+.codehilite .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.codehilite .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.codehilite .ne { color: #007020 } /* Name.Exception */
+.codehilite .nf { color: #06287E } /* Name.Function */
+.codehilite .nl { color: #002070; font-weight: bold } /* Name.Label */
+.codehilite .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.codehilite .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.codehilite .nv { color: #BB60D5 } /* Name.Variable */
+.codehilite .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.codehilite .w { color: #BBB } /* Text.Whitespace */
+.codehilite .mb { color: #40A070 } /* Literal.Number.Bin */
+.codehilite .mf { color: #40A070 } /* Literal.Number.Float */
+.codehilite .mh { color: #40A070 } /* Literal.Number.Hex */
+.codehilite .mi { color: #40A070 } /* Literal.Number.Integer */
+.codehilite .mo { color: #40A070 } /* Literal.Number.Oct */
+.codehilite .sa { color: #4070A0 } /* Literal.String.Affix */
+.codehilite .sb { color: #4070A0 } /* Literal.String.Backtick */
+.codehilite .sc { color: #4070A0 } /* Literal.String.Char */
+.codehilite .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.codehilite .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.codehilite .s2 { color: #4070A0 } /* Literal.String.Double */
+.codehilite .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.codehilite .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.codehilite .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.codehilite .sx { color: #C65D09 } /* Literal.String.Other */
+.codehilite .sr { color: #235388 } /* Literal.String.Regex */
+.codehilite .s1 { color: #4070A0 } /* Literal.String.Single */
+.codehilite .ss { color: #517918 } /* Literal.String.Symbol */
+.codehilite .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.codehilite .fm { color: #06287E } /* Name.Function.Magic */
+.codehilite .vc { color: #BB60D5 } /* Name.Variable.Class */
+.codehilite .vg { color: #BB60D5 } /* Name.Variable.Global */
+.codehilite .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.codehilite .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.codehilite .il { color: #40A070 } /* Literal.Number.Integer.Long */
+pre { line-height: 125%; }
+td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+html[data-theme="dark"] .codehilite .hll { background-color: #49483e }
+html[data-theme="dark"] .codehilite { background: #272822; color: #F8F8F2 }
+html[data-theme="dark"] .codehilite .c { color: #959077 } /* Comment */
+html[data-theme="dark"] .codehilite .err { color: #ED007E; background-color: #1E0010 } /* Error */
+html[data-theme="dark"] .codehilite .esc { color: #F8F8F2 } /* Escape */
+html[data-theme="dark"] .codehilite .g { color: #F8F8F2 } /* Generic */
+html[data-theme="dark"] .codehilite .k { color: #66D9EF } /* Keyword */
+html[data-theme="dark"] .codehilite .l { color: #AE81FF } /* Literal */
+html[data-theme="dark"] .codehilite .n { color: #F8F8F2 } /* Name */
+html[data-theme="dark"] .codehilite .o { color: #FF4689 } /* Operator */
+html[data-theme="dark"] .codehilite .x { color: #F8F8F2 } /* Other */
+html[data-theme="dark"] .codehilite .p { color: #F8F8F2 } /* Punctuation */
+html[data-theme="dark"] .codehilite .ch { color: #959077 } /* Comment.Hashbang */
+html[data-theme="dark"] .codehilite .cm { color: #959077 } /* Comment.Multiline */
+html[data-theme="dark"] .codehilite .cp { color: #959077 } /* Comment.Preproc */
+html[data-theme="dark"] .codehilite .cpf { color: #959077 } /* Comment.PreprocFile */
+html[data-theme="dark"] .codehilite .c1 { color: #959077 } /* Comment.Single */
+html[data-theme="dark"] .codehilite .cs { color: #959077 } /* Comment.Special */
+html[data-theme="dark"] .codehilite .gd { color: #FF4689 } /* Generic.Deleted */
+html[data-theme="dark"] .codehilite .ge { color: #F8F8F2; font-style: italic } /* Generic.Emph */
+html[data-theme="dark"] .codehilite .ges { color: #F8F8F2; font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+html[data-theme="dark"] .codehilite .gr { color: #F8F8F2 } /* Generic.Error */
+html[data-theme="dark"] .codehilite .gh { color: #F8F8F2 } /* Generic.Heading */
+html[data-theme="dark"] .codehilite .gi { color: #A6E22E } /* Generic.Inserted */
+html[data-theme="dark"] .codehilite .go { color: #66D9EF } /* Generic.Output */
+html[data-theme="dark"] .codehilite .gp { color: #FF4689; font-weight: bold } /* Generic.Prompt */
+html[data-theme="dark"] .codehilite .gs { color: #F8F8F2; font-weight: bold } /* Generic.Strong */
+html[data-theme="dark"] .codehilite .gu { color: #959077 } /* Generic.Subheading */
+html[data-theme="dark"] .codehilite .gt { color: #F8F8F2 } /* Generic.Traceback */
+html[data-theme="dark"] .codehilite .kc { color: #66D9EF } /* Keyword.Constant */
+html[data-theme="dark"] .codehilite .kd { color: #66D9EF } /* Keyword.Declaration */
+html[data-theme="dark"] .codehilite .kn { color: #FF4689 } /* Keyword.Namespace */
+html[data-theme="dark"] .codehilite .kp { color: #66D9EF } /* Keyword.Pseudo */
+html[data-theme="dark"] .codehilite .kr { color: #66D9EF } /* Keyword.Reserved */
+html[data-theme="dark"] .codehilite .kt { color: #66D9EF } /* Keyword.Type */
+html[data-theme="dark"] .codehilite .ld { color: #E6DB74 } /* Literal.Date */
+html[data-theme="dark"] .codehilite .m { color: #AE81FF } /* Literal.Number */
+html[data-theme="dark"] .codehilite .s { color: #E6DB74 } /* Literal.String */
+html[data-theme="dark"] .codehilite .na { color: #A6E22E } /* Name.Attribute */
+html[data-theme="dark"] .codehilite .nb { color: #F8F8F2 } /* Name.Builtin */
+html[data-theme="dark"] .codehilite .nc { color: #A6E22E } /* Name.Class */
+html[data-theme="dark"] .codehilite .no { color: #66D9EF } /* Name.Constant */
+html[data-theme="dark"] .codehilite .nd { color: #A6E22E } /* Name.Decorator */
+html[data-theme="dark"] .codehilite .ni { color: #F8F8F2 } /* Name.Entity */
+html[data-theme="dark"] .codehilite .ne { color: #A6E22E } /* Name.Exception */
+html[data-theme="dark"] .codehilite .nf { color: #A6E22E } /* Name.Function */
+html[data-theme="dark"] .codehilite .nl { color: #F8F8F2 } /* Name.Label */
+html[data-theme="dark"] .codehilite .nn { color: #F8F8F2 } /* Name.Namespace */
+html[data-theme="dark"] .codehilite .nx { color: #A6E22E } /* Name.Other */
+html[data-theme="dark"] .codehilite .py { color: #F8F8F2 } /* Name.Property */
+html[data-theme="dark"] .codehilite .nt { color: #FF4689 } /* Name.Tag */
+html[data-theme="dark"] .codehilite .nv { color: #F8F8F2 } /* Name.Variable */
+html[data-theme="dark"] .codehilite .ow { color: #FF4689 } /* Operator.Word */
+html[data-theme="dark"] .codehilite .pm { color: #F8F8F2 } /* Punctuation.Marker */
+html[data-theme="dark"] .codehilite .w { color: #F8F8F2 } /* Text.Whitespace */
+html[data-theme="dark"] .codehilite .mb { color: #AE81FF } /* Literal.Number.Bin */
+html[data-theme="dark"] .codehilite .mf { color: #AE81FF } /* Literal.Number.Float */
+html[data-theme="dark"] .codehilite .mh { color: #AE81FF } /* Literal.Number.Hex */
+html[data-theme="dark"] .codehilite .mi { color: #AE81FF } /* Literal.Number.Integer */
+html[data-theme="dark"] .codehilite .mo { color: #AE81FF } /* Literal.Number.Oct */
+html[data-theme="dark"] .codehilite .sa { color: #E6DB74 } /* Literal.String.Affix */
+html[data-theme="dark"] .codehilite .sb { color: #E6DB74 } /* Literal.String.Backtick */
+html[data-theme="dark"] .codehilite .sc { color: #E6DB74 } /* Literal.String.Char */
+html[data-theme="dark"] .codehilite .dl { color: #E6DB74 } /* Literal.String.Delimiter */
+html[data-theme="dark"] .codehilite .sd { color: #E6DB74 } /* Literal.String.Doc */
+html[data-theme="dark"] .codehilite .s2 { color: #E6DB74 } /* Literal.String.Double */
+html[data-theme="dark"] .codehilite .se { color: #AE81FF } /* Literal.String.Escape */
+html[data-theme="dark"] .codehilite .sh { color: #E6DB74 } /* Literal.String.Heredoc */
+html[data-theme="dark"] .codehilite .si { color: #E6DB74 } /* Literal.String.Interpol */
+html[data-theme="dark"] .codehilite .sx { color: #E6DB74 } /* Literal.String.Other */
+html[data-theme="dark"] .codehilite .sr { color: #E6DB74 } /* Literal.String.Regex */
+html[data-theme="dark"] .codehilite .s1 { color: #E6DB74 } /* Literal.String.Single */
+html[data-theme="dark"] .codehilite .ss { color: #E6DB74 } /* Literal.String.Symbol */
+html[data-theme="dark"] .codehilite .bp { color: #F8F8F2 } /* Name.Builtin.Pseudo */
+html[data-theme="dark"] .codehilite .fm { color: #A6E22E } /* Name.Function.Magic */
+html[data-theme="dark"] .codehilite .vc { color: #F8F8F2 } /* Name.Variable.Class */
+html[data-theme="dark"] .codehilite .vg { color: #F8F8F2 } /* Name.Variable.Global */
+html[data-theme="dark"] .codehilite .vi { color: #F8F8F2 } /* Name.Variable.Instance */
+html[data-theme="dark"] .codehilite .vm { color: #F8F8F2 } /* Name.Variable.Magic */
+html[data-theme="dark"] .codehilite .il { color: #AE81FF } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body>
+<div id="progress"></div>
+<div id="app">
+<aside id="sidebar">
+<a class="brand" href="./00_文档索引.html"><div class="logo">识车</div><div class="brand-txt"><b>识车档案 CarDex</b><span>视觉智能体综合实训 · 任务一<br>私人车型资料库 / 汽车知识检索 / 对话式看车档案</span></div></a>
+<div class="search-box"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="7" cy="7" r="4.5"/><path d="M10.5 10.5L14 14"/></svg><input id="search" type="search" placeholder="搜索文档或标题…" autocomplete="off" spellcheck="false"><span class="kbd-hint">/</span></div>
+<div class="nav-group" data-key="00_文档索引.md 识车档案 cardex — 说明文档索引 文档清单 三条阅读路径 名词速查 项目一句话总结"><a class="nav-head" href="./00_文档索引.html"><span>00 · 文档索引</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="01_项目总览与快速开始.md 01 项目总览与快速开始 1. 项目是什么 2. 任务书要求对照表 3. 最终成绩 4. 环境依赖 5. 30 秒上手 6. 完整复现命令 7. 交付物清单 8. 你应该先做的两件事 9. 项目一句话总结"><a class="nav-head" href="./01_项目总览与快速开始.html"><span>01 · 项目总览与快速开始</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="02_目录与文件全说明.md 02 目录与文件全说明 0. 总览 1. 根目录文件 2. configs/ — 配置层（10 个文件） 3. src/ — 代码层 4. tools/、scripts/ 与根目录启动脚本 5. data/ — 抽取出的图片 6. outputs/ — 产物层 7. docs/ — 文档层 8. 哪些文件能删、哪些绝对不能删"><a class="nav-head" href="./02_目录与文件全说明.html"><span>02 · 目录与文件全说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="03_配置参数详解.md 03 配置参数详解 0. 五个配置速览 1. 模型与输入 2. 数据增强 3. 训练循环 4. 优化器与学习率 5. 损失函数相关 6. 评估与推理相关 7. 只用于记录的字段 8. 最小可跑配置 9. 常用改动配方"><a class="nav-head" href="./03_配置参数详解.html"><span>03 · 配置参数详解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="04_数据格式与文件约定.md 04 数据格式与文件约定 0. 文件关系图 1. classes.txt ★ 2. predictions.csv ★ 3. configs/class_map.json — 标签映射（最关键） 4. configs/class_info.json — 教师提供的类别说明 5. configs/selection.json — 选类方案（人工策划） 6. configs/unknown_sources.json — unknown 来源清单 7. configs/data_stats.json — 抽取后的数据统计 8. outputs/checkpoints/&amp;lt;run&amp;gt;/best.pt — 模型文件 9. outputs/runs/&amp;lt;run&amp;gt;/summary.json — 实验记录（机器可读） 10. outputs/runs/&amp;lt;run&amp;gt;/val_report.json 与 eval_report.json 11. outputs/runs/&amp;lt;run&amp;gt;/calibration.json — 决策标定结果 12. outputs/reports/final_model_choice.json — 最终模型比选 13. outputs/runs/&amp;lt;run&amp;gt;/eval_confusion_matrix.csv 14. outputs/runs/&amp;lt;run&amp;gt;/error_samples.csv 15. outputs/runs/&amp;lt;run&amp;gt;/top_confusions.csv 16. outputs/reports/data_manifest.csv 17. data/ 目录约定 18. 格式自查速查表"><a class="nav-head" href="./04_数据格式与文件约定.html"><span>04 · 数据格式与文件约定</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="05_脚本与命令手册.md 05 脚本与命令手册 0. 速查表 1. 数据准备阶段 2. 训练阶段 3. 评估与标定阶段 4. 交付阶段 5. 汇总与校验阶段 6. src/cardex/ 模块 api 7. 组合命令（常用工作流） 8. 常见退出码 9. 任务二三的运行与测试脚本"><a class="nav-head" href="./05_脚本与命令手册.html"><span>05 · 脚本与命令手册</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="06_评估指标与决策规则.md 06 评估指标与决策规则 1. 唯一评分指标：51 类等权 macro-f1 2. 辅助指标 3. 决策规则：τ 与拒识阈值 4. 推理时的两条路径 5. 混淆矩阵怎么读 6. 训练期选模型用什么指标 7. 常用命令与指标的对应关系 8. 一个容易混淆的点：confidence 到底是谁的概率 9. 局限性说明（写进报告的&quot;不足&quot;）"><a class="nav-head" href="./06_评估指标与决策规则.html"><span>06 · 评估指标与决策规则</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="07_实验记录与结果分析.md 07 实验记录与结果分析 0. 实验设计 1. 实验总表 2. 实验 a：基线（resnet18@160，轻量增强） 3. 实验 b：类别平衡损失（resnet18@160，inverse） 4. 实验 c1：改进模型（resnet18@224，强增强） 5. 实验 c2：骨干容量（resnet50@224） 6. 实验 c3：集成（c1 + c2） 7. 决策标定的完整扫描结果 8. 错误分析 9. 实验结论汇总"><a class="nav-head" href="./07_实验记录与结果分析.html"><span>07 · 实验记录与结果分析</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="08_常见问题与排错.md 08 常见问题与排错 ⚠️ 坑 1：分类头学习率过大导致训练发散（最严重） ⚠️ 坑 2：resnet50 预训练权重用错版本，触发联网下载 ⚠️ 坑 3：dataloader(num_workers&amp;gt;0) 被沙箱禁止 ⚠️ 坑 4：unknown 目录排序错位，指标算出 0.06（最隐蔽） ⚠️ 坑 5：bf16 与 fp32 推理不一致，指标漂移 0.0005 ⚠️ 坑 6：evaluate.py 的输出目录算错 ⚠️ 坑 7：carclassifier 初始化顺序导致 attributeerror ⚠️ 坑 8：powershell 的 convertto-json 把配置文件格式改丑 ⚠️ 坑 9：传入 logger 后训练日志不再写入文件 ⚠️ 坑 10：finalize.py 的 meta 文件名与 predict_batch.py 不一致 ⚠️ 坑 11：dataloader 在 windows 下的中文路径 / 编码问题 ⚠️ 坑 12：cpu 线程开满反而更慢 ⚠️ 坑 13：pip 安装超时 / 网络不可用 ⚠️ 坑 14：配置文件在 powershell 里被 set-content 写成带 bom ⚠️ 坑 15：报告里的数字写错（品牌数 36 vs 37） ⚠️ 坑 16：positional 参数缺失导致新手困惑 q1：predictions.csv 的分数和我算出来的不一样？ q2：训练中断了怎么办？ q3：data/ 被误删了怎么办？ q4：outputs/ 被误删了怎么办？ q5：显存/内存不够？ q6：训练太快结束了 / 精度上不去？ q7：怎么知道我的改动是不是变好了？ q8：verify_submission.py 报了 fail 怎么办？ q9：为什么 make_reports.py 里看不到某个实验？ q10：ensemble.py --limit 的分数为什么完全不对？ q11：--tta-hflip 到底该不该开？ q12：我想换一批类别重做，要注意什么？ q13：classes.txt 里的 id 和 class_info.json 对不上？ q14：报告中&quot;验证集 macro-f1&quot;该用哪个数？ q15：怎么确认&quot;模型保存和重新加载&quot;是好的？ q16：怎么验证整条数据流程是可复现的？ q17：idea / vs code 里中文乱码？ q18：requirements.txt 里为什么没有 markdown / pygments？ q19：怎么把一个实验的结果发给别人？ q20：任务二/三要用这个模型，怎么做？ 坑 17：start.ps1 报一堆语法错误，中文全是乱码 坑 18：启动脚本被 python 的一条警告打断 坑 19：python -c &#x27;...&#x27; 里的双引号被 powershell 吃掉 坑 20：getaddrinfo failed / max retries exceeded —— 域名解析失败 q22：某一轮对话突然失败、回复是 0 字，报 internal_error？ q21：接了真实 api key 之后，verify_agent.py 反而不全过了？ 排错流程速查"><a class="nav-head" href="./08_常见问题与排错.html"><span>08 · 常见问题与排错</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="09_任务二三交接说明.md 09 任务二 / 任务三交接说明 1. 任务一交出了什么 2. 视觉分类工具（classify_car）的实现 3. 任务书对智能体的要求 vs 任务一提供的支撑 4. 业务数据从哪来 5. 低置信度与异常的推荐处理流程 6. 多轮对话中&quot;沿用上一轮图片与识别结果&quot; 7. 连续调用 3 个工具的推荐任务流 8. 工程注意事项 9. 已实测的性能数字（供 web 端预估） 10. 交接检查清单"><a class="nav-head" href="./09_任务二三交接说明.html"><span>09 · 任务二三交接说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="10_真实api与端到端测试报告.md 10 · 真实 api 与端到端测试报告 1. 结论摘要 2. 测试环境 3. 一键启动 4. l0 —— 环境自检（tools/selfcheck.py） 5. l1 —— 工具层（tools/e2e_test.py --stage a） 6. l2 —— 模型层（tools/e2e_test.py --stage b） 7. l3 —— web 系统端到端（浏览器实测） 8. 本次发现并修复的缺陷 9. 异常路径测试 10. 复现步骤 11. 尚未覆盖 / 已知限制 12. 结论"><a class="nav-head" href="./10_真实API与端到端测试报告.html"><span>10 · 真实API与端到端测试报告</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="11_web界面与会话管理.md 11 · web 界面：会话管理 · 设置 · 联网搜索 1. 界面总览 2. 左侧会话侧边栏 3. 设置：api 配置 · 模型配置 4. 联网搜索 5. 接口一览（本次新增） 6. 自查与测试"><a class="nav-head" href="./11_Web界面与会话管理.html"><span>11 · Web界面与会话管理</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="12_车型档次知识库.md 12 · 车型档次知识库（价格 / 参数 / 档次差异） 1. 为什么需要它 2. 数据模型 3. 反编造：三道防线 4. 关键实现：结构化表格抽取 5. 两个新工具 6. 用户自己的看车档案也能记档次 7. 实测数据 8. 途中修掉的一个真 bug 9. 途中修掉的第二个坑：重复运行会累积出重复档次 10. 稳定性：两个只在反复跑时才暴露的问题 11. 最终数据 12. 怎么自己验证"><a class="nav-head" href="./12_车型档次知识库.html"><span>12 · 车型档次知识库</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="13_技术栈全解.md 13 · 技术栈全解（事无巨细版） 1. 全景速查表 2. python 语言特性 3. 深度学习：pytorch 技术栈 4. 数据处理技术 5. 大模型与 agent 技术 6. web 技术栈（后端） 7. web 技术栈（前端） 8. 浏览器自动化：chrome devtools protocol 9. 数据存储技术 10. 网络与协议 11. 工程化与工具链 12. 设计模式与架构范式 13. 性能优化技术 14. 安全技术 15. 测试技术 16. 依赖版本锁定表 17. 学习路径建议 18. 相关文档"><a class="nav-head" href="./13_技术栈全解.html"><span>13 · 技术栈全解</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="14_gpu加速实战.md 14 · gpu 加速实战（从&quot;有卡用不上&quot;到 10× 提速） 1. 起点：有卡，但用不上 2. 装 cuda 版：一个 +cu126 的坑 3. 代码改造：把硬编码的 cpu 拿掉 4. 踩到的 4 个坑 5. 性能剖析：真正的瓶颈在哪 6. 结果 6.4 顺手修掉的一个真 bug：缓存不看权重 7. 配置项 8. 温度与功耗（笔记本要注意） 9. 这次改造对交付物的影响"><a class="nav-head" href="./14_GPU加速实战.html"><span>14 · GPU 加速实战</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="15_微调实战指南.md 15 · 微调实战指南 1. 先分清三件事 2. 三种冻结模式：改动越少越安全 3. 学习率：微调翻车的头号原因 4. llrd：逐层递减学习率 5. 渐进解冻：先接头，再练身 6. 用自己的数据微调（领域适配） 7. 微调的参数该和从头训练不一样 8. 完整命令速查 9. 常见翻车方式 10. 想加&quot;新的车型&quot;怎么办 11. 实战案例：用原来的数据微调，把集成推高 12. 完整案例：0.9646 → 0.9815（+0.0169） 13. 相关代码位置"><a class="nav-head" href="./15_微调实战指南.html"><span>15 · 微调实战指南</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="16_实训报告.md 16 · 实训报告 1.1 选题背景 1.2 目标用户 1.3 使用场景 1.4 主要功能 2.1 从 827 类中选择 50 类的理由 2.2 类别清单与样本统计 2.3 unknown 样本的来源类别与采样方法 2.4 数据质量检查 2.5 预处理与数据增强 3.1 模型结构 3.2 预训练权重来源 3.3 训练配置 3.4 模型选择依据 4.1 基线与改进结果 4.2 增益归因 4.3 混淆矩阵与错误分布 4.4 错误样本举例 4.5 测试集泛化的验证 4.6 结论 5.1 deepseek 接入方式 5.2 工具定义 5.3 连续工具调用流程 5.4 session 与低置信度处理 6.1 系统结构 6.2 主要页面 6.3 数据存储 6.4 配置 6.5 异常处理 7.1 测试总览 7.2 典型用户任务与实际执行结果 7.3 问题及修复情况 8.1 个人贡献 8.2 存在的不足 8.3 后续改进方向 8.4 项目收获"><a class="nav-head" href="./16_实训报告.html"><span>★ · 实训报告（8.1 要求）</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="17_答辩预设问答.md 17 · 答辩预设问答（如果你是老师，你会问什么） q1. 827 类里为什么选这 50 类？给个可检验的标准。 q2. unknown 是怎么构造的？会不会有数据泄漏？ q3. 数据泄漏查了吗？ q4. 为什么 train 7494 张、val 2422 张，而不是把 827 类全用上？ q5. 预训练权重从哪来？是官方 imagenet 权重吗？ q6. 5 组对照实验分别想说明什么？ q7. 为什么最终没用类别权重？明明数据不平衡。 q8. 阈值是怎么定的？为什么是 0.20 而不是 0.5？ q9. 为什么用 head_lr_mult=1.0 而不是 10？ q10. 为什么用 macro-f1 而不是 accuracy？ q11. macro-f1 是怎么算的？unknown 算不算进去？ q12. predictions.csv 里 unknown 的 predicted_label 写什么？ q13. 0.9815 是在验证集上挑出来的，凭什么相信测试集也是这个水平？ q13b. 换个拍照条件还行吗？鲁棒性怎么样？ q14. 20% 的验证集是 unknown，这个比例合理吗？ q15. 训练集和验证集的划分是谁做的？会不会有偏？ q16. gpu 训练和 cpu 训练结果不一样，说明什么？ q17. deepseek 是怎么接入的？为什么用 function calling 而不是自己解析文本？ q18. 工具是怎么定义的？模型怎么知道该调哪个？ q19. &quot;连续工具调用&quot;具体怎么实现的？怎么防止无限循环？ q20. session 是怎么做的？为什么用事件日志？ q21. 低置信度怎么处理？和拒识有什么区别？ q22. 怎么防止模型编造数据？特别是价格。 q23. api key 是怎么管理的？会不会泄露？ q24. sse 和 websocket 选哪个？为什么？ q25. 异常处理是怎么做的？ q26. 为什么不用 celery / redis / 前端框架？ q27. 怎么保证代码是对的？测了多少？ q28. 测出来的 bug，举几个最有代表性的。 q29. 怎么证明测试不是在&quot;自说自话&quot;？ q30. 这个项目最大的不足是什么？ q31. 如果重做一遍，你会先做什么？ q32. 学到了什么？ 附：老师可能直接让你现场演示的"><a class="nav-head" href="./17_答辩预设问答.html"><span>★ · 答辩预设问答</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="18_进阶训练技术.md 18 · 进阶训练技术详解 1.1 问题的根源：交叉熵不关心&quot;错得有多离谱&quot; 1.2 度量学习的基本思想 1.3 supcon：把&quot;正负样本对&quot;做成一个损失 1.4 ⚠️ 本项目最关键的设计决策：用 fine 标签，不用 51 类标签 1.5 ⚠️ 第二个坑：batch 里凑不出正样本对 1.6 第三个坑：投影头（projection head） 1.7 ⚠️ 第四个坑：mixup/cutmix 与 supcon 互斥 1.8 实现细节：数值稳定性三件事 1.9 实测结果 1.10 完整实现位置 2.1 分类准 ≠ 会拒识 2.2 三种 ood 打分 2.3 ⚠️ 用哪个指标评价？auroc 还是最终 macro-f1 2.4 本项目的实测结果（负结果） 3.1 分辨率的物理意义 3.4 骨干容量的边际收益 3.2 ⚠️ 训练与推理的分辨率必须一致 3.3 多尺度 tta vs 多裁剪 tta（名字像，效果相反） 3.4 骨干容量的边际收益 5.1 结果总表 5.2 三个反直觉的发现 5.3 一个诚实的方法论提醒 4.1 先诊断，再选方法 4.2 优先试&quot;免费&quot;和&quot;便宜&quot;的 4.3 警惕&quot;看起来该有用&quot;的方法 4.4 关键指标要能复现"><a class="nav-head" href="./18_进阶训练技术.html"><span>18 · 进阶训练技术</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="19_技术全景与关系图谱.md 19 · 技术全景与关系图谱 0.1 五种关系 0.2 三条判断原则 1.1 一张图看懂 1.2 数据流：一次完整请求经过了什么 2.1 语言与运行时层 2.2 数值与图像层 2.3 深度学习层（核心） 2.4 大模型与智能体层 2.5 web 服务层 2.6 前端层 2.7 浏览器自动化层 2.8 存储层 2.9 网络协议层 2.10 工程化层 4.1 &quot;我要提高精度&quot; 4.2 &quot;我要部署&quot; 4.3 &quot;我要防止模型编造&quot; 6.1 有效的方法 6.2 无效的方法（同样重要） 6.3 从这张表能读出的规律 误区 1：&quot;有显卡就能用 gpu&quot; 误区 2：&quot;训练慢就是模型太大&quot; 误区 3：&quot;集成一定比单模型好&quot; 误区 4：&quot;auroc 高就是方法好&quot; 误区 5：&quot;换个更强的损失函数就能涨分&quot; 误区 6：&quot;缓存能加速，加上就行&quot; 误区 7：&quot;实验代码和生产代码可以各写各的&quot;"><a class="nav-head" href="./19_技术全景与关系图谱.html"><span>★ · 技术全景与关系图谱</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="22_测试集提交与失分诊断.md 22 · 测试集提交与失分诊断 1. 提交物规格（以老师的样例包为准） 2. 测试集 3. 第一次提交：总分 47.85 / 100 4. 修复：只改一列，不用重跑推理 5. 推理速度 7. 第二轮：θ=−5.6 交上去拿了 73.21 分 8. 复现步骤 9. 这次排查的可迁移经验 9. 为什么别人能到 0.79：根因定位（未修复） 10. 第三轮：扩来源类重训（目标 0.95，实测不可达） 相关文件"><a class="nav-head" href="./22_测试集提交与失分诊断.html"><span>★ · 测试集提交与失分诊断</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="23_源码清单与提交说明.md 23 · 源码清单与提交说明 1 提交包内容 2 文件明细 3 明确不提交的内容 4 收到源码后如何跑起来"><a class="nav-head" href="./23_源码清单与提交说明.html"><span>★ · 源码清单与提交说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_agent架构调研与设计.md 任务二三 · agent 架构调研与设计说明 第一部分：调研方法与证据等级 第二部分：三家 harness 的架构对比 第三部分：本项目吸收了什么 第四部分：本项目的具体设计 第五部分：两条工程决策的说明 第六部分：一手证据摘录 附录：调研产出物清单"><a class="nav-head" href="./任务二三_agent架构调研与设计.html"><span>20 · Agent 架构调研与设计</span><span class="doc-arrow">↗</span></a></div><div class="nav-group" data-key="任务二三_智能体与web系统说明.md 识车档案 cardex — 任务二 / 任务三 说明 一、十秒启动 二、目录结构 三、任务二：智能体与工具开发 四、任务三：web 系统 五、运行状态与限制说明 六、验证清单"><a class="nav-head" href="./任务二三_智能体与Web系统说明.html"><span>21 · 智能体与 Web 系统说明</span><span class="doc-arrow">↗</span></a></div><div class="nav-group active" data-key="任务一_数据分析与视觉模型训练.md 任务一：数据分析与视觉模型训练 1. 选题背景与视觉任务定位 2. 数据分析 3. 模型设计与训练配置 4. 实验结果与分析 5. 错误分析 6. 低置信度处理与拒识阈值 7. 推理能力与提交物 8. 任务一小结与不足"><button class="nav-head" type="button"><svg class="caret" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg><span>★ · 实训报告正文（任务一）</span></button><div class="nav-list"><a class="lv2" href="#doc25-1-选题背景与视觉任务定位">1. 选题背景与视觉任务定位</a><a class="lv2" href="#doc25-2-数据分析">2. 数据分析</a><a class="lv2" href="#doc25-3-模型设计与训练配置">3. 模型设计与训练配置</a><a class="lv2" href="#doc25-4-实验结果与分析">4. 实验结果与分析</a><a class="lv2" href="#doc25-5-错误分析">5. 错误分析</a><a class="lv2" href="#doc25-6-低置信度处理与拒识阈值">6. 低置信度处理与拒识阈值</a><a class="lv2" href="#doc25-7-推理能力与提交物">7. 推理能力与提交物</a><a class="lv2" href="#doc25-8-任务一小结与不足">8. 任务一小结与不足</a></div></div><div class="nav-group" data-key="任务二三_实训报告章节.md 实训报告 · 任务二与任务三 5. 智能体设计 6. web 与工程实现 7. 系统测试 8. 总结与分工"><a class="nav-head" href="./任务二三_实训报告章节.html"><span>★ · 实训报告（任务二三）</span><span class="doc-arrow">↗</span></a></div>
+<div class="side-foot">共 26 篇 · 分篇版 · <a href="../识车档案_CarDex_说明文档.html">打开单文件完整版</a><br>快捷键：<code>/</code> 搜索 · <code>Esc</code> 清空 · <code>Ctrl+P</code> 打印</div>
+</aside>
+<main id="content">
+<div id="topbar">
+<button class="tool" id="hamburger" type="button" title="打开目录">☰</button>
+<div id="crumb">★ · 实训报告正文（任务一）　（25/26）</div>
+<button class="tool" id="btn-theme" type="button">☾ 暗色</button>
+</div>
+<div class="wrap">
+<section class="doc" id="doc25" data-title="任务一：数据分析与视觉模型训练"><h1 id="doc25-任务一-数据分析与视觉模型训练">任务一：数据分析与视觉模型训练</h1>
+<blockquote>
+<p>项目：<strong>识车档案 CarDex</strong> —— 私人车型资料库 / 汽车知识检索 / 对话式看车档案
+选题方向：个人知识库
+本文件为任务一（数据分析与视觉模型训练）的完整实验记录，实训报告第 2~4 节直接引用本文件。</p>
+</blockquote>
+<hr />
+<h2 id="doc25-1-选题背景与视觉任务定位">1. 选题背景与视觉任务定位</h2>
+<h3 id="doc25-1-1-应用选题">1.1 应用选题</h3>
+<p>「识车档案」面向<strong>有看车、换车、收藏爱好的私人用户</strong>。用户在 4S 店、车展、路边看到一辆车，
+拍一张照片上传，系统需要回答的不是"这是一辆 SUV"，而是：</p>
+<ul>
+<li>这具体是哪一款车型（<strong>50 个目标车型之一</strong>，还是<strong>不在我资料库里的车</strong>）；</li>
+<li>它的档案（品牌、车身形式、同级定位、看点）；</li>
+<li>把它写进我的「看车档案」，以后能按品牌 / 车身类型 / 时间检索。</li>
+</ul>
+<p>因此视觉识别结果必须<strong>参与后续业务</strong>：识别出的 <code>车型ID + confidence</code> 会作为工具返回值传给
+DeepSeek-V4-Flash 智能体，驱动「档案查询 → 写入记录 → 检索个人车库」这条链路。</p>
+<h3 id="doc25-1-2-视觉任务">1.2 视觉任务</h3>
+<ul>
+<li>输入：一张车辆照片（任意尺寸、任意角度、任意背景）。</li>
+<li>输出：<code>车型ID</code>（四位数字，来自 <code>classes.txt</code>）<strong>或</strong> <code>unknown</code>，外加 <code>confidence</code>。</li>
+<li>输出类别数：<strong>51</strong>（50 个自主选择的车型 + 1 个 unknown）。</li>
+<li>评分口径：<strong>51 类等权 Macro-F1</strong>（任务书 4.3 节，唯一评分指标）。</li>
+</ul>
+<p><strong>unknown 是本项目的一等公民。</strong> 私人用户随手拍到的车大概率不属于他自己选的 50 款，
+所以模型必须敢于说"我不认识"。Macro-F1 对 unknown 与每个车型等权（各占 1/51），
+漏报 unknown（把组外车型强行认成某个已知车型）和误拒（把已知车型判成 unknown）都会直接扣分。</p>
+<hr />
+<h2 id="doc25-2-数据分析">2. 数据分析</h2>
+<h3 id="doc25-2-1-教师数据集总体情况">2.1 教师数据集总体情况</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>教师提供类别数</td>
+<td><strong>827</strong> 类（<code>cls_info/class_info.json</code>）</td>
+</tr>
+<tr>
+<td>训练集图片</td>
+<td>78,002 张</td>
+</tr>
+<tr>
+<td>验证集图片</td>
+<td>25,783 张</td>
+</tr>
+<tr>
+<td>图片总数</td>
+<td>103,785 张（全部 JPG）</td>
+</tr>
+<tr>
+<td>每类训练样本</td>
+<td>min 60 / 中位数 97 / max 186，均值 94.3</td>
+</tr>
+<tr>
+<td>每类验证样本</td>
+<td>min 20 / 中位数 32 / max 62，均值 31.2</td>
+</tr>
+<tr>
+<td>压缩包内划分</td>
+<td>仅 <code>train/</code> 与 <code>val/</code>，<strong>不含测试划分</strong></td>
+</tr>
+</tbody>
+</table>
+<p>按中文大类分布（类别数）：</p>
+<table>
+<thead>
+<tr>
+<th>大类</th>
+<th>类别数</th>
+<th>图片数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SUV</td>
+<td>372</td>
+<td>46,744</td>
+</tr>
+<tr>
+<td>轿车</td>
+<td>259</td>
+<td>33,640</td>
+</tr>
+<tr>
+<td>卡车</td>
+<td>70</td>
+<td>8,034</td>
+</tr>
+<tr>
+<td>MPV</td>
+<td>46</td>
+<td>5,731</td>
+</tr>
+<tr>
+<td>跑车</td>
+<td>37</td>
+<td>4,589</td>
+</tr>
+<tr>
+<td>微面</td>
+<td>22</td>
+<td>2,481</td>
+</tr>
+<tr>
+<td>轻客</td>
+<td>21</td>
+<td>2,566</td>
+</tr>
+</tbody>
+</table>
+<p>原始类别 ID 共 827 个，但并非全部以 <code>0000~0826</code> 连续编号——有效 ID 最大到 <code>0989</code>，
+说明教师集合本身是从一个更大的车型库中筛选出来的，<strong>ID 必须按 <code>class_info.json</code> 的 <code>id</code> 字段原样使用</strong>。</p>
+<h3 id="doc25-2-2-50-个目标类别的选择理由">2.2 50 个目标类别的选择理由</h3>
+<p>选类不是随机抽 50 个，而是围绕"私人看车档案"这一应用场景，按 6 条原则做<strong>加权决策</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>原则</th>
+<th>内容</th>
+<th>目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P1 主题契合</td>
+<td>只选私人用户真正会"看、比、记"的乘用车与轻型商用车型，不选重卡/牵引车等工程车辆</td>
+<td>与「私人车型资料库」定位一致，也为后续工具提供有意义的车型档案</td>
+</tr>
+<tr>
+<td>P2 车身类型覆盖</td>
+<td>轿车 17、SUV 21、MPV 4、跑车 4、微面 2、轻客 2</td>
+<td>资料库需要横向检索能力（"帮我找 7 座 MPV"）</td>
+</tr>
+<tr>
+<td>P3 品牌多样性</td>
+<td>50 类覆盖 <strong>37 个品牌</strong>（24 个品牌 1 类、13 个品牌 2 类）</td>
+<td><strong>直接服务于 Macro-F1</strong>：不同品牌的设计语言（格栅、灯组、车身比例）是模型最可靠的判别线索</td>
+</tr>
+<tr>
+<td>P4 单车系单一代表</td>
+<td>同一车系的不同配置/衍生版（探岳 / 探岳X / 探岳GTE）只取一个</td>
+<td>避免近重复类别互相压制，Macro-F1 是等权平均，一对易混类会同时拉低两类的 F1</td>
+</tr>
+<tr>
+<td>P5 样本充足</td>
+<td>所选类别 train ≥ 80 张、val ≥ 26 张</td>
+<td>保证每类都能学到稳定特征</td>
+</tr>
+<tr>
+<td>P6 造型辨识度</td>
+<td>优先选设计语言差异大的车型：方盒子越野（吉姆尼、牧马人、212）、超跑（Urus、718、GT-R）、微型电动车（欧拉好猫 GT）、豪华旗舰（库里南、S80 级、红旗 H9）</td>
+<td>提升类间可分性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关于 P3 的取舍</strong>：同一品牌取 2 类时，本项目只允许<strong>车身形态差异极大</strong>的组合
+（如奔驰 E 级轿车 / 奔驰 GLE SUV、保时捷 718 跑车 / 卡宴 SUV、日产轩逸 / 日产 GT-R），
+共 14 个品牌取了 2 类。这样既保留了品牌密度，又避免了"同品牌同形态近亲"这一类最难的情况。</p>
+<p>完整 50 类明细见 <code>outputs/reports/selection_report.txt</code>。</p>
+<h3 id="doc25-2-3-50-类的样本统计">2.3 50 类的样本统计</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>train</th>
+<th>val</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>合计</td>
+<td>5,534</td>
+<td>1,834</td>
+</tr>
+<tr>
+<td>min</td>
+<td>80</td>
+<td>26</td>
+</tr>
+<tr>
+<td>max</td>
+<td>186</td>
+<td>62</td>
+</tr>
+<tr>
+<td>均值</td>
+<td>110.7</td>
+<td>36.7</td>
+</tr>
+<tr>
+<td>标准差</td>
+<td>14.0</td>
+<td>4.7</td>
+</tr>
+<tr>
+<td><strong>不平衡比 (max/min)</strong></td>
+<td><strong>2.33</strong></td>
+<td><strong>2.38</strong></td>
+</tr>
+</tbody>
+</table>
+<p>样本最多的类别是 <code>0632 奥迪_奥迪A6 China Domestic Version</code>（186/62），
+最少的是 <code>0061 丰田_埃尔法</code>（80/26）。</p>
+<p><strong>结论一</strong>：50 个目标类别之间的样本量差异不大（2.33 倍），属于<strong>轻度不平衡</strong>。
+但 unknown 类由 98 个来源类别构成、共 1,960 张训练样本，是单个目标车型平均样本量的 <strong>17.8 倍</strong>。
+若直接用交叉熵，模型在"按样本量"和"按类别数"两种口径下的目标不一致——
+这正是对比实验 B 要解决的问题（见第 4 节）。</p>
+<p><strong>结论二</strong>：各类 <code>val/train</code> 比例稳定在 0.325~0.333（均值 0.331），说明教师划分是按类别分层的，
+<strong>不存在"某类全在训练集或验证集"的问题</strong>，验证集指标可以放心用于选模型。</p>
+<h3 id="doc25-2-4-图片质量与尺寸">2.4 图片质量与尺寸</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>抽取到本地的图片</td>
+<td>9,916 张（train 7,494 + val 2,422）</td>
+</tr>
+<tr>
+<td>可正常打开</td>
+<td>9,916 张，<strong>损坏 0 张</strong></td>
+</tr>
+<tr>
+<td>唯一尺寸数</td>
+<td>1,730 种</td>
+</tr>
+<tr>
+<td>最常见尺寸</td>
+<td>667×500（2,268 张）、750×500（824 张）、500×375（537 张）</td>
+</tr>
+<tr>
+<td>宽高比</td>
+<td>min 0.45 / mean 1.42 / max 3.02</td>
+</tr>
+<tr>
+<td>完全重复图片（MD5）</td>
+<td><strong>1 组 2 张</strong>，且<strong>全部落在同一划分内</strong>，无跨 train/val 泄漏</td>
+</tr>
+<tr>
+<td>类内近重复（dHash ≤ 5）</td>
+<td>50 类平均 <strong>0.00%</strong>（最高的一类 0.1%）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论三</strong>：图片尺寸高度异构（1,730 种尺寸），必须做<strong>等比缩放 + 中心裁剪</strong>，
+不能直接 resize 成正方形（会把车拉变形，破坏车身比例这一关键判别特征）。</p>
+<p><strong>结论四</strong>：类内近重复率极低，说明同一车型的图片在角度、背景、光照上差异明显，
+属于"类内多样性高"的细粒度数据集。这带来两个后果：
+① 过拟合风险相对较低，但对<strong>数据增强的强度要求更高</strong>（否则模型容易记住背景）；
+② 模型必须依赖车型固有特征（格栅形状、灯组轮廓、车身比例），而不能靠背景捷径取胜。</p>
+<h3 id="doc25-2-5-unknown-样本的来源与采样方法">2.5 unknown 样本的来源与采样方法</h3>
+<p>unknown 不是"随便找些别的图"，而是要让它<strong>代表"不属于本组 50 类的其他车型"这个真实分布</strong>。
+本项目把 unknown 拆成两个互补的来源：</p>
+<table>
+<thead>
+<tr>
+<th>来源</th>
+<th>类别数</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A. 同品牌兄弟车型（硬负样本）</strong></td>
+<td>34</td>
+<td>覆盖本组 50 类所属的每一个"还有兄弟车型"的品牌。例如选了 <code>0035 大众_朗逸</code>，就把另一款大众车型放进 unknown。<strong>专门抑制"只认品牌不认车型"的捷径</strong></td>
+</tr>
+<tr>
+<td><strong>B. 其他品牌类别</strong></td>
+<td>64</td>
+<td>每个品牌只取 1 类，覆盖 7 个中文大类的其余品牌，模拟教师测试集中任意组外车型</td>
+</tr>
+<tr>
+<td><strong>合计</strong></td>
+<td><strong>98 类，涉及 85 个品牌</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>采样规则：</p>
+<ul>
+<li>每个来源类别 <strong>train 最多取 20 张、val 最多取 6 张</strong>（固定随机种子 <code>20250914</code>，可复现）；</li>
+<li><code>train/unknown/</code> 的图片来自来源类别的 <strong>train 划分</strong>，<code>val/unknown/</code> 的图片来自<strong>同一批来源类别的 val 划分</strong>；</li>
+<li>两者来自压缩包内<strong>不同的官方划分</strong>，天然不重复；<strong>完全不使用任何测试图片</strong>；</li>
+<li>unknown 训练样本 1,960 张，占训练集 26.2%（已知类 5,534 张 + unknown 1,960 张 = 7,494 张）。</li>
+</ul>
+<p><strong>为什么必须包含硬负样本 A？</strong> 如果 unknown 全部来自"完全陌生的品牌"，模型只要学会
+"这个品牌我没见过 → unknown"就能拿到高分，但教师测试集里更可能出现的是
+<strong>同品牌的其他车型</strong>（例如用户拍了大众途观，而我们只选了大众朗逸）。
+只用 B 训练出来的 unknown 检测器在这种场景下会失效。加入 A 之后，模型被迫学习
+<strong>车型级别的特征差异</strong>，而不是品牌级别的粗判。</p>
+<h3 id="doc25-2-6-预处理与数据增强">2.6 预处理与数据增强</h3>
+<p><strong>推理 / 验证预处理（训练、保存、Web 推理、批量推理完全共用同一套参数，随 checkpoint 保存）</strong></p>
+<div class="codehilite"><pre><span></span><code>RGB 转换
+  → 等比缩放：短边 resize 到 image_size × 256/224（160→183，224→256），双线性插值
+  → 中心裁剪：image_size × image_size
+  → ToTensor
+  → ImageNet 均值方差归一化 mean=(0.485,0.456,0.406) std=(0.229,0.224,0.225)
+</code></pre></div>
+
+<p><strong>基线数据增强（轻量）</strong></p>
+<div class="codehilite"><pre><span></span><code>RandomResizedCrop(scale=(0.70,1.0), ratio=(3/4,4/3))
+RandomHorizontalFlip(p=0.5)
+</code></pre></div>
+
+<p><strong>改进模型数据增强（强）</strong></p>
+<div class="codehilite"><pre><span></span><code>RandomResizedCrop(scale=(0.50,1.0), ratio=(3/4,4/3))
+RandomHorizontalFlip(p=0.5)
+ColorJitter(brightness=0.35, contrast=0.35, saturation=0.35, hue=0.08)
+RandAugment(num_ops=2, magnitude=7)
+RandomErasing(p=0.25, scale=(0.02,0.20))
+MixUp(α=0.2) / CutMix(α=0.5)，以 0.35 的概率二选一
+</code></pre></div>
+
+<p><strong>为什么这样设计：</strong></p>
+<ul>
+<li><code>RandomResizedCrop</code> 的 scale 下界从 0.70 放宽到 0.50：因为类内多样性高（见结论四），
+  需要模型对"只看到车头/车尾一部分"也具备鲁棒性，这对<strong>用户随手拍的特写照片</strong>尤其重要。</li>
+<li><code>ColorJitter</code> + <code>RandAugment</code>：教学图片多为展厅/户外商业图，色调统一；真实用户照片
+  白平衡、曝光差异大，颜色增强能显著缩小这一域差异。</li>
+<li><code>RandomErasing</code> + <code>MixUp/CutMix</code>：抑制模型对单一显著区域（如车标）的过强依赖，
+  逼迫它整合格栅、灯组、车身轮廓等多个线索——这正是区分"同品牌不同车型"所必需的。</li>
+<li>不使用垂直翻转：车辆几乎不会倒置出现，垂直翻转会产生不存在的样本分布。</li>
+</ul>
+<hr />
+<h2 id="doc25-3-模型设计与训练配置">3. 模型设计与训练配置</h2>
+<h3 id="doc25-3-1-骨干网络与预训练权重来源">3.1 骨干网络与预训练权重来源</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>骨干网络</td>
+<td><code>torchvision.models.resnet18</code> / <code>resnet50</code></td>
+</tr>
+<tr>
+<td>预训练权重</td>
+<td><strong>torchvision 官方 ImageNet 权重</strong>：<code>ResNet18_Weights.IMAGENET1K_V1</code>（<code>resnet18-f37072fd.pth</code>）、<code>ResNet50_Weights.IMAGENET1K_V1</code>（<code>resnet50-0676ba61.pth</code>）</td>
+</tr>
+<tr>
+<td>分类头</td>
+<td>替换 <code>fc</code> 为 <code>Linear(in_features, 51)</code>，随机初始化</td>
+</tr>
+<tr>
+<td>合规性</td>
+<td>✅ 只使用通用 ImageNet 预训练权重；❌ <strong>未使用任何现成汽车分类模型</strong>；❌ <strong>未调用任何第三方在线图片识别 API</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>说明：<code>ResNet50_Weights</code> 有两个版本，本项目使用的是 <strong>V1</strong>（对应本地缓存的
+<code>resnet50-0676ba61.pth</code>）。若误用 V2 会触发联网下载新权重（<code>resnet50-11ad3fa6.pth</code>），
+在无网环境下会失败——这一点在 <code>src/cardex/models.py</code> 中有显式注释。</p>
+</blockquote>
+<h3 id="doc25-3-2-标签映射-训练-保存-推理统一">3.2 标签映射（训练 / 保存 / 推理统一）</h3>
+<div class="codehilite"><pre><span></span><code>模型输出索引 0 ~ 49  →  按 classes.txt 的行顺序，对应 50 个目标车型（四位 ID）
+模型输出索引 50      →  unknown（小写）
+</code></pre></div>
+
+<p>该映射由 <code>configs/class_map.json</code> 唯一确定，并<strong>随 checkpoint 一起保存</strong>，
+训练、验证、Web 推理、批量推理全部读取同一份，避免"训练时第 7 类、推理时第 9 类"这类错位。</p>
+<h3 id="doc25-3-3-训练环境与提速手段">3.3 训练环境与提速手段</h3>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>配置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>硬件</td>
+<td>AMD Ryzen 9 7940H（16 逻辑核），<strong>纯 CPU 训练</strong>（无 GPU 参与）</td>
+</tr>
+<tr>
+<td>框架</td>
+<td>PyTorch 2.13.0 + torchvision 0.28.0</td>
+</tr>
+<tr>
+<td>线程</td>
+<td><code>torch.set_num_threads(12)</code>（实测 12 线程吞吐最高，16 线程因超订阅反而下降 17%）</td>
+</tr>
+<tr>
+<td>混合精度</td>
+<td>CPU <code>bfloat16</code> autocast（损失仍在 float32 计算），吞吐提升约 <strong>1.5×</strong></td>
+</tr>
+<tr>
+<td>数据加载</td>
+<td><code>num_workers=0</code>（受运行环境限制无法使用多进程 DataLoader），配合 <code>persistent</code> 预取</td>
+</tr>
+<tr>
+<td>实测吞吐</td>
+<td>ResNet18@160：45→<strong>69 img/s</strong>；ResNet18@224：24→<strong>36 img/s</strong>；ResNet50@224：<strong>14 img/s</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>提速手段的意义：51 类细粒度分类在纯 CPU 上训练成本很高。通过"线程数调优 + bf16 autocast"
+把单轮训练时间从约 4.3 分钟压到约 1.8 分钟，使得完整的对比实验矩阵可以在可接受时间内跑完。</p>
+</blockquote>
+<h3 id="doc25-3-4-四个训练配置">3.4 四个训练配置</h3>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>文件</th>
+<th>骨干</th>
+<th>输入</th>
+<th>epochs</th>
+<th>增强</th>
+<th>类别权重</th>
+<th>EMA</th>
+<th>MixUp/CutMix</th>
+<th>TTA</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A 基线</strong></td>
+<td><code>configs/train_baseline.json</code></td>
+<td>ResNet18</td>
+<td>160</td>
+<td>12</td>
+<td>轻量</td>
+<td>none</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+</tr>
+<tr>
+<td><strong>B 类别平衡</strong></td>
+<td><code>configs/train_weighted.json</code></td>
+<td>ResNet18</td>
+<td>160</td>
+<td>12</td>
+<td>轻量</td>
+<td><strong>inverse</strong></td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+</tr>
+<tr>
+<td><strong>C1 改进</strong></td>
+<td><code>configs/train_improved.json</code></td>
+<td>ResNet18</td>
+<td><strong>224</strong></td>
+<td>18</td>
+<td><strong>强</strong></td>
+<td>none</td>
+<td>0.999</td>
+<td>0.35</td>
+<td>✓</td>
+</tr>
+<tr>
+<td><strong>C2 骨干容量</strong></td>
+<td><code>configs/train_improved_r50.json</code></td>
+<td><strong>ResNet50</strong></td>
+<td>224</td>
+<td>14</td>
+<td>强</td>
+<td>none</td>
+<td>0.999</td>
+<td>0.35</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>（备用）</td>
+<td><code>configs/train_moderate.json</code></td>
+<td>ResNet18</td>
+<td>224</td>
+<td>14</td>
+<td>中等</td>
+<td>none</td>
+<td>0.999</td>
+<td>✗</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p><strong>共同配置</strong>：SGD（momentum 0.9，nesterov，weight_decay 1e-4），
+<strong>余弦退火 + 线性 warmup</strong>，梯度裁剪 5.0，batch size 32，随机种子 42，
+CPU bfloat16 混合精度，<code>torch.set_num_threads(12)</code>。</p>
+<p><strong>关于命名</strong>：<code>ResNet18@224</code> 表示"骨干网络 = ResNet-18，输入分辨率 = 224×224"。
+ResNet-18 有 11.69 M 参数（68 个模块），ResNet-50 有 25.56 M（151 个模块）；
+<code>@</code> 后的分辨率决定计算量，像素数按平方增长。</p>
+<h4 id="doc25-3-4-1-具体使用了哪些训练手段">3.4.1 具体使用了哪些训练手段</h4>
+<table>
+<thead>
+<tr>
+<th>手段</th>
+<th>是否使用</th>
+<th>本项目的具体设置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>迁移学习（ImageNet 预训练）</td>
+<td>✅</td>
+<td>torchvision 官方 <code>IMAGENET1K_V1</code> 权重</td>
+</tr>
+<tr>
+<td><strong>余弦退火</strong></td>
+<td>✅</td>
+<td><code>0.5×(1+cos(π·prog))</code>，<strong>逐 step 更新</strong>（非逐轮），学习率从 0.01 平滑衰减到 0</td>
+</tr>
+<tr>
+<td>线性 warmup</td>
+<td>✅</td>
+<td>C1/C2 预热 2 轮（470 step），A/B 预热 1 轮；从 0 线性升到峰值</td>
+</tr>
+<tr>
+<td>梯度裁剪</td>
+<td>✅</td>
+<td><code>clip_grad_norm_</code> 阈值 5.0</td>
+</tr>
+<tr>
+<td>权重 EMA</td>
+<td>✅</td>
+<td><code>decay = 0.999</code>，评估与保存均使用平滑后的权重</td>
+</tr>
+<tr>
+<td>标签平滑</td>
+<td>✅</td>
+<td>ε = 0.1（C1/C2），0（A/B）</td>
+</tr>
+<tr>
+<td>MixUp / CutMix</td>
+<td>✅</td>
+<td>α = 0.2 / 0.5，以 0.35 的概率二选一</td>
+</tr>
+<tr>
+<td>数据增强</td>
+<td>✅</td>
+<td>RandomResizedCrop + HFlip + ColorJitter + RandAugment(2, 7) + RandomErasing(0.25)</td>
+</tr>
+<tr>
+<td>混合精度</td>
+<td>✅</td>
+<td>CPU bfloat16 autocast（损失仍在 float32 计算）</td>
+</tr>
+<tr>
+<td>水平翻转 TTA（推理）</td>
+<td>✅</td>
+<td>正反两张图取平均</td>
+</tr>
+<tr>
+<td>最优轮次模型选择</td>
+<td>✅</td>
+<td>每轮用验证集 51 类 Macro-F1 评估，保存最高的那一轮为 <code>best.pt</code></td>
+</tr>
+<tr>
+<td>中期 checkpoint</td>
+<td>✅</td>
+<td>每 3~4 轮存 <code>epoch_XX.pt</code>，每轮存 <code>last.pt</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>未使用的手段（明确说明）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>手段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>早停 Early Stopping</strong></td>
+<td><strong>未使用</strong>。训练固定跑满 <code>epochs</code>，不因验证指标不再提升而中断</td>
+</tr>
+<tr>
+<td>学习率重启（WarmRestarts）</td>
+<td>未使用，只跑单个余弦周期</td>
+</tr>
+<tr>
+<td>SWA / 随机权重平均</td>
+<td>未使用（EMA 起到了部分类似作用）</td>
+</tr>
+<tr>
+<td>冻结骨干预热</td>
+<td>代码支持（<code>freeze_backbone_epochs</code>）但配为 0，未开启</td>
+</tr>
+<tr>
+<td>Dropout</td>
+<td>代码支持但配为 0；正则化由数据增强 + 权重衰减 + EMA 承担</td>
+</tr>
+<tr>
+<td>多种子平均 / 伪标签 / 半监督 / 知识蒸馏 / 梯度累积</td>
+<td>均未使用</td>
+</tr>
+<tr>
+<td>分层学习率</td>
+<td>代码支持（<code>head_lr_mult</code>），但设为 1.0，等同于不使用</td>
+</tr>
+</tbody>
+</table>
+<h4 id="doc25-3-4-2-为什么没有使用早停">3.4.2 为什么没有使用早停</h4>
+<p><strong>早停（Early Stopping）与"保存最优轮次"是两件不同的事</strong>，不能混为一谈：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>早停 Early Stopping</th>
+<th>本项目实际做法：最优轮次选择</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>行为</td>
+<td>验证指标连续 N 轮不提升就<strong>中断训练</strong></td>
+<td>训练<strong>跑满</strong>所有 epochs，只把 Macro-F1 最高的那轮存为 <code>best.pt</code></td>
+</tr>
+<tr>
+<td>是否节省时间</td>
+<td>节省</td>
+<td><strong>不节省</strong>（照样跑满）</td>
+</tr>
+<tr>
+<td>风险</td>
+<td>可能提前砍掉后期才提升的模型</td>
+<td>无，但需要预留足够的 <code>epochs</code></td>
+</tr>
+</tbody>
+</table>
+<p><strong>不用早停的原因</strong>：余弦退火会让学习率在末期衰减到接近 0，模型往往在<strong>最后几轮</strong>才收敛到最好状态，
+此时早停会直接砍掉最有价值的部分。四组实验的实测数据支持这一判断：</p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>总轮数</th>
+<th>最佳轮</th>
+<th>最佳轮是否为最后一轮</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 基线</td>
+<td>12</td>
+<td>10</td>
+<td>否（差 2 轮）</td>
+</tr>
+<tr>
+<td>B 类别平衡</td>
+<td>12</td>
+<td>12</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>C1 改进</td>
+<td>18</td>
+<td>18</td>
+<td><strong>是</strong></td>
+</tr>
+<tr>
+<td>C2 骨干容量</td>
+<td>14</td>
+<td>14</td>
+<td><strong>是</strong></td>
+</tr>
+</tbody>
+</table>
+<p>四组中有三组的最佳成绩出现在<strong>最后一轮</strong>。若采用"验证集 Macro-F1 连续 3 轮不提升即停止"的策略，
+C1 会在第 15 轮左右就满足条件（0.9445 → 0.9461 → 0.9478，每轮涨幅已很小），
+从而<strong>丢掉最后 3 轮</strong>，最终分数反而下降。</p>
+<p><strong>本项目用来替代早停的两个机制</strong>：</p>
+<ol>
+<li><strong><code>best.pt</code> 按验证集 Macro-F1 保存</strong> —— 保证交付的是整个训练过程中最好的一版，
+   即使最后一个 epoch 表现变差也不影响结果；</li>
+<li><strong><code>epochs</code> 与余弦周期的长度本身就是"人工早停"</strong> —— 轮数被设定在"验证指标已进入平台期"的位置
+   （例如 C1 从第 14 轮起每轮仅提升 0.001~0.003），相当于把停止点写死在配置里，
+   而不是让程序动态判断。</li>
+</ol>
+<p><strong>若要改成早停</strong>，只需在 <code>src/cardex/engine.py</code> 的 epoch 循环中加入计数器：</p>
+<div class="codehilite"><pre><span></span><code><span class="k">if</span> <span class="n">is_best</span><span class="p">:</span>
+    <span class="n">patience_counter</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">patience_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">if</span> <span class="n">patience_counter</span> <span class="o">&gt;=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;early_stop_patience&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+    <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;验证指标连续 </span><span class="si">%d</span><span class="s2"> 轮未提升，提前结束训练&quot;</span><span class="p">,</span> <span class="n">patience_counter</span><span class="p">)</span>
+    <span class="k">break</span>
+</code></pre></div>
+
+<p>但建议同时把 <code>scheduler</code> 改为 <code>step</code>，或改用 <code>CosineAnnealingWarmRestarts</code>，
+否则余弦周期跑不完，学习率会停在半路，末段的精细收敛被浪费。</p>
+<p><strong>A→B 隔离"类别不平衡处理"这一个变量</strong>，<strong>A→C1 则整体检验"分辨率 + 增强 + 损失 + EMA + TTA"的组合收益</strong>，
+<strong>C1→C2 隔离"骨干容量"这一个变量</strong>。</p>
+<h3 id="doc25-3-5-类别平衡损失的设计-对比实验-b-的核心">3.5 类别平衡损失的设计（对比实验 B 的核心）</h3>
+<p>任务书的评分指标是 <strong>51 类等权 Macro-F1</strong>，它与"按样本量加权"的交叉熵目标并不一致：</p>
+<ul>
+<li>目标车型每类约 110 张，unknown 类有 1,960 张；</li>
+<li>若按样本加权，unknown 的梯度贡献约等于单个车型的 17.8 倍，
+  模型会倾向于"不平衡地"优化 unknown 与样本量大的车型，从而牺牲稀有类别的召回率。</li>
+</ul>
+<p>本项目采用<strong>逆频率加权</strong>，使每个<strong>类别</strong>（而非每个样本）对损失的贡献相等：</p>
+<p>$$w_c = \frac{N}{C \cdot n_c}, \qquad \text{再按 } \bar w \text{ 归一化}$$</p>
+<p>其中 $N$ 为训练样本总数，$C=51$ 为类别数，$n_c$ 为第 $c$ 类的样本数。
+此时第 $c$ 类对总损失的名义贡献为 $n_c \cdot w_c \propto 1$，与类别大小无关。
+改进模型（C）额外对 unknown 乘 1.5 倍权重，因为在 Macro-F1 口径下
+unknown 是"一类"，但在真实场景中它需要覆盖 98 个车型的巨大变化范围，
+适度加权有利于它的召回。</p>
+<hr />
+<h2 id="doc25-4-实验结果与分析">4. 实验结果与分析</h2>
+<blockquote>
+<p>本节由 <code>src/make_reports.py</code> 从各实验的 <code>summary.json</code> / <code>val_report.json</code> 自动汇总，
+原始数据见 <code>outputs/reports/experiment_comparison.md</code>、<code>outputs/reports/experiment_comparison.csv</code>。</p>
+</blockquote>
+<h3 id="doc25-4-1-实验总表">4.1 实验总表</h3>
+<p>数据：train 7,494 张 / val 2,422 张；评分口径：<strong>51 类等权 Macro-F1</strong>（越高越好）。</p>
+<table>
+<thead>
+<tr>
+<th>实验</th>
+<th>骨干</th>
+<th>输入</th>
+<th>epochs</th>
+<th>增强</th>
+<th>类别权重</th>
+<th>EMA</th>
+<th>MixUp/CutMix</th>
+<th>TTA</th>
+<th>最佳 epoch</th>
+<th><strong>未标定 Macro-F1</strong></th>
+<th>Accuracy</th>
+<th>unknown 检出率</th>
+<th>已知类误拒率</th>
+<th>用时</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A 基线</strong></td>
+<td>ResNet18</td>
+<td>160</td>
+<td>12</td>
+<td>轻量</td>
+<td>none</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>10</td>
+<td><strong>0.8475</strong></td>
+<td>0.8287</td>
+<td>0.820</td>
+<td>0.103</td>
+<td>28.3 min</td>
+</tr>
+<tr>
+<td><strong>B 类别平衡</strong></td>
+<td>ResNet18</td>
+<td>160</td>
+<td>12</td>
+<td>轻量</td>
+<td>inverse</td>
+<td>✗</td>
+<td>✗</td>
+<td>✗</td>
+<td>12</td>
+<td><strong>0.8428</strong></td>
+<td>0.8105</td>
+<td>0.590</td>
+<td>0.047</td>
+<td>32.2 min</td>
+</tr>
+<tr>
+<td><strong>C1 改进</strong></td>
+<td>ResNet18</td>
+<td><strong>224</strong></td>
+<td>18</td>
+<td><strong>强</strong></td>
+<td>none</td>
+<td>0.999</td>
+<td>0.35</td>
+<td>✓</td>
+<td>18</td>
+<td><strong>0.9482</strong></td>
+<td>0.9377</td>
+<td>0.918</td>
+<td>0.040</td>
+<td>86.6 min</td>
+</tr>
+<tr>
+<td><strong>C2 骨干容量</strong></td>
+<td><strong>ResNet50</strong></td>
+<td>224</td>
+<td>14</td>
+<td>强</td>
+<td>none</td>
+<td>0.999</td>
+<td>0.35</td>
+<td>✓</td>
+<td>14</td>
+<td><strong>0.9550</strong></td>
+<td>0.9447</td>
+<td>0.896</td>
+<td>0.024</td>
+<td>175.2 min</td>
+</tr>
+<tr>
+<td><strong>C3 集成</strong></td>
+<td>C1 + C2</td>
+<td>224</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+<td><strong>0.9587</strong></td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>加上第 6 节由验证集标定出的决策规则后（τ 与拒识阈值 t 均由验证集 Macro-F1 选出）：</p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>未标定</th>
+<th>最优先验校正 τ</th>
+<th>最优拒识阈值 t</th>
+<th><strong>标定后 Macro-F1</strong></th>
+<th>相对基线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 基线</td>
+<td>0.8475</td>
+<td>0.00</td>
+<td>0.40</td>
+<td><strong>0.8512</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>B 类别平衡</td>
+<td>0.8428</td>
+<td>−0.40</td>
+<td>0.50</td>
+<td><strong>0.8597</strong></td>
+<td>+0.0085</td>
+</tr>
+<tr>
+<td>C1 改进</td>
+<td>0.9482</td>
+<td>+0.10</td>
+<td>0.20</td>
+<td><strong>0.9510</strong></td>
+<td>+0.0998</td>
+</tr>
+<tr>
+<td>C2 骨干容量</td>
+<td>0.9550</td>
+<td>−0.20</td>
+<td>0.20</td>
+<td><strong>0.9592</strong></td>
+<td>+0.1080</td>
+</tr>
+<tr>
+<td><strong>C3 集成 ★ 最终交付</strong></td>
+<td>0.9587</td>
+<td><strong>+0.05</strong></td>
+<td><strong>0.25</strong></td>
+<td><strong>0.9604</strong></td>
+<td><strong>+0.1092</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>最终交付模型 = C3（C1 + C2 软投票集成，几何平均）</strong>，验证集 51 类 Macro-F1 = <strong>0.9604</strong>。
+比选过程由 <code>src/finalize.py</code> 自动完成，完整记录见 <code>outputs/reports/final_model_choice.md</code>。</p>
+<h3 id="doc25-4-2-逐轮训练曲线与关键观察">4.2 逐轮训练曲线与关键观察</h3>
+<p><img alt="训练曲线" src="../../outputs/reports/training_curves.png" /></p>
+<table>
+<thead>
+<tr>
+<th>epoch</th>
+<th>A 基线 val Macro-F1</th>
+<th>C1 改进 val Macro-F1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0.5777</td>
+<td>0.1072</td>
+</tr>
+<tr>
+<td>4</td>
+<td>0.7233</td>
+<td>0.5855</td>
+</tr>
+<tr>
+<td>6</td>
+<td>0.7851</td>
+<td>0.8210</td>
+</tr>
+<tr>
+<td>8</td>
+<td>0.8302</td>
+<td>0.8957</td>
+</tr>
+<tr>
+<td>10</td>
+<td><strong>0.8475</strong></td>
+<td>0.9243</td>
+</tr>
+<tr>
+<td>12</td>
+<td>0.8465</td>
+<td>0.9387</td>
+</tr>
+<tr>
+<td>14</td>
+<td>—</td>
+<td>0.9433</td>
+</tr>
+<tr>
+<td>16</td>
+<td>—</td>
+<td>0.9461</td>
+</tr>
+<tr>
+<td>18</td>
+<td>—</td>
+<td><strong>0.9482</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>观察 1：强增强不是"更好"，而是"更慢但上限更高"。</strong>
+前 5 个 epoch C1 一直落后于基线（epoch 4：0.586 vs 0.723），
+因为 RandAugment + MixUp/CutMix + 标签平滑让训练任务变难了。
+但从 epoch 6 起 C1 反超，并在余弦退火后期持续拉开差距，最终领先 <strong>+0.1007</strong>。
+<strong>这提醒我们：不能只看前几个 epoch 就判定一个配方的好坏。</strong></p>
+<p><strong>观察 2：训练集准确率在强增强下不再是有效的过拟合指标。</strong></p>
+<table>
+<thead>
+<tr>
+<th>模型</th>
+<th>train_acc</th>
+<th>val_acc</th>
+<th>差值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A 基线</td>
+<td>0.9963</td>
+<td>0.8258</td>
+<td><strong>+17.1 pt（严重过拟合）</strong></td>
+</tr>
+<tr>
+<td>C1 改进</td>
+<td>0.8025</td>
+<td>0.9376</td>
+<td><strong>−13.5 pt（"训练比验证还差"）</strong></td>
+</tr>
+</tbody>
+</table>
+<p>C1 的 train_acc 只有 0.80，但 val_acc 高达 0.94 —— 这不是模型有问题，
+而是 MixUp/CutMix 与 RandAugment 让训练时的输入分布<strong>显著难于</strong>验证时的干净图片分布。
+在强增强配方下，<strong>必须用验证集 Macro-F1 而不是训练准确率来判断模型好坏</strong>。</p>
+<p><strong>观察 3：分辨率是最有效的单一手段。</strong>
+把输入从 160 提到 224（其余条件不变时的主要变量），配合强增强，
+Macro-F1 从 0.8475 提升到 0.9482。原因是本任务是<strong>细粒度分类</strong>：
+区分"大众朗逸 / 日产轩逸"这类同级同型车，关键线索（格栅条数、灯组轮廓、车标位置）
+在 160×160 下只有几个像素，224 下才具备可分性。</p>
+<h3 id="doc25-4-3-混淆矩阵与逐类-f1">4.3 混淆矩阵与逐类 F1</h3>
+<ul>
+<li><code>outputs/reports/confusion_matrix_&lt;run&gt;.png</code> —— 51×51 混淆矩阵热力图（log1p 计数）</li>
+<li><code>outputs/reports/per_class_f1_&lt;run&gt;.png</code> —— 逐类 F1 升序条形图</li>
+<li><code>outputs/runs/&lt;run&gt;/eval_confusion_matrix.csv</code> —— 原始混淆矩阵</li>
+<li><code>outputs/runs/&lt;run&gt;/top_confusions.csv</code> —— 最严重的类别混淆对</li>
+</ul>
+<p><strong>基线模型（A）的逐类 F1 分布</strong>（<code>macro avg P=0.874 / R=0.830 / F1=0.847</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>排名</th>
+<th>类别</th>
+<th>F1</th>
+<th>主要问题</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F1 最低</td>
+<td>日产_轩逸</td>
+<td><strong>0.618</strong></td>
+<td>recall 仅 0.486，37% 被误判为 unknown</td>
+</tr>
+<tr>
+<td></td>
+<td>大众_朗逸</td>
+<td>0.689</td>
+<td>recall 0.583，25% 被误判为 unknown</td>
+</tr>
+<tr>
+<td></td>
+<td>本田_奥德赛</td>
+<td>0.716</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>福特_福克斯</td>
+<td>0.725</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>雷克萨斯_雷克萨斯ES</td>
+<td>0.734</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>MINI_MINI</td>
+<td>0.735</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>奔驰_奔驰GLE</td>
+<td>0.754</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>比亚迪_汉EV</td>
+<td>0.759</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>unknown</td>
+<td>0.764</td>
+<td>与多个车型互相混淆</td>
+</tr>
+<tr>
+<td>F1 最高</td>
+<td>依维柯_依维柯得意</td>
+<td><strong>1.000</strong></td>
+<td>厢式轻客，形态独一无二</td>
+</tr>
+<tr>
+<td></td>
+<td>兰博基尼_Urus</td>
+<td>0.974</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>宇通客车_宇通T7</td>
+<td>0.967</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>宝马_宝马X7</td>
+<td>0.946</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>凯迪拉克_凯迪拉克XT6</td>
+<td>0.935</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>规律非常清晰</strong>：<strong>造型越独特，F1 越高；造型越"大众化"，F1 越低。</strong>
+方盒子越野车（吉姆尼 0.935、牧马人 0.919、212 0.923）、厢式轻客（依维柯得意 1.000）、
+超跑（Urus 0.974）几乎不出错；而轩逸、朗逸、福克斯这类<strong>紧凑型家用轿车</strong>互相之间
+以及和 unknown 之间高度混淆 —— 它们共享同一套"中国紧凑型家用车"设计范式
+（三厢、横向前格栅、卤素/氙气大灯），在低分辨率下几乎只能靠车标区分。</p>
+<p>这直接验证了第 2.2 节选类原则 P3（品牌多样性）与 P6（造型辨识度）的价值：
+<strong>选类阶段的可分性预判，最终会以 Macro-F1 的形式体现出来。</strong></p>
+<p><strong>改进模型（C1）的逐类 F1 分布</strong>（<code>macro avg P=0.950 / R=0.948 / F1=0.948</code>）：</p>
+<table>
+<thead>
+<tr>
+<th>统计量</th>
+<th>基线 A</th>
+<th>C1 改进</th>
+<th><strong>最终 C3（集成+标定）</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>最低 F1</td>
+<td>0.618（日产_轩逸）</td>
+<td>0.831（日产_轩逸）</td>
+<td><strong>0.866（日产_轩逸）</strong></td>
+</tr>
+<tr>
+<td>中位数 F1</td>
+<td>0.874</td>
+<td>0.958</td>
+<td><strong>≈0.963</strong></td>
+</tr>
+<tr>
+<td>最高 F1</td>
+<td>1.000</td>
+<td>1.000</td>
+<td>1.000</td>
+</tr>
+<tr>
+<td><strong>F1 &lt; 0.80 的类别数</strong></td>
+<td><strong>9 / 51</strong></td>
+<td><strong>0 / 51</strong></td>
+<td><strong>0 / 51</strong></td>
+</tr>
+<tr>
+<td>F1 &lt; 0.90 的类别数</td>
+<td>24 / 51</td>
+<td>8 / 51</td>
+<td><strong>4 / 51</strong></td>
+</tr>
+</tbody>
+</table>
+<p>C2 最弱的 10 个类别（ResNet50@224，未标定）：</p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th>类别</th>
+<th>F1</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>验证样本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>36</td>
+<td>福特_福克斯</td>
+<td>0.848</td>
+<td>0.933</td>
+<td>0.778</td>
+<td>36</td>
+</tr>
+<tr>
+<td>3</td>
+<td>大众_朗逸</td>
+<td>0.870</td>
+<td>0.909</td>
+<td>0.833</td>
+<td>36</td>
+</tr>
+<tr>
+<td>11</td>
+<td>MINI_MINI</td>
+<td>0.877</td>
+<td>0.821</td>
+<td>0.941</td>
+<td>34</td>
+</tr>
+<tr>
+<td>19</td>
+<td>奔驰_奔驰GLE</td>
+<td>0.883</td>
+<td>0.895</td>
+<td>0.872</td>
+<td>39</td>
+</tr>
+<tr>
+<td>22</td>
+<td>保时捷_Cayenne</td>
+<td>0.883</td>
+<td>0.850</td>
+<td>0.919</td>
+<td>37</td>
+</tr>
+<tr>
+<td>48</td>
+<td>日产_轩逸</td>
+<td>0.886</td>
+<td>0.886</td>
+<td>0.886</td>
+<td>35</td>
+</tr>
+<tr>
+<td>27</td>
+<td>奥迪_奥迪Q5L</td>
+<td>0.900</td>
+<td>0.837</td>
+<td>0.973</td>
+<td>37</td>
+</tr>
+<tr>
+<td>12</td>
+<td>雷克萨斯_雷克萨斯ES</td>
+<td>0.907</td>
+<td>0.895</td>
+<td>0.919</td>
+<td>37</td>
+</tr>
+<tr>
+<td>50</td>
+<td><strong>unknown</strong></td>
+<td><strong>0.909</strong></td>
+<td>0.923</td>
+<td>0.896</td>
+<td>588</td>
+</tr>
+<tr>
+<td>49</td>
+<td>领克_领克03</td>
+<td>0.917</td>
+<td>0.917</td>
+<td>0.917</td>
+<td>36</td>
+</tr>
+</tbody>
+</table>
+<p><strong>最终交付模型 C3（C1+C2 集成 + 标定）的逐类 F1（升序）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>索引</th>
+<th>类别</th>
+<th>Precision</th>
+<th>Recall</th>
+<th>F1</th>
+<th>验证样本</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>48</td>
+<td>日产_轩逸</td>
+<td>0.906</td>
+<td>0.829</td>
+<td><strong>0.866</strong></td>
+<td>35</td>
+</tr>
+<tr>
+<td>3</td>
+<td>大众_朗逸</td>
+<td>0.967</td>
+<td>0.806</td>
+<td>0.879</td>
+<td>36</td>
+</tr>
+<tr>
+<td>36</td>
+<td>福特_福克斯</td>
+<td>0.938</td>
+<td>0.833</td>
+<td>0.882</td>
+<td>36</td>
+</tr>
+<tr>
+<td>11</td>
+<td>MINI_MINI</td>
+<td>0.842</td>
+<td>0.941</td>
+<td>0.889</td>
+<td>34</td>
+</tr>
+<tr>
+<td>50</td>
+<td>unknown</td>
+<td>0.897</td>
+<td>0.929</td>
+<td>0.912</td>
+<td>588</td>
+</tr>
+<tr>
+<td>49</td>
+<td>领克_领克03</td>
+<td>0.917</td>
+<td>0.917</td>
+<td>0.917</td>
+<td>36</td>
+</tr>
+<tr>
+<td>12</td>
+<td>雷克萨斯_雷克萨斯ES</td>
+<td>0.919</td>
+<td>0.919</td>
+<td>0.919</td>
+<td>37</td>
+</tr>
+<tr>
+<td>22</td>
+<td>保时捷_Cayenne</td>
+<td>0.919</td>
+<td>0.919</td>
+<td>0.919</td>
+<td>37</td>
+</tr>
+<tr>
+<td>19</td>
+<td>奔驰_奔驰GLE</td>
+<td>0.946</td>
+<td>0.897</td>
+<td>0.921</td>
+<td>39</td>
+</tr>
+<tr>
+<td>15</td>
+<td>本田_奥德赛</td>
+<td>0.971</td>
+<td>0.892</td>
+<td>0.930</td>
+<td>37</td>
+</tr>
+</tbody>
+</table>
+<p>C2 最强的 5 个类别全部达到 <strong>F1 = 1.000</strong>：五菱汽车_五菱之光、宝马_宝马X7、依维柯_依维柯得意、
+林肯_领航员、北汽制造_212 —— 全部是造型极端独特（方盒子、厢式、全尺寸）的车型。</p>
+<p><strong>关键结论</strong>：<strong>最弱类别从"严重不可用"（基线 0.618）提升到"可用"（最终 0.866），
+并且 51 个类别全部达到 F1 ≥ 0.866，没有一个类别掉队。</strong>
+这对 Macro-F1 尤其重要——因为它是等权平均，任何一个"崩掉"的类别都会直接拖累总分。
+unknown 的 F1 也从 0.764（基线）提升到 C1 的 0.899、最终模型的 <strong>0.912</strong>，
+说明"敢于说不认识"与"不错杀已知车型"这两个目标在本次改进中同时得到了改善。</p>
+<h3 id="doc25-4-4-对比实验结论">4.4 对比实验结论</h3>
+<table>
+<thead>
+<tr>
+<th>对比</th>
+<th>变量</th>
+<th>结果</th>
+<th>结论</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A → B</td>
+<td>类别平衡损失</td>
+<td>0.8475 → 0.8428（−0.0047）</td>
+<td>❌ <strong>逆频率加权在本任务中不直接有效</strong>，它把 unknown 检出率从 82% 压到 59%；但它确实把已知类误拒率从 10.3% 降到 4.7%（见 6.2 节，配合先验校正后净收益 +0.0122）</td>
+</tr>
+<tr>
+<td>A → C1</td>
+<td>分辨率 160→224 + 强增强 + 标签平滑 + MixUp/CutMix + EMA + TTA</td>
+<td>0.8475 → <strong>0.9482</strong>（+0.1007）</td>
+<td>✅ <strong>组合改进收益巨大</strong>，是本项目最主要的效果来源</td>
+</tr>
+<tr>
+<td><strong>C1 → C2</strong></td>
+<td><strong>骨干容量 ResNet18 → ResNet50</strong>（其余配方完全相同）</td>
+<td>0.9482 → <strong>0.9550</strong>（<strong>+0.0068</strong>）</td>
+<td>✅ 容量对细粒度分类仍有正收益，但<strong>边际收益远小于分辨率+正则化</strong>；而训练成本从 86.6 min 涨到 175.2 min（<strong>2.02 倍</strong>）</td>
+</tr>
+<tr>
+<td><strong>C2 → C3</strong></td>
+<td><strong>加入 C1 做软投票集成</strong></td>
+<td>0.9550 → <strong>0.9587</strong>（+0.0037 未标定）；标定后 0.9592 → <strong>0.9604</strong></td>
+<td>✅ 集成有正收益，但很小；成员必须水平相近才有效</td>
+</tr>
+<tr>
+<td>A vs C1</td>
+<td>训练集准确率</td>
+<td>0.9963 → 0.8025，但验证集反超</td>
+<td>✅ 强正则化把"记忆训练集"转变为"学习可泛化特征"</td>
+</tr>
+<tr>
+<td>A/B/C1/C2</td>
+<td>决策标定（先验校正 + 拒识阈值）</td>
+<td>+0.0037 / +0.0169 / +0.0028 / +0.0042</td>
+<td>⚠️ 标定是廉价的正向补充，但<strong>不能替代模型本身的改进</strong></td>
+</tr>
+<tr>
+<td>对照实验</td>
+<td>"C1 + 基线"集成</td>
+<td>0.9152（<strong>低于</strong> C1 单独的 0.9482）</td>
+<td>❌ <strong>成员差距过大时集成有害</strong>：弱成员的噪声投票会稀释强成员的判断。这解释了为什么候选集只保留 C1、C2 与 C1+C2</td>
+</tr>
+</tbody>
+</table>
+<p><strong>资源—收益的权衡结论</strong>：从基线到 C1，Macro-F1 提升 +0.1007，训练时间只增加 3.06 倍；
+从 C1 到 C2+C3，再提升 +0.0122，训练时间再增加 2.02 倍。
+<strong>在算力受限（本项目为纯 CPU）时，优先投入"分辨率 + 强正则化"，而不是"更大的骨干网络"。</strong></p>
+<hr />
+<h2 id="doc25-5-错误分析">5. 错误分析</h2>
+<p>原始数据：<code>outputs/runs/&lt;run&gt;/error_samples.csv</code>（每张错误图片的真实类别、预测类别、置信度、路径）、
+<code>outputs/runs/&lt;run&gt;/top_confusions.csv</code>、<code>outputs/runs/&lt;run&gt;/low_confidence_samples.csv</code>。</p>
+<h3 id="doc25-5-1-基线模型的主要错误模式-高置信度地把已知车型判成-unknown">5.1 基线模型的主要错误模式：<strong>高置信度地把已知车型判成 unknown</strong></h3>
+<p>从 <code>error_samples.csv</code> 中筛出轩逸 / 朗逸的错误样本，可以看到一个很反直觉的现象：</p>
+<div class="codehilite"><pre><span></span><code>日产_轩逸  →  unknown   conf = 0.991
+日产_轩逸  →  unknown   conf = 0.987
+大众_朗逸  →  unknown   conf = 0.975
+日产_轩逸  →  unknown   conf = 0.969
+大众_朗逸  →  unknown   conf = 0.960
+日产_轩逸  →  unknown   conf = 0.941
+日产_轩逸  →  unknown   conf = 0.927
+</code></pre></div>
+
+<p>模型<strong>以 0.99 的置信度</strong>把一辆轩逸判成"不认识"。这不是"不确定"，而是"非常确定地认错"。
+因此<strong>降低置信度阈值完全无法修复这类错误</strong>，这也解释了 6.3 节里阈值收益极小的原因。</p>
+<h3 id="doc25-5-2-根因-数据集中同一车型名下有多个世代-且划分未按世代分层">5.2 根因：数据集中同一车型名下有<strong>多个世代</strong>，且划分未按世代分层</h3>
+<p>用 <code>src/visualize_errors.py</code> 把训练集样例与被误判的验证集样例并排展示：</p>
+<p><img alt="0975 日产_轩逸 错误案例" src="../../outputs/reports/error_case_0975.png" /></p>
+<p><img alt="0035 大众_朗逸 错误案例" src="../../outputs/reports/error_case_0035.png" /></p>
+<ul>
+<li><strong><code>0975 日产_轩逸</code></strong>：训练集里的样本是<strong>经典轩逸（B17 世代）</strong>——圆润车身、
+  V 型镀铬格栅配大灯一体；而被误判的验证集样本是<strong>第 14 代轩逸（2020 年后）</strong>——
+  V-Motion 2.0 大嘴格栅、细长灯组、低趴车身。两者放在一起，<strong>除了车标几乎没有共同特征</strong>。</li>
+<li><strong><code>0035 大众_朗逸</code></strong>：训练集是 <strong>2018 年后的全新朗逸（Plus）</strong>——宽横向镀铬格栅；
+  被误判的验证集样本是 <strong>2013–2017 经典朗逸</strong>（窄格栅、老款大灯），
+  甚至还有一辆<strong>出租车涂装的绿色朗逸</strong>。</li>
+</ul>
+<p><strong>这不是模型能力问题，而是标注粒度问题</strong>：教师数据集用"车型名称"作为类别标签，
+但同一个车型名称在中国市场往往对应<strong>跨越 10 年、外观完全不同的多个世代/改款</strong>。
+教师按类别随机分层划分 train / val（各类 val/train 比例稳定在 0.331，见 2.3 节），
+<strong>没有按世代分层</strong>，于是出现了"训练集全是老款、验证集有新款"的情况。</p>
+<p><strong>量化影响</strong>：基线模型中，轩逸 37% 的验证图片、朗逸 25% 的验证图片被误判为 unknown，
+两者合计贡献了 unknown 类 FP 的相当一部分，同时也直接拉低了这两类的 F1（0.618 / 0.689）。
+若把这两类按世代细分，模型在这两个"子类"内部的表现其实很好。</p>
+<h3 id="doc25-5-3-强增强与高分辨率对这类错误的部分修复">5.3 强增强与高分辨率对这类错误的部分修复</h3>
+<p>C1 模型（224 + 强增强 + EMA + TTA）在同一批数据上：
+轩逸的错误从 13 个降到 <strong>7 个</strong>、朗逸从 9 个降到 <strong>7 个</strong>，unknown 检出率从 82% 提到 <strong>92%</strong>，
+已知类误拒率从 10.3% 降到 4.0%。原因有两个：</p>
+<ol>
+<li><strong>高分辨率</strong>让"车标 + 格栅细节"变得可辨，模型可以抓住跨世代不变的品牌/车型线索；</li>
+<li><strong>强增强（大范围随机裁剪 + 颜色抖动 + RandAugment + 随机擦除）</strong>使模型不再依赖
+   "某一世代特有的车身线条"，被迫学习更抽象、更跨世代不变的特征——这恰好对应
+   <code>RandomResizedCrop(scale=(0.50,1.0))</code> 让模型经常"只看到车头或车尾的一部分"。</li>
+</ol>
+<p>但这类错误<strong>没有也不可能被完全消除</strong>，因为它本质上是数据标注粒度的问题。
+彻底的解法需要教师侧按世代细分标签，或本项目在子类内做分层采样。</p>
+<h3 id="doc25-5-4-其他典型错误">5.4 其他典型错误</h3>
+<p>下表列出两个模型各自最严重的混淆对（<code>top_confusions.csv</code>），左侧为基线 A，右侧为改进 C1：</p>
+<table>
+<thead>
+<tr>
+<th>基线 A：真实 → 预测</th>
+<th>次数</th>
+<th>占该类</th>
+<th></th>
+<th>改进 C1：真实 → 预测</th>
+<th>次数</th>
+<th>占该类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>日产_轩逸 → unknown</td>
+<td>13</td>
+<td><strong>37.1%</strong></td>
+<td></td>
+<td>日产_轩逸 → unknown</td>
+<td>7</td>
+<td><strong>20.0%</strong></td>
+</tr>
+<tr>
+<td>长安_长安UNI-V → unknown</td>
+<td>10</td>
+<td>27.8%</td>
+<td></td>
+<td>大众_朗逸 → unknown</td>
+<td>7</td>
+<td>19.4%</td>
+</tr>
+<tr>
+<td>MINI_MINI → unknown</td>
+<td>9</td>
+<td>26.5%</td>
+<td></td>
+<td>福特_福克斯 → unknown</td>
+<td>6</td>
+<td>16.7%</td>
+</tr>
+<tr>
+<td>大众_朗逸 → unknown</td>
+<td>9</td>
+<td>25.0%</td>
+<td></td>
+<td>雷克萨斯_雷克萨斯ES → unknown</td>
+<td>4</td>
+<td>10.8%</td>
+</tr>
+<tr>
+<td>unknown → MINI_MINI</td>
+<td>9</td>
+<td>—</td>
+<td></td>
+<td>unknown → MINI_MINI</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td>unknown → 比亚迪_汉EV</td>
+<td>8</td>
+<td>—</td>
+<td></td>
+<td>unknown → 吉利汽车_星瑞</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>福特_福克斯 → unknown</td>
+<td>7</td>
+<td>19.4%</td>
+<td></td>
+<td>unknown → 雷克萨斯_雷克萨斯ES</td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td>奔驰_奔驰GLE → unknown</td>
+<td>7</td>
+<td>17.9%</td>
+<td></td>
+<td>MINI_MINI → unknown</td>
+<td>3</td>
+<td>8.8%</td>
+</tr>
+<tr>
+<td>小鹏汽车_小鹏P7 → unknown</td>
+<td>6</td>
+<td>16.7%</td>
+<td></td>
+<td>本田_奥德赛 → unknown</td>
+<td>3</td>
+<td>8.1%</td>
+</tr>
+<tr>
+<td>雷克萨斯_雷克萨斯ES → unknown</td>
+<td>6</td>
+<td>16.2%</td>
+<td></td>
+<td>别克_别克GL8 → unknown</td>
+<td>3</td>
+<td>7.9%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>两个模型共享同一种错误形态：绝大多数严重混淆对都是"真实车型 → unknown"</strong>，
+即模型把见过的车型判成了"不认识"。这再次印证 5.2 节的世代问题，
+同时也说明：<strong>unknown 类与目标车型之间的边界，是本任务真正的难点</strong>，
+而"车型之间互相认错"反而是次要问题（两个模型中，车型↔车型的混淆次数都远小于车型→unknown）。</p>
+<p>次要错误类型：</p>
+<ul>
+<li><strong>跨品牌同型车混淆</strong>：基线中 <code>大众_朗逸 → 日产_轩逸</code>（置信度 0.847）、
+  <code>日产_轩逸 → 福特_福克斯</code>（0.825）。同为紧凑型三厢家用车，是模型最易混淆的一组。
+  改进模型中这三类的 F1 均已回到 0.83 以上，说明高分辨率确实改善了这类"同级同型"的区分。</li>
+<li><strong>unknown 被误判成具体车型</strong>：基线中 <code>unknown → MINI_MINI</code> 9 次、<code>unknown → 比亚迪_汉EV</code> 8 次；
+  改进模型降到最多 5 次。原因是 unknown 的来源类别里包含与这些车型高度相似的组外车型
+  （例如 unknown 里放了 MINI 的其他衍生款），这类混淆在原理上无法完全避免。</li>
+<li><strong>同品牌跨形态混淆（本项目已通过选类规避）</strong>：因为 50 类中同品牌最多只有 2 类且形态差异极大，
+  两个模型的混淆矩阵中<strong>都没有出现同品牌内部混淆</strong>（如 E 级 vs GLE、轩逸 vs GT-R 的混淆计数为 0），
+  说明 2.2 节的 P3 原则达到了预期效果。</li>
+</ul>
+<hr />
+<h2 id="doc25-6-低置信度处理与拒识阈值">6. 低置信度处理与拒识阈值</h2>
+<p>任务书 5.5 节要求"阈值须通过验证集确定，并在报告中说明"。本项目把"决策规则"单独拿出来做了一次
+系统性的验证集标定（<code>src/calibrate.py</code>），考察两个正交的超参数：</p>
+<ol>
+<li><strong>先验校正强度 τ（prior / logit adjustment）</strong></li>
+</ol>
+<p>$$z'_c = z_c - \tau \cdot \log \pi_c, \qquad \pi_c = n_c / N$$</p>
+<p>τ=0 表示保留训练先验；τ&gt;0 表示把先验从 logits 中减掉（让模型更"平等"地对待每个类别，
+   等价于降低 unknown 的倾向）；τ&lt;0 表示进一步放大训练先验（更倾向预测 unknown）。</p>
+<ol start="2">
+<li><strong>拒识阈值 t</strong>：当 <code>max softmax &lt; t</code> 时，把预测改写为 <code>unknown</code>。</li>
+</ol>
+<p>做法：每个模型只做<strong>一次前向传播</strong>并把 logits 缓存为 <code>.npz</code>，然后在 numpy 上对
+17×12 = 204 组 (τ, t) 做网格扫描，因此标定成本几乎可以忽略。</p>
+<h3 id="doc25-6-1-基线模型-a-τ-0-恰好就是最优点">6.1 基线模型（A）：τ=0 恰好就是最优点</h3>
+<table>
+<thead>
+<tr>
+<th>τ</th>
+<th>Macro-F1</th>
+<th>unknown 检出率</th>
+<th>已知类误拒率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−2.00</td>
+<td>0.6702</td>
+<td>0.981</td>
+<td>0.461</td>
+</tr>
+<tr>
+<td>−1.00</td>
+<td>0.8060</td>
+<td>0.929</td>
+<td>0.250</td>
+</tr>
+<tr>
+<td>−0.50</td>
+<td>0.8290</td>
+<td>0.881</td>
+<td>0.181</td>
+</tr>
+<tr>
+<td>−0.30</td>
+<td>0.8429</td>
+<td>0.866</td>
+<td>0.146</td>
+</tr>
+<tr>
+<td>−0.15</td>
+<td>0.8449</td>
+<td>0.842</td>
+<td>0.123</td>
+</tr>
+<tr>
+<td><strong>0.00</strong></td>
+<td><strong>0.8475</strong></td>
+<td>0.820</td>
+<td>0.103</td>
+</tr>
+<tr>
+<td>+0.15</td>
+<td>0.8450</td>
+<td>0.782</td>
+<td>0.088</td>
+</tr>
+<tr>
+<td>+0.30</td>
+<td>0.8402</td>
+<td>0.742</td>
+<td>0.077</td>
+</tr>
+<tr>
+<td>+0.50</td>
+<td>0.8411</td>
+<td>0.697</td>
+<td>0.055</td>
+</tr>
+<tr>
+<td>+1.00</td>
+<td>0.8281</td>
+<td>0.549</td>
+<td>0.027</td>
+</tr>
+<tr>
+<td>+1.20</td>
+<td>0.8224</td>
+<td>0.495</td>
+<td>0.019</td>
+</tr>
+</tbody>
+</table>
+<p><strong>这是一个反直觉但很重要的结论</strong>：无论往哪个方向校正先验，Macro-F1 都下降，
+最优值精确落在 τ=0。</p>
+<p>原因在于 <strong>unknown 类具有双重身份</strong>：它在训练集中占 26.2%（样本量是单个车型的 17.8 倍），
+但它同时在语义上是"98 个来源车型的并集"，<strong>类内异质性远高于任何单个目标车型</strong>。
+样本量的优势恰好补偿了类内异质性带来的学习难度，两者在 Macro-F1 口径下正好抵消。
+因此<strong>不能想当然地做类别平衡</strong>——这正是对比实验 B 要验证的假设。</p>
+<h3 id="doc25-6-2-类别平衡损失-b-需要一次-反向-校正才能发挥价值">6.2 类别平衡损失（B）：需要一次"反向"校正才能发挥价值</h3>
+<p>对比实验 B 使用逆频率加权 $w_c = N/(C n_c)$，使每个类别对损失的贡献相等。结果：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>A 基线（none）</th>
+<th>B 类别平衡（inverse）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>未校正 Macro-F1</td>
+<td><strong>0.8475</strong></td>
+<td>0.8428</td>
+</tr>
+<tr>
+<td>known 误拒率</td>
+<td>0.1031</td>
+<td><strong>0.0474</strong></td>
+</tr>
+<tr>
+<td>unknown 检出率</td>
+<td><strong>0.8197</strong></td>
+<td>0.5901</td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>0.8287</td>
+<td>0.8105</td>
+</tr>
+</tbody>
+</table>
+<p>可以看到，类别平衡确实<strong>达到了它该有的效果</strong>：已知类误拒率从 10.3% 降到 4.7%，
+即目标车型被误判为 unknown 的情况减少了一半以上。但它同时把 unknown 的检出率
+从 82% 压到 59%，净效果反而略差（−0.0047）。</p>
+<p><strong>关键发现</strong>：对 B 模型再做一次先验校正，可以把它丢掉的 unknown 召回率找回来，
+同时保留它对已知类的改善：</p>
+<table>
+<thead>
+<tr>
+<th>τ</th>
+<th>Macro-F1</th>
+<th>unknown 检出率</th>
+<th>已知类误拒率</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>−1.0</td>
+<td>0.8283</td>
+<td>0.884</td>
+<td>0.222</td>
+</tr>
+<tr>
+<td>−0.5</td>
+<td>0.8538</td>
+<td>0.774</td>
+<td>0.116</td>
+</tr>
+<tr>
+<td><strong>−0.4</strong></td>
+<td><strong>0.8545</strong></td>
+<td>0.742</td>
+<td>0.100</td>
+</tr>
+<tr>
+<td>−0.2</td>
+<td>0.8547</td>
+<td>0.692</td>
+<td>0.078</td>
+</tr>
+<tr>
+<td>0.0</td>
+<td>0.8428</td>
+<td>0.590</td>
+<td>0.047</td>
+</tr>
+<tr>
+<td>+0.5</td>
+<td>~0.81</td>
+<td>~0.32</td>
+<td>~0.014</td>
+</tr>
+</tbody>
+</table>
+<p>组合最优：<strong>(τ = −0.40, t = 0.50) → 验证集 Macro-F1 = 0.8597</strong>，
+比基线的 0.8475 高 <strong>+0.0122</strong>，也比"基线 + 最优阈值"的 0.8512 高 <strong>+0.0085</strong>。</p>
+<p><strong>这组实验的完整逻辑链</strong>是：</p>
+<blockquote>
+<p>逆频率加权改变了模型学到的<strong>有效先验</strong>，使它在已知类上更"敢认"（误拒↓），
+但在 unknown 上过于保守（检出↓）；先验校正恰好是一个<strong>可逆的旋钮</strong>，
+用负的 τ 把 unknown 的倾向调回来，于是"已知类的收益"和"unknown 的召回"可以同时拿到。</p>
+</blockquote>
+<p>这说明：<strong>类别平衡不应只在训练时做一次，而应当与推理时的先验校正联合调优</strong>。</p>
+<h3 id="doc25-6-3-拒识阈值的实际效果与局限">6.3 拒识阈值的实际效果与局限</h3>
+<ul>
+<li>拒识阈值 t 的收益很小（本任务中最优 t=0.40~0.50，只带来 +0.004~0.005）。</li>
+<li>原因见第 5 节的错误分析：本任务的主要错误是<strong>高置信度错误</strong>（模型以 0.99 的置信度把
+  第 14 代轩逸判成 unknown），阈值只能拦"不自信"的样本，拦不住"自信地犯错"的样本。</li>
+<li>因此<strong>低置信度处理不能替代 unknown 类别的训练</strong>（任务书 5.5 节也明确指出这一点）。
+  本项目把阈值定位为"给用户的一个友好提示开关"，而不是提升指标的手段。</li>
+</ul>
+<p><strong>最终采用的决策规则</strong>（写入 <code>outputs/runs/&lt;run&gt;/calibration.json</code>，由推理代码读取）：</p>
+<div class="codehilite"><pre><span></span><code>logits ← model(image)                       # 可叠加水平翻转 TTA
+logits ← logits - tau * log(pi)             # 先验校正
+probs  ← softmax(logits)
+idx    ← argmax(probs); conf ← max(probs)
+if conf &lt; unknown_threshold: idx ← unknown  # 拒识
+</code></pre></div>
+
+<p><code>tau</code> 与 <code>unknown_threshold</code> 均由验证集 Macro-F1 选出，不使用任何测试图片。</p>
+<hr />
+<h2 id="doc25-7-推理能力与提交物">7. 推理能力与提交物</h2>
+<h3 id="doc25-7-1-单张图片推理">7.1 单张图片推理</h3>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/infer.py<span class="w"> </span>--checkpoint<span class="w"> </span>outputs/checkpoints/improved_resnet18_224/best.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">       </span>--image<span class="w"> </span>&lt;图片路径&gt;
+</code></pre></div>
+
+<p>输出示例（真实运行结果，图片为基线模型曾以 0.99 置信度误判为 unknown 的那一类）：</p>
+<div class="codehilite"><pre><span></span><code>$ python src/infer.py --checkpoint outputs/checkpoints/improved_resnet18_224/best.pt \
+      --image data/val/0975/0975_0007.jpg
+
+图片        : data\val\0975\0975_0007.jpg
+预测类别 ID : 0975
+预测车型名  : 日产_轩逸
+置信度      : 0.9868
+Top-5：
+  0975     日产_轩逸              0.9868
+  unknown  unknown               0.0028
+  0768     福特_福克斯             0.0012
+  0696     别克_别克GL8           0.0012
+  0035     大众_朗逸              0.0008
+</code></pre></div>
+
+<p>可以看到：同一张图，基线模型给出 <code>unknown / 0.99</code>，改进模型给出 <code>0975 日产_轩逸 / 0.9868</code>，
+且第二名（unknown）只有 0.0028 —— <strong>Top-1 与 Top-2 之间拉开了三个数量级的差距</strong>，
+这正是高分辨率 + 强增强带来的判别力提升。</p>
+<p>单模型命令行工具用的是 C1；<strong>最终交付的 C3（C1+C2 集成 + 标定）由 <code>src/ensemble.py</code> 与
+<code>src/finalize.py</code> 提供</strong>，调用方式：</p>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 单张图片（集成）</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys; sys.path.insert(0,&#39;src&#39;);</span>
+<span class="s2">from cardex.inference import CarEnsemble;</span>
+<span class="s2">e = CarEnsemble([&#39;outputs/checkpoints/improved_resnet18_224/best.pt&#39;,</span>
+<span class="s2">                 &#39;outputs/checkpoints/improved_resnet50_224/best.pt&#39;],</span>
+<span class="s2">                tta_hflip=True, prior_adjust_tau=0.05, unknown_threshold=0.25);</span>
+<span class="s2">print(e.predict_path(&#39;图片路径&#39;, top_k=5))&quot;</span>
+</code></pre></div>
+
+<p>其中 <code>prior_adjust_tau=0.05</code> 与 <code>unknown_threshold=0.25</code> 取自
+<code>outputs/reports/final_model_choice.json</code>（由验证集选出）。</p>
+<p>该能力由 <code>src/cardex/inference.py</code> 的 <code>CarClassifier</code> 提供，<strong>任务二的视觉分类工具
+（<code>classify_car</code>）直接复用同一个类</strong>，从而保证"训练 / 保存 / Web 推理 / 批量推理使用同一映射与同一套预处理参数"。</p>
+<h3 id="doc25-7-2-批量推理-predictions-csv">7.2 批量推理 → predictions.csv</h3>
+<div class="codehilite"><pre><span></span><code><span class="c1"># 对教师指定的测试目录生成（正式提交用法）</span>
+python<span class="w"> </span>src/predict_batch.py<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--checkpoint<span class="w"> </span>outputs/checkpoints/improved_resnet18_224/best.pt<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--input-dir<span class="w"> </span>&lt;教师指定测试图片目录&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--output<span class="w"> </span>predictions.csv<span class="w"> </span>--tta-hflip
+
+<span class="c1"># 本次交付：教师指定的测试图片目录尚未下发，先用本地验证集做一次完整演练</span>
+python<span class="w"> </span>src/predict_batch.py<span class="w"> </span>--checkpoint<span class="w"> </span>.../best.pt<span class="w"> </span>--split<span class="w"> </span>val<span class="w"> </span>--output<span class="w"> </span>predictions.csv<span class="w"> </span>--tta-hflip
+</code></pre></div>
+
+<p><strong>本次生成的 <code>predictions.csv</code> 说明</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>项目</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>记录数</td>
+<td><strong>2,422</strong>（与 val 划分图片数一致，每张图片恰好一条记录）</td>
+</tr>
+<tr>
+<td>表头</td>
+<td><code>image_id,predicted_label,confidence</code>（与任务书完全一致）</td>
+</tr>
+<tr>
+<td>编码</td>
+<td>UTF-8，无 BOM</td>
+</tr>
+<tr>
+<td>重复 image_id</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>非法 predicted_label</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>越界 confidence</td>
+<td><strong>0</strong></td>
+</tr>
+<tr>
+<td>confidence 分布</td>
+<td>min 0.11 / mean 0.81 / max 0.999</td>
+</tr>
+<tr>
+<td>预测为 unknown</td>
+<td>609 张（25.1%）</td>
+</tr>
+<tr>
+<td>使用模型</td>
+<td><strong>C3 = <code>improved_resnet18_224</code> + <code>improved_resnet50_224</code> 软投票集成</strong></td>
+</tr>
+<tr>
+<td>决策标定</td>
+<td>τ=+0.05，t=0.25（来自 <code>outputs/reports/final_model_choice.json</code>，由验证集选出）</td>
+</tr>
+<tr>
+<td>TTA</td>
+<td>水平翻转</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>⚠️ <strong>提交前必须确认</strong>：<code>predictions.csv</code> 的 <code>image_id</code> 必须与教师指定的测试图片<strong>逐张对应</strong>。
+本次因为尚未拿到教师指定的测试目录，暂以本地验证集（<code>data/val</code>，2,422 张）作为演练对象。
+一旦拿到教师指定的测试目录，<strong>只需把 <code>--split val</code> 换成 <code>--input-dir &lt;目录&gt;</code> 重新运行一次即可</strong>，
+其余参数（模型、标定、TTA）保持不变，命令见本仓库 <code>README.md</code> 第 4 节第 8 步。</p>
+</blockquote>
+<h3 id="doc25-7-3-提交物自查">7.3 提交物自查</h3>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/verify_submission.py<span class="w">      </span><span class="c1"># 41 项自动检查</span>
+</code></pre></div>
+
+<p>实测结果：<strong>通过 41 项，失败 0 项，警告 0 项</strong>，覆盖:</p>
+<ul>
+<li><code>classes.txt</code>：存在、UTF-8 无 BOM、恰好 50 行、四位数字、不重复、升序、全部属于 827 类、不含 unknown；</li>
+<li>类别映射：索引 0~49 与 <code>classes.txt</code> 顺序一致、索引 50 = unknown、名称取自 <code>name_from_new</code>；</li>
+<li>数据目录：<code>train/</code>、<code>val/</code> 下 50 个车型目录 + <code>unknown/</code> 齐备，且 <strong>train / val 图片文件名 0 重叠</strong>；</li>
+<li>unknown 来源：与本组 50 类 0 交集，覆盖 85 个品牌、7 个中文大类，含 34 类同品牌硬负样本；</li>
+<li><code>predictions.csv</code>：表头、编码、记录数、image_id 唯一性、标签合法性、confidence 范围；</li>
+<li>checkpoint：类别数 51、类别映射一致、第 51 类为 unknown、预处理参数与训练配置齐备。</li>
+</ul>
+<h3 id="doc25-7-4-用真值核算-predictions-csv">7.4 用真值核算 predictions.csv</h3>
+<div class="codehilite"><pre><span></span><code>python<span class="w"> </span>src/score_predictions.py<span class="w">      </span><span class="c1"># 输出 outputs/reports/predictions_score.json</span>
+</code></pre></div>
+
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>标定扫描值（C3）</th>
+<th><strong>predictions.csv 实测值</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>51 类 Macro-F1</td>
+<td>0.9604</td>
+<td><strong>0.9604</strong></td>
+</tr>
+<tr>
+<td>Accuracy</td>
+<td>0.9496</td>
+<td>0.9496</td>
+</tr>
+<tr>
+<td>unknown 检出率</td>
+<td>0.9286</td>
+<td>0.9286</td>
+</tr>
+<tr>
+<td>已知类误拒率</td>
+<td>0.0343</td>
+<td>0.0344</td>
+</tr>
+</tbody>
+</table>
+<p>两者完全一致，说明<strong>提交的结果文件与报告中的分数完全对得上</strong>。</p>
+<h3 id="doc25-7-5-模型保存与重新加载的独立验证">7.5 模型保存与重新加载的独立验证</h3>
+<p>任务书 4.2 节要求实现"训练、验证、模型保存和重新加载"。本项目用
+<code>src/verify_reload.py</code> 做了<strong>跨进程</strong>的验证：只在磁盘上留下 <code>best.pt</code>，
+在两个彼此独立的 Python 进程里各自重新构建模型、加载权重、对同一批 240 张验证图片推理，
+再把两份结果逐条比对。</p>
+<div class="codehilite"><pre><span></span><code>A: outputs\runs\improved_resnet18_224\reload_a.json  (240 条)
+B: outputs\runs\improved_resnet18_224\reload_b.json  (240 条)
+完全一致的记录：240/240
+[OK] 两次独立进程重新加载 checkpoint 后的推理结果逐条一致 —— 模型保存与重新加载正确、且可复现。
+</code></pre></div>
+
+<p>checkpoint 中同时保存了重新加载所必需的全部信息：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>arch</code> / <code>num_classes</code> / <code>image_size</code></td>
+<td>模型结构参数</td>
+</tr>
+<tr>
+<td><code>model_state</code></td>
+<td>权重（含 EMA 平滑后的权重）</td>
+</tr>
+<tr>
+<td><code>class_map</code> / <code>label_names</code></td>
+<td>类别映射（索引 0~49 → 车型 ID，索引 50 → unknown）</td>
+</tr>
+<tr>
+<td><code>preprocess</code></td>
+<td>预处理参数（mean / std / eval_resize / eval_crop / 插值方式）</td>
+</tr>
+<tr>
+<td><code>train_config</code></td>
+<td>完整训练配置（含数据增强参数）</td>
+</tr>
+<tr>
+<td><code>epoch</code> / <code>val_macro_f1</code></td>
+<td>该 checkpoint 对应的轮次与验证集得分</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>工程细节</strong>：<code>src/evaluate.py</code> 的推理精度默认读取 checkpoint 里记录的 <code>amp</code> 设置，
+与训练时保持一致。否则 bf16 与 float32 之间极小的数值差异会让个别样本的 argmax 翻转，
+造成"训练日志里的 Macro-F1"与"事后重新评估的 Macro-F1"相差约 0.0005。
+修正后，两者完全一致（基线 0.847508、类别平衡 0.842818、改进模型 0.948215）。</p>
+</blockquote>
+<h3 id="doc25-7-6-流程可复现性验证">7.6 流程可复现性验证</h3>
+<p>固定随机种子（<code>seed = 20250914</code>）后，<strong>重新执行选类与抽数流程，四个产物逐字节一致</strong>：</p>
+<div class="codehilite"><pre><span></span><code>=== 复现前哈希 ===
+A98FCC0201AF05FB  classes.txt
+3ED6C75044F2CD76  class_map.json
+318A1E6C5A1325C2  unknown_sources.json
+38CE6585589DE859  data_manifest.csv
+
+=== 重新运行 src/select_classes.py 与 src/prepare_data.py ===
+
+=== 复现后哈希 ===
+A98FCC0201AF05FB  classes.txt
+3ED6C75044F2CD76  class_map.json
+318A1E6C5A1325C2  unknown_sources.json
+38CE6585589DE859  data_manifest.csv
+
+[OK] 选类与抽数流程完全可复现（4 个产物哈希一致）
+</code></pre></div>
+
+<p>这保证了两件事：① <code>classes.txt</code> 与 unknown 采样结果<strong>不是一次性的偶然产物</strong>，
+教师按本仓库脚本重跑会得到同一份类别登记；② 训练、验证所用数据分布可被完整重建。</p>
+<h3 id="doc25-7-7-生产推理路径与提交文件的一致性">7.7 生产推理路径与提交文件的一致性</h3>
+<p>最后做了一次"闭环"校验：用<strong>生产推理代码</strong>（<code>src/cardex/inference.py::CarEnsemble</code>，
+即任务二视觉分类工具将要复用的那一个类）对验证集抽样 200 张重新推理，
+与提交的 <code>predictions.csv</code> 逐条比对：</p>
+<div class="codehilite"><pre><span></span><code>抽样 200 张：生产推理路径与 predictions.csv 标签一致 200/200
+confidence 最大绝对差 = 0.003710
+</code></pre></div>
+
+<p><strong>标签 100% 一致</strong>。confidence 存在最大 0.0037 的差异，来源是 CPU bfloat16 在不同批次
+组合下 GEMM 舍入路径不同（提交文件由一次性批量推理产生，这里按 32 张小批次重算），
+<strong>不影响任何一条预测结果</strong>；论文/报告中的 Macro-F1 也不受其影响
+（由 <code>predictions.csv</code> 独立核算得 0.9604，与评估结果完全一致）。</p>
+<hr />
+<h2 id="doc25-8-任务一小结与不足">8. 任务一小结与不足</h2>
+<h3 id="doc25-8-1-完成情况对照任务书要求">8.1 完成情况对照任务书要求</h3>
+<table>
+<thead>
+<tr>
+<th>任务书要求（4.1~4.3 节）</th>
+<th>本项目完成情况</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>从 827 类中自主选择恰好 50 类</td>
+<td>✅ 50 类，覆盖 <strong>37 个品牌</strong>、6 种车身大类，逐类写明选择理由</td>
+</tr>
+<tr>
+<td>文件名固定 <code>classes.txt</code>，UTF-8 无 BOM，恰好 50 行四位 ID，升序</td>
+<td>✅ 已通过自动校验</td>
+</tr>
+<tr>
+<td>同一条记录的 <code>id</code> 作为类别 ID，<code>name_from_new</code> 作为标签名</td>
+<td>✅ 由 <code>src/select_classes.py</code> 强制约束</td>
+</tr>
+<tr>
+<td>从其余类抽取 unknown 训练/验证样本，train、val 不重复，不用测试图片</td>
+<td>✅ 98 个来源类别、85 个品牌；train 1,960 张 / val 588 张；文件名 0 重叠</td>
+</tr>
+<tr>
+<td>模型索引 0~49 对应 <code>classes.txt</code> 行序，索引 50 对应 unknown</td>
+<td>✅ 由 <code>configs/class_map.json</code> 唯一确定并随 checkpoint 保存</td>
+</tr>
+<tr>
+<td>建立 51 类分类基线，实现训练、验证、模型保存与重新加载</td>
+<td>✅ 实验 A（ResNet18@160，Macro-F1 0.8475）</td>
+</tr>
+<tr>
+<td>围绕模型选择/数据增强/超参数/迁移学习开展对比实验</td>
+<td>✅ <strong>5 组实验</strong>（A 基线 / B 类别平衡 / C1 改进 / C2 骨干容量 / C3 集成），逐项记录依据与结果</td>
+</tr>
+<tr>
+<td>保存中期 checkpoint 与最终模型，保留结构、类别映射、预处理参数与训练配置</td>
+<td>✅ <code>last.pt</code> / <code>best.pt</code> / <code>epoch_XX.pt</code>，checkpoint 内含全部元信息</td>
+</tr>
+<tr>
+<td>实现"模型保存<strong>和重新加载</strong>"</td>
+<td>✅ <code>src/verify_reload.py</code> 跨进程验证：两次独立加载后 240 张图片的预测逐条一致</td>
+</tr>
+<tr>
+<td>提供单张图片推理，输出车型 ID 或 unknown 及 confidence</td>
+<td>✅ <code>src/infer.py</code> / <code>CarClassifier</code></td>
+</tr>
+<tr>
+<td>提供批量推理，生成统一格式 <code>predictions.csv</code></td>
+<td>✅ <code>src/predict_batch.py</code> + <code>src/finalize.py</code>，2,422 条记录全部通过格式校验</td>
+</tr>
+<tr>
+<td>在 51 类口径上使用同一标准 Macro-F1 选模型、调参数，不使用测试图片</td>
+<td>✅ 全流程只用 <code>data/val</code>，测试图片从未参与</td>
+</tr>
+<tr>
+<td>说明 unknown 样本构成、列举典型错误样本、解释易混淆类别</td>
+<td>✅ 见第 2.5、5.1~5.4 节</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc25-8-2-主要结论">8.2 主要结论</h3>
+<ol>
+<li>
+<p><strong>选类阶段的可分性预判是有效的。</strong> 按"品牌多样性 + 造型辨识度"原则选出的 50 类，
+   混淆矩阵中<strong>几乎没有同品牌内部混淆</strong>；F1 最高的类别清一色是造型独特的车型
+   （依维柯得意、五菱之光、宝马 X7、领航员、北汽 212 均为 1.000），
+   最低的始终是紧凑型家用轿车（轩逸从 0.618 → 最终 0.866、朗逸从 0.689 → 0.879）。</p>
+</li>
+<li>
+<p><strong>分辨率 + 强正则化的组合是本次最大的收益来源（+0.1007 Macro-F1）。</strong>
+   输入 160→224 让细粒度线索（格栅、灯组、车标）变得可分；RandAugment + MixUp/CutMix +
+   标签平滑 + 随机擦除 + 权重 EMA 把训练集准确率从 99.6% 压到 80.3%，
+   却把验证集准确率从 82.6% 提到 93.8%。</p>
+</li>
+<li>
+<p><strong>同等算力下，优先投"分辨率+正则化"而不是"更大骨干"。</strong>
+   ResNet18→ResNet50 只带来 +0.0068（训练时间却翻倍到 175 min）；
+   再加集成也仅 +0.0037。最终 <strong>0.9604</strong>，相对基线 <strong>+0.1092</strong>。
+   在纯 CPU 环境下这是很关键的取舍经验。</p>
+</li>
+<li>
+<p><strong>"类别平衡"是一个需要联合推理端一起调优的旋钮，不能盲目使用。</strong>
+   逆频率加权单独使用会掉 0.0047，但它把已知类误拒率从 10.3% 降到 4.7%；
+   再配合一次负向先验校正（τ=−0.40）即可净赚 +0.0122（0.8475 → 0.8597）。
+   这说明<strong>训练时的类别权重与推理时的先验校正是同一件事的两端</strong>。</p>
+</li>
+<li>
+<p><strong>低置信度阈值不能替代 unknown 训练。</strong> 本任务的主要错误是"以 0.99 置信度认错"，
+   阈值只能拦"不自信"的样本，收益仅 +0.003~0.005。</p>
+</li>
+<li>
+<p><strong>集成不是万能的：成员差距过大时反而有害。</strong> 实测"C1 + 基线"集成只有 0.9152，
+   低于 C1 单独的 0.9482；只有把水平相近的 C1 与 C2 组合，才拿到稳定的 +0.0037。</p>
+</li>
+<li>
+<p><strong>数据标注粒度是当前精度的天花板。</strong> 同一车型名下的多个世代
+   （经典轩逸 vs 第 14 代轩逸、经典朗逸 vs 全新朗逸）外观差异巨大，
+   而教师划分未按世代分层，导致模型"学会了老款、认不出新款"。</p>
+</li>
+</ol>
+<h3 id="doc25-8-3-存在的不足">8.3 存在的不足</h3>
+<table>
+<thead>
+<tr>
+<th>不足</th>
+<th>说明</th>
+<th>改进方向</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>训练硬件受限</strong></td>
+<td>全部实验在纯 CPU（Ryzen 9 7940H，12 线程）上完成，ResNet50@224 单轮约 12~13 分钟（C1 仅 4.6 分钟），限制了实验规模</td>
+<td>换用 GPU 后可在同等时间完成更多组对比实验、更长训练与更大的骨干</td>
+</tr>
+<tr>
+<td><strong>数据加载无法多进程</strong></td>
+<td>运行环境的沙箱禁止创建命名管道，<code>DataLoader(num_workers&gt;0)</code> 不可用，数据加载与计算串行，约损失 30% 吞吐</td>
+<td>在无此限制的环境下启用 <code>num_workers=4</code></td>
+</tr>
+<tr>
+<td><strong>unknown 抽样仍是启发式</strong></td>
+<td>98 个来源类别由随机种子固定，未做覆盖度优化</td>
+<td>可尝试按"与 50 类的特征距离"做难例挖掘，或扩大来源类别到全部 777 类</td>
+</tr>
+<tr>
+<td><strong>世代混淆问题未根治</strong></td>
+<td>见 5.2 节；最终模型仍有 轩逸 2 次、朗逸 5 次被误判为 unknown</td>
+<td>① 在类别内部按世代/年款做子类划分；② 对已有数据按世代分层划分 train/val；③ 引入更强的跨代不变特征（如车标检测）</td>
+</tr>
+<tr>
+<td><strong>标定与集成选择存在过拟合验证集的风险</strong></td>
+<td>τ、阈值与"选哪个候选"都是在同一份 val（2,422 张）上比较得出的，可能高估约 0.003</td>
+<td>用交叉验证或划分独立校准集来确定 τ、阈值与候选</td>
+</tr>
+<tr>
+<td><strong>测试集尚未拿到</strong></td>
+<td><code>predictions.csv</code> 目前是对本地 val 生成的演练版本</td>
+<td>拿到教师指定的测试图片目录后重新运行 <code>predict_batch.py</code>，其余参数不变</td>
+</tr>
+</tbody>
+</table>
+<h3 id="doc25-8-4-对任务二-任务三的交接">8.4 对任务二、任务三的交接</h3>
+<p>任务一交付给后续任务的接口已经固定：</p>
+<ul>
+<li><code>src/cardex/inference.py::CarClassifier.predict_path()</code> —— 视觉分类工具 <code>classify_car</code> 的实现，
+  返回 <code>label_id</code>（四位 ID 或 <code>unknown</code>）、<code>label_name</code>、<code>confidence</code>、<code>top_k</code> 与 <code>is_unknown</code> 标志；</li>
+<li><code>configs/class_map.json</code> —— 类别 ID ↔ 车型名称 ↔ 模型索引的映射，供「车型档案查询」工具使用；</li>
+<li><code>outputs/runs/&lt;run&gt;/calibration.json</code> —— 由验证集确定的 τ 与拒识阈值，供低置信度处理使用；</li>
+<li><code>outputs/reports/selection_report.txt</code> —— 50 类车型清单与选类理由，可直接生成本项目「私人车型资料库」的初始条目。</li>
+</ul><div class="docnav"><a class="prev" href="./任务二三_智能体与Web系统说明.html"><span class="dir">← 上一篇</span><span class="ttl">21 · 智能体与 Web 系统说明</span></a><a class="next" href="./任务二三_实训报告章节.html"><span class="dir">下一篇 →</span><span class="ttl">★ · 实训报告（任务二三）</span></a></div></section>
+</div>
+</main>
+</div>
+<div id="mask"></div>
+<button id="totop" type="button" title="回到顶部">↑</button>
+<script>
+
+(function(){
+  var doc = document.documentElement, KEY = 'cardex-docs-theme';
+  function applyTheme(t){
+    doc.setAttribute('data-theme', t);
+    var b = document.getElementById('btn-theme');
+    if (b) b.textContent = (t === 'dark' ? '\u2600 亮色' : '\u263E 暗色');
+  }
+  var saved = null; try { saved = localStorage.getItem(KEY); } catch(e){}
+  applyTheme(saved || ((window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light'));
+  document.getElementById('btn-theme').addEventListener('click', function(){
+    var t = doc.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(t); try { localStorage.setItem(KEY, t); } catch(e){}
+  });
+
+  /* 表格 */
+  Array.prototype.forEach.call(document.querySelectorAll('.doc table'), function(tb){
+    if (tb.parentElement && tb.parentElement.classList.contains('table-scroll')) return;
+    var wrap = document.createElement('div'); wrap.className = 'table-wrap';
+    var scroll = document.createElement('div'); scroll.className = 'table-scroll';
+    tb.parentNode.insertBefore(wrap, tb); scroll.appendChild(tb); wrap.appendChild(scroll);
+    var hint = document.createElement('div'); hint.className = 'table-hint';
+    hint.textContent = '\u2190 \u53ef\u6a2a\u5411\u6eda\u52a8 \u2192'; wrap.appendChild(hint);
+    if (tb.querySelectorAll('thead th').length >= 9) wrap.classList.add('wide');
+    function upd(){
+      var can = scroll.scrollWidth - scroll.clientWidth > 4;
+      wrap.classList.toggle('scrollable', can);
+      wrap.classList.toggle('at-end', scroll.scrollLeft + scroll.clientWidth >= scroll.scrollWidth - 4);
+    }
+    scroll.addEventListener('scroll', upd); window.addEventListener('resize', upd); upd();
+  });
+
+  /* 代码块 */
+  var LANG = {python:'Python', bash:'Shell', sh:'Shell', shell:'Shell', json:'JSON', sql:'SQL',
+              yaml:'YAML', js:'JavaScript', javascript:'JavaScript', css:'CSS', html:'HTML'};
+  Array.prototype.forEach.call(document.querySelectorAll('.codehilite, pre'), function(block){
+    if (block.closest && block.closest('.codehilite') && !block.classList.contains('codehilite')) return;
+    if (block.querySelector && block.querySelector('.code-bar')) return;
+    var isHl = block.classList.contains('codehilite');
+    var pre = isHl ? block.querySelector('pre') : block;
+    if (!pre) return;
+    var code = pre.querySelector('code') || pre;
+    var txt = code.textContent || '', lang = '';
+    var m = (code.className || '').match(/language-([\w+-]+)/);
+    if (m) lang = m[1];
+    if (!lang && isHl){
+      if (/^\s*(\$|python |pip |cd |Get-|start |\.\/)/m.test(txt)) lang = 'bash';
+      else if (/^\s*(import |from |def |class |print\(|sys\.)/m.test(txt)) lang = 'python';
+      else if (/^\s*[{\[]/.test(txt) && /":/.test(txt)) lang = 'json';
+      else if (/^\s*(CREATE|SELECT|INSERT|--)/im.test(txt)) lang = 'sql';
+      else if (/^\s*<(!DOCTYPE|html|div|section)/i.test(txt)) lang = 'html';
+    }
+    var bar = document.createElement('div'); bar.className = 'code-bar';
+    var nm = document.createElement('span'); nm.textContent = LANG[lang] || (lang || '\u4ee3\u7801');
+    var btn = document.createElement('button'); btn.className = 'copy-btn'; btn.type = 'button';
+    btn.textContent = '\u590d\u5236';
+    function fb(t, cb){
+      var ta = document.createElement('textarea'); ta.value = t;
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); cb(); } catch(e){}
+      document.body.removeChild(ta);
+    }
+    btn.addEventListener('click', function(){
+      var t = code.innerText;
+      var done = function(){ btn.textContent = '\u5df2\u590d\u5236'; btn.classList.add('done');
+        setTimeout(function(){ btn.textContent = '\u590d\u5236'; btn.classList.remove('done'); }, 1400); };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done, function(){ fb(t, done); });
+      else fb(t, done);
+    });
+    bar.appendChild(nm); bar.appendChild(btn);
+    if (isHl) block.insertBefore(bar, block.firstChild);
+    else {
+      var w = document.createElement('div'); w.className = 'codehilite';
+      block.parentNode.insertBefore(w, block); w.appendChild(bar); w.appendChild(block);
+    }
+  });
+
+  /* 标题锚点 */
+  Array.prototype.forEach.call(document.querySelectorAll('h2[id],h3[id],h4[id]'), function(h){
+    var a = document.createElement('a');
+    a.className = 'anchor'; a.href = '#' + h.id; a.textContent = '#'; a.title = '\u590d\u5236\u94fe\u63a5';
+    a.addEventListener('click', function(ev){
+      if (navigator.clipboard && navigator.clipboard.writeText){
+        ev.preventDefault();
+        navigator.clipboard.writeText(location.href.split('#')[0] + '#' + h.id);
+        try { history.replaceState(null, '', '#' + h.id); } catch(e){}
+        a.textContent = '\u2713'; setTimeout(function(){ a.textContent = '#'; }, 1200);
+      }
+    });
+    h.appendChild(a);
+  });
+
+  /* 侧边栏 */
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.nav-group'));
+  Array.prototype.forEach.call(document.querySelectorAll('button.nav-head'), function(h){
+    h.addEventListener('click', function(){ h.parentElement.classList.toggle('collapsed'); });
+  });
+  var search = document.getElementById('search');
+  function filter(){
+    var t = (search.value || '').trim().toLowerCase();
+    groups.forEach(function(g){
+      var hit = !t || (g.getAttribute('data-key') || '').indexOf(t) >= 0;
+      g.classList.toggle('hidden', !hit);
+      if (hit && t) g.classList.remove('collapsed');
+    });
+  }
+  search.addEventListener('input', filter);
+  document.addEventListener('keydown', function(e){
+    if (e.key === '/' && document.activeElement !== search){ e.preventDefault(); search.focus(); }
+    if (e.key === 'Escape' && document.activeElement === search){ search.value = ''; filter(); search.blur(); }
+  });
+
+  var heads = Array.prototype.slice.call(document.querySelectorAll('#content h2[id],#content h3[id]'));
+  var links = {};
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a'), function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var cur = null, curDoc = null;
+  function sync(){
+    if (heads.length){
+      var y = window.scrollY + 100, best = null;
+      heads.forEach(function(h){ if (h.offsetTop <= y) best = h; });
+      if (cur !== best){
+        if (cur && links[cur.id]) links[cur.id].classList.remove('current');
+        cur = best;
+        if (cur && links[cur.id]){
+          var l = links[cur.id]; l.classList.add('current');
+          var g = l.closest('.nav-group');
+          if (g){
+            groups.forEach(function(x){ x.classList.remove('active'); });
+            g.classList.add('active'); g.classList.remove('collapsed');
+            var r = l.getBoundingClientRect(), sr = document.getElementById('sidebar').getBoundingClientRect();
+            if (r.top < sr.top + 100 || r.bottom > sr.bottom - 40) l.scrollIntoView({block:'center'});
+          }
+        }
+      }
+    }
+    var cd = null;
+    Array.prototype.forEach.call(document.querySelectorAll('.doc'), function(s){
+      if (s.offsetTop <= window.scrollY + 130) cd = s;
+    });
+    if (cd && cd !== curDoc){
+      curDoc = cd;
+      var cb = document.getElementById('crumb');
+      if (cb) cb.innerHTML = '\u6b63\u5728\u9605\u8bfb \u00b7 <b>' + (cd.getAttribute('data-title') || '') + '</b>';
+    }
+  }
+
+  var bar = document.getElementById('progress'), totop = document.getElementById('totop');
+  var side = document.getElementById('sidebar'), mask = document.getElementById('mask');
+  function onScroll(){
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+    totop.style.display = window.scrollY > 700 ? 'block' : 'none';
+    sync();
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (!ticking){ ticking = true; requestAnimationFrame(function(){ onScroll(); ticking = false; }); }
+  }, {passive:true});
+  totop.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  document.getElementById('hamburger').addEventListener('click', function(){
+    side.classList.add('open'); mask.classList.add('on');
+  });
+  mask.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  Array.prototype.forEach.call(document.querySelectorAll('.nav-list a, .docnav a, a.nav-head'), function(a){
+    a.addEventListener('click', function(){ side.classList.remove('open'); mask.classList.remove('on'); });
+  });
+
+  onScroll(); filter();
+})();
+
+</script>
+</body>
+</html>

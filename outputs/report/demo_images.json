@@ -1,0 +1,30 @@
+[
+  {
+    "kind": "known",
+    "id": "0632",
+    "name": "奥迪_奥迪A6 China Domestic Version",
+    "src": "data\\val\\0632\\0632_0003.jpg",
+    "dst": "demo_known_0632.jpg"
+  },
+  {
+    "kind": "known",
+    "id": "0975",
+    "name": "日产_轩逸",
+    "src": "data\\val\\0975\\0975_0007.jpg",
+    "dst": "demo_known_0975.jpg"
+  },
+  {
+    "kind": "unknown",
+    "id": "0604",
+    "name": "(组外车型)",
+    "src": "data\\val\\unknown\\0604_0022.jpg",
+    "dst": "demo_unknown_0604_0022.jpg"
+  },
+  {
+    "kind": "broken",
+    "id": "-",
+    "name": "(损坏文件)",
+    "src": "(构造)",
+    "dst": "demo_broken.jpg"
+  }
+]

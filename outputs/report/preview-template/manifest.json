@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "backend": "native",
+  "rasterEngine": "libreoffice",
+  "source": "saved",
+  "inputPath": "C:\\Users\\y\\Downloads\\实训报告模板_视觉智能体综合实训.docx",
+  "sourceSha256": "4fa23fe009032d76a9e1a7e498ba2fb1e1f1ef57b64f559249ed004f4dc2327a",
+  "dpi": 110,
+  "pageCount": 14,
+  "images": [
+    {
+      "index": 1,
+      "page": 1,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-template\\page-0001.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 77400
+    },
+    {
+      "index": 2,
+      "page": 2,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-template\\page-0002.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 17803
+    },
+    {
+      "index": 3,
+      "page": 3,
+      "path": "E:\\Hanako\\OH-WorkSpace\\car-kb-agent\\outputs\\report\\preview-template\\page-0003.png",
+      "width": 910,
+      "height": 1287,
+      "rectangle": {
+        "x": 0,
+        "y": 0,
+        "width": 793.7333333333333,
+        "height": 1122.5333333333333
+      },
+      "byteLength": 176269
+    }
+  ],
+  "missingFonts": [
+    "楷体_GB2312",
+    "仿宋_GB2312",
+    "Liberation Serif",
+    "Linux Libertine G",
+    "Noto Sans",
+    "Liberation Sans"
+  ]
+}
